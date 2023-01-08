@@ -7,13 +7,6 @@
 GameCharacter ship;
 UINT8 spritesize = 8;
 
-void movegamecharacter(GameCharacter *character, UINT8 x, UINT8 y) {
-    move_sprite(character->spritids[0], x, y);
-    move_sprite(character->spritids[1], x + spritesize, y);
-    move_sprite(character->spritids[2], x, y + spritesize);
-    move_sprite(character->spritids[3], x + spritesize, y + spritesize);
-}
-
 // void render_world_actors()
 //     NONBANKED {
 //     UINT8 __save = _current_bank;

@@ -19,5 +19,3 @@ typedef struct GameCharacter {
 } GameCharacter;
 
 // extern GameCharacter ship;
-
-void movegamecharacter(GameCharacter *character, UINT8 x, UINT8 y);

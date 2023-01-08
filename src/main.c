@@ -12,6 +12,6 @@ void main() {
     SPRITES_8x16;  // MUST be 8x16 or 8x8. Can change in different scenes only
     SHOW_BKG;
     SHOW_SPRITES;
-
     DISPLAY_ON;
+    set_sprite_data(0, 4, Tileset);
 }

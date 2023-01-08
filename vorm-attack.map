@@ -27,10 +27,10 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
      00000005  l__HEADER |    00000006  l__HEADER |    00000007  l__HEADER
      00000008  l__HEADER |    0000000C  l__GSINIT |    00000030  l__HEADER
      00000040  l__CODE_1 |    0000004F  l__HEADER |    00000067  l__DATA  
-     00000082  l__HEADER |    00000092  l__HOME   |    00000200  s__CODE  
-     00000839  l__CODE   |    00000A39  s__HOME   |    00000ACB  s__BASE  
-     00000ACB  s__CODE_0 |    00000ACB  s__INITIA |    00000ACB  s__LIT   
-     00000ACC  s__GSINIT |    00000AD8  s__GSFINA |    00002000  _rROMB0  
+     00000082  l__HEADER |    000000CF  l__HOME   |    00000200  s__CODE  
+     000007C2  l__CODE   |    000009C2  s__HOME   |    00000A91  s__BASE  
+     00000A91  s__CODE_0 |    00000A91  s__INITIA |    00000A91  s__LIT   
+     00000A92  s__GSINIT |    00000A9E  s__GSFINA |    00002000  _rROMB0  
      00003000  _rROMB1   |    00004000  _rRAMB    |    00008000  __VRAM   
      00008000  __VRAM800 |    00008800  __VRAM880 |    00009000  __VRAM900
      00009800  __SCRN0   |    00009C00  __SCRN1   |    0000A000  __SRAM   
@@ -72,57 +72,24 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00000839 =        2105. bytes (REL,CON)
+_CODE                  00000200    000007C2 =        1986. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      00000200  _hUGE_ini |    00000204  _hUGE_ini |    0000020F  _hUGE_mut
      00000213  _hUGE_mut |    00000220  hUGE_mute |    0000023A  hUGE_init
-     00000676  _hUGE_dos |    00000676  _hUGE_dos |    00000999  A$lcc1899
+     00000676  _hUGE_dos |    00000676  _hUGE_dos |    00000999  A$lcc6352
      00000999  C$main.c$ |    00000999  C$main.c$ |    00000999  G$main$0$
-     00000999  _main     |    0000099A  A$lcc1899 |    0000099C  A$lcc1899
-     0000099C  C$main.c$ |    0000099E  A$lcc1899 |    000009A0  A$lcc1899
-     000009A2  A$lcc1899 |    000009A2  C$main.c$ |    000009A4  A$lcc1899
-     000009A6  A$lcc1899 |    000009A8  A$lcc1899 |    000009A8  C$main.c$
-     000009AA  A$lcc1899 |    000009AC  A$lcc1899 |    000009AE  A$lcc1899
-     000009AE  C$main.c$ |    000009B0  A$lcc1899 |    000009B2  A$lcc1899
-     000009B4  A$lcc1899 |    000009B4  C$main.c$ |    000009B4  XG$main$0
-     000009B5  A$lcc1899 |    000009B5  C$scene.c |    000009B5  G$movegam
-     000009B5  _movegame |    000009B7  A$lcc1899 |    000009B9  A$lcc1899
-     000009BA  A$lcc1899 |    000009BC  A$lcc1899 |    000009BD  A$lcc1899
-     000009BF  A$lcc1899 |    000009C0  A$lcc1899 |    000009C2  A$lcc1899
-     000009C3  A$lcc1899 |    000009C5  A$lcc1899 |    000009C6  A$lcc1899
-     000009C7  A$lcc1899 |    000009C8  A$lcc1899 |    000009C9  A$lcc1899
-     000009CA  A$lcc1899 |    000009CC  A$lcc1899 |    000009CD  A$lcc1899
-     000009CE  A$lcc1899 |    000009D1  A$lcc1899 |    000009D2  A$lcc1899
-     000009D3  A$lcc1899 |    000009D4  A$lcc1899 |    000009D6  A$lcc1899
-     000009D7  A$lcc1899 |    000009D8  A$lcc1899 |    000009D9  A$lcc1899
-     000009DA  A$lcc1899 |    000009DB  A$lcc1899 |    000009DC  A$lcc1899
-     000009DF  A$lcc1899 |    000009E0  A$lcc1899 |    000009E1  A$lcc1899
-     000009E2  A$lcc1899 |    000009E3  A$lcc1899 |    000009E4  A$lcc1899
-     000009E6  A$lcc1899 |    000009E7  A$lcc1899 |    000009E8  A$lcc1899
-     000009EA  A$lcc1899 |    000009EB  A$lcc1899 |    000009EC  A$lcc1899
-     000009EF  A$lcc1899 |    000009F0  A$lcc1899 |    000009F1  A$lcc1899
-     000009F2  A$lcc1899 |    000009F4  A$lcc1899 |    000009F5  A$lcc1899
-     000009F6  A$lcc1899 |    000009F7  A$lcc1899 |    000009F8  A$lcc1899
-     000009F9  A$lcc1899 |    000009FA  A$lcc1899 |    000009FB  A$lcc1899
-     000009FC  A$lcc1899 |    000009FF  A$lcc1899 |    00000A00  A$lcc1899
-     00000A01  A$lcc1899 |    00000A02  A$lcc1899 |    00000A03  A$lcc1899
-     00000A04  A$lcc1899 |    00000A05  A$lcc1899 |    00000A06  A$lcc1899
-     00000A08  A$lcc1899 |    00000A09  A$lcc1899 |    00000A0A  A$lcc1899
-     00000A0B  A$lcc1899 |    00000A0E  A$lcc1899 |    00000A0F  A$lcc1899
-     00000A10  A$lcc1899 |    00000A11  A$lcc1899 |    00000A12  A$lcc1899
-     00000A13  A$lcc1899 |    00000A14  A$lcc1899 |    00000A16  A$lcc1899
-     00000A17  A$lcc1899 |    00000A18  A$lcc1899 |    00000A19  A$lcc1899
-     00000A1C  A$lcc1899 |    00000A1D  A$lcc1899 |    00000A1E  A$lcc1899
-     00000A20  A$lcc1899 |    00000A21  A$lcc1899 |    00000A24  A$lcc1899
-     00000A25  A$lcc1899 |    00000A26  A$lcc1899 |    00000A27  A$lcc1899
-     00000A28  A$lcc1899 |    00000A29  A$lcc1899 |    00000A2A  A$lcc1899
-     00000A2B  A$lcc1899 |    00000A2D  A$lcc1899 |    00000A2E  A$lcc1899
-     00000A2F  A$lcc1899 |    00000A32  A$lcc1899 |    00000A33  A$lcc1899
-     00000A34  A$lcc1899 |    00000A35  A$lcc1899 |    00000A36  A$lcc1899
-     00000A36  C$scene.c |    00000A38  A$lcc1899 |    00000A38  C$scene.c
-     00000A38  XG$movega
+     00000999  _main     |    0000099A  A$lcc6352 |    0000099C  A$lcc6352
+     0000099C  C$main.c$ |    0000099E  A$lcc6352 |    000009A0  A$lcc6352
+     000009A2  A$lcc6352 |    000009A2  C$main.c$ |    000009A4  A$lcc6352
+     000009A6  A$lcc6352 |    000009A8  A$lcc6352 |    000009A8  C$main.c$
+     000009AA  A$lcc6352 |    000009AC  A$lcc6352 |    000009AE  A$lcc6352
+     000009AE  C$main.c$ |    000009B0  A$lcc6352 |    000009B2  A$lcc6352
+     000009B4  A$lcc6352 |    000009B4  C$main.c$ |    000009B7  A$lcc6352
+     000009B8  A$lcc6352 |    000009BB  A$lcc6352 |    000009BC  A$lcc6352
+     000009BF  A$lcc6352 |    000009C1  A$lcc6352 |    000009C1  C$main.c$
+     000009C1  XG$main$0
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
@@ -297,40 +264,42 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_HOME                  00000A39    00000092 =         146. bytes (REL,CON)
+_HOME                  000009C2    000000CF =         207. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000A39  .memset_s |    00000A42  .memcpy_s |    00000A5F  .remove_V
-     00000A62  .remove_i |    00000A7F  .add_VBL  |    00000A82  .add_int 
-     00000A8D  .wait_vbl |    00000A8D  _wait_vbl |    00000A9D  .display_
-     00000A9D  _display_ |    00000AB5  _remove_V |    00000AC0  _add_VBL 
+     000009C2  .memset_s |    000009CB  .memcpy_s |    000009E8  .remove_V
+     000009EB  .remove_i |    00000A08  .add_VBL  |    00000A0B  .add_int 
+     00000A16  .wait_vbl |    00000A16  _wait_vbl |    00000A26  .display_
+     00000A26  _display_ |    00000A3E  _remove_V |    00000A49  _add_VBL 
+     00000A54  _set_tile |    00000A59  _set_bkg_ |    00000A59  _set_win_
+     00000A61  _set_spri
 ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_INITIALIZER           00000ACB    00000001 =           1. bytes (REL,CON)
+_INITIALIZER           00000A91    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000ACB  Fscene$__
+     00000A91  Fscene$__
 ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSINIT                00000ACC    0000000C =          12. bytes (REL,CON)
+_GSINIT                00000A92    0000000C =          12. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000ACC  gsinit   
+     00000A92  gsinit   
 ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSFINAL               00000AD8    00000001 =           1. bytes (REL,CON)
+_GSFINAL               00000A9E    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -383,16 +352,18 @@ Files Linked                              [ module(s) ]
 C:\c_code\gbdk\lib/small/asxxxx/gb/crt0.o
                                           [ Runtime ]
 src\hUGEDriver.obj.rel                    [ hUGEDriver_obj ]
-C:\Users\User\AppData\Local\Temp/lcc189920.rel
+C:\Users\User\AppData\Local\Temp/lcc63520.rel
                                           [ main ]
-C:\Users\User\AppData\Local\Temp/lcc189921.rel
+C:\Users\User\AppData\Local\Temp/lcc63521.rel
                                           [ scene ]
-C:\Users\User\AppData\Local\Temp/lcc189922.rel
+C:\Users\User\AppData\Local\Temp/lcc63522.rel
                                           [ tileset ]
 
 
 Libraries Linked                          [ object file ]
 
+C:\c_code\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ set_data.o ]
 C:\c_code\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ sfr.o ]
 
