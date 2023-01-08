@@ -13,5 +13,12 @@ void main() {
     SHOW_BKG;
     SHOW_SPRITES;
     DISPLAY_ON;
-    set_sprite_data(0, 4, Tileset);
+    set_sprite_data(0, 4, tileset_tiles);
+
+    while (1) {
+        move_metasprite(
+            tileset_metasprites[0], 0, 0, 100, 100);
+        wait_vbl_done();
+        refresh_OAM();
+    }
 }

@@ -41,4 +41,4 @@
 
 @REM C:\c_code\gbdk\bin\png2asset res\tiles\bubble_question_V1.png -sw 16 -sh 16 -sp -spr8x16 -b 200 
 
-C:\c_code\gbdk\bin\png2asset res\tiles\dancer1.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
+C:\c_code\gbdk\bin\png2asset res\tiles\tileset.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
