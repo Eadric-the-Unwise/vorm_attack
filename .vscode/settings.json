@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "village_house_1_map.h": "c",
+        "village_house_1_tiles.h": "c",
+        "gb.h": "c",
+        "enemy_arrow.h": "c",
+        "level2.h": "c",
+        "brick_map.h": "c",
+        "brick_tiles.h": "c",
+        "scene.h": "c",
+        "level1.h": "c",
+        "metasprites.h": "c",
+        "brick_wide_tiles.h": "c",
+        "ladder.h": "c",
+        "stage_drop_tiles.h": "c",
+        "stage_drop_map.h": "c",
+        "world1_map.h": "c",
+        "level_2_collision.h": "c",
+        "divebar_strings.h": "c",
+        "cmath": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled",
+    "emulicious-debugger.emuliciousPath": "C:\\c_code\\Emulicious"
+}

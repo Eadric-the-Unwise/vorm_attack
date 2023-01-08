@@ -1,0 +1,9 @@
+obj/
+bin/
+*.gb
+*.sav
+# *.png
+*.txt
+# *.gbr
+# *.gbm
+/unused
