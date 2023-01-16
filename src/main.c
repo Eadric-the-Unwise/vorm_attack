@@ -4,6 +4,9 @@
 
 #include "scene.h"
 
+UINT8 joy, last_joy;
+UINT8 playerx;
+
 void main() {
     DISABLE_VBL_TRANSFER;
     // BGP_REG = 0xE4;
@@ -14,10 +17,24 @@ void main() {
     SHOW_SPRITES;
     DISPLAY_ON;
     set_sprite_data(0, 4, tileset_tiles);
+    set_sprite_data(4, 2, bullet_tiles);
+    playerx = 88;
+    move_metasprite(
+        tileset_metasprites[0], 0, 0, playerx, 140);
+    move_metasprite(
+        bullet_metasprites[0], 4, 3, 80, 120);
+    last_joy = joy = 0;
 
     while (1) {
+        last_joy = joy;
+        joy = joypad();
+        if ((joy & J_LEFT) && playerx > 16) {
+            playerx -= 1;
+        } else if ((joy & J_RIGHT) && playerx < 160) {
+            playerx += 1;
+        }
         move_metasprite(
-            tileset_metasprites[0], 0, 0, 100, 100);
+            tileset_metasprites[0], 0, 0, playerx, 140);
         wait_vbl_done();
         refresh_OAM();
     }

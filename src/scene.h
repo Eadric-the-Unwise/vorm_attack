@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "../res/tiles/bullet.h"
 #include "../res/tiles/tileset.h"
 #include "hUGEDriver.h"
 
