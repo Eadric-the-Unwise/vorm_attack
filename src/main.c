@@ -5,11 +5,13 @@
 #include "scene.h"
 
 UINT8 joy, last_joy;
-UINT8 playerx;
-UINT8 bulletx, bullety;
+// UINT8 playerx;
 
-void update_bulletx(UINT8 playerx) {
-    bulletx = playerx;
+GameCharacter PLAYER;
+GameCharacter BULLET;
+
+void update_bulletx(UINT8 PLAYERX) {
+    BULLET.x = PLAYERX;
 }
 
 void main() {
@@ -24,9 +26,9 @@ void main() {
 
     set_sprite_data(0, 4, tileset_tiles);
     set_sprite_data(4, 2, bullet_tiles);
-    playerx = bulletx = 88;
+    PLAYER.x = BULLET.x = 88;
     move_metasprite(
-        tileset_metasprites[0], 0, 0, playerx, 140);
+        tileset_metasprites[0], 0, 0, PLAYER.x, 140);
     move_metasprite(
         bullet_metasprites[0], 4, 3, 80, 120);
     last_joy = joy = 0;
@@ -34,19 +36,19 @@ void main() {
     while (1) {
         last_joy = joy;
         joy = joypad();
-        bullety -= 2;
-        if ((joy & J_LEFT) && playerx > 16) {
-            playerx -= 1;
-        } else if ((joy & J_RIGHT) && playerx < 160) {
-            playerx += 1;
+        BULLET.y -= 2;
+        if ((joy & J_LEFT) && PLAYER.x > 16) {
+            PLAYER.x -= 1;
+        } else if ((joy & J_RIGHT) && PLAYER.x < 160) {
+            PLAYER.x += 1;
         }
         if ((CHANGED_BUTTONS & J_A) && (joy & J_A)) {
-            update_bulletx(playerx);
+            update_bulletx(PLAYER.x);
         }
         move_metasprite(
-            tileset_metasprites[0], 0, 0, playerx, 140);
+            tileset_metasprites[0], 0, 0, PLAYER.x, 140);
         move_metasprite(
-            bullet_metasprites[0], 4, 3, bulletx, bullety);
+            bullet_metasprites[0], 4, 3, BULLET.x, BULLET.y);
         wait_vbl_done();
         refresh_OAM();
     }

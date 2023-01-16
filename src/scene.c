@@ -4,9 +4,6 @@
 #include <gb/gb.h>
 #include <string.h>
 
-GameCharacter ship;
-UINT8 spritesize = 8;
-
 // void render_world_actors()
 //     NONBANKED {
 //     UINT8 __save = _current_bank;
