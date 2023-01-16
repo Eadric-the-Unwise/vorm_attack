@@ -46,13 +46,16 @@ void main() {
             BULLET.spawn = TRUE;
             update_bullet(PLAYER.x);
         }
+
+        if (BULLET.y < 16) {
+            BULLET.spawn = FALSE;
+        }
         if (BULLET.spawn) {
-            BULLET.y -= 2;
+            BULLET.y -= 3;
             move_metasprite(
                 bullet_metasprites[0], 4, 3, BULLET.x, BULLET.y);
         }
-        if (BULLET.y == 24)
-            BULLET.spawn = FALSE;
+
         move_metasprite(
             tileset_metasprites[0], 0, 0, PLAYER.x, 140);
 

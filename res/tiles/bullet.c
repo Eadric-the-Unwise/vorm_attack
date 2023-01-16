@@ -9,7 +9,7 @@
 BANKREF(bullet)
 
 const uint16_t bullet_palettes[4] = {
-	RGB(31, 31, 31), RGB(17, 24, 14), RGB(1, 3, 4), RGB(8, 0, 0)
+	RGB(31, 31, 31), RGB(28, 31, 26), RGB(1, 3, 4), RGB(21, 0, 0)
 };
 
 const uint8_t bullet_tiles[32] = {
