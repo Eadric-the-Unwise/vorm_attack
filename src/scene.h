@@ -11,6 +11,8 @@
 #include "../res/tiles/tileset.h"
 #include "hUGEDriver.h"
 
+#define CHANGED_BUTTONS (last_joy ^ joy)
+
 typedef struct GameCharacter {
     UBYTE spritids[4];  // all characters use 4 sprites
     UINT8 x;

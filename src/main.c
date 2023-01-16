@@ -6,6 +6,11 @@
 
 UINT8 joy, last_joy;
 UINT8 playerx;
+UINT8 bulletx, bullety;
+
+void update_bulletx(UINT8 playerx) {
+    bulletx = playerx;
+}
 
 void main() {
     DISABLE_VBL_TRANSFER;
@@ -16,9 +21,10 @@ void main() {
     SHOW_BKG;
     SHOW_SPRITES;
     DISPLAY_ON;
+
     set_sprite_data(0, 4, tileset_tiles);
     set_sprite_data(4, 2, bullet_tiles);
-    playerx = 88;
+    playerx = bulletx = 88;
     move_metasprite(
         tileset_metasprites[0], 0, 0, playerx, 140);
     move_metasprite(
@@ -28,13 +34,19 @@ void main() {
     while (1) {
         last_joy = joy;
         joy = joypad();
+        bullety -= 2;
         if ((joy & J_LEFT) && playerx > 16) {
             playerx -= 1;
         } else if ((joy & J_RIGHT) && playerx < 160) {
             playerx += 1;
         }
+        if ((CHANGED_BUTTONS & J_A) && (joy & J_A)) {
+            update_bulletx(playerx);
+        }
         move_metasprite(
             tileset_metasprites[0], 0, 0, playerx, 140);
+        move_metasprite(
+            bullet_metasprites[0], 4, 3, bulletx, bullety);
         wait_vbl_done();
         refresh_OAM();
     }
