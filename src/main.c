@@ -8,11 +8,16 @@ UINT8 joy, last_joy;
 // UINT8 playerx;
 
 GameCharacter PLAYER;
-GameCharacter BULLET;
+GameCharacter BULLET1;
+GameCharacter BULLET2;
 
-void update_bullet(UINT8 PLAYERX) {
-    BULLET.x = PLAYERX + 4;
-    BULLET.y = 144;
+void update_bullet1(UINT8 PLAYERX) {
+    BULLET1.x = PLAYERX + 4;
+    BULLET1.y = 144;
+}
+void update_bullet2(UINT8 PLAYERX) {
+    BULLET2.x = PLAYERX + 4;
+    BULLET2.y = 144;
 }
 
 void main() {
@@ -28,7 +33,7 @@ void main() {
     set_sprite_data(0, 4, tileset_tiles);
     set_sprite_data(4, 2, bullet_tiles);
     PLAYER.x = 88;
-    BULLET.spawn = FALSE;
+    BULLET1.spawn = BULLET2.spawn = FALSE;
     move_metasprite(
         tileset_metasprites[0], 0, 0, PLAYER.x, 144);
     last_joy = joy = 0;
@@ -42,18 +47,29 @@ void main() {
         } else if ((joy & J_RIGHT) && PLAYER.x < 160) {
             PLAYER.x += 1;
         }
-        if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && !(BULLET.spawn)) {
-            BULLET.spawn = TRUE;
-            update_bullet(PLAYER.x);
+        if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && !(BULLET1.spawn)) {
+            BULLET1.spawn = TRUE;
+            update_bullet1(PLAYER.x);
+        } else if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && (BULLET1.spawn) && !(BULLET2.spawn)) {
+            BULLET2.spawn = TRUE;
+            update_bullet2(PLAYER.x);
         }
 
-        if (BULLET.y < 16) {
-            BULLET.spawn = FALSE;
+        if (BULLET1.y < 16) {
+            BULLET1.spawn = FALSE;
         }
-        if (BULLET.spawn) {
-            BULLET.y -= 3;
+        if (BULLET2.y < 16) {
+            BULLET2.spawn = FALSE;
+        }
+        if (BULLET1.spawn) {
+            BULLET1.y -= 3;
             move_metasprite(
-                bullet_metasprites[0], 4, 3, BULLET.x, BULLET.y);
+                bullet_metasprites[0], 4, 2, BULLET1.x, BULLET1.y);
+        }
+        if (BULLET2.spawn) {
+            BULLET2.y -= 3;
+            move_metasprite(
+                bullet_metasprites[0], 4, 3, BULLET2.x, BULLET2.y);
         }
 
         move_metasprite(
