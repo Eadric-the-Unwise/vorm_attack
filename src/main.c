@@ -11,8 +11,8 @@ GameCharacter PLAYER;
 GameCharacter BULLET;
 
 void update_bullet(UINT8 PLAYERX) {
-    BULLET.x = PLAYERX;
-    BULLET.y = 140;
+    BULLET.x = PLAYERX + 4;
+    BULLET.y = 144;
 }
 
 void main() {
@@ -30,7 +30,7 @@ void main() {
     PLAYER.x = 88;
     BULLET.spawn = FALSE;
     move_metasprite(
-        tileset_metasprites[0], 0, 0, PLAYER.x, 140);
+        tileset_metasprites[0], 0, 0, PLAYER.x, 144);
     last_joy = joy = 0;
 
     while (1) {
@@ -57,7 +57,7 @@ void main() {
         }
 
         move_metasprite(
-            tileset_metasprites[0], 0, 0, PLAYER.x, 140);
+            tileset_metasprites[0], 0, 0, PLAYER.x, 144);
 
         wait_vbl_done();
         refresh_OAM();
