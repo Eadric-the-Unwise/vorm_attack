@@ -48,10 +48,10 @@
 //         current_direction = current_actor->direction;
 //         const metasprite_t **current_animation = current_actor->animations[current_direction];
 
-//         if (!ANIMATIONLOCK && RENDERSTATE != RENDER_DIALOGUE && current_actor->KILL == FALSE) {  // TURNS ON ALL CURRENT RENDER ACTORS AFTER CAMERA SCROLLS
+//         if (!ANIMATIONLOCK && RENDERSTATE != RENDER_DIALOGUE && current_actor->spawn == FALSE) {  // TURNS ON ALL CURRENT RENDER ACTORS AFTER CAMERA SCROLLS
 //             current_actor->RENDER = TRUE;
 //             current_actor->ON = TRUE;
-//         } else if (current_actor->KILL == TRUE) {
+//         } else if (current_actor->spawn == TRUE) {
 //             current_actor->RENDER = FALSE;
 //             current_actor->ON = FALSE;
 //         }

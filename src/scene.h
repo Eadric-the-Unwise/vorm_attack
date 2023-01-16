@@ -14,7 +14,7 @@
 #define CHANGED_BUTTONS (last_joy ^ joy)
 
 typedef struct GameCharacter {
-    UBYTE active;
+    UBYTE spawn;
     UINT8 x;
     UINT8 y;
     UINT8 width;
