@@ -43,3 +43,4 @@
 
 @REM C:\c_code\gbdk\bin\png2asset res\tiles\tileset.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
 C:\c_code\gbdk\bin\png2asset res\tiles\bullet.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
+@REM C:\c_code\gbdk\bin\png2asset res\tiles\galaga.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
