@@ -9,6 +9,7 @@
 
 #include "../res/tiles/bullet.h"
 #include "../res/tiles/galaga.h"
+#include "../res/tiles/one_up.h"
 #include "../res/tiles/tileset.h"
 #include "hUGEDriver.h"
 

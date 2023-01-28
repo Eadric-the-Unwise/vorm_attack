@@ -42,5 +42,6 @@
 @REM C:\c_code\gbdk\bin\png2asset res\tiles\bubble_question_V1.png -sw 16 -sh 16 -sp -spr8x16 -b 200 
 
 @REM C:\c_code\gbdk\bin\png2asset res\tiles\tileset.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
-C:\c_code\gbdk\bin\png2asset res\tiles\bullet.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
-@REM C:\c_code\gbdk\bin\png2asset res\tiles\galaga.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
+@REM C:\c_code\gbdk\bin\png2asset res\tiles\bullet.png -sw 16 -sh 16 -sp -spr8x16 -b 1 
+C:\c_code\gbdk\bin\png2asset res\tiles\galaga.png -sw 16 -sh 16 -sp -spr8x16 -b 1 0x10 -keep_palette_order
+@REM C:\c_code\gbdk\bin\png2asset res\tiles\one_up.png -sw 16 -sh 16 -sp -spr8x16 -b 1 0x10 -keep_palette_order
