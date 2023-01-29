@@ -7,9 +7,10 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "../res/tiles/bkg_map.h"
+#include "../res/tiles/bkg_tiles.h"
 #include "../res/tiles/bullet.h"
 #include "../res/tiles/galaga.h"
-#include "../res/tiles/one_up.h"
 #include "../res/tiles/tileset.h"
 #include "hUGEDriver.h"
 

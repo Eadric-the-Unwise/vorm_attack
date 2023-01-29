@@ -17,7 +17,9 @@
         "world1_map.h": "c",
         "level_2_collision.h": "c",
         "divebar_strings.h": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "bullet.h": "c",
+        "tileset.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "emulicious-debugger.emuliciousPath": "C:\\c_code\\Emulicious"

@@ -11,13 +11,26 @@ GameCharacter PLAYER;
 GameCharacter BULLET1;
 GameCharacter BULLET2;
 
-void update_bullet1(UINT8 PLAYERX) {
-    BULLET1.x = PLAYERX + 4;
+void update_bullet1(UINT8 playerx) {
+    BULLET1.x = playerx + 4;
     BULLET1.y = 146;
 }
-void update_bullet2(UINT8 PLAYERX) {
-    BULLET2.x = PLAYERX + 4;
+void update_bullet2(UINT8 playerx) {
+    BULLET2.x = playerx + 4;
     BULLET2.y = 146;
+}
+
+UINT8 collide_bullet(UINT8 bulletx, UINT8 bullety) {
+    UINT16 index_X, index_Y, tileindex;
+    index_X = bulletx / 8;
+    index_Y = bullety / 8;
+    tileindex = 20 * index_Y + index_X;
+
+    if (bkg_map[tileindex] >= 0x02) {
+        set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
+        return 0x01U;
+    } else
+        return 0x00U;
 }
 
 void main() {
@@ -32,6 +45,9 @@ void main() {
 
     set_sprite_data(0, 4, galaga_tiles);
     set_sprite_data(4, 2, bullet_tiles);
+    set_bkg_data(0, 6, bkg_tiles);
+    set_bkg_tiles(0, 0, 20, 18, bkg_map);
+
     PLAYER.x = 88;
     BULLET1.spawn = BULLET2.spawn = FALSE;
     move_metasprite(
@@ -65,8 +81,12 @@ void main() {
         }
         if (BULLET1.spawn) {
             BULLET1.y -= 3;
-            move_metasprite(
-                bullet_metasprites[0], 4, 2, BULLET1.x, BULLET1.y);
+            if (collide_bullet(BULLET1.x, BULLET1.y) == 0x01U) {
+                BULLET1.spawn = FALSE;
+                hide_metasprite(bullet_metasprites[0], 2);
+            } else
+                move_metasprite(
+                    bullet_metasprites[0], 4, 2, BULLET1.x, BULLET1.y);
         }
         if (BULLET2.spawn) {
             BULLET2.y -= 3;
