@@ -12,11 +12,11 @@ GameCharacter BULLET1;
 GameCharacter BULLET2;
 
 void update_bullet1(UINT8 playerx, UINT8 playery) {
-    BULLET1.x = playerx;
+    BULLET1.x = playerx + 4;
     BULLET1.y = playery;
 }
 void update_bullet2(UINT8 playerx, UINT8 playery) {
-    BULLET2.x = playerx;
+    BULLET2.x = playerx + 4;
     BULLET2.y = playery;
 }
 
@@ -76,11 +76,11 @@ void main() {
             update_bullet2(PLAYER.x, PLAYER.y);
         }
 
-        if (BULLET1.y < 16) {
+        if (BULLET1.y < -16) {
             BULLET1.spawn = FALSE;
             hide_metasprite(bullet_metasprites[0], 2);
         }
-        if (BULLET2.y < 16) {
+        if (BULLET2.y < -16) {
             BULLET2.spawn = FALSE;
             hide_metasprite(bullet_metasprites[0], 3);
         }

@@ -18,8 +18,8 @@
 
 typedef struct GameCharacter {
     UBYTE spawn;
-    UINT8 x;
-    UINT8 y;
+    INT16 x;
+    INT16 y;
     UINT8 width;
     UINT8 height;
 
