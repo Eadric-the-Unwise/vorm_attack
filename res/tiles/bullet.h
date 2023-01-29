@@ -9,14 +9,14 @@
 #define bullet_TILE_H 16
 #define bullet_WIDTH 16
 #define bullet_HEIGHT 16
-#define bullet_PIVOT_X 8
-#define bullet_PIVOT_Y 8
+#define bullet_PIVOT_X -8
+#define bullet_PIVOT_Y -16
 #define bullet_PIVOT_W 16
 #define bullet_PIVOT_H 16
 
 BANKREF_EXTERN(bullet)
 
-extern const uint16_t bullet_palettes[4];
+extern const uint16_t bullet_palettes[5];
 extern const uint8_t bullet_tiles[32];
 
 extern const metasprite_t* const bullet_metasprites[1];

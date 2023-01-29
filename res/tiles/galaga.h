@@ -9,8 +9,8 @@
 #define galaga_TILE_H 16
 #define galaga_WIDTH 16
 #define galaga_HEIGHT 16
-#define galaga_PIVOT_X 8
-#define galaga_PIVOT_Y 8
+#define galaga_PIVOT_X -8
+#define galaga_PIVOT_Y -16
 #define galaga_PIVOT_W 16
 #define galaga_PIVOT_H 16
 

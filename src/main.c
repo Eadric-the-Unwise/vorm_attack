@@ -11,26 +11,30 @@ GameCharacter PLAYER;
 GameCharacter BULLET1;
 GameCharacter BULLET2;
 
-void update_bullet1(UINT8 playerx) {
-    BULLET1.x = playerx + 4;
-    BULLET1.y = 146;
+void update_bullet1(UINT8 playerx, UINT8 playery) {
+    BULLET1.x = playerx;
+    BULLET1.y = playery;
 }
-void update_bullet2(UINT8 playerx) {
-    BULLET2.x = playerx + 4;
-    BULLET2.y = 146;
+void update_bullet2(UINT8 playerx, UINT8 playery) {
+    BULLET2.x = playerx;
+    BULLET2.y = playery;
 }
 
 UINT8 collide_bullet(UINT8 bulletx, UINT8 bullety) {
     UINT16 index_X, index_Y, tileindex;
-    index_X = bulletx / 8;
-    index_Y = bullety / 8;
+    UINT8 tile_x, tile_y;
+    index_X = (bulletx) / 8;
+    index_Y = (bullety) / 8;
     tileindex = 20 * index_Y + index_X;
 
-    if (bkg_map[tileindex] >= 0x02) {
+    tile_x = index_X * 8;
+    tile_y = index_Y * 8;
+
+    if ((bkg_map[tileindex] == 0x03) && (bulletx > tile_x + 5)) {
         set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
         return 0x01U;
-    } else
-        return 0x00U;
+    }
+    return 0x00U;  // the first return of the function will end the execution of the function
 }
 
 void main() {
@@ -48,27 +52,28 @@ void main() {
     set_bkg_data(0, 6, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
-    PLAYER.x = 88;
+    PLAYER.x = 0;
+    PLAYER.y = 120;
     BULLET1.spawn = BULLET2.spawn = FALSE;
     move_metasprite(
-        galaga_metasprites[0], 0, 0, PLAYER.x, 144);
+        galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // offsets the crazy y-centered, x on the right pixel -> top left
     last_joy = joy = 0;
 
     while (1) {
         last_joy = joy;
         joy = joypad();
 
-        if ((joy & J_LEFT) && PLAYER.x > 15) {
+        if ((joy & J_LEFT) && PLAYER.x > 0) {
             PLAYER.x -= 1;
-        } else if ((joy & J_RIGHT) && PLAYER.x < 160) {
+        } else if ((joy & J_RIGHT) && PLAYER.x < 144) {
             PLAYER.x += 1;
         }
         if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && !(BULLET1.spawn)) {
             BULLET1.spawn = TRUE;
-            update_bullet1(PLAYER.x);
+            update_bullet1(PLAYER.x, PLAYER.y);
         } else if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && (BULLET1.spawn) && !(BULLET2.spawn)) {
             BULLET2.spawn = TRUE;
-            update_bullet2(PLAYER.x);
+            update_bullet2(PLAYER.x, PLAYER.y);
         }
 
         if (BULLET1.y < 16) {
@@ -95,7 +100,7 @@ void main() {
         }
 
         move_metasprite(
-            galaga_metasprites[0], 0, 0, PLAYER.x, 144);
+            galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // offsets the crazy y-centered, x on the right pixel -> top left
 
         wait_vbl_done();
         refresh_OAM();
