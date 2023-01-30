@@ -8,7 +8,7 @@
    Section       : 
    Bank          : 0
    Map size      : 20 x 18
-   Tile set      : C:\c_code\projects\minigames\vorm_attack\res\tiles\tileset.gbr
+   Tile set      : bkg_tiles.gbr
    Plane count   : 1 plane (8 bits)
    Plane order   : Tiles are continues
    Tile offset   : 0

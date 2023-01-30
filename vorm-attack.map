@@ -19,44 +19,44 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
      00000000  s__HEADER |    00000000  s__HEADER |    00000000  s__HEADER
      00000000  s__HEADER |    00000000  s__HEADER |    00000000  s__HRAM  
      00000000  s__HRAM12 |    00000001  ___bank_b |    00000001  ___bank_g
-     00000001  ___bank_o |    00000001  ___bank_t |    00000001  l__GSFINA
+     00000001  ___bank_o |    00000001  l__GSFINA |    00000001  l__HEADER
      00000001  l__HEADER |    00000001  l__HEADER |    00000001  l__HEADER
      00000001  l__HEADER |    00000001  l__HEADER |    00000001  l__HEADER
-     00000001  l__HEADER |    00000001  l__INITIA |    00000001  l__INITIA
-     00000002  l__HEADER |    00000002  l__HEADER |    00000002  l__HEADER
-     00000003  l__HEADER |    00000003  l__HRAM12 |    00000005  l__HEADER
-     00000006  l__HEADER |    00000007  l__HEADER |    00000008  l__HEADER
-     0000000C  l__GSINIT |    00000030  l__HEADER |    0000004F  l__HEADER
-     00000079  l__DATA   |    00000082  l__HEADER |    00000112  l__CODE_1
-     0000017B  l__HOME   |    00000200  s__CODE   |    00000D81  l__CODE  
-     00000F81  s__HOME   |    000010FC  s__BASE   |    000010FC  s__CODE_0
-     000010FC  s__INITIA |    000010FC  s__LIT    |    000010FD  s__GSINIT
-     00001109  s__GSFINA |    00002000  _rROMB0   |    00003000  _rROMB1  
-     00004000  _rRAMB    |    00008000  __VRAM    |    00008000  __VRAM800
-     00008800  __VRAM880 |    00009000  __VRAM900 |    00009800  __SCRN0  
-     00009C00  __SCRN1   |    0000A000  __SRAM    |    0000C000  __RAM    
-     0000C000  _shadow_O |    0000C0A0  s__DATA   |    0000C119  s__BSS   
-     0000C119  s__INITIA |    0000C11A  s__HEAP   |    0000D000  __RAMBANK
-     0000E000  .STACK    |    0000FE00  __OAMRAM  |    0000FF00  _P1_REG  
-     0000FF00  __IO      |    0000FF01  _SB_REG   |    0000FF02  _SC_REG  
-     0000FF04  _DIV_REG  |    0000FF05  _TIMA_REG |    0000FF06  _TMA_REG 
-     0000FF07  _TAC_REG  |    0000FF0F  _IF_REG   |    0000FF10  _NR10_REG
-     0000FF11  _NR11_REG |    0000FF12  _NR12_REG |    0000FF13  _NR13_REG
-     0000FF14  _NR14_REG |    0000FF16  _NR21_REG |    0000FF17  _NR22_REG
-     0000FF18  _NR23_REG |    0000FF19  _NR24_REG |    0000FF1A  _NR30_REG
-     0000FF1B  _NR31_REG |    0000FF1C  _NR32_REG |    0000FF1D  _NR33_REG
-     0000FF1E  _NR34_REG |    0000FF20  _NR41_REG |    0000FF21  _NR42_REG
-     0000FF22  _NR43_REG |    0000FF23  _NR44_REG |    0000FF24  _NR50_REG
-     0000FF25  _NR51_REG |    0000FF26  _NR52_REG |    0000FF30  _PCM_SAMP
-     0000FF30  __AUD3WAV |    0000FF40  _LCDC_REG |    0000FF41  _STAT_REG
-     0000FF42  _SCY_REG  |    0000FF43  _SCX_REG  |    0000FF44  _LY_REG  
-     0000FF45  _LYC_REG  |    0000FF46  _DMA_REG  |    0000FF47  _BGP_REG 
-     0000FF48  _OBP0_REG |    0000FF49  _OBP1_REG |    0000FF4A  _WY_REG  
-     0000FF4B  _WX_REG   |    0000FF4D  _KEY1_REG |    0000FF4F  _VBK_REG 
-     0000FF51  _HDMA1_RE |    0000FF52  _HDMA2_RE |    0000FF53  _HDMA3_RE
-     0000FF54  _HDMA4_RE |    0000FF55  _HDMA5_RE |    0000FF56  _RP_REG  
-     0000FF68  _BCPS_REG |    0000FF69  _BCPD_REG |    0000FF6A  _OCPS_REG
-     0000FF6B  _OCPD_REG |    0000FF70  _SVBK_REG |    0000FF76  _PCM12_RE
+     00000001  l__INITIA |    00000001  l__INITIA |    00000002  l__HEADER
+     00000002  l__HEADER |    00000002  l__HEADER |    00000003  l__HEADER
+     00000003  l__HRAM12 |    00000005  l__HEADER |    00000006  l__HEADER
+     00000007  l__HEADER |    00000008  l__HEADER |    0000000C  l__GSINIT
+     00000030  l__HEADER |    0000004F  l__HEADER |    00000079  l__DATA  
+     00000082  l__HEADER |    000000BC  l__CODE_1 |    0000017B  l__HOME  
+     00000200  s__CODE   |    00000DDE  l__CODE   |    00000FDE  s__HOME  
+     00001159  s__BASE   |    00001159  s__CODE_0 |    00001159  s__INITIA
+     00001159  s__LIT    |    0000115A  s__GSINIT |    00001166  s__GSFINA
+     00002000  _rROMB0   |    00003000  _rROMB1   |    00004000  _rRAMB   
+     00008000  __VRAM    |    00008000  __VRAM800 |    00008800  __VRAM880
+     00009000  __VRAM900 |    00009800  __SCRN0   |    00009C00  __SCRN1  
+     0000A000  __SRAM    |    0000C000  __RAM     |    0000C000  _shadow_O
+     0000C0A0  s__DATA   |    0000C119  s__BSS    |    0000C119  s__INITIA
+     0000C11A  s__HEAP   |    0000D000  __RAMBANK |    0000E000  .STACK   
+     0000FE00  __OAMRAM  |    0000FF00  _P1_REG   |    0000FF00  __IO     
+     0000FF01  _SB_REG   |    0000FF02  _SC_REG   |    0000FF04  _DIV_REG 
+     0000FF05  _TIMA_REG |    0000FF06  _TMA_REG  |    0000FF07  _TAC_REG 
+     0000FF0F  _IF_REG   |    0000FF10  _NR10_REG |    0000FF11  _NR11_REG
+     0000FF12  _NR12_REG |    0000FF13  _NR13_REG |    0000FF14  _NR14_REG
+     0000FF16  _NR21_REG |    0000FF17  _NR22_REG |    0000FF18  _NR23_REG
+     0000FF19  _NR24_REG |    0000FF1A  _NR30_REG |    0000FF1B  _NR31_REG
+     0000FF1C  _NR32_REG |    0000FF1D  _NR33_REG |    0000FF1E  _NR34_REG
+     0000FF20  _NR41_REG |    0000FF21  _NR42_REG |    0000FF22  _NR43_REG
+     0000FF23  _NR44_REG |    0000FF24  _NR50_REG |    0000FF25  _NR51_REG
+     0000FF26  _NR52_REG |    0000FF30  _PCM_SAMP |    0000FF30  __AUD3WAV
+     0000FF40  _LCDC_REG |    0000FF41  _STAT_REG |    0000FF42  _SCY_REG 
+     0000FF43  _SCX_REG  |    0000FF44  _LY_REG   |    0000FF45  _LYC_REG 
+     0000FF46  _DMA_REG  |    0000FF47  _BGP_REG  |    0000FF48  _OBP0_REG
+     0000FF49  _OBP1_REG |    0000FF4A  _WY_REG   |    0000FF4B  _WX_REG  
+     0000FF4D  _KEY1_REG |    0000FF4F  _VBK_REG  |    0000FF51  _HDMA1_RE
+     0000FF52  _HDMA2_RE |    0000FF53  _HDMA3_RE |    0000FF54  _HDMA4_RE
+     0000FF55  _HDMA5_RE |    0000FF56  _RP_REG   |    0000FF68  _BCPS_REG
+     0000FF69  _BCPD_REG |    0000FF6A  _OCPS_REG |    0000FF6B  _OCPD_REG
+     0000FF70  _SVBK_REG |    0000FF76  _PCM12_RE |    0000FF77  _PCM34_RE
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
@@ -66,266 +66,274 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     0000FF77  _PCM34_RE |    0000FF80  .refresh_ |    0000FF80  __HRAM   
-     0000FFFF  _IE_REG   |    00014000  s__CODE_1
+     0000FF80  .refresh_ |    0000FF80  __HRAM    |    0000FFFF  _IE_REG  
+     00014000  s__CODE_1
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00000D81 =        3457. bytes (REL,CON)
+_CODE                  00000200    00000DDE =        3550. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
      00000200  _hUGE_ini |    00000204  _hUGE_ini |    0000020F  _hUGE_mut
      00000213  _hUGE_mut |    00000220  hUGE_mute |    0000023A  hUGE_init
-     00000676  _hUGE_dos |    00000676  _hUGE_dos |    00000999  A$lcc1290
+     00000676  _hUGE_dos |    00000676  _hUGE_dos |    00000999  A$lcc1197
      00000999  C$main.c$ |    00000999  C$main.c$ |    00000999  G$update_
-     00000999  _update_b |    0000099B  A$lcc1290 |    0000099C  A$lcc1290
-     0000099E  A$lcc1290 |    0000099F  A$lcc1290 |    000009A0  A$lcc1290
-     000009A1  A$lcc1290 |    000009A2  A$lcc1290 |    000009A5  A$lcc1290
-     000009A6  A$lcc1290 |    000009A7  A$lcc1290 |    000009A8  A$lcc1290
-     000009A8  C$main.c$ |    000009AA  A$lcc1290 |    000009AB  A$lcc1290
-     000009AD  A$lcc1290 |    000009B0  A$lcc1290 |    000009B1  A$lcc1290
-     000009B2  A$lcc1290 |    000009B3  A$lcc1290 |    000009B3  C$main.c$
-     000009B3  XG$update |    000009B4  A$lcc1290 |    000009B4  C$main.c$
+     00000999  _update_b |    0000099B  A$lcc1197 |    0000099C  A$lcc1197
+     0000099E  A$lcc1197 |    0000099F  A$lcc1197 |    000009A0  A$lcc1197
+     000009A1  A$lcc1197 |    000009A2  A$lcc1197 |    000009A5  A$lcc1197
+     000009A6  A$lcc1197 |    000009A7  A$lcc1197 |    000009A8  A$lcc1197
+     000009A8  C$main.c$ |    000009AA  A$lcc1197 |    000009AB  A$lcc1197
+     000009AD  A$lcc1197 |    000009B0  A$lcc1197 |    000009B1  A$lcc1197
+     000009B2  A$lcc1197 |    000009B3  A$lcc1197 |    000009B3  C$main.c$
+     000009B3  XG$update |    000009B4  A$lcc1197 |    000009B4  C$main.c$
      000009B4  C$main.c$ |    000009B4  G$update_ |    000009B4  _update_b
-     000009B6  A$lcc1290 |    000009B7  A$lcc1290 |    000009B9  A$lcc1290
-     000009BA  A$lcc1290 |    000009BB  A$lcc1290 |    000009BC  A$lcc1290
-     000009BD  A$lcc1290 |    000009C0  A$lcc1290 |    000009C1  A$lcc1290
-     000009C2  A$lcc1290 |    000009C3  A$lcc1290 |    000009C3  C$main.c$
-     000009C5  A$lcc1290 |    000009C6  A$lcc1290 |    000009C8  A$lcc1290
-     000009CB  A$lcc1290 |    000009CC  A$lcc1290 |    000009CD  A$lcc1290
-     000009CE  A$lcc1290 |    000009CE  C$main.c$ |    000009CE  XG$update
-     000009CF  A$lcc1290 |    000009CF  C$main.c$ |    000009CF  G$collide
-     000009CF  _collide_ |    000009D1  A$lcc1290 |    000009D1  C$main.c$
-     000009D3  A$lcc1290 |    000009D4  A$lcc1290 |    000009D6  A$lcc1290
-     000009D7  A$lcc1290 |    000009D8  A$lcc1290 |    000009DA  A$lcc1290
-     000009DC  A$lcc1290 |    000009DF  A$lcc1290 |    000009E0  A$lcc1290
-     000009E1  A$lcc1290 |    000009E2  A$lcc1290 |    000009E4  A$lcc1290
-     000009E6  A$lcc1290 |    000009E8  A$lcc1290 |    000009EA  A$lcc1290
-     000009EC  A$lcc1290 |    000009EE  A$lcc1290 |    000009EE  C$main.c$
-     000009F0  A$lcc1290 |    000009F1  A$lcc1290 |    000009F3  A$lcc1290
-     000009F4  A$lcc1290 |    000009F6  A$lcc1290 |    000009F7  A$lcc1290
-     000009F8  A$lcc1290 |    000009FB  A$lcc1290 |    000009FC  A$lcc1290
-     000009FD  A$lcc1290 |    000009FE  A$lcc1290 |    00000A00  A$lcc1290
-     00000A01  A$lcc1290 |    00000A02  A$lcc1290 |    00000A03  A$lcc1290
-     00000A05  A$lcc1290 |    00000A06  A$lcc1290 |    00000A07  A$lcc1290
-     00000A08  A$lcc1290 |    00000A09  A$lcc1290 |    00000A0A  A$lcc1290
-     00000A0B  A$lcc1290 |    00000A0C  A$lcc1290 |    00000A0D  A$lcc1290
-     00000A0F  A$lcc1290 |    00000A11  A$lcc1290 |    00000A12  A$lcc1290
-     00000A13  A$lcc1290 |    00000A16  A$lcc1290 |    00000A17  A$lcc1290
-     00000A18  A$lcc1290 |    00000A19  A$lcc1290 |    00000A1B  A$lcc1290
-     00000A1C  A$lcc1290 |    00000A1D  A$lcc1290 |    00000A1E  A$lcc1290
-     00000A20  A$lcc1290 |    00000A21  A$lcc1290 |    00000A23  A$lcc1290
-     00000A24  A$lcc1290 |    00000A25  A$lcc1290 |    00000A26  A$lcc1290
-     00000A28  A$lcc1290 |    00000A2A  A$lcc1290 |    00000A2C  A$lcc1290
-     00000A2E  A$lcc1290 |    00000A30  A$lcc1290 |    00000A32  A$lcc1290
-     00000A32  C$main.c$ |    00000A33  A$lcc1290 |    00000A34  A$lcc1290
-     00000A35  A$lcc1290 |    00000A38  A$lcc1290 |    00000A39  A$lcc1290
-     00000A3A  A$lcc1290 |    00000A3B  A$lcc1290 |    00000A3D  A$lcc1290
-     00000A3F  A$lcc1290 |    00000A3F  C$main.c$ |    00000A42  A$lcc1290
-     00000A43  A$lcc1290 |    00000A46  A$lcc1290 |    00000A47  A$lcc1290
-     00000A48  A$lcc1290 |    00000A49  A$lcc1290 |    00000A4C  A$lcc1290
+     000009B6  A$lcc1197 |    000009B7  A$lcc1197 |    000009B9  A$lcc1197
+     000009BA  A$lcc1197 |    000009BB  A$lcc1197 |    000009BC  A$lcc1197
+     000009BD  A$lcc1197 |    000009C0  A$lcc1197 |    000009C1  A$lcc1197
+     000009C2  A$lcc1197 |    000009C3  A$lcc1197 |    000009C3  C$main.c$
+     000009C5  A$lcc1197 |    000009C6  A$lcc1197 |    000009C8  A$lcc1197
+     000009CB  A$lcc1197 |    000009CC  A$lcc1197 |    000009CD  A$lcc1197
+     000009CE  A$lcc1197 |    000009CE  C$main.c$ |    000009CE  XG$update
+     000009CF  A$lcc1197 |    000009CF  C$main.c$ |    000009CF  G$collide
+     000009CF  _collide_ |    000009D1  A$lcc1197 |    000009D1  C$main.c$
+     000009D3  A$lcc1197 |    000009D4  A$lcc1197 |    000009D6  A$lcc1197
+     000009D7  A$lcc1197 |    000009D8  A$lcc1197 |    000009DA  A$lcc1197
+     000009DC  A$lcc1197 |    000009DF  A$lcc1197 |    000009E0  A$lcc1197
+     000009E1  A$lcc1197 |    000009E2  A$lcc1197 |    000009E4  A$lcc1197
+     000009E6  A$lcc1197 |    000009E8  A$lcc1197 |    000009EA  A$lcc1197
+     000009EC  A$lcc1197 |    000009EE  A$lcc1197 |    000009EE  C$main.c$
+     000009F0  A$lcc1197 |    000009F1  A$lcc1197 |    000009F3  A$lcc1197
+     000009F4  A$lcc1197 |    000009F6  A$lcc1197 |    000009F7  A$lcc1197
+     000009F8  A$lcc1197 |    000009FB  A$lcc1197 |    000009FC  A$lcc1197
+     000009FD  A$lcc1197 |    000009FE  A$lcc1197 |    00000A00  A$lcc1197
+     00000A01  A$lcc1197 |    00000A02  A$lcc1197 |    00000A03  A$lcc1197
+     00000A05  A$lcc1197 |    00000A06  A$lcc1197 |    00000A07  A$lcc1197
+     00000A08  A$lcc1197 |    00000A09  A$lcc1197 |    00000A0A  A$lcc1197
+     00000A0B  A$lcc1197 |    00000A0C  A$lcc1197 |    00000A0D  A$lcc1197
+     00000A0F  A$lcc1197 |    00000A11  A$lcc1197 |    00000A12  A$lcc1197
+     00000A13  A$lcc1197 |    00000A16  A$lcc1197 |    00000A17  A$lcc1197
+     00000A18  A$lcc1197 |    00000A19  A$lcc1197 |    00000A1B  A$lcc1197
+     00000A1C  A$lcc1197 |    00000A1D  A$lcc1197 |    00000A1E  A$lcc1197
+     00000A20  A$lcc1197 |    00000A21  A$lcc1197 |    00000A23  A$lcc1197
+     00000A24  A$lcc1197 |    00000A25  A$lcc1197 |    00000A26  A$lcc1197
+     00000A28  A$lcc1197 |    00000A2A  A$lcc1197 |    00000A2C  A$lcc1197
+     00000A2E  A$lcc1197 |    00000A30  A$lcc1197 |    00000A32  A$lcc1197
+     00000A32  C$main.c$ |    00000A33  A$lcc1197 |    00000A34  A$lcc1197
+     00000A35  A$lcc1197 |    00000A38  A$lcc1197 |    00000A39  A$lcc1197
+     00000A3A  A$lcc1197 |    00000A3B  A$lcc1197 |    00000A3D  A$lcc1197
+     00000A3F  A$lcc1197 |    00000A3F  C$main.c$ |    00000A40  A$lcc1197
+     00000A41  A$lcc1197 |    00000A42  A$lcc1197 |    00000A43  A$lcc1197
+     00000A44  A$lcc1197 |    00000A47  A$lcc1197 |    00000A48  A$lcc1197
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00000D81 =        3457. bytes (REL,CON)
+_CODE                  00000200    00000DDE =        3550. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000A4E  A$lcc1290 |    00000A4E  C$main.c$ |    00000A50  A$lcc1290
-     00000A52  A$lcc1290 |    00000A52  C$main.c$ |    00000A54  A$lcc1290
-     00000A56  A$lcc1290 |    00000A56  C$main.c$ |    00000A56  XG$collid
-     00000A57  A$lcc1290 |    00000A57  C$main.c$ |    00000A57  G$main$0$
-     00000A57  _main     |    00000A59  A$lcc1290 |    00000A59  C$main.c$
-     00000A5A  A$lcc1290 |    00000A5C  A$lcc1290 |    00000A5C  C$main.c$
-     00000A5E  A$lcc1290 |    00000A60  A$lcc1290 |    00000A60  C$main.c$
-     00000A62  A$lcc1290 |    00000A64  A$lcc1290 |    00000A66  A$lcc1290
-     00000A66  C$main.c$ |    00000A68  A$lcc1290 |    00000A6A  A$lcc1290
-     00000A6C  A$lcc1290 |    00000A6C  C$main.c$ |    00000A6E  A$lcc1290
-     00000A70  A$lcc1290 |    00000A72  A$lcc1290 |    00000A72  C$main.c$
-     00000A74  A$lcc1290 |    00000A76  A$lcc1290 |    00000A78  A$lcc1290
-     00000A78  C$main.c$ |    00000A7B  A$lcc1290 |    00000A7C  A$lcc1290
-     00000A7F  A$lcc1290 |    00000A80  A$lcc1290 |    00000A83  A$lcc1290
-     00000A85  A$lcc1290 |    00000A85  C$main.c$ |    00000A88  A$lcc1290
-     00000A89  A$lcc1290 |    00000A8C  A$lcc1290 |    00000A8D  A$lcc1290
-     00000A90  A$lcc1290 |    00000A92  A$lcc1290 |    00000A92  C$main.c$
-     00000A95  A$lcc1290 |    00000A96  A$lcc1290 |    00000A99  A$lcc1290
-     00000A9A  A$lcc1290 |    00000A9D  A$lcc1290 |    00000A9F  A$lcc1290
-     00000A9F  C$main.c$ |    00000AA2  A$lcc1290 |    00000AA3  A$lcc1290
-     00000AA6  A$lcc1290 |    00000AA7  A$lcc1290 |    00000AA8  A$lcc1290
-     00000AA9  A$lcc1290 |    00000AAA  A$lcc1290 |    00000AAD  A$lcc1290
-     00000AAF  A$lcc1290 |    00000AAF  C$main.c$ |    00000AB2  A$lcc1290
-     00000AB4  A$lcc1290 |    00000AB5  A$lcc1290 |    00000AB7  A$lcc1290
-     00000AB7  C$main.c$ |    00000ABA  A$lcc1290 |    00000ABC  A$lcc1290
-     00000ABD  A$lcc1290 |    00000ABF  A$lcc1290 |    00000ABF  C$main.c$
-     00000AC2  A$lcc1290 |    00000AC4  A$lcc1290 |    00000AC7  A$lcc1290
-     00000AC9  A$lcc1290 |    00000ACC  A$lcc1290 |    00000ACD  A$lcc1290
-     00000AD0  A$lcc1290 |    00000AD1  A$lcc1290 |    00000AD4  A$lcc1290
-     00000AD5  A$lcc1290 |    00000AD6  A$lcc1290 |    00000AD7  A$lcc1290
-     00000ADA  A$lcc1290 |    00000ADB  A$lcc1290 |    00000ADC  A$lcc1290
-     00000ADD  A$lcc1290 |    00000AE0  A$lcc1290 |    00000AE2  A$lcc1290
-     00000AE3  A$lcc1290 |    00000AE4  A$lcc1290 |    00000AE5  A$lcc1290
-     00000AE7  A$lcc1290 |    00000AE8  A$lcc1290 |    00000AEB  A$lcc1290
-     00000AED  A$lcc1290 |    00000AED  C$main.c$ |    00000AF0  A$lcc1290
-     00000AF2  A$lcc1290 |    00000AF5  A$lcc1290 |    00000AF7  A$lcc1290
-     00000AF7  C$main.c$ |    00000AF7  C$main.c$ |    00000AFA  A$lcc1290
-     00000AFD  A$lcc1290 |    00000AFD  C$main.c$ |    00000B00  A$lcc1290
-     00000B03  A$lcc1290 |    00000B04  A$lcc1290 |    00000B05  A$lcc1290
-     00000B07  A$lcc1290 |    00000B08  A$lcc1290 |    00000B09  A$lcc1290
-     00000B0B  A$lcc1290 |    00000B0C  A$lcc1290 |    00000B0E  A$lcc1290
-     00000B11  A$lcc1290 |    00000B12  A$lcc1290 |    00000B14  A$lcc1290
-     00000B15  A$lcc1290 |    00000B16  A$lcc1290 |    00000B17  A$lcc1290
-     00000B17  C$main.c$ |    00000B18  A$lcc1290 |    00000B19  A$lcc1290
-     00000B1A  A$lcc1290 |    00000B1B  A$lcc1290 |    00000B1D  A$lcc1290
-     00000B1E  A$lcc1290 |    00000B20  A$lcc1290 |    00000B21  A$lcc1290
-     00000B23  A$lcc1290 |    00000B25  A$lcc1290 |    00000B27  A$lcc1290
-     00000B29  A$lcc1290 |    00000B2A  A$lcc1290 |    00000B2C  A$lcc1290
-     00000B2E  A$lcc1290 |    00000B30  A$lcc1290 |    00000B31  A$lcc1290
-     00000B33  A$lcc1290 |    00000B33  C$main.c$ |    00000B35  A$lcc1290
-     00000B36  A$lcc1290 |    00000B37  A$lcc1290 |    00000B38  A$lcc1290
+     00000A49  A$lcc1197 |    00000A4A  A$lcc1197 |    00000A4C  A$lcc1197
+     00000A4E  A$lcc1197 |    00000A4E  C$main.c$ |    00000A4F  A$lcc1197
+     00000A51  A$lcc1197 |    00000A52  A$lcc1197 |    00000A53  A$lcc1197
+     00000A54  A$lcc1197 |    00000A55  A$lcc1197 |    00000A58  A$lcc1197
+     00000A5A  A$lcc1197 |    00000A5B  A$lcc1197 |    00000A5B  C$main.c$
+     00000A5E  A$lcc1197 |    00000A5F  A$lcc1197 |    00000A62  A$lcc1197
+     00000A63  A$lcc1197 |    00000A64  A$lcc1197 |    00000A65  A$lcc1197
+     00000A68  A$lcc1197 |    00000A6A  A$lcc1197 |    00000A6A  C$main.c$
+     00000A6C  A$lcc1197 |    00000A6E  A$lcc1197 |    00000A6E  C$main.c$
+     00000A70  A$lcc1197 |    00000A72  A$lcc1197 |    00000A72  C$main.c$
+     00000A72  XG$collid |    00000A73  A$lcc1197 |    00000A73  C$main.c$
+     00000A73  G$main$0$ |    00000A73  _main     |    00000A75  A$lcc1197
+     00000A75  C$main.c$ |    00000A76  A$lcc1197 |    00000A78  A$lcc1197
+     00000A78  C$main.c$ |    00000A7A  A$lcc1197 |    00000A7C  A$lcc1197
+     00000A7C  C$main.c$ |    00000A7E  A$lcc1197 |    00000A80  A$lcc1197
+     00000A82  A$lcc1197 |    00000A82  C$main.c$ |    00000A84  A$lcc1197
+     00000A86  A$lcc1197 |    00000A88  A$lcc1197 |    00000A88  C$main.c$
+     00000A8A  A$lcc1197 |    00000A8C  A$lcc1197 |    00000A8E  A$lcc1197
+     00000A8E  C$main.c$ |    00000A90  A$lcc1197 |    00000A92  A$lcc1197
+     00000A94  A$lcc1197 |    00000A94  C$main.c$ |    00000A97  A$lcc1197
+     00000A98  A$lcc1197 |    00000A9B  A$lcc1197 |    00000A9C  A$lcc1197
+     00000A9F  A$lcc1197 |    00000AA1  A$lcc1197 |    00000AA1  C$main.c$
+     00000AA4  A$lcc1197 |    00000AA5  A$lcc1197 |    00000AA8  A$lcc1197
+     00000AA9  A$lcc1197 |    00000AAC  A$lcc1197 |    00000AAE  A$lcc1197
+     00000AAE  C$main.c$ |    00000AB1  A$lcc1197 |    00000AB2  A$lcc1197
+     00000AB5  A$lcc1197 |    00000AB6  A$lcc1197 |    00000AB9  A$lcc1197
+     00000ABB  A$lcc1197 |    00000ABB  C$main.c$ |    00000ABE  A$lcc1197
+     00000ABF  A$lcc1197 |    00000AC2  A$lcc1197 |    00000AC3  A$lcc1197
+     00000AC4  A$lcc1197 |    00000AC5  A$lcc1197 |    00000AC6  A$lcc1197
+     00000AC9  A$lcc1197 |    00000ACB  A$lcc1197 |    00000ACB  C$main.c$
+     00000ACE  A$lcc1197 |    00000AD0  A$lcc1197 |    00000AD1  A$lcc1197
+     00000AD3  A$lcc1197 |    00000AD3  C$main.c$ |    00000AD6  A$lcc1197
+     00000AD8  A$lcc1197 |    00000AD9  A$lcc1197 |    00000ADB  A$lcc1197
+     00000ADB  C$main.c$ |    00000ADE  A$lcc1197 |    00000AE0  A$lcc1197
+     00000AE3  A$lcc1197 |    00000AE5  A$lcc1197 |    00000AE8  A$lcc1197
+     00000AE9  A$lcc1197 |    00000AEC  A$lcc1197 |    00000AED  A$lcc1197
+     00000AF0  A$lcc1197 |    00000AF1  A$lcc1197 |    00000AF2  A$lcc1197
+     00000AF3  A$lcc1197 |    00000AF6  A$lcc1197 |    00000AF7  A$lcc1197
+     00000AF8  A$lcc1197 |    00000AF9  A$lcc1197 |    00000AFC  A$lcc1197
+     00000AFE  A$lcc1197 |    00000AFF  A$lcc1197 |    00000B00  A$lcc1197
+     00000B01  A$lcc1197 |    00000B03  A$lcc1197 |    00000B04  A$lcc1197
+     00000B07  A$lcc1197 |    00000B09  A$lcc1197 |    00000B09  C$main.c$
+     00000B0C  A$lcc1197 |    00000B0E  A$lcc1197 |    00000B11  A$lcc1197
+     00000B13  A$lcc1197 |    00000B13  C$main.c$ |    00000B13  C$main.c$
+     00000B16  A$lcc1197 |    00000B19  A$lcc1197 |    00000B19  C$main.c$
+     00000B1C  A$lcc1197 |    00000B1F  A$lcc1197 |    00000B20  A$lcc1197
+     00000B21  A$lcc1197 |    00000B23  A$lcc1197 |    00000B24  A$lcc1197
+     00000B25  A$lcc1197 |    00000B27  A$lcc1197 |    00000B28  A$lcc1197
+     00000B2A  A$lcc1197 |    00000B2D  A$lcc1197 |    00000B2E  A$lcc1197
+     00000B30  A$lcc1197 |    00000B31  A$lcc1197 |    00000B32  A$lcc1197
+     00000B33  A$lcc1197 |    00000B33  C$main.c$ |    00000B34  A$lcc1197
 ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00000D81 =        3457. bytes (REL,CON)
+_CODE                  00000200    00000DDE =        3550. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000B39  A$lcc1290 |    00000B3C  A$lcc1290 |    00000B3D  A$lcc1290
-     00000B3E  A$lcc1290 |    00000B3F  A$lcc1290 |    00000B41  A$lcc1290
-     00000B42  A$lcc1290 |    00000B44  A$lcc1290 |    00000B46  A$lcc1290
-     00000B47  A$lcc1290 |    00000B49  A$lcc1290 |    00000B49  C$main.c$
-     00000B4C  A$lcc1290 |    00000B4D  A$lcc1290 |    00000B4E  A$lcc1290
-     00000B4F  A$lcc1290 |    00000B4F  C$main.c$ |    00000B50  A$lcc1290
-     00000B52  A$lcc1290 |    00000B53  A$lcc1290 |    00000B54  A$lcc1290
-     00000B55  A$lcc1290 |    00000B56  A$lcc1290 |    00000B58  A$lcc1290
-     00000B5A  A$lcc1290 |    00000B5A  C$main.c$ |    00000B5B  A$lcc1290
-     00000B5E  A$lcc1290 |    00000B5F  A$lcc1290 |    00000B60  A$lcc1290
-     00000B61  A$lcc1290 |    00000B64  A$lcc1290 |    00000B67  A$lcc1290
-     00000B68  A$lcc1290 |    00000B68  C$main.c$ |    00000B69  A$lcc1290
-     00000B69  C$main.c$ |    00000B6C  A$lcc1290 |    00000B6D  A$lcc1290
-     00000B6F  A$lcc1290 |    00000B70  A$lcc1290 |    00000B72  A$lcc1290
-     00000B73  A$lcc1290 |    00000B75  A$lcc1290 |    00000B76  A$lcc1290
-     00000B78  A$lcc1290 |    00000B79  A$lcc1290 |    00000B7A  A$lcc1290
-     00000B7C  A$lcc1290 |    00000B7D  A$lcc1290 |    00000B7E  A$lcc1290
-     00000B80  A$lcc1290 |    00000B81  A$lcc1290 |    00000B82  A$lcc1290
-     00000B84  A$lcc1290 |    00000B84  C$main.c$ |    00000B87  A$lcc1290
-     00000B89  A$lcc1290 |    00000B89  C$main.c$ |    00000B8C  A$lcc1290
-     00000B8F  A$lcc1290 |    00000B90  A$lcc1290 |    00000B91  A$lcc1290
-     00000B92  A$lcc1290 |    00000B93  A$lcc1290 |    00000B94  A$lcc1290
-     00000B97  A$lcc1290 |    00000B98  A$lcc1290 |    00000B9A  A$lcc1290
-     00000B9A  C$main.c$ |    00000B9B  A$lcc1290 |    00000B9C  A$lcc1290
-     00000B9E  A$lcc1290 |    00000B9F  A$lcc1290 |    00000BA0  A$lcc1290
-     00000BA2  A$lcc1290 |    00000BA3  A$lcc1290 |    00000BA4  A$lcc1290
-     00000BA6  A$lcc1290 |    00000BA9  A$lcc1290 |    00000BAA  A$lcc1290
-     00000BAC  A$lcc1290 |    00000BAC  C$main.c$ |    00000BAF  A$lcc1290
-     00000BB1  A$lcc1290 |    00000BB1  C$main.c$ |    00000BB4  A$lcc1290
-     00000BB7  A$lcc1290 |    00000BB8  A$lcc1290 |    00000BB9  A$lcc1290
-     00000BBA  A$lcc1290 |    00000BBB  A$lcc1290 |    00000BBC  A$lcc1290
-     00000BBF  A$lcc1290 |    00000BC0  A$lcc1290 |    00000BC0  C$main.c$
-     00000BC3  A$lcc1290 |    00000BC4  A$lcc1290 |    00000BC6  A$lcc1290
-     00000BC6  C$main.c$ |    00000BC9  A$lcc1290 |    00000BCA  A$lcc1290
-     00000BCB  A$lcc1290 |    00000BCC  A$lcc1290 |    00000BCD  A$lcc1290
-     00000BCF  A$lcc1290 |    00000BD0  A$lcc1290 |    00000BD1  A$lcc1290
-     00000BD3  A$lcc1290 |    00000BD4  A$lcc1290 |    00000BD7  A$lcc1290
-     00000BD8  A$lcc1290 |    00000BD9  A$lcc1290 |    00000BDA  A$lcc1290
-     00000BDA  C$main.c$ |    00000BDD  A$lcc1290 |    00000BDE  A$lcc1290
-     00000BDF  A$lcc1290 |    00000BE0  A$lcc1290 |    00000BE1  A$lcc1290
-     00000BE4  A$lcc1290 |    00000BE5  A$lcc1290 |    00000BE6  A$lcc1290
-     00000BE8  A$lcc1290 |    00000BE8  C$main.c$ |    00000BEB  A$lcc1290
-     00000BED  A$lcc1290 |    00000BF0  A$lcc1290 |    00000BF1  A$lcc1290
-     00000BF2  A$lcc1290 |    00000BF3  A$lcc1290 |    00000BF6  A$lcc1290
-     00000BF7  A$lcc1290 |    00000BF8  A$lcc1290 |    00000BF9  A$lcc1290
-     00000BFB  A$lcc1290 |    00000BFC  A$lcc1290 |    00000BFD  A$lcc1290
-     00000C00  A$lcc1290 |    00000C01  A$lcc1290 |    00000C01  C$main.c$
-     00000C03  A$lcc1290 |    00000C06  A$lcc1290 |    00000C07  A$lcc1290
-     00000C0A  A$lcc1290 |    00000C0B  A$lcc1290 |    00000C0E  A$lcc1290
-     00000C0F  A$lcc1290 |    00000C10  A$lcc1290 |    00000C11  A$lcc1290
-     00000C14  A$lcc1290 |    00000C15  A$lcc1290 |    00000C16  A$lcc1290
+     00000B35  A$lcc1197 |    00000B36  A$lcc1197 |    00000B37  A$lcc1197
+     00000B39  A$lcc1197 |    00000B3A  A$lcc1197 |    00000B3C  A$lcc1197
+     00000B3D  A$lcc1197 |    00000B3F  A$lcc1197 |    00000B41  A$lcc1197
+     00000B43  A$lcc1197 |    00000B45  A$lcc1197 |    00000B46  A$lcc1197
+     00000B48  A$lcc1197 |    00000B4A  A$lcc1197 |    00000B4C  A$lcc1197
+     00000B4D  A$lcc1197 |    00000B4F  A$lcc1197 |    00000B4F  C$main.c$
+     00000B51  A$lcc1197 |    00000B52  A$lcc1197 |    00000B53  A$lcc1197
+     00000B54  A$lcc1197 |    00000B55  A$lcc1197 |    00000B58  A$lcc1197
+     00000B59  A$lcc1197 |    00000B5A  A$lcc1197 |    00000B5B  A$lcc1197
+     00000B5D  A$lcc1197 |    00000B5E  A$lcc1197 |    00000B60  A$lcc1197
+     00000B62  A$lcc1197 |    00000B63  A$lcc1197 |    00000B65  A$lcc1197
+     00000B65  C$main.c$ |    00000B68  A$lcc1197 |    00000B69  A$lcc1197
+     00000B6A  A$lcc1197 |    00000B6B  A$lcc1197 |    00000B6B  C$main.c$
+     00000B6C  A$lcc1197 |    00000B6E  A$lcc1197 |    00000B6F  A$lcc1197
+     00000B70  A$lcc1197 |    00000B71  A$lcc1197 |    00000B72  A$lcc1197
+     00000B74  A$lcc1197 |    00000B76  A$lcc1197 |    00000B76  C$main.c$
+     00000B77  A$lcc1197 |    00000B7A  A$lcc1197 |    00000B7B  A$lcc1197
+     00000B7C  A$lcc1197 |    00000B7D  A$lcc1197 |    00000B80  A$lcc1197
+     00000B83  A$lcc1197 |    00000B84  A$lcc1197 |    00000B84  C$main.c$
+     00000B85  A$lcc1197 |    00000B85  C$main.c$ |    00000B88  A$lcc1197
+     00000B89  A$lcc1197 |    00000B8B  A$lcc1197 |    00000B8C  A$lcc1197
+     00000B8E  A$lcc1197 |    00000B8F  A$lcc1197 |    00000B91  A$lcc1197
+     00000B92  A$lcc1197 |    00000B94  A$lcc1197 |    00000B95  A$lcc1197
+     00000B96  A$lcc1197 |    00000B98  A$lcc1197 |    00000B99  A$lcc1197
+     00000B9A  A$lcc1197 |    00000B9C  A$lcc1197 |    00000B9D  A$lcc1197
+     00000B9E  A$lcc1197 |    00000BA0  A$lcc1197 |    00000BA0  C$main.c$
+     00000BA3  A$lcc1197 |    00000BA5  A$lcc1197 |    00000BA5  C$main.c$
+     00000BA8  A$lcc1197 |    00000BAB  A$lcc1197 |    00000BAC  A$lcc1197
+     00000BAD  A$lcc1197 |    00000BAE  A$lcc1197 |    00000BAF  A$lcc1197
+     00000BB0  A$lcc1197 |    00000BB3  A$lcc1197 |    00000BB4  A$lcc1197
+     00000BB6  A$lcc1197 |    00000BB6  C$main.c$ |    00000BB7  A$lcc1197
+     00000BB8  A$lcc1197 |    00000BBA  A$lcc1197 |    00000BBB  A$lcc1197
+     00000BBC  A$lcc1197 |    00000BBE  A$lcc1197 |    00000BBF  A$lcc1197
+     00000BC0  A$lcc1197 |    00000BC2  A$lcc1197 |    00000BC5  A$lcc1197
+     00000BC6  A$lcc1197 |    00000BC8  A$lcc1197 |    00000BC8  C$main.c$
+     00000BCB  A$lcc1197 |    00000BCD  A$lcc1197 |    00000BCD  C$main.c$
+     00000BD0  A$lcc1197 |    00000BD3  A$lcc1197 |    00000BD4  A$lcc1197
+     00000BD5  A$lcc1197 |    00000BD6  A$lcc1197 |    00000BD7  A$lcc1197
+     00000BD8  A$lcc1197 |    00000BDB  A$lcc1197 |    00000BDC  A$lcc1197
+     00000BDC  C$main.c$ |    00000BDF  A$lcc1197 |    00000BE0  A$lcc1197
+     00000BE2  A$lcc1197 |    00000BE2  C$main.c$ |    00000BE5  A$lcc1197
+     00000BE6  A$lcc1197 |    00000BE7  A$lcc1197 |    00000BE8  A$lcc1197
+     00000BE9  A$lcc1197 |    00000BEB  A$lcc1197 |    00000BEC  A$lcc1197
+     00000BED  A$lcc1197 |    00000BEF  A$lcc1197 |    00000BF0  A$lcc1197
+     00000BF3  A$lcc1197 |    00000BF4  A$lcc1197 |    00000BF5  A$lcc1197
+     00000BF6  A$lcc1197 |    00000BF6  C$main.c$ |    00000BF9  A$lcc1197
+     00000BFA  A$lcc1197 |    00000BFB  A$lcc1197 |    00000BFC  A$lcc1197
+     00000BFD  A$lcc1197 |    00000C00  A$lcc1197 |    00000C01  A$lcc1197
+     00000C02  A$lcc1197 |    00000C04  A$lcc1197 |    00000C04  C$main.c$
+     00000C07  A$lcc1197 |    00000C09  A$lcc1197 |    00000C0C  A$lcc1197
+     00000C0D  A$lcc1197 |    00000C0E  A$lcc1197 |    00000C0F  A$lcc1197
 ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00000D81 =        3457. bytes (REL,CON)
+_CODE                  00000200    00000DDE =        3550. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000C17  A$lcc1290 |    00000C1A  A$lcc1290 |    00000C1C  A$lcc1290
-     00000C1D  A$lcc1290 |    00000C1E  A$lcc1290 |    00000C1F  A$lcc1290
-     00000C21  A$lcc1290 |    00000C22  A$lcc1290 |    00000C25  A$lcc1290
-     00000C27  A$lcc1290 |    00000C27  C$main.c$ |    00000C27  C$main.c$
-     00000C2A  A$lcc1290 |    00000C2B  A$lcc1290 |    00000C2D  A$lcc1290
-     00000C2D  C$main.c$ |    00000C30  A$lcc1290 |    00000C31  A$lcc1290
-     00000C32  A$lcc1290 |    00000C33  A$lcc1290 |    00000C34  A$lcc1290
-     00000C36  A$lcc1290 |    00000C37  A$lcc1290 |    00000C38  A$lcc1290
-     00000C3A  A$lcc1290 |    00000C3B  A$lcc1290 |    00000C3E  A$lcc1290
-     00000C3F  A$lcc1290 |    00000C40  A$lcc1290 |    00000C41  A$lcc1290
-     00000C41  C$main.c$ |    00000C44  A$lcc1290 |    00000C45  A$lcc1290
-     00000C46  A$lcc1290 |    00000C47  A$lcc1290 |    00000C48  A$lcc1290
-     00000C4B  A$lcc1290 |    00000C4C  A$lcc1290 |    00000C4D  A$lcc1290
-     00000C4F  A$lcc1290 |    00000C4F  C$main.c$ |    00000C52  A$lcc1290
-     00000C54  A$lcc1290 |    00000C57  A$lcc1290 |    00000C58  A$lcc1290
-     00000C59  A$lcc1290 |    00000C5A  A$lcc1290 |    00000C5D  A$lcc1290
-     00000C5E  A$lcc1290 |    00000C5F  A$lcc1290 |    00000C60  A$lcc1290
-     00000C62  A$lcc1290 |    00000C63  A$lcc1290 |    00000C64  A$lcc1290
-     00000C67  A$lcc1290 |    00000C68  A$lcc1290 |    00000C68  C$main.c$
-     00000C6A  A$lcc1290 |    00000C6D  A$lcc1290 |    00000C6E  A$lcc1290
-     00000C71  A$lcc1290 |    00000C72  A$lcc1290 |    00000C75  A$lcc1290
-     00000C76  A$lcc1290 |    00000C77  A$lcc1290 |    00000C78  A$lcc1290
-     00000C7B  A$lcc1290 |    00000C7C  A$lcc1290 |    00000C7D  A$lcc1290
-     00000C7E  A$lcc1290 |    00000C81  A$lcc1290 |    00000C83  A$lcc1290
-     00000C84  A$lcc1290 |    00000C85  A$lcc1290 |    00000C86  A$lcc1290
-     00000C88  A$lcc1290 |    00000C89  A$lcc1290 |    00000C8C  A$lcc1290
-     00000C8E  A$lcc1290 |    00000C8E  C$main.c$ |    00000C8E  C$main.c$
-     00000C91  A$lcc1290 |    00000C92  A$lcc1290 |    00000C93  A$lcc1290
-     00000C94  A$lcc1290 |    00000C95  A$lcc1290 |    00000C97  A$lcc1290
-     00000C98  A$lcc1290 |    00000C99  A$lcc1290 |    00000C9A  A$lcc1290
-     00000C9B  A$lcc1290 |    00000C9D  A$lcc1290 |    00000C9F  A$lcc1290
-     00000C9F  C$main.c$ |    00000CA2  A$lcc1290 |    00000CA4  A$lcc1290
-     00000CA7  A$lcc1290 |    00000CA8  A$lcc1290 |    00000CA9  A$lcc1290
-     00000CAA  A$lcc1290 |    00000CAD  A$lcc1290 |    00000CAE  A$lcc1290
-     00000CAF  A$lcc1290 |    00000CB0  A$lcc1290 |    00000CB2  A$lcc1290
-     00000CB3  A$lcc1290 |    00000CB4  A$lcc1290 |    00000CB7  A$lcc1290
-     00000CB8  A$lcc1290 |    00000CB8  C$main.c$ |    00000CB8  C$main.c$
-     00000CBB  A$lcc1290 |    00000CBC  A$lcc1290 |    00000CBD  A$lcc1290
-     00000CBE  A$lcc1290 |    00000CBF  A$lcc1290 |    00000CC1  A$lcc1290
-     00000CC2  A$lcc1290 |    00000CC3  A$lcc1290 |    00000CC4  A$lcc1290
-     00000CC5  A$lcc1290 |    00000CC7  A$lcc1290 |    00000CC9  A$lcc1290
-     00000CC9  C$main.c$ |    00000CCC  A$lcc1290 |    00000CCE  A$lcc1290
-     00000CD1  A$lcc1290 |    00000CD2  A$lcc1290 |    00000CD3  A$lcc1290
-     00000CD4  A$lcc1290 |    00000CD7  A$lcc1290 |    00000CD8  A$lcc1290
-     00000CD9  A$lcc1290 |    00000CDA  A$lcc1290 |    00000CDC  A$lcc1290
-     00000CDD  A$lcc1290 |    00000CDE  A$lcc1290 |    00000CE1  A$lcc1290
-     00000CE2  A$lcc1290 |    00000CE2  C$main.c$ |    00000CE5  A$lcc1290
-     00000CE6  A$lcc1290 |    00000CE9  A$lcc1290 |    00000CEA  A$lcc1290
-     00000CED  A$lcc1290 |    00000CEE  A$lcc1290 |    00000CEF  A$lcc1290
-     00000CF0  A$lcc1290 |    00000CF1  A$lcc1290 |    00000CF4  A$lcc1290
-     00000CF5  A$lcc1290 |    00000CF6  A$lcc1290 |    00000CF7  A$lcc1290
+     00000C12  A$lcc1197 |    00000C13  A$lcc1197 |    00000C14  A$lcc1197
+     00000C15  A$lcc1197 |    00000C17  A$lcc1197 |    00000C18  A$lcc1197
+     00000C19  A$lcc1197 |    00000C1C  A$lcc1197 |    00000C1D  A$lcc1197
+     00000C1D  C$main.c$ |    00000C1F  A$lcc1197 |    00000C22  A$lcc1197
+     00000C23  A$lcc1197 |    00000C26  A$lcc1197 |    00000C27  A$lcc1197
+     00000C2A  A$lcc1197 |    00000C2B  A$lcc1197 |    00000C2C  A$lcc1197
+     00000C2D  A$lcc1197 |    00000C30  A$lcc1197 |    00000C31  A$lcc1197
+     00000C32  A$lcc1197 |    00000C33  A$lcc1197 |    00000C36  A$lcc1197
+     00000C38  A$lcc1197 |    00000C39  A$lcc1197 |    00000C3A  A$lcc1197
+     00000C3B  A$lcc1197 |    00000C3D  A$lcc1197 |    00000C3E  A$lcc1197
+     00000C41  A$lcc1197 |    00000C43  A$lcc1197 |    00000C43  C$main.c$
+     00000C43  C$main.c$ |    00000C46  A$lcc1197 |    00000C47  A$lcc1197
+     00000C49  A$lcc1197 |    00000C49  C$main.c$ |    00000C4C  A$lcc1197
+     00000C4D  A$lcc1197 |    00000C4E  A$lcc1197 |    00000C4F  A$lcc1197
+     00000C50  A$lcc1197 |    00000C52  A$lcc1197 |    00000C53  A$lcc1197
+     00000C54  A$lcc1197 |    00000C56  A$lcc1197 |    00000C57  A$lcc1197
+     00000C5A  A$lcc1197 |    00000C5B  A$lcc1197 |    00000C5C  A$lcc1197
+     00000C5D  A$lcc1197 |    00000C5D  C$main.c$ |    00000C60  A$lcc1197
+     00000C61  A$lcc1197 |    00000C62  A$lcc1197 |    00000C63  A$lcc1197
+     00000C64  A$lcc1197 |    00000C67  A$lcc1197 |    00000C68  A$lcc1197
+     00000C69  A$lcc1197 |    00000C6B  A$lcc1197 |    00000C6B  C$main.c$
+     00000C6E  A$lcc1197 |    00000C70  A$lcc1197 |    00000C73  A$lcc1197
+     00000C74  A$lcc1197 |    00000C75  A$lcc1197 |    00000C76  A$lcc1197
+     00000C79  A$lcc1197 |    00000C7A  A$lcc1197 |    00000C7B  A$lcc1197
+     00000C7C  A$lcc1197 |    00000C7E  A$lcc1197 |    00000C7F  A$lcc1197
+     00000C80  A$lcc1197 |    00000C83  A$lcc1197 |    00000C84  A$lcc1197
+     00000C84  C$main.c$ |    00000C86  A$lcc1197 |    00000C89  A$lcc1197
+     00000C8A  A$lcc1197 |    00000C8D  A$lcc1197 |    00000C8E  A$lcc1197
+     00000C91  A$lcc1197 |    00000C92  A$lcc1197 |    00000C93  A$lcc1197
+     00000C94  A$lcc1197 |    00000C97  A$lcc1197 |    00000C98  A$lcc1197
+     00000C99  A$lcc1197 |    00000C9A  A$lcc1197 |    00000C9D  A$lcc1197
+     00000C9F  A$lcc1197 |    00000CA0  A$lcc1197 |    00000CA1  A$lcc1197
+     00000CA2  A$lcc1197 |    00000CA4  A$lcc1197 |    00000CA5  A$lcc1197
+     00000CA8  A$lcc1197 |    00000CAA  A$lcc1197 |    00000CAA  C$main.c$
+     00000CAA  C$main.c$ |    00000CAD  A$lcc1197 |    00000CAE  A$lcc1197
+     00000CAF  A$lcc1197 |    00000CB0  A$lcc1197 |    00000CB1  A$lcc1197
+     00000CB3  A$lcc1197 |    00000CB4  A$lcc1197 |    00000CB5  A$lcc1197
+     00000CB6  A$lcc1197 |    00000CB7  A$lcc1197 |    00000CB9  A$lcc1197
+     00000CBB  A$lcc1197 |    00000CBB  C$main.c$ |    00000CBE  A$lcc1197
+     00000CC0  A$lcc1197 |    00000CC3  A$lcc1197 |    00000CC4  A$lcc1197
+     00000CC5  A$lcc1197 |    00000CC6  A$lcc1197 |    00000CC9  A$lcc1197
+     00000CCA  A$lcc1197 |    00000CCB  A$lcc1197 |    00000CCC  A$lcc1197
+     00000CCE  A$lcc1197 |    00000CCF  A$lcc1197 |    00000CD0  A$lcc1197
+     00000CD3  A$lcc1197 |    00000CD4  A$lcc1197 |    00000CD4  C$main.c$
+     00000CD4  C$main.c$ |    00000CD7  A$lcc1197 |    00000CD8  A$lcc1197
+     00000CD9  A$lcc1197 |    00000CDA  A$lcc1197 |    00000CDB  A$lcc1197
+     00000CDD  A$lcc1197 |    00000CDE  A$lcc1197 |    00000CDF  A$lcc1197
+     00000CE0  A$lcc1197 |    00000CE1  A$lcc1197 |    00000CE3  A$lcc1197
+     00000CE5  A$lcc1197 |    00000CE5  C$main.c$ |    00000CE8  A$lcc1197
+     00000CEA  A$lcc1197 |    00000CED  A$lcc1197 |    00000CEE  A$lcc1197
+     00000CEF  A$lcc1197 |    00000CF0  A$lcc1197 |    00000CF3  A$lcc1197
 ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00000D81 =        3457. bytes (REL,CON)
+_CODE                  00000200    00000DDE =        3550. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000CFA  A$lcc1290 |    00000CFC  A$lcc1290 |    00000CFD  A$lcc1290
-     00000CFE  A$lcc1290 |    00000CFF  A$lcc1290 |    00000D00  A$lcc1290
-     00000D01  A$lcc1290 |    00000D02  A$lcc1290 |    00000D03  A$lcc1290
-     00000D04  A$lcc1290 |    00000D07  A$lcc1290 |    00000D09  A$lcc1290
-     00000D09  C$main.c$ |    00000D0C  A$lcc1290 |    00000D0C  C$main.c$
-     00000D0F  A$lcc1290 |    00000D12  A$lcc1290 |    00000D14  A$lcc1290
-     00000D14  C$main.c$ |    00000D14  XG$main$0 |    00000D15  G$bkg_map
-     00000D15  _bkg_map  |    00000E7D  G$bkg_til |    00000E7D  _bkg_tile
-     00000EED  _get_vram |    00000EFA  _get_win_ |    00000F02  _get_bkg_
-     00000F29  ___hide_m |    00000F49  ___move_m
+     00000CF4  A$lcc1197 |    00000CF5  A$lcc1197 |    00000CF6  A$lcc1197
+     00000CF8  A$lcc1197 |    00000CF9  A$lcc1197 |    00000CFA  A$lcc1197
+     00000CFD  A$lcc1197 |    00000CFE  A$lcc1197 |    00000CFE  C$main.c$
+     00000D01  A$lcc1197 |    00000D02  A$lcc1197 |    00000D05  A$lcc1197
+     00000D06  A$lcc1197 |    00000D09  A$lcc1197 |    00000D0A  A$lcc1197
+     00000D0B  A$lcc1197 |    00000D0C  A$lcc1197 |    00000D0D  A$lcc1197
+     00000D10  A$lcc1197 |    00000D11  A$lcc1197 |    00000D12  A$lcc1197
+     00000D13  A$lcc1197 |    00000D16  A$lcc1197 |    00000D18  A$lcc1197
+     00000D19  A$lcc1197 |    00000D1A  A$lcc1197 |    00000D1B  A$lcc1197
+     00000D1C  A$lcc1197 |    00000D1D  A$lcc1197 |    00000D1E  A$lcc1197
+     00000D1F  A$lcc1197 |    00000D20  A$lcc1197 |    00000D23  A$lcc1197
+     00000D25  A$lcc1197 |    00000D25  C$main.c$ |    00000D28  A$lcc1197
+     00000D28  C$main.c$ |    00000D2B  A$lcc1197 |    00000D2E  A$lcc1197
+     00000D30  A$lcc1197 |    00000D30  C$main.c$ |    00000D30  XG$main$0
+     00000D31  G$bkg_map |    00000D31  _bkg_map  |    00000E99  G$bkg_til
+     00000E99  _bkg_tile |    00000F09  _get_vram |    00000F16  _get_win_
+     00000F1E  _get_bkg_ |    00000F45  ___hide_m |    00000F65  _set_vram
+     00000F74  _set_win_ |    00000F7C  _set_bkg_ |    00000FA6  ___move_m
 ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
 Hexadecimal  [32-Bits]
 
@@ -500,25 +508,25 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_HOME                  00000F81    0000017B =         379. bytes (REL,CON)
+_HOME                  00000FDE    0000017B =         379. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00000F81  .memset_s |    00000F8A  .memcpy_s |    00000FA7  .remove_V
-     00000FAA  .remove_i |    00000FC7  .add_VBL  |    00000FCA  .add_int 
-     00000FD5  .wait_vbl |    00000FD5  _wait_vbl |    00000FE5  .display_
-     00000FE5  _display_ |    00000FFD  _remove_V |    00001008  _add_VBL 
-     00001013  _set_tile |    00001018  _set_bkg_ |    00001018  _set_win_
-     00001020  _set_spri |    00001050  .padup    |    00001050  _waitpadu
-     00001060  .jpad     |    00001060  _joypad   |    00001088  _waitpad 
-     0000108B  .wait_pad |    00001092  _set_bkg_ |    000010A6  .set_xy_w
-     000010AF  .set_xy_b |    000010BE  .set_xy_t
+     00000FDE  .memset_s |    00000FE7  .memcpy_s |    00001004  .remove_V
+     00001007  .remove_i |    00001024  .add_VBL  |    00001027  .add_int 
+     00001032  .wait_vbl |    00001032  _wait_vbl |    00001042  .display_
+     00001042  _display_ |    0000105A  _remove_V |    00001065  _add_VBL 
+     00001070  _set_tile |    00001075  _set_bkg_ |    00001075  _set_win_
+     0000107D  _set_spri |    000010AD  .padup    |    000010AD  _waitpadu
+     000010BD  .jpad     |    000010BD  _joypad   |    000010E5  _waitpad 
+     000010E8  .wait_pad |    000010EF  _set_bkg_ |    00001103  .set_xy_w
+     0000110C  .set_xy_b |    0000111B  .set_xy_t
 ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_INITIALIZER           000010FC    00000001 =           1. bytes (REL,CON)
+_INITIALIZER           00001159    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -527,17 +535,17 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSINIT                000010FD    0000000C =          12. bytes (REL,CON)
+_GSINIT                0000115A    0000000C =          12. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     000010FD  gsinit   
+     0000115A  gsinit   
 ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSFINAL               00001109    00000001 =           1. bytes (REL,CON)
+_GSFINAL               00001166    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -582,7 +590,7 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE_1                00014000    00000112 =         274. bytes (REL,CON)
+_CODE_1                00014000    000000BC =         188. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -597,10 +605,6 @@ _CODE_1                00014000    00000112 =         274. bytes (REL,CON)
      0001408A  G$one_up_ |    0001408A  ___func_o |    0001408A  _one_up_p
      00014092  G$one_up_ |    00014092  _one_up_t |    000140B2  G$one_up_
      000140B2  _one_up_m |    000140BA  G$one_up_ |    000140BA  _one_up_m
-     000140BC  C$tileset |    000140BC  G$__func_ |    000140BC  G$tileset
-     000140BC  ___func_t |    000140BC  _tileset_ |    000140C4  G$tileset
-     000140C4  _tileset_ |    00014104  G$tileset |    00014104  _tileset_
-     00014110  G$tileset |    00014110  _tileset_
 ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
 
 Files Linked                              [ module(s) ]
@@ -608,22 +612,20 @@ Files Linked                              [ module(s) ]
 C:\c_code\gbdk\lib/small/asxxxx/gb/crt0.o
                                           [ Runtime ]
 src\hUGEDriver.obj.rel                    [ hUGEDriver_obj ]
-C:\Users\User\AppData\Local\Temp/lcc129040.rel
+C:\Users\User\AppData\Local\Temp/lcc119760.rel
                                           [ main ]
-C:\Users\User\AppData\Local\Temp/lcc129041.rel
+C:\Users\User\AppData\Local\Temp/lcc119761.rel
                                           [ scene ]
-C:\Users\User\AppData\Local\Temp/lcc129042.rel
+C:\Users\User\AppData\Local\Temp/lcc119762.rel
                                           [ bkg_map ]
-C:\Users\User\AppData\Local\Temp/lcc129043.rel
+C:\Users\User\AppData\Local\Temp/lcc119763.rel
                                           [ bkg_tiles ]
-C:\Users\User\AppData\Local\Temp/lcc129044.rel
+C:\Users\User\AppData\Local\Temp/lcc119764.rel
                                           [ bullet ]
-C:\Users\User\AppData\Local\Temp/lcc129045.rel
+C:\Users\User\AppData\Local\Temp/lcc119765.rel
                                           [ galaga ]
-C:\Users\User\AppData\Local\Temp/lcc129046.rel
+C:\Users\User\AppData\Local\Temp/lcc119766.rel
                                           [ one_up ]
-C:\Users\User\AppData\Local\Temp/lcc129047.rel
-                                          [ tileset ]
 
 
 Libraries Linked                          [ object file ]
@@ -634,6 +636,8 @@ C:\c_code\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ metasprites_hide.o ]
 C:\c_code\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ set_data.o ]
+C:\c_code\gbdk\lib/small/asxxxx/gb/gb.lib
+                                          [ set_tile.o ]
 C:\c_code\gbdk\lib/small/asxxxx/gb/gb.lib
                                           [ pad.o ]
 C:\c_code\gbdk\lib/small/asxxxx/gb/gb.lib

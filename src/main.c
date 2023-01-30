@@ -31,6 +31,10 @@ UINT8 collide_bullet(UINT8 bulletx, UINT8 bullety) {
     tile_y = index_Y * 8;
 
     if (get_bkg_tile_xy(index_X, index_Y) >= 0x03) {  //&& (bulletx > tile_x)
+        if (get_bkg_tile_xy((index_X + 1), index_Y) >= 0x04) {
+            set_bkg_tile_xy(index_X + 1, index_Y, 0x06);
+            // set_bkg_tiles((index_X + 1), index_Y, 1, 1, 0x06);
+        }
         set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
         return 0x01U;
     }
@@ -49,7 +53,7 @@ void main() {
 
     set_sprite_data(0, 4, galaga_tiles);
     set_sprite_data(4, 2, bullet_tiles);
-    set_bkg_data(0, 6, bkg_tiles);
+    set_bkg_data(0, 7, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
     PLAYER.x = 72;
