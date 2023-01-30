@@ -31,12 +31,23 @@ UINT8 collide_bullet(UINT8 bulletx, UINT8 bullety) {
     tile_y = index_Y * 8;
 
     if (get_bkg_tile_xy(index_X, index_Y) >= 0x03) {  //&& (bulletx > tile_x)
-        if (get_bkg_tile_xy((index_X + 1), index_Y) >= 0x04) {
-            set_bkg_tile_xy(index_X + 1, index_Y, 0x06);
-            // set_bkg_tiles((index_X + 1), index_Y, 1, 1, 0x06);
+        if (get_bkg_tile_xy(index_X, index_Y) == 0x03) {
+            if (get_bkg_tile_xy(index_X + 1, index_Y) == 0x05) {
+                set_bkg_tile_xy(index_X + 1, index_Y, 0x06);
+            } else if ((get_bkg_tile_xy(index_X + 1, index_Y) == 0x06) || (get_bkg_tile_xy(index_X + 1, index_Y) == 0x07)) {
+                set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
+            }
+            set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
+            return 0x01U;
+        } else if (get_bkg_tile_xy(index_X, index_Y) == 0x04) {
+            if (get_bkg_tile_xy(index_X - 1, index_Y) == 0x05) {
+                set_bkg_tile_xy(index_X - 1, index_Y, 0x07);
+            } else if (get_bkg_tile_xy(index_X - 1, index_Y) == 0x06) {
+                set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
+            }
+            set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
+            return 0x01U;
         }
-        set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
-        return 0x01U;
     }
     return 0x00U;  // the first return of the function will end the execution of the function
 }
@@ -53,7 +64,7 @@ void main() {
 
     set_sprite_data(0, 4, galaga_tiles);
     set_sprite_data(4, 2, bullet_tiles);
-    set_bkg_data(0, 7, bkg_tiles);
+    set_bkg_data(0, 8, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
     PLAYER.x = 72;
