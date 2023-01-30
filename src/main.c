@@ -30,7 +30,7 @@ UINT8 collide_bullet(UINT8 bulletx, UINT8 bullety) {
     tile_x = index_X * 8;
     tile_y = index_Y * 8;
 
-    if (get_bkg_tile_xy(index_X, index_Y) == 0x03) {  //&& (bulletx > tile_x)
+    if (get_bkg_tile_xy(index_X, index_Y) >= 0x03) {  //&& (bulletx > tile_x)
         set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
         return 0x01U;
     }
