@@ -21,16 +21,16 @@ void update_bullet2(UINT8 playerx, UINT8 playery) {
 }
 
 UINT8 collide_bullet(UINT8 bulletx, UINT8 bullety) {
-    UINT16 index_X, index_Y, tileindex;
+    UINT16 index_X, index_Y;  // tileindex
     UINT8 tile_x, tile_y;
     index_X = (bulletx) / 8;
-    index_Y = (bullety) / 8;
-    tileindex = 20 * index_Y + index_X;
+    index_Y = (bullety + 8) / 8;
+    // tileindex = 20 * index_Y + index_X;
 
     tile_x = index_X * 8;
     tile_y = index_Y * 8;
 
-    if ((bkg_map[tileindex] == 0x03) && (bulletx > tile_x + 5)) {
+    if (get_bkg_tile_xy(index_X, index_Y) == 0x03) {  //&& (bulletx > tile_x)
         set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
         return 0x01U;
     }
@@ -52,7 +52,7 @@ void main() {
     set_bkg_data(0, 6, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
-    PLAYER.x = 0;
+    PLAYER.x = 72;
     PLAYER.y = 120;
     BULLET1.spawn = BULLET2.spawn = FALSE;
     move_metasprite(
@@ -76,14 +76,6 @@ void main() {
             update_bullet2(PLAYER.x, PLAYER.y);
         }
 
-        if (BULLET1.y < -16) {
-            BULLET1.spawn = FALSE;
-            hide_metasprite(bullet_metasprites[0], 2);
-        }
-        if (BULLET2.y < -16) {
-            BULLET2.spawn = FALSE;
-            hide_metasprite(bullet_metasprites[0], 3);
-        }
         if (BULLET1.spawn) {
             BULLET1.y -= 3;
             if (collide_bullet(BULLET1.x, BULLET1.y) == 0x01U) {
@@ -95,8 +87,20 @@ void main() {
         }
         if (BULLET2.spawn) {
             BULLET2.y -= 3;
-            move_metasprite(
-                bullet_metasprites[0], 4, 3, BULLET2.x, BULLET2.y);
+            if (collide_bullet(BULLET2.x, BULLET2.y) == 0x01U) {
+                BULLET2.spawn = FALSE;
+                hide_metasprite(bullet_metasprites[0], 3);
+            } else
+                move_metasprite(
+                    bullet_metasprites[0], 4, 3, BULLET2.x, BULLET2.y);
+        }
+        if (BULLET1.y < -16) {
+            BULLET1.spawn = FALSE;
+            hide_metasprite(bullet_metasprites[0], 2);
+        }
+        if (BULLET2.y < -16) {
+            BULLET2.spawn = FALSE;
+            hide_metasprite(bullet_metasprites[0], 3);
         }
 
         move_metasprite(
