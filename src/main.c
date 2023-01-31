@@ -20,32 +20,56 @@ void update_bullet2(UINT8 playerx, UINT8 playery) {
     BULLET2.y = playery;
 }
 
-UINT8 collide_bullet(UINT8 bulletx, UINT8 bullety) {
-    UINT16 index_X, index_Y;  // tileindex
-    UINT8 tile_x, tile_y;
-    index_X = (bulletx) / 8;
-    index_Y = (bullety + 8) / 8;
+UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
+    INT16 bulletx, bullety, index_X, index_Y;  // tileindex
+    INT8 tile_x, tile_y;
+
+    bulletx = bullet_spawn_x + 4;
+    bullety = bullet_spawn_y + 8;
+
+    index_X = bulletx / 8;
+    index_Y = bullety / 8;
     // tileindex = 20 * index_Y + index_X;
 
     tile_x = index_X * 8;
     tile_y = index_Y * 8;
 
-    if (get_bkg_tile_xy(index_X, index_Y) >= 0x03) {  //&& (bulletx > tile_x)
-        if (get_bkg_tile_xy(index_X, index_Y) == 0x03) {
+    if (get_bkg_tile_xy(index_X, index_Y) >= 0x03) {
+        if ((get_bkg_tile_xy(index_X, index_Y) == 0x03) && (bulletx - tile_x >= 3)) {  //       0X03 NPC TILE LEFT SIDE     //
             if (get_bkg_tile_xy(index_X + 1, index_Y) == 0x05) {
                 set_bkg_tile_xy(index_X + 1, index_Y, 0x06);
             } else if ((get_bkg_tile_xy(index_X + 1, index_Y) == 0x06) || (get_bkg_tile_xy(index_X + 1, index_Y) == 0x07)) {
                 set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
             }
-            set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
+            set_bkg_tile_xy(index_X, index_Y, 0x00);
             return 0x01U;
-        } else if (get_bkg_tile_xy(index_X, index_Y) == 0x04) {
+
+        } else if ((get_bkg_tile_xy(index_X, index_Y) == 0x05) && (bulletx - tile_x <= 1)) {  //       0X03 NPC TILE RIGHT SIDE    //
+            set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
+            set_bkg_tile_xy(index_X, index_Y, 0x06);
+            return 0x01U;
+
+        } else if ((get_bkg_tile_xy(index_X, index_Y) == 0x07) && (bulletx - tile_x <= 1)) {  //       0X03 NPC TILE RIGHT SIDE W/ NO ENEMY TO RIGHT    //
+            set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
+            set_bkg_tile_xy(index_X, index_Y, 0x00);
+            return 0x01U;
+
+        }
+
+        else if ((get_bkg_tile_xy(index_X, index_Y) == 0x05) && (bulletx - tile_x >= 7)) {  //       0X04 NPC TILE LEFT SIDE    //
+            set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
+            set_bkg_tile_xy(index_X, index_Y, 0x07);
+            return 0x01U;
+
+        }
+
+        else if ((get_bkg_tile_xy(index_X, index_Y) == 0x04) && (bulletx - tile_x <= 5)) {
             if (get_bkg_tile_xy(index_X - 1, index_Y) == 0x05) {
                 set_bkg_tile_xy(index_X - 1, index_Y, 0x07);
             } else if (get_bkg_tile_xy(index_X - 1, index_Y) == 0x06) {
                 set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
             }
-            set_bkg_tiles(index_X, index_Y, 1, 1, 0x00);
+            set_bkg_tile_xy(index_X, index_Y, 0x00);
             return 0x01U;
         }
     }
@@ -77,6 +101,11 @@ void main() {
     while (1) {
         last_joy = joy;
         joy = joypad();
+        // DEBUG
+        if (joy & J_SELECT) {
+            set_bkg_tiles(0, 0, 20, 18, bkg_map);
+        }
+        // DEBUG
 
         if ((joy & J_LEFT) && PLAYER.x > 0) {
             PLAYER.x -= 1;
