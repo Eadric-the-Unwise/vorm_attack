@@ -11,6 +11,9 @@ GameCharacter PLAYER;
 GameCharacter BULLET1;
 GameCharacter BULLET2;
 
+UINT8 npc_tile_bee[5] = {0x03, 0x04, 0x05, 0x06, 0x07};
+UINT8 npc_tile_wasp[5] = {0x08, 0x09, 0x0A, 0x0B, 0x0C};
+
 void update_bullet1(UINT8 playerx, UINT8 playery) {
     BULLET1.x = playerx + 4;
     BULLET1.y = playery;
@@ -21,11 +24,12 @@ void update_bullet2(UINT8 playerx, UINT8 playery) {
 }
 
 UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
+    UINT8 *current_NPC = NULL;
     INT16 bulletx, bullety, index_X, index_Y;  // tileindex
     UINT8 tile_x, tile_y;
 
     bulletx = bullet_spawn_x + 4;
-    bullety = bullet_spawn_y + 8;
+    bullety = bullet_spawn_y + 10;
 
     index_X = bulletx / 8;
     index_Y = bullety / 8;
@@ -35,43 +39,48 @@ UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
     tile_y = index_Y * 8;
 
     if (get_bkg_tile_xy(index_X, index_Y) >= 0x03) {
-        if ((get_bkg_tile_xy(index_X, index_Y) == 0x03) && (bulletx - tile_x >= 3)) {  //       0X03 NPC TILE LEFT SIDE     //
-            if (get_bkg_tile_xy(index_X + 1, index_Y) == 0x05) {
-                set_bkg_tile_xy(index_X + 1, index_Y, 0x06);
-            } else if ((get_bkg_tile_xy(index_X + 1, index_Y) == 0x06) || (get_bkg_tile_xy(index_X + 1, index_Y) == 0x07)) {
+        if (get_bkg_tile_xy(index_X, index_Y) >= npc_tile_bee[0] && get_bkg_tile_xy(index_X, index_Y) <= npc_tile_bee[4]) {  // CHECK FOR BEE COLLISION
+            current_NPC = &npc_tile_bee[0];
+        } else if (get_bkg_tile_xy(index_X, index_Y) >= npc_tile_wasp[0] && get_bkg_tile_xy(index_X, index_Y) <= npc_tile_wasp[4]) {  // CHECK FOR WASP COLLISION
+            current_NPC = &npc_tile_wasp[0];
+        }
+        if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[0]) && (bulletx - tile_x >= 3)) {  //       current_NPC[0] NPC TILE LEFT SIDE     //
+            if (get_bkg_tile_xy(index_X + 1, index_Y) == current_NPC[2]) {
+                set_bkg_tile_xy(index_X + 1, index_Y, current_NPC[3]);
+            } else if ((get_bkg_tile_xy(index_X + 1, index_Y) == current_NPC[3]) || (get_bkg_tile_xy(index_X + 1, index_Y) == current_NPC[4])) {
                 set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
             }
             set_bkg_tile_xy(index_X, index_Y, 0x00);
             return 0x01U;
 
-        } else if ((get_bkg_tile_xy(index_X, index_Y) == 0x05) && (bulletx - tile_x <= 1)) {  //       0X03 NPC TILE RIGHT SIDE    //
+        } else if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[2]) && (bulletx - tile_x <= 1)) {  //       current_NPC[0] NPC TILE RIGHT SIDE    //
             set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
-            set_bkg_tile_xy(index_X, index_Y, 0x06);
+            set_bkg_tile_xy(index_X, index_Y, current_NPC[3]);
             return 0x01U;
 
-        } else if ((get_bkg_tile_xy(index_X, index_Y) == 0x07) && (bulletx - tile_x <= 1)) {  //       0X03 NPC TILE RIGHT SIDE W/ NO ENEMY TO RIGHT    //
+        } else if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[4]) && (bulletx - tile_x <= 1)) {  //       current_NPC[0] NPC TILE RIGHT SIDE W/ NO ENEMY TO RIGHT    //
             set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
             set_bkg_tile_xy(index_X, index_Y, 0x00);
             return 0x01U;
 
         }
 
-        else if ((get_bkg_tile_xy(index_X, index_Y) == 0x05) && (bulletx - tile_x >= 7)) {  //       0X04 NPC TILE LEFT SIDE    //
+        else if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[2]) && (bulletx - tile_x >= 7)) {  //       current_NPC[1] NPC TILE LEFT SIDE    //
             set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
-            set_bkg_tile_xy(index_X, index_Y, 0x07);
+            set_bkg_tile_xy(index_X, index_Y, current_NPC[4]);
             return 0x01U;
 
-        } else if ((get_bkg_tile_xy(index_X, index_Y) == 0x06) && (bulletx - tile_x >= 7)) {  //       0X04 NPC TILE LEFT SIDE    //
+        } else if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[3]) && (bulletx - tile_x >= 7)) {  //       current_NPC[1] NPC TILE LEFT SIDE    //
             set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
             set_bkg_tile_xy(index_X, index_Y, 0x00);
             return 0x01U;
 
         }
 
-        else if ((get_bkg_tile_xy(index_X, index_Y) == 0x04) && (bulletx - tile_x <= 5)) {
-            if (get_bkg_tile_xy(index_X - 1, index_Y) == 0x05) {
-                set_bkg_tile_xy(index_X - 1, index_Y, 0x07);
-            } else if (get_bkg_tile_xy(index_X - 1, index_Y) == 0x06) {
+        else if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[1]) && (bulletx - tile_x <= 5)) {
+            if (get_bkg_tile_xy(index_X - 1, index_Y) == current_NPC[2]) {
+                set_bkg_tile_xy(index_X - 1, index_Y, current_NPC[4]);
+            } else if (get_bkg_tile_xy(index_X - 1, index_Y) == current_NPC[3]) {
                 set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
             }
             set_bkg_tile_xy(index_X, index_Y, 0x00);
