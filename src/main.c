@@ -22,7 +22,7 @@ void update_bullet2(UINT8 playerx, UINT8 playery) {
 
 UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
     INT16 bulletx, bullety, index_X, index_Y;  // tileindex
-    INT8 tile_x, tile_y;
+    UINT8 tile_x, tile_y;
 
     bulletx = bullet_spawn_x + 4;
     bullety = bullet_spawn_y + 8;
@@ -59,6 +59,11 @@ UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
         else if ((get_bkg_tile_xy(index_X, index_Y) == 0x05) && (bulletx - tile_x >= 7)) {  //       0X04 NPC TILE LEFT SIDE    //
             set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
             set_bkg_tile_xy(index_X, index_Y, 0x07);
+            return 0x01U;
+
+        } else if ((get_bkg_tile_xy(index_X, index_Y) == 0x06) && (bulletx - tile_x >= 7)) {  //       0X04 NPC TILE LEFT SIDE    //
+            set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
+            set_bkg_tile_xy(index_X, index_Y, 0x00);
             return 0x01U;
 
         }
