@@ -93,7 +93,7 @@ void main() {
 
     set_sprite_data(0, 4, galaga_tiles);
     set_sprite_data(4, 2, bullet_tiles);
-    set_bkg_data(0, 8, bkg_tiles);
+    set_bkg_data(0, 13, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
     PLAYER.x = 72;
