@@ -13,6 +13,7 @@ GameCharacter BULLET2;
 
 UINT8 npc_tile_bee[5] = {0x03, 0x04, 0x05, 0x06, 0x07};
 UINT8 npc_tile_wasp[5] = {0x08, 0x09, 0x0A, 0x0B, 0x0C};
+UINT8 npc_tile_mothership[10] = {0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16};
 
 void update_bullet1(UINT8 playerx, UINT8 playery) {
     BULLET1.x = playerx + 4;
@@ -38,7 +39,7 @@ UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
     tile_x = index_X * 8;
     tile_y = index_Y * 8;
 
-    if (get_bkg_tile_xy(index_X, index_Y) >= 0x03) {
+    if ((get_bkg_tile_xy(index_X, index_Y) >= 0x03) && (get_bkg_tile_xy(index_X, index_Y) <= 0x0C)) {
         if (get_bkg_tile_xy(index_X, index_Y) >= npc_tile_bee[0] && get_bkg_tile_xy(index_X, index_Y) <= npc_tile_bee[4]) {  // CHECK FOR BEE COLLISION
             current_NPC = &npc_tile_bee[0];
         } else if (get_bkg_tile_xy(index_X, index_Y) >= npc_tile_wasp[0] && get_bkg_tile_xy(index_X, index_Y) <= npc_tile_wasp[4]) {  // CHECK FOR WASP COLLISION
@@ -86,6 +87,16 @@ UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
             set_bkg_tile_xy(index_X, index_Y, 0x00);
             return 0x01U;
         }
+    } else if (get_bkg_tile_xy(index_X, index_Y) >= 0x0D) {  // if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[0]) && (bulletx - tile_x >= 3)) {}
+        current_NPC = &npc_tile_mothership[0];
+        if (get_bkg_tile_xy(index_X, index_Y) == current_NPC[6]) {
+            if (get_bkg_tile_xy(index_X + 1, index_Y) == current_NPC[7]) {
+                set_bkg_tile_xy(index_X + 1, index_Y, current_NPC[8]);
+                set_bkg_tile_xy(index_X + 1, index_Y - 1, current_NPC[3]);
+            }
+            set_bkg_tile_xy(index_X, index_Y, 0x00);
+            set_bkg_tile_xy(index_X, index_Y - 1, 0x00);
+        }
     }
     return 0x00U;  // the first return of the function will end the execution of the function
 }
@@ -102,7 +113,7 @@ void main() {
 
     set_sprite_data(0, 4, galaga_tiles);
     set_sprite_data(4, 2, bullet_tiles);
-    set_bkg_data(0, 13, bkg_tiles);
+    set_bkg_data(0, 23, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
     PLAYER.x = 72;
