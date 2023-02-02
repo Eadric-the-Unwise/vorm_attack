@@ -20,6 +20,7 @@ GameCharacter BULLET2;
 UINT8 npc_tile_bee[5] = {0x03, 0x04, 0x05, 0x06, 0x07};
 UINT8 npc_tile_wasp[5] = {0x08, 0x09, 0x0A, 0x0B, 0x0C};
 UINT8 npc_tile_mothership[10] = {0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16};
+UINT8 npc_tile_mothership_green[10] = {0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20};
 
 void update_bullet1(UINT8 playerx, UINT8 playery) {
     BULLET1.x = playerx + 4;
@@ -31,6 +32,7 @@ void update_bullet2(UINT8 playerx, UINT8 playery) {
 }
 
 UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
+    // ANY REPEAT get_bkg_tile_xy CACHE TO A LOCAL VARIABLE ONCE AT TOP THEN USE THE VARIABLE IN FUNC //
     UINT8 *current_NPC = NULL;
     INT16 bulletx, bullety, index_X, index_Y;  // tileindex
     UINT8 tile_x, tile_y;
@@ -94,7 +96,12 @@ UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
             return 0x01U;
         }
     } else if (get_bkg_tile_xy(index_X, index_Y) >= 0x0D) {  // if ((get_bkg_tile_xy(index_X, index_Y) == current_NPC[0]) && (bulletx - tile_x >= 3)) {}
-        current_NPC = &npc_tile_mothership[0];
+        if ((get_bkg_tile_xy(index_X, index_Y) >= 0x0D) && (get_bkg_tile_xy(index_X, index_Y) <= 0x16)) {
+            current_NPC = &npc_tile_mothership[0];
+        } else if ((get_bkg_tile_xy(index_X, index_Y) >= 0x17) && (get_bkg_tile_xy(index_X, index_Y) <= 0x20)) {
+            current_NPC = &npc_tile_mothership_green[0];
+        }
+
         if (get_bkg_tile_xy(index_X, index_Y) == current_NPC[6]) {
             if (get_bkg_tile_xy(index_X + 1, index_Y) == current_NPC[7]) {
                 set_bkg_tile_xy(index_X + 1, index_Y, current_NPC[8]);
