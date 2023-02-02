@@ -3,9 +3,15 @@
 #include <stdio.h>
 
 #include "scene.h"
-
+// GOALS//
+// MOTHERSHIPS TURN GREEN //
+// ANIMATE ENEMIES 1-2 //
+// SPRITE EXPLOSION NPCS//
+// NPC BULLET//
+// SPRITE EXPLOSION SHIP//
+// ? SPAWN 1UP LIVES REMOVAL //
+// STAGE 1, STAGE 2 //
 UINT8 joy, last_joy;
-// UINT8 playerx;
 
 GameCharacter PLAYER;
 GameCharacter BULLET1;
@@ -23,7 +29,7 @@ void update_bullet2(UINT8 playerx, UINT8 playery) {
     BULLET2.x = playerx + 4;
     BULLET2.y = playery;
 }
-// GOAL FOR NEXT STREAM, MOTHERSHIPS TURN GREEN //
+
 UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {
     UINT8 *current_NPC = NULL;
     INT16 bulletx, bullety, index_X, index_Y;  // tileindex
@@ -160,7 +166,7 @@ void main() {
 
     set_sprite_data(0, 4, galaga_tiles);
     set_sprite_data(4, 2, bullet_tiles);
-    set_bkg_data(0, 23, bkg_tiles);
+    set_bkg_data(0, 33, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
     PLAYER.x = 72;
