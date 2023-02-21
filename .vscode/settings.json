@@ -19,7 +19,9 @@
         "divebar_strings.h": "c",
         "cmath": "c",
         "bullet.h": "c",
-        "tileset.h": "c"
+        "tileset.h": "c",
+        "hugedriver.h": "c",
+        "bkg_map.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "emulicious-debugger.emuliciousPath": "C:\\c_code\\Emulicious"

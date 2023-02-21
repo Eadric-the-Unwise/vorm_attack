@@ -7,12 +7,12 @@
 #include <stdint.h>
 #include <stdio.h>
 
+// #include "../hUGEDriver.h"
 #include "../res/tiles/bkg_map.h"
 #include "../res/tiles/bkg_tiles.h"
 #include "../res/tiles/bullet.h"
 #include "../res/tiles/galaga.h"
 #include "collisions.h"
-#include "hUGEDriver.h"
 
 #define CHANGED_BUTTONS (last_joy ^ joy)
 

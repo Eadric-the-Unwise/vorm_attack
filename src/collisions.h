@@ -1,7 +1,7 @@
 #include <gb/gb.h>
 #include <stdint.h>
 #include <stdio.h>
-
+// void comment
 #define MOTHERSHIP_BOTTOM_RIGHT npc_tile_mothership[5]
 #define MOTHERSHIP_BOTTOM_LEFT npc_tile_mothership[6]
 #define MOTHERSHIPS_BOTTOMS npc_tile_mothership[7]

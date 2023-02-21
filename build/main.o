@@ -1,0 +1,755 @@
+;!FILE build/main.asm
+XL3
+H 9 areas 225 global symbols
+M main
+O -mgbz80
+S _refresh_OAM Ref000000
+S _galaga_metasprites Ref000000
+S _bkg_tiles Ref000000
+S ___hide_metasprite Ref000000
+S _set_sprite_data Ref000000
+S .__.ABS. Def000000
+S _collide_bullet Ref000000
+S _joypad Ref000000
+S ___current_base_tile Ref000000
+S _bullet_tiles Ref000000
+S _OBP1_REG Ref000000
+S _bkg_map Ref000000
+S ___move_metasprite Ref000000
+S _LCDC_REG Ref000000
+S _bullet_metasprites Ref000000
+S _set_bkg_data Ref000000
+S __shadow_OAM_base Ref000000
+S _galaga_tiles Ref000000
+S _wait_vbl_done Ref000000
+S ___current_metasprite Ref000000
+S _set_bkg_tiles Ref000000
+A _CODE size 2F1 flags 0 addr 0
+S A$main$200 Def000055
+S A$main$101 Def000014
+S C$main.c$40$1_0$120 Def000062
+S A$main$210 Def000065
+S A$main$201 Def000058
+S A$main$102 Def000017
+S C$main.c$41$1_0$120 Def00006F
+S A$main$400 Def00013D
+S A$main$220 Def000073
+S A$main$211 Def000066
+S A$main$202 Def000059
+S A$main$130 Def000022
+S A$main$112 Def00001A
+S A$main$103 Def000018
+S C$main.c$51$1_0$120 Def0000D4
+S C$main.c$42$1_0$120 Def00007C
+S C$main.c$33$1_0$120 Def000039
+S A$main$500 Def0001A9
+S A$main$401 Def00013E
+S A$main$320 Def0000F0
+S A$main$302 Def0000DA
+S A$main$230 Def000083
+S A$main$221 Def000076
+S A$main$212 Def000069
+S A$main$203 Def00005C
+S A$main$140 Def00002C
+S A$main$131 Def000023
+S A$main$104 Def000019
+S C$main.c$52$1_0$120 Def000147
+S C$main.c$34$1_0$120 Def00003D
+S C$main.c$20$0_0$117 Def000000
+S A$main$600 Def000219
+S A$main$510 Def0001B6
+S A$main$501 Def0001AA
+S A$main$420 Def00014E
+S A$main$402 Def00013F
+S A$main$321 Def0000F3
+S A$main$303 Def0000DD
+S A$main$240 Def00008F
+S A$main$231 Def000084
+S A$main$222 Def000077
+S A$main$213 Def00006A
+S A$main$204 Def00005D
+S A$main$141 Def00002D
+S A$main$132 Def000024
+S C$main.c$60$2_0$121 Def000103
+S C$main.c$44$1_0$120 Def00008C
+S C$main.c$35$1_0$120 Def000043
+S _main Def000036
+S A$main$700 Def00028C
+S A$main$610 Def000224
+S A$main$601 Def00021A
+S A$main$520 Def0001BF
+S A$main$511 Def0001B7
+S A$main$430 Def000159
+S A$main$421 Def00014F
+S A$main$331 Def0000F9
+S A$main$313 Def0000E5
+S A$main$304 Def0000E0
+S A$main$241 Def000091
+S A$main$232 Def000085
+S A$main$223 Def00007A
+S A$main$214 Def00006D
+S A$main$205 Def000060
+S A$main$142 Def00002F
+S A$main$133 Def000027
+S C$main.c$52$2_0$121 Def0000D4
+S C$main.c$45$1_0$120 Def000094
+S C$main.c$36$1_0$120 Def000049
+S C$main.c$21$1_0$117 Def000000
+S A$main$701 Def00028D
+S A$main$620 Def00022E
+S A$main$611 Def000225
+S A$main$602 Def00021D
+S A$main$521 Def0001C0
+S A$main$512 Def0001B8
+S A$main$503 Def0001AB
+S A$main$440 Def000163
+S A$main$431 Def00015B
+S A$main$422 Def000151
+S A$main$413 Def000147
+S A$main$350 Def00010A
+S A$main$332 Def0000FB
+S A$main$314 Def0000E8
+S A$main$260 Def0000AA
+S A$main$242 Def000092
+S A$main$233 Def000086
+S A$main$143 Def000032
+S A$main$134 Def000028
+S A$main$125 Def00001B
+S C$main.c$80$2_0$121 Def000206
+S C$main.c$62$2_0$121 Def00012E
+S C$main.c$53$2_0$121 Def0000DA
+S C$main.c$46$1_0$120 Def00009C
+S C$main.c$37$1_0$120 Def00004F
+S XG$update_bullet1$0$0 Def00001A
+S C$main.c$22$1_0$117 Def00000F
+S A$main$720 Def00029D
+S A$main$702 Def00028E
+S A$main$630 Def00023D
+S A$main$621 Def000231
+S A$main$612 Def000226
+S A$main$603 Def00021E
+S A$main$531 Def0001CC
+S A$main$522 Def0001C3
+S A$main$504 Def0001AC
+S A$main$450 Def000171
+S A$main$441 Def000166
+S A$main$432 Def00015C
+S A$main$423 Def000152
+S A$main$360 Def000118
+S A$main$351 Def00010C
+S A$main$315 Def0000E9
+S A$main$270 Def0000B8
+S A$main$261 Def0000AD
+S A$main$234 Def000087
+S A$main$171 Def000039
+S A$main$153 Def000035
+S A$main$144 Def000033
+S A$main$135 Def000029
+S A$main$126 Def00001D
+S C$main.c$65$1_0$120 Def000148
+S C$main.c$29$1_0$120 Def000036
+S XG$update_bullet2$0$0 Def000035
+S C$main.c$23$1_0$117 Def00001A
+S A$main$721 Def00029E
+S A$main$631 Def00023E
+S A$main$613 Def000227
+S A$main$604 Def00021F
+S A$main$541 Def0001D8
+S A$main$532 Def0001CF
+S A$main$523 Def0001C4
+S A$main$505 Def0001AE
+S A$main$460 Def00017A
+S A$main$451 Def000172
+S A$main$433 Def00015D
+S A$main$424 Def000154
+S A$main$370 Def000122
+S A$main$352 Def00010E
+S A$main$316 Def0000EC
+S A$main$280 Def0000C4
+S A$main$271 Def0000B9
+S A$main$262 Def0000AE
+S A$main$253 Def00009C
+S A$main$235 Def00008A
+S A$main$190 Def00004D
+S A$main$172 Def00003B
+S A$main$145 Def000034
+S A$main$127 Def00001E
+S C$main.c$91$2_0$121 Def00026D
+S C$main.c$82$2_0$121 Def000206
+S C$main.c$73$2_0$121 Def00019F
+S C$main.c$61$3_0$123 Def00011A
+S C$main.c$48$1_0$120 Def000128
+S C$main.c$55$2_0$121 Def0000E1
+S C$main.c$39$1_0$120 Def000055
+S A$main$740 Def0002B6
+S A$main$731 Def0002A8
+S A$main$722 Def0002A0
+S A$main$704 Def00028F
+S A$main$641 Def000247
+S A$main$623 Def000233
+S A$main$614 Def00022A
+S A$main$560 Def0001EE
+S A$main$542 Def0001DA
+S A$main$533 Def0001D0
+S A$main$524 Def0001C5
+S A$main$506 Def0001AF
+S A$main$470 Def000189
+S A$main$461 Def00017B
+S A$main$452 Def000173
+S A$main$434 Def00015F
+S A$main$407 Def000140
+S A$main$380 Def000128
+S A$main$353 Def000110
+S A$main$344 Def000103
+S A$main$326 Def0000F5
+S A$main$317 Def0000ED
+S A$main$308 Def0000E1
+S A$main$281 Def0000C5
+S A$main$263 Def0000B1
+S A$main$254 Def00009F
+S A$main$227 Def00007C
+S A$main$218 Def00006F
+S A$main$209 Def000062
+S A$main$182 Def000043
+S A$main$128 Def000020
+S C$main.c$49$1_0$120 Def0000CA
+S A$main$741 Def0002B7
+S A$main$732 Def0002AB
+S A$main$723 Def0002A1
+S A$main$705 Def000291
+S A$main$660 Def000260
+S A$main$633 Def00023F
+S A$main$624 Def000236
+S A$main$615 Def00022B
+S A$main$570 Def0001FB
+S A$main$561 Def0001EF
+S A$main$552 Def0001E2
+S A$main$543 Def0001DB
+S A$main$534 Def0001D1
+S A$main$516 Def0001B9
+S A$main$507 Def0001B0
+S A$main$480 Def000193
+S A$main$462 Def00017D
+S A$main$453 Def000176
+S A$main$435 Def000160
+S A$main$417 Def000148
+S A$main$408 Def000143
+S A$main$390 Def000132
+S A$main$381 Def00012B
+S A$main$354 Def000111
+S A$main$345 Def000104
+S A$main$336 Def0000FD
+S A$main$327 Def0000F8
+S A$main$318 Def0000EE
+S A$main$309 Def0000E3
+S A$main$282 Def0000C8
+S A$main$273 Def0000BA
+S A$main$255 Def0000A1
+S A$main$246 Def000094
+S A$main$228 Def00007F
+S A$main$219 Def000072
+S A$main$183 Def000045
+S A$main$129 Def000021
+S C$main.c$93$2_0$121 Def000297
+S C$main.c$24$1_0$119 Def00001B
+S A$main$760 Def0002CD
+S A$main$742 Def0002B8
+S A$main$724 Def0002A2
+S A$main$706 Def000292
+S A$main$652 Def000255
+S A$main$634 Def000241
+S A$main$625 Def000237
+S A$main$616 Def00022C
+S A$main$571 Def0001FC
+S A$main$562 Def0001F0
+S A$main$553 Def0001E5
+S A$main$544 Def0001DC
+S A$main$517 Def0001BC
+S A$main$508 Def0001B2
+S A$main$481 Def000196
+S A$main$463 Def00017E
+S A$main$454 Def000177
+S A$main$445 Def000168
+S A$main$436 Def000161
+S A$main$427 Def000155
+S A$main$418 Def00014B
+S A$main$409 Def000146
+S A$main$391 Def000133
+S A$main$382 Def00012C
+S A$main$364 Def00011A
+S A$main$346 Def000105
+S A$main$337 Def000100
+S A$main$319 Def0000EF
+S A$main$274 Def0000BD
+S A$main$256 Def0000A4
+S A$main$247 Def000097
+S A$main$229 Def000080
+S A$main$184 Def000047
+S A$main$166 Def000036
+S A$main$139 Def00002A
+S C$main.c$92$3_0$131 Def00027E
+S C$main.c$70$3_0$126 Def000190
+S C$main.c$63$3_0$124 Def000139
+S C$main.c$56$3_0$122 Def0000E5
+S C$main.c$25$1_0$119 Def00001B
+S A$main$770 Def0002D6
+S A$main$734 Def0002AD
+S A$main$725 Def0002A3
+S A$main$716 Def000297
+S A$main$707 Def000293
+S A$main$680 Def000273
+S A$main$662 Def000262
+S A$main$653 Def000256
+S A$main$644 Def000249
+S A$main$635 Def000242
+S A$main$626 Def000238
+S A$main$608 Def000220
+S A$main$590 Def00020C
+S A$main$572 Def0001FD
+S A$main$563 Def0001F3
+S A$main$554 Def0001E6
+S A$main$545 Def0001DF
+S A$main$536 Def0001D2
+S A$main$518 Def0001BD
+S A$main$509 Def0001B3
+S A$main$482 Def000197
+S A$main$464 Def00017F
+S A$main$446 Def00016B
+S A$main$428 Def000157
+S A$main$419 Def00014C
+S A$main$392 Def000134
+S A$main$383 Def00012D
+S A$main$365 Def00011B
+S A$main$356 Def000113
+S A$main$347 Def000106
+S A$main$338 Def000101
+S A$main$266 Def0000B2
+S A$main$248 Def000099
+S A$main$239 Def00008C
+S A$main$194 Def00004F
+S A$main$176 Def00003D
+S A$main$167 Def000037
+S C$main.c$95$2_0$121 Def000297
+S C$main.c$68$2_0$121 Def000179
+S C$main.c$26$1_0$119 Def00002A
+S A$main$780 Def0002E2
+S A$main$771 Def0002D9
+S A$main$744 Def0002B9
+S A$main$735 Def0002B0
+S A$main$726 Def0002A4
+S A$main$717 Def00029A
+S A$main$708 Def000296
+S A$main$681 Def000274
+S A$main$663 Def000263
+S A$main$654 Def000257
+S A$main$645 Def00024C
+S A$main$636 Def000243
+S A$main$609 Def000223
+S A$main$591 Def00020F
+S A$main$573 Def0001FE
+S A$main$564 Def0001F4
+S A$main$555 Def0001E9
+S A$main$537 Def0001D5
+S A$main$528 Def0001C7
+S A$main$519 Def0001BE
+S A$main$492 Def00019F
+S A$main$483 Def000198
+S A$main$474 Def00018B
+S A$main$465 Def000181
+S A$main$447 Def00016E
+S A$main$429 Def000158
+S A$main$393 Def000135
+S A$main$375 Def000124
+S A$main$366 Def00011C
+S A$main$357 Def000115
+S A$main$348 Def000107
+S A$main$339 Def000102
+S A$main$276 Def0000BF
+S A$main$267 Def0000B3
+S A$main$258 Def0000A6
+S A$main$249 Def00009A
+S A$main$195 Def000051
+S A$main$177 Def00003F
+S C$main.c$85$4_0$130 Def00022E
+S C$main.c$27$1_0$119 Def000035
+S A$main$790 Def0002EB
+S A$main$781 Def0002E3
+S A$main$763 Def0002CE
+S A$main$754 Def0002C1
+S A$main$745 Def0002BB
+S A$main$736 Def0002B1
+S A$main$727 Def0002A6
+S A$main$718 Def00029B
+S A$main$691 Def00027E
+S A$main$682 Def000276
+S A$main$664 Def000264
+S A$main$655 Def00025A
+S A$main$646 Def00024D
+S A$main$637 Def000246
+S A$main$628 Def000239
+S A$main$592 Def000210
+S A$main$574 Def000200
+S A$main$565 Def0001F5
+S A$main$556 Def0001EA
+S A$main$538 Def0001D6
+S A$main$529 Def0001CA
+S A$main$493 Def0001A2
+S A$main$484 Def000199
+S A$main$475 Def00018E
+S A$main$466 Def000182
+S A$main$448 Def00016F
+S A$main$394 Def000137
+S A$main$376 Def000126
+S A$main$367 Def00011F
+S A$main$358 Def000117
+S A$main$349 Def000108
+S A$main$286 Def0000CA
+S A$main$277 Def0000C0
+S A$main$268 Def0000B4
+S A$main$259 Def0000A9
+S A$main$196 Def000053
+S A$main$178 Def000041
+S C$main.c$97$2_0$121 Def0002C1
+S A$main$782 Def0002E6
+S A$main$773 Def0002DB
+S A$main$764 Def0002CF
+S A$main$755 Def0002C4
+S A$main$746 Def0002BC
+S A$main$737 Def0002B2
+S A$main$719 Def00029C
+S A$main$692 Def000281
+S A$main$683 Def000277
+S A$main$665 Def000265
+S A$main$656 Def00025B
+S A$main$647 Def000250
+S A$main$629 Def00023C
+S A$main$593 Def000211
+S A$main$584 Def000206
+S A$main$575 Def000201
+S A$main$557 Def0001ED
+S A$main$539 Def0001D7
+S A$main$494 Def0001A3
+S A$main$485 Def00019A
+S A$main$467 Def000183
+S A$main$449 Def000170
+S A$main$368 Def000120
+S A$main$287 Def0000CD
+S A$main$278 Def0000C1
+S A$main$269 Def0000B7
+S A$main$188 Def000049
+S C$main.c$89$2_0$121 Def00026D
+S C$main.c$66$3_0$125 Def000163
+S A$main$774 Def0002DC
+S A$main$765 Def0002D0
+S A$main$756 Def0002C5
+S A$main$747 Def0002BD
+S A$main$684 Def000278
+S A$main$666 Def000267
+S A$main$657 Def00025C
+S A$main$648 Def000251
+S A$main$585 Def000209
+S A$main$576 Def000204
+S A$main$567 Def0001F6
+S A$main$549 Def0001E0
+S A$main$486 Def00019B
+S A$main$468 Def000185
+S A$main$459 Def000179
+S A$main$387 Def00012E
+S A$main$369 Def000121
+S A$main$297 Def0000D4
+S A$main$288 Def0000CF
+S A$main$279 Def0000C2
+S A$main$189 Def00004B
+S XG$main$0$0 Def0002EE
+S C$main.c$96$3_0$132 Def0002A8
+S C$main.c$74$3_0$127 Def0001A5
+S C$main.c$67$3_0$125 Def000168
+S A$main$775 Def0002DD
+S A$main$766 Def0002D3
+S A$main$757 Def0002C8
+S A$main$748 Def0002C0
+S A$main$739 Def0002B3
+S A$main$694 Def000283
+S A$main$685 Def000279
+S A$main$676 Def00026D
+S A$main$667 Def000268
+S A$main$649 Def000254
+S A$main$595 Def000212
+S A$main$586 Def00020A
+S A$main$568 Def0001F9
+S A$main$487 Def00019E
+S A$main$469 Def000188
+S A$main$388 Def00012F
+S A$main$298 Def0000D7
+S A$main$289 Def0000D2
+S C$main.c$75$3_0$127 Def0001B9
+S A$main$776 Def0002DE
+S A$main$767 Def0002D4
+S A$main$758 Def0002C9
+S A$main$695 Def000286
+S A$main$686 Def00027A
+S A$main$677 Def000270
+S A$main$668 Def00026B
+S A$main$659 Def00025D
+S A$main$596 Def000213
+S A$main$479 Def000190
+S A$main$398 Def000139
+S A$main$389 Def000131
+S C$main.c$83$3_0$129 Def00020C
+S A$main$786 Def0002E8
+S A$main$777 Def0002DF
+S A$main$768 Def0002D5
+S A$main$759 Def0002CC
+S A$main$696 Def000287
+S A$main$687 Def00027C
+S A$main$678 Def000271
+S A$main$597 Def000215
+S A$main$498 Def0001A5
+S A$main$399 Def00013A
+S C$main.c$84$3_0$129 Def000220
+S C$main.c$77$3_0$127 Def0001E0
+S C$main.c$69$3_0$126 Def00018B
+S A$main$778 Def0002E0
+S A$main$697 Def000288
+S A$main$679 Def000272
+S A$main$598 Def000216
+S A$main$499 Def0001A8
+S C$main.c$76$4_0$128 Def0001C7
+S A$main$779 Def0002E1
+S A$main$599 Def000217
+S C$main.c$86$3_0$129 Def000247
+S A$main$798 Def0002EE
+S A$main$699 Def000289
+S A$main$90 Def000008
+S A$main$91 Def000009
+S A$main$92 Def00000C
+S A$main$93 Def00000D
+S A$main$84 Def000000
+S A$main$94 Def00000E
+S A$main$85 Def000002
+S A$main$86 Def000003
+S A$main$87 Def000005
+S A$main$88 Def000006
+S A$main$98 Def00000F
+S A$main$89 Def000007
+S A$main$99 Def000011
+S G$update_bullet1$0$0 Def000000
+S G$update_bullet2$0$0 Def00001B
+S C$main.c$103$2_0$121 Def0002E8
+S C$main.c$106$1_0$120 Def0002EE
+S C$main.c$104$2_0$121 Def0002EB
+S G$main$0$0 Def000036
+S _update_bullet1 Def000000
+S _update_bullet2 Def00001B
+S A$main$100 Def000012
+S C$main.c$30$1_0$120 Def000036
+A _DATA size 17 flags 0 addr 0
+S _last_joy Def000001
+S G$last_joy$0_0$0 Def000001
+S _BULLET1 Def000009
+S _BULLET2 Def000010
+S G$BULLET1$0_0$0 Def000009
+S G$BULLET2$0_0$0 Def000010
+S _PLAYER Def000002
+S G$PLAYER$0_0$0 Def000002
+S _joy Def000000
+S G$joy$0_0$0 Def000000
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 01 00
+T 00 00 00
+R 00 00 01 00
+T 01 00 00
+R 00 00 01 00
+T 01 00 00
+R 00 00 01 00
+T 02 00 00
+R 00 00 01 00
+T 02 00 00
+R 00 00 01 00
+T 09 00 00
+R 00 00 01 00
+T 09 00 00
+R 00 00 01 00
+T 10 00 00
+R 00 00 01 00
+T 10 00 00
+R 00 00 01 00
+T 00 00 00
+R 00 00 00 00
+T 00 00 00 F8 02 4E 06 00 03 03 03 03 21 0A 00 79
+R 00 00 00 00 00 0D 01 00
+T 0D 00 00 22 70 F8 03 4E 06 00 21 0C 00 79 22 70
+R 00 00 00 00 00 0B 01 00
+T 1A 00 00 C9
+R 00 00 00 00
+T 1B 00 00
+R 00 00 00 00
+T 1B 00 00 F8 02 4E 06 00 03 03 03 03 21 11 00 79
+R 00 00 00 00 00 0D 01 00
+T 28 00 00 22 70 F8 03 4E 06 00 21 13 00 79 22 70
+R 00 00 00 00 00 0B 01 00
+T 35 00 00 C9
+R 00 00 00 00
+T 36 00 00
+R 00 00 00 00
+T 36 00 00 AF E0 00 00 00 3E 9C E0 00 00 00 F0
+R 00 00 00 00 0B 05 10 00 0B 0B 0A 00
+T 3E 00 00 00 00 00 F6 04 E0 00 00 00 F0 00 00 00
+R 00 00 00 00 0B 03 0D 00 0B 09 0D 00 0B 0D 0D 00
+T 45 00 00 F6 01 E0 00 00 00 F0 00 00 00 F6 02 E0
+R 00 00 00 00 0B 06 0D 00 0B 0A 0D 00
+T 4E 00 00 00 00 00 F0 00 00 00 F6 80 E0 00 00 00
+R 00 00 00 00 0B 03 0D 00 0B 07 0D 00 0B 0D 0D 00
+T 55 00 00 11 00 00 D5 21 00 04 E5 CD 00 00 E8 04
+R 00 00 00 00 02 04 11 00 02 0C 04 00
+T 62 00 00 11 00 00 D5 21 04 02 E5 CD 00 00 E8 04
+R 00 00 00 00 02 04 09 00 02 0C 04 00
+T 6F 00 00 11 00 00 D5 21 00 25 E5 CD 00 00 E8 04
+R 00 00 00 00 02 04 02 00 02 0C 0F 00
+T 7C 00 00 11 00 00 D5 21 14 12 E5 AF 0F F5 CD
+R 00 00 00 00 02 04 0B 00
+T 88 00 00 00 00 E8 06 21 03 00 3E 48 22 36 00 21
+R 00 00 00 00 02 03 14 00 00 08 01 00
+T 95 00 00 05 00 3E 78 22 36 00 21 10 00 36 00 21
+R 00 00 00 00 00 03 01 00 00 0B 01 00
+T A2 00 00 09 00 36 00 21 05 00 46 21 03 00 4E 21
+R 00 00 00 00 00 03 01 00 00 08 01 00 00 0C 01 00
+T AF 00 00 01 00 3A 5E 57 21 00 00 7B 22 72 21
+R 00 00 00 00 02 03 01 00 02 09 13 00
+T BB 00 00 00 00 36 00 C5 33 61 2E 00 E5 CD 00 00
+R 00 00 00 00 02 03 08 00 02 0E 0C 00
+T C8 00 00 E8 03 21 00 00 36 00 21 01 00 36 00
+R 00 00 00 00 00 06 01 00 00 0B 01 00
+T D4 00 00
+R 00 00 00 00
+T D4 00 00 FA 00 00 EA 01 00 CD 00 00 21
+R 00 00 00 00 00 04 01 00 00 07 01 00 02 0A 07 00
+T DE 00 00 00 00 73 CB 76 28 10 11 00 00 D5 21
+R 00 00 00 00 00 03 01 00 02 0B 0B 00
+T EA 00 00 14 12 E5 AF 0F F5 CD 00 00 E8 06
+R 00 00 00 00 02 0A 14 00
+T F5 00 00
+R 00 00 00 00
+T F5 00 00 21 00 00 46 CB 48 28 27 21 03 00 2A 4F
+R 00 00 00 00 00 04 01 00 00 0C 01 00
+T 02 01 00 6E 5D AF 57 B9 9D CB 7B 28 07 CB 7A 20
+R 00 00 00 00
+T 0F 01 00 08 BF 18 05
+R 00 00 00 00
+T 13 01 00
+R 00 00 00 00
+T 13 01 00 CB 7A 28 01 37
+R 00 00 00 00
+T 18 01 00
+R 00 00 00 00
+T 18 01 00 30 0A 45 0B 21 03 00 79 22 70 18 1C
+R 00 00 00 00 00 08 01 00
+T 24 01 00
+R 00 00 00 00
+T 24 01 00 CB 40 28 18 21 03 00 2A 4F 46 79 D6 90
+R 00 00 00 00 00 08 01 00
+T 31 01 00 78 17 3F 1F DE 80 30 07 03 21 03 00 79
+R 00 00 00 00 00 0D 01 00
+T 3E 01 00 22 70
+R 00 00 00 00
+T 40 01 00
+R 00 00 00 00
+T 40 01 00 FA 01 00 21 00 00 AE 46 21 09 00 4E E6
+R 00 00 00 00 00 04 01 00 00 07 01 00 00 0C 01 00
+T 4D 01 00 10 5F 16 00 78 E6 10 6F 06 00 7A B3 28
+R 00 00 00 00
+T 5A 01 00 1E 78 B5 28 1A 79 B7 20 16 21 09 00 36
+R 00 00 00 00 00 0D 01 00
+T 67 01 00 01 FA 05 00 21 03 00 46 F5 33 C5 33 CD
+R 00 00 00 00 00 05 01 00 00 08 01 00
+T 74 01 00 00 00 E1 18 26
+R 00 00 00 00 00 03 00 00
+T 79 01 00
+R 00 00 00 00
+T 79 01 00 7A B3 28 22 78 B5 28 1E 79 B7 28 1A FA
+R 00 00 00 00
+T 86 01 00 10 00 B7 20 14 21 10 00 36 01 FA 05 00
+R 00 00 00 00 00 03 01 00 00 09 01 00 00 0E 01 00
+T 93 01 00 21 03 00 46 F5 33 C5 33 CD 1B 00 E1
+R 00 00 00 00 00 04 01 00 00 0C 00 00
+T 9F 01 00
+R 00 00 00 00
+T 9F 01 00 FA 09 00 B7 28 61 21 0C 00 2A 4F 6E 79
+R 00 00 00 00 00 04 01 00 00 0A 01 00
+T AC 01 00 C6 FD 47 7D CE FF 4F 21 0C 00 78 22 71
+R 00 00 00 00 00 0B 01 00
+T B9 01 00 FA 0A 00 C5 33 F5 33 CD 00 00 E1 1D 20
+R 00 00 00 00 00 04 01 00 02 0B 06 00
+T C6 01 00 1B 21 09 00 36 00 21 00 00 2A 4F 7E 21
+R 00 00 00 00 00 05 01 00 02 0A 0E 00
+T D3 01 00 00 00 71 23 77 3E 02 F5 33 CD 00 00 33
+R 00 00 00 00 02 03 13 00 02 0D 03 00
+T E0 01 00 18 24
+R 00 00 00 00
+T E2 01 00
+R 00 00 00 00
+T E2 01 00 21 0C 00 46 21 0A 00 4E 21 01 00 3A 5E
+R 00 00 00 00 00 04 01 00 00 08 01 00 02 0C 0E 00
+T EF 01 00 57 21 00 00 7B 22 72 21 00 00 36 04 C5
+R 00 00 00 00 02 05 13 00 02 0B 08 00
+T FC 01 00 33 61 2E 02 E5 CD 00 00 E8 03
+R 00 00 00 00 02 09 0C 00
+T 06 02 00
+R 00 00 00 00
+T 06 02 00 FA 10 00 B7 28 61 21 13 00 2A 4F 6E 79
+R 00 00 00 00 00 04 01 00 00 0A 01 00
+T 13 02 00 C6 FD 47 7D CE FF 4F 21 13 00 78 22 71
+R 00 00 00 00 00 0B 01 00
+T 20 02 00 FA 11 00 C5 33 F5 33 CD 00 00 E1 1D 20
+R 00 00 00 00 00 04 01 00 02 0B 06 00
+T 2D 02 00 1B 21 10 00 36 00 21 00 00 2A 4F 7E 21
+R 00 00 00 00 00 05 01 00 02 0A 0E 00
+T 3A 02 00 00 00 71 23 77 3E 03 F5 33 CD 00 00 33
+R 00 00 00 00 02 03 13 00 02 0D 03 00
+T 47 02 00 18 24
+R 00 00 00 00
+T 49 02 00
+R 00 00 00 00
+T 49 02 00 21 13 00 46 21 11 00 4E 21 01 00 3A 5E
+R 00 00 00 00 00 04 01 00 00 08 01 00 02 0C 0E 00
+T 56 02 00 57 21 00 00 7B 22 72 21 00 00 36 04 C5
+R 00 00 00 00 02 05 13 00 02 0B 08 00
+T 63 02 00 33 61 2E 03 E5 CD 00 00 E8 03
+R 00 00 00 00 02 09 0C 00
+T 6D 02 00
+R 00 00 00 00
+T 6D 02 00 21 0C 00 2A 4F 46 79 D6 F0 78 17 3F 1F
+R 00 00 00 00 00 04 01 00
+T 7A 02 00 DE 7F 30 19 21 09 00 36 00 21 00 00 2A
+R 00 00 00 00 00 08 01 00 02 0D 0E 00
+T 87 02 00 4F 7E 21 00 00 71 23 77 3E 02 F5 33 CD
+R 00 00 00 00 02 06 13 00
+T 94 02 00 00 00 33
+R 00 00 00 00 02 03 03 00
+T 97 02 00
+R 00 00 00 00
+T 97 02 00 21 13 00 2A 4F 46 79 D6 F0 78 17 3F 1F
+R 00 00 00 00 00 04 01 00
+T A4 02 00 DE 7F 30 19 21 10 00 36 00 21 00 00 2A
+R 00 00 00 00 00 08 01 00 02 0D 0E 00
+T B1 02 00 4F 7E 21 00 00 71 23 77 3E 03 F5 33 CD
+R 00 00 00 00 02 06 13 00
+T BE 02 00 00 00 33
+R 00 00 00 00 02 03 03 00
+T C1 02 00
+R 00 00 00 00
+T C1 02 00 21 05 00 4E 21 03 00 46 21 00 00 23 3A
+R 00 00 00 00 00 04 01 00 00 08 01 00 02 0C 01 00
+T CE 02 00 5E 57 21 00 00 7B 22 72 21 00 00 36 00
+R 00 00 00 00 02 06 13 00 02 0C 08 00
+T DB 02 00 79 F5 33 C5 33 AF F5 33 CD 00 00 E8 03
+R 00 00 00 00 02 0C 0C 00
+T E8 02 00 CD 00 00 CD 00 00 C3 D4 00
+R 00 00 00 00 02 04 12 00 02 07 00 00 00 0A 00 00

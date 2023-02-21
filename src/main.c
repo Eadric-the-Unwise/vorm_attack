@@ -3,13 +3,14 @@
 #include <stdio.h>
 
 #include "scene.h"
+
 // GOALS//
 // ANIMATE ENEMIES 1-2 //
 // SPRITE EXPLOSION NPCS//
 // NPC BULLET//
 // SPRITE EXPLOSION SHIP//
 // ? SPAWN 1UP LIVES REMOVAL //
-// STAGE 1, STAGE 2 //
+// STAGE 1, STAGE 2 //// ////
 UINT8 joy, last_joy;
 
 GameCharacter PLAYER;   // SHIP
@@ -24,7 +25,7 @@ void update_bullet2(UINT8 playerx, UINT8 playery) {  // MOVE BULLET 2
     BULLET2.x = playerx + 4;
     BULLET2.y = playery;
 }
-
+//
 void main() {
     DISABLE_VBL_TRANSFER;
     // BGP_REG = 0xE4;
@@ -40,11 +41,11 @@ void main() {
     set_bkg_data(0, 37, bkg_tiles);
     set_bkg_tiles(0, 0, 20, 18, bkg_map);
 
-    PLAYER.x = 72;
+    PLAYER.x = 72;  // making a small change to MAIN (void)
     PLAYER.y = 120;
     BULLET1.spawn = BULLET2.spawn = FALSE;
     move_metasprite(
-        galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // offsets the crazy y-centered, x on the right pixel -> top left
+        galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // offsets the crazy y-centered, x on the right pixel -> top left //
     last_joy = joy = 0;
 
     while (1) {

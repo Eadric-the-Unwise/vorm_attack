@@ -1,0 +1,801 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.6 #12539 (MINGW32)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _update_bullet2
+                                     13 	.globl _update_bullet1
+                                     14 	.globl _collide_bullet
+                                     15 	.globl _set_sprite_data
+                                     16 	.globl _set_bkg_tiles
+                                     17 	.globl _set_bkg_data
+                                     18 	.globl _refresh_OAM
+                                     19 	.globl _wait_vbl_done
+                                     20 	.globl _joypad
+                                     21 	.globl _BULLET2
+                                     22 	.globl _BULLET1
+                                     23 	.globl _PLAYER
+                                     24 	.globl _last_joy
+                                     25 	.globl _joy
+                                     26 ;--------------------------------------------------------
+                                     27 ; special function registers
+                                     28 ;--------------------------------------------------------
+                                     29 ;--------------------------------------------------------
+                                     30 ; ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area _DATA
+                           000000    33 G$joy$0_0$0==.
+      000000                         34 _joy::
+      000000                         35 	.ds 1
+                           000001    36 G$last_joy$0_0$0==.
+      000001                         37 _last_joy::
+      000001                         38 	.ds 1
+                           000002    39 G$PLAYER$0_0$0==.
+      000002                         40 _PLAYER::
+      000002                         41 	.ds 7
+                           000009    42 G$BULLET1$0_0$0==.
+      000009                         43 _BULLET1::
+      000009                         44 	.ds 7
+                           000010    45 G$BULLET2$0_0$0==.
+      000010                         46 _BULLET2::
+      000010                         47 	.ds 7
+                                     48 ;--------------------------------------------------------
+                                     49 ; ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area _INITIALIZED
+                                     52 ;--------------------------------------------------------
+                                     53 ; absolute external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area _DABS (ABS)
+                                     56 ;--------------------------------------------------------
+                                     57 ; global & static initialisations
+                                     58 ;--------------------------------------------------------
+                                     59 	.area _HOME
+                                     60 	.area _GSINIT
+                                     61 	.area _GSFINAL
+                                     62 	.area _GSINIT
+                                     63 ;--------------------------------------------------------
+                                     64 ; Home
+                                     65 ;--------------------------------------------------------
+                                     66 	.area _HOME
+                                     67 	.area _HOME
+                                     68 ;--------------------------------------------------------
+                                     69 ; code
+                                     70 ;--------------------------------------------------------
+                                     71 	.area _CODE
+                           000000    72 	G$update_bullet1$0$0	= .
+                                     73 	.globl	G$update_bullet1$0$0
+                           000000    74 	C$main.c$20$0_0$117	= .
+                                     75 	.globl	C$main.c$20$0_0$117
+                                     76 ;src/main.c:20: void update_bullet1(UINT8 playerx, UINT8 playery) {  // MOVE BULLET 1
+                                     77 ;	---------------------------------
+                                     78 ; Function update_bullet1
+                                     79 ; ---------------------------------
+      000000                         80 _update_bullet1::
+                           000000    81 	C$main.c$21$1_0$117	= .
+                                     82 	.globl	C$main.c$21$1_0$117
+                                     83 ;src/main.c:21: BULLET1.x = playerx + 4;
+      000000 F8 02                   84 	ldhl	sp,	#2
+      000002 4E                      85 	ld	c, (hl)
+      000003 06 00                   86 	ld	b, #0x00
+      000005 03                      87 	inc	bc
+      000006 03                      88 	inc	bc
+      000007 03                      89 	inc	bc
+      000008 03                      90 	inc	bc
+      000009 21r0Ar00                91 	ld	hl, #(_BULLET1 + 1)
+      00000C 79                      92 	ld	a, c
+      00000D 22                      93 	ld	(hl+), a
+      00000E 70                      94 	ld	(hl), b
+                           00000F    95 	C$main.c$22$1_0$117	= .
+                                     96 	.globl	C$main.c$22$1_0$117
+                                     97 ;src/main.c:22: BULLET1.y = playery;
+      00000F F8 03                   98 	ldhl	sp,	#3
+      000011 4E                      99 	ld	c, (hl)
+      000012 06 00                  100 	ld	b, #0x00
+      000014 21r0Cr00               101 	ld	hl, #(_BULLET1 + 3)
+      000017 79                     102 	ld	a, c
+      000018 22                     103 	ld	(hl+), a
+      000019 70                     104 	ld	(hl), b
+                           00001A   105 	C$main.c$23$1_0$117	= .
+                                    106 	.globl	C$main.c$23$1_0$117
+                                    107 ;src/main.c:23: }
+                           00001A   108 	C$main.c$23$1_0$117	= .
+                                    109 	.globl	C$main.c$23$1_0$117
+                           00001A   110 	XG$update_bullet1$0$0	= .
+                                    111 	.globl	XG$update_bullet1$0$0
+      00001A C9                     112 	ret
+                           00001B   113 	G$update_bullet2$0$0	= .
+                                    114 	.globl	G$update_bullet2$0$0
+                           00001B   115 	C$main.c$24$1_0$119	= .
+                                    116 	.globl	C$main.c$24$1_0$119
+                                    117 ;src/main.c:24: void update_bullet2(UINT8 playerx, UINT8 playery) {  // MOVE BULLET 2
+                                    118 ;	---------------------------------
+                                    119 ; Function update_bullet2
+                                    120 ; ---------------------------------
+      00001B                        121 _update_bullet2::
+                           00001B   122 	C$main.c$25$1_0$119	= .
+                                    123 	.globl	C$main.c$25$1_0$119
+                                    124 ;src/main.c:25: BULLET2.x = playerx + 4;
+      00001B F8 02                  125 	ldhl	sp,	#2
+      00001D 4E                     126 	ld	c, (hl)
+      00001E 06 00                  127 	ld	b, #0x00
+      000020 03                     128 	inc	bc
+      000021 03                     129 	inc	bc
+      000022 03                     130 	inc	bc
+      000023 03                     131 	inc	bc
+      000024 21r11r00               132 	ld	hl, #(_BULLET2 + 1)
+      000027 79                     133 	ld	a, c
+      000028 22                     134 	ld	(hl+), a
+      000029 70                     135 	ld	(hl), b
+                           00002A   136 	C$main.c$26$1_0$119	= .
+                                    137 	.globl	C$main.c$26$1_0$119
+                                    138 ;src/main.c:26: BULLET2.y = playery;
+      00002A F8 03                  139 	ldhl	sp,	#3
+      00002C 4E                     140 	ld	c, (hl)
+      00002D 06 00                  141 	ld	b, #0x00
+      00002F 21r13r00               142 	ld	hl, #(_BULLET2 + 3)
+      000032 79                     143 	ld	a, c
+      000033 22                     144 	ld	(hl+), a
+      000034 70                     145 	ld	(hl), b
+                           000035   146 	C$main.c$27$1_0$119	= .
+                                    147 	.globl	C$main.c$27$1_0$119
+                                    148 ;src/main.c:27: }
+                           000035   149 	C$main.c$27$1_0$119	= .
+                                    150 	.globl	C$main.c$27$1_0$119
+                           000035   151 	XG$update_bullet2$0$0	= .
+                                    152 	.globl	XG$update_bullet2$0$0
+      000035 C9                     153 	ret
+                           000036   154 	G$main$0$0	= .
+                                    155 	.globl	G$main$0$0
+                           000036   156 	C$main.c$29$1_0$120	= .
+                                    157 	.globl	C$main.c$29$1_0$120
+                                    158 ;src/main.c:29: void main() {
+                                    159 ;	---------------------------------
+                                    160 ; Function main
+                                    161 ; ---------------------------------
+      000036                        162 _main::
+                           000036   163 	C$main.c$30$1_0$120	= .
+                                    164 	.globl	C$main.c$30$1_0$120
+                                    165 ;src/main.c:30: DISABLE_VBL_TRANSFER;
+      000036 AF                     166 	xor	a, a
+      000037 E0r00                  167 	ldh	(__shadow_OAM_base + 0), a
+                           000039   168 	C$main.c$33$1_0$120	= .
+                                    169 	.globl	C$main.c$33$1_0$120
+                                    170 ;src/main.c:33: OBP1_REG = 0b10011100;
+      000039 3E 9C                  171 	ld	a, #0x9c
+      00003B E0r00                  172 	ldh	(_OBP1_REG + 0), a
+                           00003D   173 	C$main.c$34$1_0$120	= .
+                                    174 	.globl	C$main.c$34$1_0$120
+                                    175 ;src/main.c:34: SPRITES_8x16;  // MUST be 8x16 or 8x8. Can change in different scenes only
+      00003D F0r00                  176 	ldh	a, (_LCDC_REG + 0)
+      00003F F6 04                  177 	or	a, #0x04
+      000041 E0r00                  178 	ldh	(_LCDC_REG + 0), a
+                           000043   179 	C$main.c$35$1_0$120	= .
+                                    180 	.globl	C$main.c$35$1_0$120
+                                    181 ;src/main.c:35: SHOW_BKG;
+      000043 F0r00                  182 	ldh	a, (_LCDC_REG + 0)
+      000045 F6 01                  183 	or	a, #0x01
+      000047 E0r00                  184 	ldh	(_LCDC_REG + 0), a
+                           000049   185 	C$main.c$36$1_0$120	= .
+                                    186 	.globl	C$main.c$36$1_0$120
+                                    187 ;src/main.c:36: SHOW_SPRITES;
+      000049 F0r00                  188 	ldh	a, (_LCDC_REG + 0)
+      00004B F6 02                  189 	or	a, #0x02
+      00004D E0r00                  190 	ldh	(_LCDC_REG + 0), a
+                           00004F   191 	C$main.c$37$1_0$120	= .
+                                    192 	.globl	C$main.c$37$1_0$120
+                                    193 ;src/main.c:37: DISPLAY_ON;
+      00004F F0r00                  194 	ldh	a, (_LCDC_REG + 0)
+      000051 F6 80                  195 	or	a, #0x80
+      000053 E0r00                  196 	ldh	(_LCDC_REG + 0), a
+                           000055   197 	C$main.c$39$1_0$120	= .
+                                    198 	.globl	C$main.c$39$1_0$120
+                                    199 ;src/main.c:39: set_sprite_data(0, 4, galaga_tiles);
+      000055 11r00r00               200 	ld	de, #_galaga_tiles
+      000058 D5                     201 	push	de
+      000059 21 00 04               202 	ld	hl, #0x400
+      00005C E5                     203 	push	hl
+      00005D CDr00r00               204 	call	_set_sprite_data
+      000060 E8 04                  205 	add	sp, #4
+                           000062   206 	C$main.c$40$1_0$120	= .
+                                    207 	.globl	C$main.c$40$1_0$120
+                                    208 ;src/main.c:40: set_sprite_data(4, 2, bullet_tiles);
+      000062 11r00r00               209 	ld	de, #_bullet_tiles
+      000065 D5                     210 	push	de
+      000066 21 04 02               211 	ld	hl, #0x204
+      000069 E5                     212 	push	hl
+      00006A CDr00r00               213 	call	_set_sprite_data
+      00006D E8 04                  214 	add	sp, #4
+                           00006F   215 	C$main.c$41$1_0$120	= .
+                                    216 	.globl	C$main.c$41$1_0$120
+                                    217 ;src/main.c:41: set_bkg_data(0, 37, bkg_tiles);
+      00006F 11r00r00               218 	ld	de, #_bkg_tiles
+      000072 D5                     219 	push	de
+      000073 21 00 25               220 	ld	hl, #0x2500
+      000076 E5                     221 	push	hl
+      000077 CDr00r00               222 	call	_set_bkg_data
+      00007A E8 04                  223 	add	sp, #4
+                           00007C   224 	C$main.c$42$1_0$120	= .
+                                    225 	.globl	C$main.c$42$1_0$120
+                                    226 ;src/main.c:42: set_bkg_tiles(0, 0, 20, 18, bkg_map);
+      00007C 11r00r00               227 	ld	de, #_bkg_map
+      00007F D5                     228 	push	de
+      000080 21 14 12               229 	ld	hl, #0x1214
+      000083 E5                     230 	push	hl
+      000084 AF                     231 	xor	a, a
+      000085 0F                     232 	rrca
+      000086 F5                     233 	push	af
+      000087 CDr00r00               234 	call	_set_bkg_tiles
+      00008A E8 06                  235 	add	sp, #6
+                           00008C   236 	C$main.c$44$1_0$120	= .
+                                    237 	.globl	C$main.c$44$1_0$120
+                                    238 ;src/main.c:44: PLAYER.x = 72;  // making a small change to MAIN (void)
+      00008C 21r03r00               239 	ld	hl, #(_PLAYER + 1)
+      00008F 3E 48                  240 	ld	a, #0x48
+      000091 22                     241 	ld	(hl+), a
+      000092 36 00                  242 	ld	(hl), #0x00
+                           000094   243 	C$main.c$45$1_0$120	= .
+                                    244 	.globl	C$main.c$45$1_0$120
+                                    245 ;src/main.c:45: PLAYER.y = 120;
+      000094 21r05r00               246 	ld	hl, #(_PLAYER + 3)
+      000097 3E 78                  247 	ld	a, #0x78
+      000099 22                     248 	ld	(hl+), a
+      00009A 36 00                  249 	ld	(hl), #0x00
+                           00009C   250 	C$main.c$46$1_0$120	= .
+                                    251 	.globl	C$main.c$46$1_0$120
+                                    252 ;src/main.c:46: BULLET1.spawn = BULLET2.spawn = FALSE;
+      00009C 21r10r00               253 	ld	hl, #_BULLET2
+      00009F 36 00                  254 	ld	(hl), #0x00
+      0000A1 21r09r00               255 	ld	hl, #_BULLET1
+      0000A4 36 00                  256 	ld	(hl), #0x00
+                                    257 ;src/main.c:48: galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // offsets the crazy y-centered, x on the right pixel -> top left //
+      0000A6 21r05r00               258 	ld	hl, #(_PLAYER + 3)
+      0000A9 46                     259 	ld	b, (hl)
+      0000AA 21r03r00               260 	ld	hl, #(_PLAYER + 1)
+      0000AD 4E                     261 	ld	c, (hl)
+      0000AE 21r01r00               262 	ld	hl, #_galaga_metasprites + 1
+      0000B1 3A                     263 	ld	a,	(hl-)
+                                    264 ;	spillPairReg hl
+                                    265 ;C:/c_code/gbdk/include/gb/metasprites.h:131: __current_metasprite = metasprite; 
+      0000B2 5E                     266 	ld	e, (hl)
+      0000B3 57                     267 	ld	d, a
+      0000B4 21r00r00               268 	ld	hl, #___current_metasprite
+      0000B7 7B                     269 	ld	a, e
+      0000B8 22                     270 	ld	(hl+), a
+      0000B9 72                     271 	ld	(hl), d
+                                    272 ;C:/c_code/gbdk/include/gb/metasprites.h:132: __current_base_tile = base_tile;
+      0000BA 21r00r00               273 	ld	hl, #___current_base_tile
+      0000BD 36 00                  274 	ld	(hl), #0x00
+                                    275 ;C:/c_code/gbdk/include/gb/metasprites.h:133: return __move_metasprite(base_sprite, x, y); 
+      0000BF C5                     276 	push	bc
+      0000C0 33                     277 	inc	sp
+      0000C1 61                     278 	ld	h, c
+      0000C2 2E 00                  279 	ld	l, #0x00
+      0000C4 E5                     280 	push	hl
+      0000C5 CDr00r00               281 	call	___move_metasprite
+      0000C8 E8 03                  282 	add	sp, #3
+                           0000CA   283 	C$main.c$49$1_0$120	= .
+                                    284 	.globl	C$main.c$49$1_0$120
+                                    285 ;src/main.c:49: last_joy = joy = 0;
+      0000CA 21r00r00               286 	ld	hl, #_joy
+      0000CD 36 00                  287 	ld	(hl), #0x00
+      0000CF 21r01r00               288 	ld	hl, #_last_joy
+      0000D2 36 00                  289 	ld	(hl), #0x00
+                           0000D4   290 	C$main.c$51$1_0$120	= .
+                                    291 	.globl	C$main.c$51$1_0$120
+                                    292 ;src/main.c:51: while (1) {
+      0000D4                        293 00135$:
+                           0000D4   294 	C$main.c$52$2_0$121	= .
+                                    295 	.globl	C$main.c$52$2_0$121
+                                    296 ;src/main.c:52: last_joy = joy;
+      0000D4 FAr00r00               297 	ld	a, (#_joy)
+      0000D7 EAr01r00               298 	ld	(#_last_joy),a
+                           0000DA   299 	C$main.c$53$2_0$121	= .
+                                    300 	.globl	C$main.c$53$2_0$121
+                                    301 ;src/main.c:53: joy = joypad();
+      0000DA CDr00r00               302 	call	_joypad
+      0000DD 21r00r00               303 	ld	hl, #_joy
+      0000E0 73                     304 	ld	(hl), e
+                           0000E1   305 	C$main.c$55$2_0$121	= .
+                                    306 	.globl	C$main.c$55$2_0$121
+                                    307 ;src/main.c:55: if (joy & J_SELECT) {
+      0000E1 CB 76                  308 	bit	6, (hl)
+      0000E3 28 10                  309 	jr	Z, 00102$
+                           0000E5   310 	C$main.c$56$3_0$122	= .
+                                    311 	.globl	C$main.c$56$3_0$122
+                                    312 ;src/main.c:56: set_bkg_tiles(0, 0, 20, 18, bkg_map);
+      0000E5 11r00r00               313 	ld	de, #_bkg_map
+      0000E8 D5                     314 	push	de
+      0000E9 21 14 12               315 	ld	hl, #0x1214
+      0000EC E5                     316 	push	hl
+      0000ED AF                     317 	xor	a, a
+      0000EE 0F                     318 	rrca
+      0000EF F5                     319 	push	af
+      0000F0 CDr00r00               320 	call	_set_bkg_tiles
+      0000F3 E8 06                  321 	add	sp, #6
+      0000F5                        322 00102$:
+                           0000F5   323 	C$main.c$52$1_0$120	= .
+                                    324 	.globl	C$main.c$52$1_0$120
+                                    325 ;src/main.c:52: last_joy = joy;
+      0000F5 21r00r00               326 	ld	hl, #_joy
+      0000F8 46                     327 	ld	b, (hl)
+                           0000F9   328 	C$main.c$60$2_0$121	= .
+                                    329 	.globl	C$main.c$60$2_0$121
+                                    330 ;src/main.c:60: if ((joy & J_LEFT) && PLAYER.x > 0) {  // MOVE PLAYER LEFT
+      0000F9 CB 48                  331 	bit	1, b
+      0000FB 28 27                  332 	jr	Z, 00107$
+                           0000FD   333 	C$main.c$48$1_0$120	= .
+                                    334 	.globl	C$main.c$48$1_0$120
+                                    335 ;src/main.c:48: galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // offsets the crazy y-centered, x on the right pixel -> top left //
+      0000FD 21r03r00               336 	ld	hl, #(_PLAYER + 1)
+      000100 2A                     337 	ld	a, (hl+)
+      000101 4F                     338 	ld	c, a
+      000102 6E                     339 	ld	l, (hl)
+                                    340 ;	spillPairReg hl
+                           000103   341 	C$main.c$60$2_0$121	= .
+                                    342 	.globl	C$main.c$60$2_0$121
+                                    343 ;src/main.c:60: if ((joy & J_LEFT) && PLAYER.x > 0) {  // MOVE PLAYER LEFT
+      000103 5D                     344 	ld	e, l
+      000104 AF                     345 	xor	a, a
+      000105 57                     346 	ld	d, a
+      000106 B9                     347 	cp	a, c
+      000107 9D                     348 	sbc	a, l
+      000108 CB 7B                  349 	bit	7, e
+      00010A 28 07                  350 	jr	Z, 00244$
+      00010C CB 7A                  351 	bit	7, d
+      00010E 20 08                  352 	jr	NZ, 00245$
+      000110 BF                     353 	cp	a, a
+      000111 18 05                  354 	jr	00245$
+      000113                        355 00244$:
+      000113 CB 7A                  356 	bit	7, d
+      000115 28 01                  357 	jr	Z, 00245$
+      000117 37                     358 	scf
+      000118                        359 00245$:
+      000118 30 0A                  360 	jr	NC, 00107$
+                           00011A   361 	C$main.c$61$3_0$123	= .
+                                    362 	.globl	C$main.c$61$3_0$123
+                                    363 ;src/main.c:61: PLAYER.x -= 1;
+      00011A 45                     364 	ld	b, l
+      00011B 0B                     365 	dec	bc
+      00011C 21r03r00               366 	ld	hl, #(_PLAYER + 1)
+      00011F 79                     367 	ld	a, c
+      000120 22                     368 	ld	(hl+), a
+      000121 70                     369 	ld	(hl), b
+      000122 18 1C                  370 	jr	00108$
+      000124                        371 00107$:
+                           000124   372 	C$main.c$62$2_0$121	= .
+                                    373 	.globl	C$main.c$62$2_0$121
+                                    374 ;src/main.c:62: } else if ((joy & J_RIGHT) && PLAYER.x < 144) {  // MOVE PLAYER RIGHT
+      000124 CB 40                  375 	bit	0, b
+      000126 28 18                  376 	jr	Z, 00108$
+                           000128   377 	C$main.c$48$1_0$120	= .
+                                    378 	.globl	C$main.c$48$1_0$120
+                                    379 ;src/main.c:48: galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // offsets the crazy y-centered, x on the right pixel -> top left //
+      000128 21r03r00               380 	ld	hl, #(_PLAYER + 1)
+      00012B 2A                     381 	ld	a, (hl+)
+      00012C 4F                     382 	ld	c, a
+      00012D 46                     383 	ld	b, (hl)
+                           00012E   384 	C$main.c$62$2_0$121	= .
+                                    385 	.globl	C$main.c$62$2_0$121
+                                    386 ;src/main.c:62: } else if ((joy & J_RIGHT) && PLAYER.x < 144) {  // MOVE PLAYER RIGHT
+      00012E 79                     387 	ld	a, c
+      00012F D6 90                  388 	sub	a, #0x90
+      000131 78                     389 	ld	a, b
+      000132 17                     390 	rla
+      000133 3F                     391 	ccf
+      000134 1F                     392 	rra
+      000135 DE 80                  393 	sbc	a, #0x80
+      000137 30 07                  394 	jr	NC, 00108$
+                           000139   395 	C$main.c$63$3_0$124	= .
+                                    396 	.globl	C$main.c$63$3_0$124
+                                    397 ;src/main.c:63: PLAYER.x += 1;
+      000139 03                     398 	inc	bc
+      00013A 21r03r00               399 	ld	hl, #(_PLAYER + 1)
+      00013D 79                     400 	ld	a, c
+      00013E 22                     401 	ld	(hl+), a
+      00013F 70                     402 	ld	(hl), b
+      000140                        403 00108$:
+                           000140   404 	C$main.c$65$1_0$120	= .
+                                    405 	.globl	C$main.c$65$1_0$120
+                                    406 ;src/main.c:65: if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && !(BULLET1.spawn)) {  // IF NO BULLET ON SCREEN, SPAWN BULLET1
+      000140 FAr01r00               407 	ld	a, (#_last_joy)
+      000143 21r00r00               408 	ld	hl, #_joy
+      000146 AE                     409 	xor	a, (hl)
+                           000147   410 	C$main.c$52$1_0$120	= .
+                                    411 	.globl	C$main.c$52$1_0$120
+                                    412 ;src/main.c:52: last_joy = joy;
+      000147 46                     413 	ld	b, (hl)
+                           000148   414 	C$main.c$65$1_0$120	= .
+                                    415 	.globl	C$main.c$65$1_0$120
+                                    416 ;src/main.c:65: if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && !(BULLET1.spawn)) {  // IF NO BULLET ON SCREEN, SPAWN BULLET1
+      000148 21r09r00               417 	ld	hl, #_BULLET1
+      00014B 4E                     418 	ld	c, (hl)
+      00014C E6 10                  419 	and	a, #0x10
+      00014E 5F                     420 	ld	e, a
+      00014F 16 00                  421 	ld	d, #0x00
+      000151 78                     422 	ld	a, b
+      000152 E6 10                  423 	and	a, #0x10
+      000154 6F                     424 	ld	l, a
+                                    425 ;	spillPairReg hl
+                                    426 ;	spillPairReg hl
+      000155 06 00                  427 	ld	b, #0x00
+      000157 7A                     428 	ld	a, d
+      000158 B3                     429 	or	a, e
+      000159 28 1E                  430 	jr	Z, 00116$
+      00015B 78                     431 	ld	a, b
+      00015C B5                     432 	or	a, l
+      00015D 28 1A                  433 	jr	Z, 00116$
+      00015F 79                     434 	ld	a, c
+      000160 B7                     435 	or	a, a
+      000161 20 16                  436 	jr	NZ, 00116$
+                           000163   437 	C$main.c$66$3_0$125	= .
+                                    438 	.globl	C$main.c$66$3_0$125
+                                    439 ;src/main.c:66: BULLET1.spawn = TRUE;
+      000163 21r09r00               440 	ld	hl, #_BULLET1
+      000166 36 01                  441 	ld	(hl), #0x01
+                           000168   442 	C$main.c$67$3_0$125	= .
+                                    443 	.globl	C$main.c$67$3_0$125
+                                    444 ;src/main.c:67: update_bullet1(PLAYER.x, PLAYER.y);
+      000168 FAr05r00               445 	ld	a, (#(_PLAYER + 3) + 0)
+      00016B 21r03r00               446 	ld	hl, #(_PLAYER + 1)
+      00016E 46                     447 	ld	b, (hl)
+      00016F F5                     448 	push	af
+      000170 33                     449 	inc	sp
+      000171 C5                     450 	push	bc
+      000172 33                     451 	inc	sp
+      000173 CDr00r00               452 	call	_update_bullet1
+      000176 E1                     453 	pop	hl
+      000177 18 26                  454 	jr	00117$
+      000179                        455 00116$:
+                           000179   456 	C$main.c$68$2_0$121	= .
+                                    457 	.globl	C$main.c$68$2_0$121
+                                    458 ;src/main.c:68: } else if ((CHANGED_BUTTONS & J_A) && (joy & J_A) && (BULLET1.spawn) && !(BULLET2.spawn)) {  // IF BULLET1 IS ON SCREEN, SPAWN BULLET2
+      000179 7A                     459 	ld	a, d
+      00017A B3                     460 	or	a, e
+      00017B 28 22                  461 	jr	Z, 00117$
+      00017D 78                     462 	ld	a, b
+      00017E B5                     463 	or	a, l
+      00017F 28 1E                  464 	jr	Z, 00117$
+      000181 79                     465 	ld	a, c
+      000182 B7                     466 	or	a, a
+      000183 28 1A                  467 	jr	Z, 00117$
+      000185 FAr10r00               468 	ld	a, (#_BULLET2 + 0)
+      000188 B7                     469 	or	a, a
+      000189 20 14                  470 	jr	NZ, 00117$
+                           00018B   471 	C$main.c$69$3_0$126	= .
+                                    472 	.globl	C$main.c$69$3_0$126
+                                    473 ;src/main.c:69: BULLET2.spawn = TRUE;
+      00018B 21r10r00               474 	ld	hl, #_BULLET2
+      00018E 36 01                  475 	ld	(hl), #0x01
+                           000190   476 	C$main.c$70$3_0$126	= .
+                                    477 	.globl	C$main.c$70$3_0$126
+                                    478 ;src/main.c:70: update_bullet2(PLAYER.x, PLAYER.y);
+      000190 FAr05r00               479 	ld	a, (#(_PLAYER + 3) + 0)
+      000193 21r03r00               480 	ld	hl, #(_PLAYER + 1)
+      000196 46                     481 	ld	b, (hl)
+      000197 F5                     482 	push	af
+      000198 33                     483 	inc	sp
+      000199 C5                     484 	push	bc
+      00019A 33                     485 	inc	sp
+      00019B CDr1Br00               486 	call	_update_bullet2
+      00019E E1                     487 	pop	hl
+      00019F                        488 00117$:
+                           00019F   489 	C$main.c$73$2_0$121	= .
+                                    490 	.globl	C$main.c$73$2_0$121
+                                    491 ;src/main.c:73: if (BULLET1.spawn) {  // IF BULLET1 IS ON SCREEN
+      00019F FAr09r00               492 	ld	a, (#_BULLET1 + 0)
+      0001A2 B7                     493 	or	a, a
+      0001A3 28 61                  494 	jr	Z, 00124$
+                           0001A5   495 	C$main.c$74$3_0$127	= .
+                                    496 	.globl	C$main.c$74$3_0$127
+                                    497 ;src/main.c:74: BULLET1.y -= 3;
+      0001A5 21r0Cr00               498 	ld	hl, #(_BULLET1 + 3)
+      0001A8 2A                     499 	ld	a, (hl+)
+      0001A9 4F                     500 	ld	c, a
+      0001AA 6E                     501 	ld	l, (hl)
+                                    502 ;	spillPairReg hl
+      0001AB 79                     503 	ld	a, c
+      0001AC C6 FD                  504 	add	a, #0xfd
+      0001AE 47                     505 	ld	b, a
+      0001AF 7D                     506 	ld	a, l
+      0001B0 CE FF                  507 	adc	a, #0xff
+      0001B2 4F                     508 	ld	c, a
+      0001B3 21r0Cr00               509 	ld	hl, #(_BULLET1 + 3)
+      0001B6 78                     510 	ld	a, b
+      0001B7 22                     511 	ld	(hl+), a
+      0001B8 71                     512 	ld	(hl), c
+                           0001B9   513 	C$main.c$75$3_0$127	= .
+                                    514 	.globl	C$main.c$75$3_0$127
+                                    515 ;src/main.c:75: if (collide_bullet(BULLET1.x, BULLET1.y) == 0x01U) {  // CHECK FOR BACKGROUND COLLISION
+      0001B9 FAr0Ar00               516 	ld	a, (#(_BULLET1 + 1) + 0)
+      0001BC C5                     517 	push	bc
+      0001BD 33                     518 	inc	sp
+      0001BE F5                     519 	push	af
+      0001BF 33                     520 	inc	sp
+      0001C0 CDr00r00               521 	call	_collide_bullet
+      0001C3 E1                     522 	pop	hl
+      0001C4 1D                     523 	dec	e
+      0001C5 20 1B                  524 	jr	NZ, 00121$
+                           0001C7   525 	C$main.c$76$4_0$128	= .
+                                    526 	.globl	C$main.c$76$4_0$128
+                                    527 ;src/main.c:76: BULLET1.spawn = FALSE;
+      0001C7 21r09r00               528 	ld	hl, #_BULLET1
+      0001CA 36 00                  529 	ld	(hl), #0x00
+                                    530 ;src/main.c:77: hide_metasprite(bullet_metasprites[0], 2);  // HIDE BULLET1
+      0001CC 21r00r00               531 	ld	hl, #_bullet_metasprites
+      0001CF 2A                     532 	ld	a, (hl+)
+      0001D0 4F                     533 	ld	c, a
+      0001D1 7E                     534 	ld	a, (hl)
+                                    535 ;C:/c_code/gbdk/include/gb/metasprites.h:228: __current_metasprite = metasprite; 
+      0001D2 21r00r00               536 	ld	hl, #___current_metasprite
+      0001D5 71                     537 	ld	(hl), c
+      0001D6 23                     538 	inc	hl
+      0001D7 77                     539 	ld	(hl), a
+                                    540 ;C:/c_code/gbdk/include/gb/metasprites.h:229: __hide_metasprite(base_sprite);
+      0001D8 3E 02                  541 	ld	a, #0x02
+      0001DA F5                     542 	push	af
+      0001DB 33                     543 	inc	sp
+      0001DC CDr00r00               544 	call	___hide_metasprite
+      0001DF 33                     545 	inc	sp
+                           0001E0   546 	C$main.c$77$3_0$127	= .
+                                    547 	.globl	C$main.c$77$3_0$127
+                                    548 ;src/main.c:77: hide_metasprite(bullet_metasprites[0], 2);  // HIDE BULLET1
+      0001E0 18 24                  549 	jr	00124$
+      0001E2                        550 00121$:
+                                    551 ;src/main.c:80: bullet_metasprites[0], 4, 2, BULLET1.x, BULLET1.y);
+      0001E2 21r0Cr00               552 	ld	hl, #(_BULLET1 + 3)
+      0001E5 46                     553 	ld	b, (hl)
+      0001E6 21r0Ar00               554 	ld	hl, #(_BULLET1 + 1)
+      0001E9 4E                     555 	ld	c, (hl)
+      0001EA 21r01r00               556 	ld	hl, #_bullet_metasprites + 1
+      0001ED 3A                     557 	ld	a,	(hl-)
+                                    558 ;	spillPairReg hl
+                                    559 ;C:/c_code/gbdk/include/gb/metasprites.h:131: __current_metasprite = metasprite; 
+      0001EE 5E                     560 	ld	e, (hl)
+      0001EF 57                     561 	ld	d, a
+      0001F0 21r00r00               562 	ld	hl, #___current_metasprite
+      0001F3 7B                     563 	ld	a, e
+      0001F4 22                     564 	ld	(hl+), a
+      0001F5 72                     565 	ld	(hl), d
+                                    566 ;C:/c_code/gbdk/include/gb/metasprites.h:132: __current_base_tile = base_tile;
+      0001F6 21r00r00               567 	ld	hl, #___current_base_tile
+      0001F9 36 04                  568 	ld	(hl), #0x04
+                                    569 ;C:/c_code/gbdk/include/gb/metasprites.h:133: return __move_metasprite(base_sprite, x, y); 
+      0001FB C5                     570 	push	bc
+      0001FC 33                     571 	inc	sp
+      0001FD 61                     572 	ld	h, c
+      0001FE 2E 02                  573 	ld	l, #0x02
+      000200 E5                     574 	push	hl
+      000201 CDr00r00               575 	call	___move_metasprite
+      000204 E8 03                  576 	add	sp, #3
+                           000206   577 	C$main.c$80$2_0$121	= .
+                                    578 	.globl	C$main.c$80$2_0$121
+                                    579 ;src/main.c:80: bullet_metasprites[0], 4, 2, BULLET1.x, BULLET1.y);
+      000206                        580 00124$:
+                           000206   581 	C$main.c$82$2_0$121	= .
+                                    582 	.globl	C$main.c$82$2_0$121
+                                    583 ;src/main.c:82: if (BULLET2.spawn) {  // IF BULLET2 IS ON SCREEN
+      000206 FAr10r00               584 	ld	a, (#_BULLET2 + 0)
+      000209 B7                     585 	or	a, a
+      00020A 28 61                  586 	jr	Z, 00129$
+                           00020C   587 	C$main.c$83$3_0$129	= .
+                                    588 	.globl	C$main.c$83$3_0$129
+                                    589 ;src/main.c:83: BULLET2.y -= 3;
+      00020C 21r13r00               590 	ld	hl, #(_BULLET2 + 3)
+      00020F 2A                     591 	ld	a, (hl+)
+      000210 4F                     592 	ld	c, a
+      000211 6E                     593 	ld	l, (hl)
+                                    594 ;	spillPairReg hl
+      000212 79                     595 	ld	a, c
+      000213 C6 FD                  596 	add	a, #0xfd
+      000215 47                     597 	ld	b, a
+      000216 7D                     598 	ld	a, l
+      000217 CE FF                  599 	adc	a, #0xff
+      000219 4F                     600 	ld	c, a
+      00021A 21r13r00               601 	ld	hl, #(_BULLET2 + 3)
+      00021D 78                     602 	ld	a, b
+      00021E 22                     603 	ld	(hl+), a
+      00021F 71                     604 	ld	(hl), c
+                           000220   605 	C$main.c$84$3_0$129	= .
+                                    606 	.globl	C$main.c$84$3_0$129
+                                    607 ;src/main.c:84: if (collide_bullet(BULLET2.x, BULLET2.y) == 0x01U) {  // CHECK FOR BACKGROUND COLLISION
+      000220 FAr11r00               608 	ld	a, (#(_BULLET2 + 1) + 0)
+      000223 C5                     609 	push	bc
+      000224 33                     610 	inc	sp
+      000225 F5                     611 	push	af
+      000226 33                     612 	inc	sp
+      000227 CDr00r00               613 	call	_collide_bullet
+      00022A E1                     614 	pop	hl
+      00022B 1D                     615 	dec	e
+      00022C 20 1B                  616 	jr	NZ, 00126$
+                           00022E   617 	C$main.c$85$4_0$130	= .
+                                    618 	.globl	C$main.c$85$4_0$130
+                                    619 ;src/main.c:85: BULLET2.spawn = FALSE;
+      00022E 21r10r00               620 	ld	hl, #_BULLET2
+      000231 36 00                  621 	ld	(hl), #0x00
+                                    622 ;src/main.c:86: hide_metasprite(bullet_metasprites[0], 3);  // HIDE BULLET2
+      000233 21r00r00               623 	ld	hl, #_bullet_metasprites
+      000236 2A                     624 	ld	a, (hl+)
+      000237 4F                     625 	ld	c, a
+      000238 7E                     626 	ld	a, (hl)
+                                    627 ;C:/c_code/gbdk/include/gb/metasprites.h:228: __current_metasprite = metasprite; 
+      000239 21r00r00               628 	ld	hl, #___current_metasprite
+      00023C 71                     629 	ld	(hl), c
+      00023D 23                     630 	inc	hl
+      00023E 77                     631 	ld	(hl), a
+                                    632 ;C:/c_code/gbdk/include/gb/metasprites.h:229: __hide_metasprite(base_sprite);
+      00023F 3E 03                  633 	ld	a, #0x03
+      000241 F5                     634 	push	af
+      000242 33                     635 	inc	sp
+      000243 CDr00r00               636 	call	___hide_metasprite
+      000246 33                     637 	inc	sp
+                           000247   638 	C$main.c$86$3_0$129	= .
+                                    639 	.globl	C$main.c$86$3_0$129
+                                    640 ;src/main.c:86: hide_metasprite(bullet_metasprites[0], 3);  // HIDE BULLET2
+      000247 18 24                  641 	jr	00129$
+      000249                        642 00126$:
+                                    643 ;src/main.c:89: bullet_metasprites[0], 4, 3, BULLET2.x, BULLET2.y);
+      000249 21r13r00               644 	ld	hl, #(_BULLET2 + 3)
+      00024C 46                     645 	ld	b, (hl)
+      00024D 21r11r00               646 	ld	hl, #(_BULLET2 + 1)
+      000250 4E                     647 	ld	c, (hl)
+      000251 21r01r00               648 	ld	hl, #_bullet_metasprites + 1
+      000254 3A                     649 	ld	a,	(hl-)
+                                    650 ;	spillPairReg hl
+                                    651 ;C:/c_code/gbdk/include/gb/metasprites.h:131: __current_metasprite = metasprite; 
+      000255 5E                     652 	ld	e, (hl)
+      000256 57                     653 	ld	d, a
+      000257 21r00r00               654 	ld	hl, #___current_metasprite
+      00025A 7B                     655 	ld	a, e
+      00025B 22                     656 	ld	(hl+), a
+      00025C 72                     657 	ld	(hl), d
+                                    658 ;C:/c_code/gbdk/include/gb/metasprites.h:132: __current_base_tile = base_tile;
+      00025D 21r00r00               659 	ld	hl, #___current_base_tile
+      000260 36 04                  660 	ld	(hl), #0x04
+                                    661 ;C:/c_code/gbdk/include/gb/metasprites.h:133: return __move_metasprite(base_sprite, x, y); 
+      000262 C5                     662 	push	bc
+      000263 33                     663 	inc	sp
+      000264 61                     664 	ld	h, c
+      000265 2E 03                  665 	ld	l, #0x03
+      000267 E5                     666 	push	hl
+      000268 CDr00r00               667 	call	___move_metasprite
+      00026B E8 03                  668 	add	sp, #3
+                           00026D   669 	C$main.c$89$2_0$121	= .
+                                    670 	.globl	C$main.c$89$2_0$121
+                                    671 ;src/main.c:89: bullet_metasprites[0], 4, 3, BULLET2.x, BULLET2.y);
+      00026D                        672 00129$:
+                           00026D   673 	C$main.c$91$2_0$121	= .
+                                    674 	.globl	C$main.c$91$2_0$121
+                                    675 ;src/main.c:91: if (BULLET1.y < -16) {  // IF BULLET1 REACHES TOP OF SCREEN
+      00026D 21r0Cr00               676 	ld	hl, #(_BULLET1 + 3)
+      000270 2A                     677 	ld	a, (hl+)
+      000271 4F                     678 	ld	c, a
+      000272 46                     679 	ld	b, (hl)
+      000273 79                     680 	ld	a, c
+      000274 D6 F0                  681 	sub	a, #0xf0
+      000276 78                     682 	ld	a, b
+      000277 17                     683 	rla
+      000278 3F                     684 	ccf
+      000279 1F                     685 	rra
+      00027A DE 7F                  686 	sbc	a, #0x7f
+      00027C 30 19                  687 	jr	NC, 00131$
+                           00027E   688 	C$main.c$92$3_0$131	= .
+                                    689 	.globl	C$main.c$92$3_0$131
+                                    690 ;src/main.c:92: BULLET1.spawn = FALSE;
+      00027E 21r09r00               691 	ld	hl, #_BULLET1
+      000281 36 00                  692 	ld	(hl), #0x00
+                                    693 ;src/main.c:93: hide_metasprite(bullet_metasprites[0], 2);  // HIDE BULLET1
+      000283 21r00r00               694 	ld	hl, #_bullet_metasprites
+      000286 2A                     695 	ld	a, (hl+)
+      000287 4F                     696 	ld	c, a
+      000288 7E                     697 	ld	a, (hl)
+                                    698 ;C:/c_code/gbdk/include/gb/metasprites.h:228: __current_metasprite = metasprite; 
+      000289 21r00r00               699 	ld	hl, #___current_metasprite
+      00028C 71                     700 	ld	(hl), c
+      00028D 23                     701 	inc	hl
+      00028E 77                     702 	ld	(hl), a
+                                    703 ;C:/c_code/gbdk/include/gb/metasprites.h:229: __hide_metasprite(base_sprite);
+      00028F 3E 02                  704 	ld	a, #0x02
+      000291 F5                     705 	push	af
+      000292 33                     706 	inc	sp
+      000293 CDr00r00               707 	call	___hide_metasprite
+      000296 33                     708 	inc	sp
+                           000297   709 	C$main.c$93$2_0$121	= .
+                                    710 	.globl	C$main.c$93$2_0$121
+                                    711 ;src/main.c:93: hide_metasprite(bullet_metasprites[0], 2);  // HIDE BULLET1
+      000297                        712 00131$:
+                           000297   713 	C$main.c$95$2_0$121	= .
+                                    714 	.globl	C$main.c$95$2_0$121
+                                    715 ;src/main.c:95: if (BULLET2.y < -16) {  // IF BULLET2 REACHES TOP OF SCREEN
+      000297 21r13r00               716 	ld	hl, #(_BULLET2 + 3)
+      00029A 2A                     717 	ld	a, (hl+)
+      00029B 4F                     718 	ld	c, a
+      00029C 46                     719 	ld	b, (hl)
+      00029D 79                     720 	ld	a, c
+      00029E D6 F0                  721 	sub	a, #0xf0
+      0002A0 78                     722 	ld	a, b
+      0002A1 17                     723 	rla
+      0002A2 3F                     724 	ccf
+      0002A3 1F                     725 	rra
+      0002A4 DE 7F                  726 	sbc	a, #0x7f
+      0002A6 30 19                  727 	jr	NC, 00133$
+                           0002A8   728 	C$main.c$96$3_0$132	= .
+                                    729 	.globl	C$main.c$96$3_0$132
+                                    730 ;src/main.c:96: BULLET2.spawn = FALSE;
+      0002A8 21r10r00               731 	ld	hl, #_BULLET2
+      0002AB 36 00                  732 	ld	(hl), #0x00
+                                    733 ;src/main.c:97: hide_metasprite(bullet_metasprites[0], 3);  // HIDE BULLET2
+      0002AD 21r00r00               734 	ld	hl, #_bullet_metasprites
+      0002B0 2A                     735 	ld	a, (hl+)
+      0002B1 4F                     736 	ld	c, a
+      0002B2 7E                     737 	ld	a, (hl)
+                                    738 ;C:/c_code/gbdk/include/gb/metasprites.h:228: __current_metasprite = metasprite; 
+      0002B3 21r00r00               739 	ld	hl, #___current_metasprite
+      0002B6 71                     740 	ld	(hl), c
+      0002B7 23                     741 	inc	hl
+      0002B8 77                     742 	ld	(hl), a
+                                    743 ;C:/c_code/gbdk/include/gb/metasprites.h:229: __hide_metasprite(base_sprite);
+      0002B9 3E 03                  744 	ld	a, #0x03
+      0002BB F5                     745 	push	af
+      0002BC 33                     746 	inc	sp
+      0002BD CDr00r00               747 	call	___hide_metasprite
+      0002C0 33                     748 	inc	sp
+                           0002C1   749 	C$main.c$97$2_0$121	= .
+                                    750 	.globl	C$main.c$97$2_0$121
+                                    751 ;src/main.c:97: hide_metasprite(bullet_metasprites[0], 3);  // HIDE BULLET2
+      0002C1                        752 00133$:
+                                    753 ;src/main.c:101: galaga_metasprites[0], 0, 0, PLAYER.x, PLAYER.y);  // DRAW SHIP POSITION
+      0002C1 21r05r00               754 	ld	hl, #(_PLAYER + 3)
+      0002C4 4E                     755 	ld	c, (hl)
+      0002C5 21r03r00               756 	ld	hl, #(_PLAYER + 1)
+      0002C8 46                     757 	ld	b, (hl)
+      0002C9 21r00r00               758 	ld	hl, #_galaga_metasprites
+      0002CC 23                     759 	inc	hl
+      0002CD 3A                     760 	ld	a,	(hl-)
+                                    761 ;	spillPairReg hl
+                                    762 ;C:/c_code/gbdk/include/gb/metasprites.h:131: __current_metasprite = metasprite; 
+      0002CE 5E                     763 	ld	e, (hl)
+      0002CF 57                     764 	ld	d, a
+      0002D0 21r00r00               765 	ld	hl, #___current_metasprite
+      0002D3 7B                     766 	ld	a, e
+      0002D4 22                     767 	ld	(hl+), a
+      0002D5 72                     768 	ld	(hl), d
+                                    769 ;C:/c_code/gbdk/include/gb/metasprites.h:132: __current_base_tile = base_tile;
+      0002D6 21r00r00               770 	ld	hl, #___current_base_tile
+      0002D9 36 00                  771 	ld	(hl), #0x00
+                                    772 ;C:/c_code/gbdk/include/gb/metasprites.h:133: return __move_metasprite(base_sprite, x, y); 
+      0002DB 79                     773 	ld	a, c
+      0002DC F5                     774 	push	af
+      0002DD 33                     775 	inc	sp
+      0002DE C5                     776 	push	bc
+      0002DF 33                     777 	inc	sp
+      0002E0 AF                     778 	xor	a, a
+      0002E1 F5                     779 	push	af
+      0002E2 33                     780 	inc	sp
+      0002E3 CDr00r00               781 	call	___move_metasprite
+      0002E6 E8 03                  782 	add	sp, #3
+                           0002E8   783 	C$main.c$103$2_0$121	= .
+                                    784 	.globl	C$main.c$103$2_0$121
+                                    785 ;src/main.c:103: wait_vbl_done();
+      0002E8 CDr00r00               786 	call	_wait_vbl_done
+                           0002EB   787 	C$main.c$104$2_0$121	= .
+                                    788 	.globl	C$main.c$104$2_0$121
+                                    789 ;src/main.c:104: refresh_OAM();
+      0002EB CDr00r00               790 	call	_refresh_OAM
+                           0002EE   791 	C$main.c$106$1_0$120	= .
+                                    792 	.globl	C$main.c$106$1_0$120
+                                    793 ;src/main.c:106: }
+                           0002EE   794 	C$main.c$106$1_0$120	= .
+                                    795 	.globl	C$main.c$106$1_0$120
+                           0002EE   796 	XG$main$0$0	= .
+                                    797 	.globl	XG$main$0$0
+      0002EE C3rD4r00               798 	jp	00135$
+                                    799 	.area _CODE
+                                    800 	.area _INITIALIZER
+                                    801 	.area _CABS (ABS)
