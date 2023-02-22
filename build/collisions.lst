@@ -1,0 +1,2072 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.6 #12539 (MINGW32)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module collisions
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _get_bkg_tile_xy
+                                     12 	.globl _set_bkg_tile_xy
+                                     13 	.globl _npc_tile_mothership_dead
+                                     14 	.globl _npc_tile_mothership_green
+                                     15 	.globl _npc_tile_mothership
+                                     16 	.globl _npc_tile_wasp
+                                     17 	.globl _npc_tile_bee
+                                     18 	.globl _collide_bullet
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function registers
+                                     21 ;--------------------------------------------------------
+                                     22 ;--------------------------------------------------------
+                                     23 ; ram data
+                                     24 ;--------------------------------------------------------
+                                     25 	.area _DATA
+                                     26 ;--------------------------------------------------------
+                                     27 ; ram data
+                                     28 ;--------------------------------------------------------
+                                     29 	.area _INITIALIZED
+                           000000    30 G$npc_tile_bee$0_0$0==.
+      000000                         31 _npc_tile_bee::
+      000000                         32 	.ds 5
+                           000005    33 G$npc_tile_wasp$0_0$0==.
+      000005                         34 _npc_tile_wasp::
+      000005                         35 	.ds 5
+                           00000A    36 G$npc_tile_mothership$0_0$0==.
+      00000A                         37 _npc_tile_mothership::
+      00000A                         38 	.ds 10
+                           000014    39 G$npc_tile_mothership_green$0_0$0==.
+      000014                         40 _npc_tile_mothership_green::
+      000014                         41 	.ds 14
+                           000022    42 G$npc_tile_mothership_dead$0_0$0==.
+      000022                         43 _npc_tile_mothership_dead::
+      000022                         44 	.ds 14
+                                     45 ;--------------------------------------------------------
+                                     46 ; absolute external ram data
+                                     47 ;--------------------------------------------------------
+                                     48 	.area _DABS (ABS)
+                                     49 ;--------------------------------------------------------
+                                     50 ; global & static initialisations
+                                     51 ;--------------------------------------------------------
+                                     52 	.area _HOME
+                                     53 	.area _GSINIT
+                                     54 	.area _GSFINAL
+                                     55 	.area _GSINIT
+                                     56 ;--------------------------------------------------------
+                                     57 ; Home
+                                     58 ;--------------------------------------------------------
+                                     59 	.area _HOME
+                                     60 	.area _HOME
+                                     61 ;--------------------------------------------------------
+                                     62 ; code
+                                     63 ;--------------------------------------------------------
+                                     64 	.area _CODE
+                           000000    65 	G$collide_bullet$0$0	= .
+                                     66 	.globl	G$collide_bullet$0$0
+                           000000    67 	C$collisions.c$12$0_0$107	= .
+                                     68 	.globl	C$collisions.c$12$0_0$107
+                                     69 ;src/collisions.c:12: UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {  // CHECK WHICH BACKGROUND TILE THE BULLET COLLIDES WITH //
+                                     70 ;	---------------------------------
+                                     71 ; Function collide_bullet
+                                     72 ; ---------------------------------
+      000000                         73 _collide_bullet::
+      000000 E8 EB                   74 	add	sp, #-21
+                           000002    75 	C$collisions.c$14$2_0$107	= .
+                                     76 	.globl	C$collisions.c$14$2_0$107
+                                     77 ;src/collisions.c:14: UINT8 *current_NPC = NULL;                 // POINTER TO BACKGROUND TILE
+      000002 AF                      78 	xor	a, a
+      000003 F8 13                   79 	ldhl	sp,	#19
+      000005 22                      80 	ld	(hl+), a
+      000006 77                      81 	ld	(hl), a
+                           000007    82 	C$collisions.c$15$2_0$107	= .
+                                     83 	.globl	C$collisions.c$15$2_0$107
+                                     84 ;src/collisions.c:15: UINT8 *current_tile_change = NULL;         // POINTER TO WHICH TILE TO UPDATE TO
+      000007 AF                      85 	xor	a, a
+      000008 F8 00                   86 	ldhl	sp,	#0
+      00000A 22                      87 	ld	(hl+), a
+      00000B 77                      88 	ld	(hl), a
+                           00000C    89 	C$collisions.c$19$1_0$107	= .
+                                     90 	.globl	C$collisions.c$19$1_0$107
+                                     91 ;src/collisions.c:19: bulletx = bullet_spawn_x + 4;
+      00000C F8 17                   92 	ldhl	sp,	#23
+      00000E 4E                      93 	ld	c, (hl)
+      00000F 06 00                   94 	ld	b, #0x00
+      000011 21 04 00                95 	ld	hl, #0x0004
+      000014 09                      96 	add	hl, bc
+      000015 E5                      97 	push	hl
+      000016 7D                      98 	ld	a, l
+      000017 F8 11                   99 	ldhl	sp,	#17
+      000019 77                     100 	ld	(hl), a
+      00001A E1                     101 	pop	hl
+      00001B 7C                     102 	ld	a, h
+      00001C F8 10                  103 	ldhl	sp,	#16
+      00001E 77                     104 	ld	(hl), a
+                           00001F   105 	C$collisions.c$20$1_0$107	= .
+                                    106 	.globl	C$collisions.c$20$1_0$107
+                                    107 ;src/collisions.c:20: bullety = bullet_spawn_y + 10;
+      00001F F8 18                  108 	ldhl	sp,	#24
+      000021 4E                     109 	ld	c, (hl)
+      000022 06 00                  110 	ld	b, #0x00
+      000024 21 0A 00               111 	ld	hl, #0x000a
+      000027 09                     112 	add	hl, bc
+      000028 E5                     113 	push	hl
+      000029 7D                     114 	ld	a, l
+      00002A F8 0F                  115 	ldhl	sp,	#15
+      00002C 77                     116 	ld	(hl), a
+      00002D E1                     117 	pop	hl
+      00002E 7C                     118 	ld	a, h
+      00002F F8 0E                  119 	ldhl	sp,	#14
+                           000031   120 	C$collisions.c$22$1_0$107	= .
+                                    121 	.globl	C$collisions.c$22$1_0$107
+                                    122 ;src/collisions.c:22: index_X = bulletx / 8;  // CALCULATE
+      000031 22                     123 	ld	(hl+), a
+      000032 2A                     124 	ld	a, (hl+)
+      000033 4F                     125 	ld	c, a
+      000034 46                     126 	ld	b, (hl)
+      000035 CB 7E                  127 	bit	7, (hl)
+      000037 28 0A                  128 	jr	Z, 00202$
+      000039 2B                     129 	dec	hl
+      00003A 2A                     130 	ld	a, (hl+)
+      00003B 5F                     131 	ld	e, a
+      00003C 56                     132 	ld	d, (hl)
+      00003D 21 07 00               133 	ld	hl, #0x0007
+      000040 19                     134 	add	hl, de
+      000041 4D                     135 	ld	c, l
+      000042 44                     136 	ld	b, h
+      000043                        137 00202$:
+      000043 F8 11                  138 	ldhl	sp,	#17
+      000045 79                     139 	ld	a, c
+      000046 22                     140 	ld	(hl+), a
+      000047 70                     141 	ld	(hl), b
+      000048 CB 2E                  142 	sra	(hl)
+      00004A 2B                     143 	dec	hl
+      00004B CB 1E                  144 	rr	(hl)
+      00004D 23                     145 	inc	hl
+      00004E CB 2E                  146 	sra	(hl)
+      000050 2B                     147 	dec	hl
+      000051 CB 1E                  148 	rr	(hl)
+      000053 23                     149 	inc	hl
+      000054 CB 2E                  150 	sra	(hl)
+      000056 2B                     151 	dec	hl
+      000057 CB 1E                  152 	rr	(hl)
+                           000059   153 	C$collisions.c$23$1_0$107	= .
+                                    154 	.globl	C$collisions.c$23$1_0$107
+                                    155 ;src/collisions.c:23: index_Y = bullety / 8;
+      000059 F8 0D                  156 	ldhl	sp,	#13
+      00005B 2A                     157 	ld	a, (hl+)
+      00005C 4F                     158 	ld	c, a
+      00005D 46                     159 	ld	b, (hl)
+      00005E CB 7E                  160 	bit	7, (hl)
+      000060 28 0A                  161 	jr	Z, 00203$
+      000062 2B                     162 	dec	hl
+      000063 2A                     163 	ld	a, (hl+)
+      000064 5F                     164 	ld	e, a
+      000065 56                     165 	ld	d, (hl)
+      000066 21 07 00               166 	ld	hl, #0x0007
+      000069 19                     167 	add	hl, de
+      00006A 4D                     168 	ld	c, l
+      00006B 44                     169 	ld	b, h
+      00006C                        170 00203$:
+      00006C F8 0B                  171 	ldhl	sp,	#11
+      00006E 79                     172 	ld	a, c
+      00006F 22                     173 	ld	(hl+), a
+      000070 70                     174 	ld	(hl), b
+      000071 CB 2E                  175 	sra	(hl)
+      000073 2B                     176 	dec	hl
+      000074 CB 1E                  177 	rr	(hl)
+      000076 23                     178 	inc	hl
+      000077 CB 2E                  179 	sra	(hl)
+      000079 2B                     180 	dec	hl
+      00007A CB 1E                  181 	rr	(hl)
+      00007C 23                     182 	inc	hl
+      00007D CB 2E                  183 	sra	(hl)
+      00007F 2B                     184 	dec	hl
+      000080 CB 1E                  185 	rr	(hl)
+                           000082   186 	C$collisions.c$26$1_0$107	= .
+                                    187 	.globl	C$collisions.c$26$1_0$107
+                                    188 ;src/collisions.c:26: tile_x = index_X * 8;  // CALCULATE X OF TILE
+      000082 F8 11                  189 	ldhl	sp,	#17
+      000084 46                     190 	ld	b, (hl)
+      000085 78                     191 	ld	a, b
+      000086 87                     192 	add	a, a
+      000087 87                     193 	add	a, a
+      000088 87                     194 	add	a, a
+      000089 4F                     195 	ld	c, a
+                           00008A   196 	C$collisions.c$29$1_1$108	= .
+                                    197 	.globl	C$collisions.c$29$1_1$108
+                                    198 ;src/collisions.c:29: UINT8 current_tile = get_bkg_tile_xy(index_X, index_Y);       // COLLIDING TILE
+      00008A F8 0B                  199 	ldhl	sp,	#11
+      00008C 7E                     200 	ld	a, (hl)
+      00008D F8 02                  201 	ldhl	sp,	#2
+      00008F 77                     202 	ld	(hl), a
+      000090 F8 11                  203 	ldhl	sp,	#17
+      000092 7E                     204 	ld	a, (hl)
+      000093 F8 03                  205 	ldhl	sp,	#3
+      000095 32                     206 	ld	(hl-), a
+      000096 2A                     207 	ld	a, (hl+)
+      000097 57                     208 	ld	d, a
+      000098 5E                     209 	ld	e, (hl)
+      000099 D5                     210 	push	de
+      00009A CDr00r00               211 	call	_get_bkg_tile_xy
+      00009D E1                     212 	pop	hl
+      00009E F8 04                  213 	ldhl	sp,	#4
+                           0000A0   214 	C$collisions.c$30$1_1$108	= .
+                                    215 	.globl	C$collisions.c$30$1_1$108
+                                    216 ;src/collisions.c:30: UINT8 left_of_tile = get_bkg_tile_xy(index_X - 1, index_Y);   // LEFT OF COLLIDING TILE
+      0000A0 7B                     217 	ld	a, e
+      0000A1 22                     218 	ld	(hl+), a
+      0000A2 78                     219 	ld	a, b
+      0000A3 3D                     220 	dec	a
+      0000A4 77                     221 	ld	(hl), a
+      0000A5 F8 02                  222 	ldhl	sp,	#2
+      0000A7 7E                     223 	ld	a, (hl)
+      0000A8 F5                     224 	push	af
+      0000A9 33                     225 	inc	sp
+      0000AA F8 06                  226 	ldhl	sp,	#6
+      0000AC 7E                     227 	ld	a, (hl)
+      0000AD F5                     228 	push	af
+      0000AE 33                     229 	inc	sp
+      0000AF CDr00r00               230 	call	_get_bkg_tile_xy
+      0000B2 E1                     231 	pop	hl
+      0000B3 F8 0D                  232 	ldhl	sp,	#13
+      0000B5 73                     233 	ld	(hl), e
+                           0000B6   234 	C$collisions.c$31$1_1$108	= .
+                                    235 	.globl	C$collisions.c$31$1_1$108
+                                    236 ;src/collisions.c:31: UINT8 right_of_tile = get_bkg_tile_xy(index_X + 1, index_Y);  // RIGHT OF COLLIDING TILE
+      0000B6 78                     237 	ld	a, b
+      0000B7 3C                     238 	inc	a
+      0000B8 F8 06                  239 	ldhl	sp,	#6
+      0000BA 77                     240 	ld	(hl), a
+      0000BB F8 02                  241 	ldhl	sp,	#2
+      0000BD 7E                     242 	ld	a, (hl)
+      0000BE F5                     243 	push	af
+      0000BF 33                     244 	inc	sp
+      0000C0 F8 07                  245 	ldhl	sp,	#7
+      0000C2 7E                     246 	ld	a, (hl)
+      0000C3 F5                     247 	push	af
+      0000C4 33                     248 	inc	sp
+      0000C5 CDr00r00               249 	call	_get_bkg_tile_xy
+      0000C8 E1                     250 	pop	hl
+      0000C9 F8 07                  251 	ldhl	sp,	#7
+      0000CB 73                     252 	ld	(hl), e
+                           0000CC   253 	C$collisions.c$39$1_1$107	= .
+                                    254 	.globl	C$collisions.c$39$1_1$107
+                                    255 ;src/collisions.c:39: if ((current_tile == current_NPC[0]) && (bulletx - tile_x >= 3)) {  //       current_NPC[0] NPC TILE LEFT SIDE     //
+      0000CC 06 00                  256 	ld	b, #0x00
+      0000CE F8 0F                  257 	ldhl	sp,#15
+      0000D0 2A                     258 	ld	a, (hl+)
+      0000D1 5F                     259 	ld	e, a
+      0000D2 2A                     260 	ld	a, (hl+)
+      0000D3 23                     261 	inc	hl
+      0000D4 57                     262 	ld	d, a
+      0000D5 7B                     263 	ld	a, e
+      0000D6 91                     264 	sub	a, c
+      0000D7 5F                     265 	ld	e, a
+      0000D8 7A                     266 	ld	a, d
+      0000D9 98                     267 	sbc	a, b
+      0000DA 32                     268 	ld	(hl-), a
+      0000DB 73                     269 	ld	(hl), e
+                           0000DC   270 	C$collisions.c$33$1_1$108	= .
+                                    271 	.globl	C$collisions.c$33$1_1$108
+                                    272 ;src/collisions.c:33: if ((current_tile >= 0x03) && (current_tile <= 0x0C)) {                        // IF COLLIDING TILE IS ANY OF THE ENEMY TILES
+      0000DC F8 04                  273 	ldhl	sp,	#4
+      0000DE 7E                     274 	ld	a, (hl)
+      0000DF D6 03                  275 	sub	a, #0x03
+      0000E1 DAr76r03               276 	jp	C, 00197$
+      0000E4 3E 0C                  277 	ld	a, #0x0c
+      0000E6 96                     278 	sub	a, (hl)
+      0000E7 DAr76r03               279 	jp	C, 00197$
+                           0000EA   280 	C$collisions.c$34$2_1$109	= .
+                                    281 	.globl	C$collisions.c$34$2_1$109
+                                    282 ;src/collisions.c:34: if (current_tile >= npc_tile_bee[0] && current_tile <= npc_tile_bee[4]) {  // CHECK FOR BEE COLLISION
+      0000EA 21r00r00               283 	ld	hl, #_npc_tile_bee
+      0000ED 4E                     284 	ld	c, (hl)
+      0000EE F8 04                  285 	ldhl	sp,	#4
+      0000F0 7E                     286 	ld	a, (hl)
+      0000F1 91                     287 	sub	a, c
+      0000F2 38 13                  288 	jr	C, 00105$
+      0000F4 21r04r00               289 	ld	hl, #_npc_tile_bee + 4
+      0000F7 4E                     290 	ld	c, (hl)
+      0000F8 79                     291 	ld	a, c
+      0000F9 F8 04                  292 	ldhl	sp,	#4
+      0000FB 96                     293 	sub	a, (hl)
+      0000FC 38 09                  294 	jr	C, 00105$
+                           0000FE   295 	C$collisions.c$35$3_1$110	= .
+                                    296 	.globl	C$collisions.c$35$3_1$110
+                                    297 ;src/collisions.c:35: current_NPC = &npc_tile_bee[0];
+      0000FE F8 13                  298 	ldhl	sp,	#19
+      000100 3Er00                  299 	ld	a, #<(_npc_tile_bee)
+      000102 22                     300 	ld	(hl+), a
+      000103 36s00                  301 	ld	(hl), #>(_npc_tile_bee)
+      000105 18 1B                  302 	jr	00106$
+      000107                        303 00105$:
+                           000107   304 	C$collisions.c$36$2_1$109	= .
+                                    305 	.globl	C$collisions.c$36$2_1$109
+                                    306 ;src/collisions.c:36: } else if (current_tile >= npc_tile_wasp[0] && current_tile <= npc_tile_wasp[4]) {  // CHECK FOR WASP COLLISION
+      000107 21r05r00               307 	ld	hl, #_npc_tile_wasp
+      00010A 4E                     308 	ld	c, (hl)
+      00010B F8 04                  309 	ldhl	sp,	#4
+      00010D 7E                     310 	ld	a, (hl)
+      00010E 91                     311 	sub	a, c
+      00010F 38 11                  312 	jr	C, 00106$
+      000111 21r09r00               313 	ld	hl, #_npc_tile_wasp + 4
+      000114 4E                     314 	ld	c, (hl)
+      000115 79                     315 	ld	a, c
+      000116 F8 04                  316 	ldhl	sp,	#4
+      000118 96                     317 	sub	a, (hl)
+      000119 38 07                  318 	jr	C, 00106$
+                           00011B   319 	C$collisions.c$37$3_1$111	= .
+                                    320 	.globl	C$collisions.c$37$3_1$111
+                                    321 ;src/collisions.c:37: current_NPC = &npc_tile_wasp[0];
+      00011B F8 13                  322 	ldhl	sp,	#19
+      00011D 36r05                  323 	ld	(hl), #<(_npc_tile_wasp)
+      00011F 23                     324 	inc	hl
+      000120 36s00                  325 	ld	(hl), #>(_npc_tile_wasp)
+      000122                        326 00106$:
+                           000122   327 	C$collisions.c$39$2_1$109	= .
+                                    328 	.globl	C$collisions.c$39$2_1$109
+                                    329 ;src/collisions.c:39: if ((current_tile == current_NPC[0]) && (bulletx - tile_x >= 3)) {  //       current_NPC[0] NPC TILE LEFT SIDE     //
+      000122 F8 13                  330 	ldhl	sp,#19
+      000124 2A                     331 	ld	a, (hl+)
+      000125 5F                     332 	ld	e, a
+      000126 56                     333 	ld	d, (hl)
+      000127 1A                     334 	ld	a, (de)
+      000128 F8 0A                  335 	ldhl	sp,	#10
+      00012A 77                     336 	ld	(hl), a
+                           00012B   337 	C$collisions.c$40$1_1$107	= .
+                                    338 	.globl	C$collisions.c$40$1_1$107
+                                    339 ;src/collisions.c:40: if (right_of_tile == current_NPC[2]) {
+      00012B F8 13                  340 	ldhl	sp,	#19
+      00012D 2A                     341 	ld	a, (hl+)
+      00012E 4F                     342 	ld	c, a
+                           00012F   343 	C$collisions.c$41$1_1$107	= .
+                                    344 	.globl	C$collisions.c$41$1_1$107
+                                    345 ;src/collisions.c:41: set_bkg_tile_xy(index_X + 1, index_Y, current_NPC[3]);
+      00012F 3A                     346 	ld	a, (hl-)
+      000130 47                     347 	ld	b, a
+      000131 03                     348 	inc	bc
+      000132 03                     349 	inc	bc
+      000133 2A                     350 	ld	a, (hl+)
+      000134 5F                     351 	ld	e, a
+      000135 56                     352 	ld	d, (hl)
+      000136 21 03 00               353 	ld	hl, #0x0003
+      000139 19                     354 	add	hl, de
+      00013A E5                     355 	push	hl
+      00013B 7D                     356 	ld	a, l
+      00013C F8 0D                  357 	ldhl	sp,	#13
+      00013E 77                     358 	ld	(hl), a
+      00013F E1                     359 	pop	hl
+      000140 7C                     360 	ld	a, h
+      000141 F8 0C                  361 	ldhl	sp,	#12
+      000143 77                     362 	ld	(hl), a
+                           000144   363 	C$collisions.c$42$1_1$107	= .
+                                    364 	.globl	C$collisions.c$42$1_1$107
+                                    365 ;src/collisions.c:42: } else if ((right_of_tile == current_NPC[3]) || (right_of_tile == current_NPC[4])) {
+      000144 F8 13                  366 	ldhl	sp,#19
+      000146 2A                     367 	ld	a, (hl+)
+      000147 5F                     368 	ld	e, a
+      000148 56                     369 	ld	d, (hl)
+      000149 21 04 00               370 	ld	hl, #0x0004
+      00014C 19                     371 	add	hl, de
+      00014D E5                     372 	push	hl
+      00014E 7D                     373 	ld	a, l
+      00014F F8 10                  374 	ldhl	sp,	#16
+      000151 77                     375 	ld	(hl), a
+      000152 E1                     376 	pop	hl
+      000153 7C                     377 	ld	a, h
+      000154 F8 0F                  378 	ldhl	sp,	#15
+                           000156   379 	C$collisions.c$40$1_1$107	= .
+                                    380 	.globl	C$collisions.c$40$1_1$107
+                                    381 ;src/collisions.c:40: if (right_of_tile == current_NPC[2]) {
+      000156 22                     382 	ld	(hl+), a
+      000157 0A                     383 	ld	a, (bc)
+      000158 77                     384 	ld	(hl), a
+                           000159   385 	C$collisions.c$39$2_1$109	= .
+                                    386 	.globl	C$collisions.c$39$2_1$109
+                                    387 ;src/collisions.c:39: if ((current_tile == current_NPC[0]) && (bulletx - tile_x >= 3)) {  //       current_NPC[0] NPC TILE LEFT SIDE     //
+      000159 F8 04                  388 	ldhl	sp,	#4
+      00015B 7E                     389 	ld	a, (hl)
+      00015C F8 0A                  390 	ldhl	sp,	#10
+      00015E 96                     391 	sub	a, (hl)
+      00015F C2rE0r01               392 	jp	NZ,00139$
+      000162 F8 11                  393 	ldhl	sp,	#17
+      000164 2A                     394 	ld	a, (hl+)
+      000165 D6 03                  395 	sub	a, #0x03
+      000167 7E                     396 	ld	a, (hl)
+      000168 DE 00                  397 	sbc	a, #0x00
+      00016A 56                     398 	ld	d, (hl)
+      00016B 3E 00                  399 	ld	a, #0x00
+      00016D CB 7F                  400 	bit	7,a
+      00016F 28 07                  401 	jr	Z, 00456$
+      000171 CB 7A                  402 	bit	7, d
+      000173 20 08                  403 	jr	NZ, 00457$
+      000175 BF                     404 	cp	a, a
+      000176 18 05                  405 	jr	00457$
+      000178                        406 00456$:
+      000178 CB 7A                  407 	bit	7, d
+      00017A 28 01                  408 	jr	Z, 00457$
+      00017C 37                     409 	scf
+      00017D                        410 00457$:
+      00017D 38 61                  411 	jr	C, 00139$
+                           00017F   412 	C$collisions.c$41$1_1$107	= .
+                                    413 	.globl	C$collisions.c$41$1_1$107
+                                    414 ;src/collisions.c:41: set_bkg_tile_xy(index_X + 1, index_Y, current_NPC[3]);
+      00017F F8 0B                  415 	ldhl	sp,#11
+      000181 2A                     416 	ld	a, (hl+)
+      000182 5F                     417 	ld	e, a
+      000183 56                     418 	ld	d, (hl)
+      000184 1A                     419 	ld	a, (de)
+      000185 F8 14                  420 	ldhl	sp,	#20
+      000187 77                     421 	ld	(hl), a
+                           000188   422 	C$collisions.c$40$3_1$112	= .
+                                    423 	.globl	C$collisions.c$40$3_1$112
+                                    424 ;src/collisions.c:40: if (right_of_tile == current_NPC[2]) {
+      000188 F8 07                  425 	ldhl	sp,	#7
+      00018A 7E                     426 	ld	a, (hl)
+      00018B F8 10                  427 	ldhl	sp,	#16
+      00018D 96                     428 	sub	a, (hl)
+      00018E 20 16                  429 	jr	NZ, 00112$
+                           000190   430 	C$collisions.c$41$4_1$113	= .
+                                    431 	.globl	C$collisions.c$41$4_1$113
+                                    432 ;src/collisions.c:41: set_bkg_tile_xy(index_X + 1, index_Y, current_NPC[3]);
+      000190 F8 14                  433 	ldhl	sp,	#20
+      000192 7E                     434 	ld	a, (hl)
+      000193 F5                     435 	push	af
+      000194 33                     436 	inc	sp
+      000195 F8 03                  437 	ldhl	sp,	#3
+      000197 7E                     438 	ld	a, (hl)
+      000198 F5                     439 	push	af
+      000199 33                     440 	inc	sp
+      00019A F8 08                  441 	ldhl	sp,	#8
+      00019C 7E                     442 	ld	a, (hl)
+      00019D F5                     443 	push	af
+      00019E 33                     444 	inc	sp
+      00019F CDr00r00               445 	call	_set_bkg_tile_xy
+      0001A2 E8 03                  446 	add	sp, #3
+      0001A4 18 27                  447 	jr	00113$
+      0001A6                        448 00112$:
+                           0001A6   449 	C$collisions.c$42$3_1$112	= .
+                                    450 	.globl	C$collisions.c$42$3_1$112
+                                    451 ;src/collisions.c:42: } else if ((right_of_tile == current_NPC[3]) || (right_of_tile == current_NPC[4])) {
+      0001A6 F8 07                  452 	ldhl	sp,	#7
+      0001A8 7E                     453 	ld	a, (hl)
+      0001A9 F8 14                  454 	ldhl	sp,	#20
+      0001AB 96                     455 	sub	a, (hl)
+      0001AC 28 0D                  456 	jr	Z, 00108$
+      0001AE F8 0E                  457 	ldhl	sp,#14
+      0001B0 2A                     458 	ld	a, (hl+)
+      0001B1 5F                     459 	ld	e, a
+      0001B2 56                     460 	ld	d, (hl)
+      0001B3 1A                     461 	ld	a, (de)
+      0001B4 4F                     462 	ld	c, a
+      0001B5 F8 07                  463 	ldhl	sp,	#7
+      0001B7 7E                     464 	ld	a, (hl)
+      0001B8 91                     465 	sub	a, c
+      0001B9 20 12                  466 	jr	NZ, 00113$
+      0001BB                        467 00108$:
+                           0001BB   468 	C$collisions.c$43$4_1$114	= .
+                                    469 	.globl	C$collisions.c$43$4_1$114
+                                    470 ;src/collisions.c:43: set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
+      0001BB AF                     471 	xor	a, a
+      0001BC F5                     472 	push	af
+      0001BD 33                     473 	inc	sp
+      0001BE F8 03                  474 	ldhl	sp,	#3
+      0001C0 7E                     475 	ld	a, (hl)
+      0001C1 F5                     476 	push	af
+      0001C2 33                     477 	inc	sp
+      0001C3 F8 08                  478 	ldhl	sp,	#8
+      0001C5 7E                     479 	ld	a, (hl)
+      0001C6 F5                     480 	push	af
+      0001C7 33                     481 	inc	sp
+      0001C8 CDr00r00               482 	call	_set_bkg_tile_xy
+      0001CB E8 03                  483 	add	sp, #3
+      0001CD                        484 00113$:
+                           0001CD   485 	C$collisions.c$45$3_1$112	= .
+                                    486 	.globl	C$collisions.c$45$3_1$112
+                                    487 ;src/collisions.c:45: set_bkg_tile_xy(index_X, index_Y, 0x00);
+      0001CD AF                     488 	xor	a, a
+      0001CE F5                     489 	push	af
+      0001CF 33                     490 	inc	sp
+      0001D0 F8 03                  491 	ldhl	sp,	#3
+      0001D2 2A                     492 	ld	a, (hl+)
+      0001D3 57                     493 	ld	d, a
+      0001D4 5E                     494 	ld	e, (hl)
+      0001D5 D5                     495 	push	de
+      0001D6 CDr00r00               496 	call	_set_bkg_tile_xy
+      0001D9 E8 03                  497 	add	sp, #3
+                           0001DB   498 	C$collisions.c$46$3_1$112	= .
+                                    499 	.globl	C$collisions.c$46$3_1$112
+                                    500 ;src/collisions.c:46: return 0x01U;
+      0001DB 1E 01                  501 	ld	e, #0x01
+      0001DD C3r8Er08               502 	jp	00200$
+      0001E0                        503 00139$:
+                           0001E0   504 	C$collisions.c$48$2_1$109	= .
+                                    505 	.globl	C$collisions.c$48$2_1$109
+                                    506 ;src/collisions.c:48: } else if ((current_tile == current_NPC[2]) && (bulletx - tile_x <= 1)) {  //       current_NPC[0] NPC TILE RIGHT SIDE    //
+      0001E0 F8 04                  507 	ldhl	sp,	#4
+      0001E2 7E                     508 	ld	a, (hl)
+      0001E3 F8 10                  509 	ldhl	sp,	#16
+      0001E5 96                     510 	sub	a, (hl)
+      0001E6 3E 01                  511 	ld	a, #0x01
+      0001E8 28 01                  512 	jr	Z, 00464$
+      0001EA AF                     513 	xor	a, a
+      0001EB                        514 00464$:
+      0001EB 4F                     515 	ld	c, a
+      0001EC F8 11                  516 	ldhl	sp,	#17
+      0001EE 3E 01                  517 	ld	a, #0x01
+      0001F0 96                     518 	sub	a, (hl)
+      0001F1 23                     519 	inc	hl
+      0001F2 3E 00                  520 	ld	a, #0x00
+      0001F4 9E                     521 	sbc	a, (hl)
+      0001F5 3E 00                  522 	ld	a, #0x00
+      0001F7 57                     523 	ld	d, a
+      0001F8 CB 7E                  524 	bit	7, (hl)
+      0001FA 28 07                  525 	jr	Z, 00465$
+      0001FC CB 7A                  526 	bit	7, d
+      0001FE 20 08                  527 	jr	NZ, 00466$
+      000200 BF                     528 	cp	a, a
+      000201 18 05                  529 	jr	00466$
+      000203                        530 00465$:
+      000203 CB 7A                  531 	bit	7, d
+      000205 28 01                  532 	jr	Z, 00466$
+      000207 37                     533 	scf
+      000208                        534 00466$:
+      000208 3E 00                  535 	ld	a, #0x00
+      00020A 17                     536 	rla
+      00020B 47                     537 	ld	b, a
+      00020C 79                     538 	ld	a, c
+      00020D B7                     539 	or	a, a
+      00020E 28 2E                  540 	jr	Z, 00135$
+      000210 CB 40                  541 	bit	0, b
+      000212 20 2A                  542 	jr	NZ, 00135$
+                           000214   543 	C$collisions.c$49$3_1$115	= .
+                                    544 	.globl	C$collisions.c$49$3_1$115
+                                    545 ;src/collisions.c:49: set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
+      000214 AF                     546 	xor	a, a
+      000215 F5                     547 	push	af
+      000216 33                     548 	inc	sp
+      000217 F8 03                  549 	ldhl	sp,	#3
+      000219 7E                     550 	ld	a, (hl)
+      00021A F5                     551 	push	af
+      00021B 33                     552 	inc	sp
+      00021C F8 07                  553 	ldhl	sp,	#7
+      00021E 7E                     554 	ld	a, (hl)
+      00021F F5                     555 	push	af
+      000220 33                     556 	inc	sp
+      000221 CDr00r00               557 	call	_set_bkg_tile_xy
+      000224 E8 03                  558 	add	sp, #3
+                           000226   559 	C$collisions.c$50$3_1$115	= .
+                                    560 	.globl	C$collisions.c$50$3_1$115
+                                    561 ;src/collisions.c:50: set_bkg_tile_xy(index_X, index_Y, current_NPC[3]);
+      000226 F8 0B                  562 	ldhl	sp,#11
+      000228 2A                     563 	ld	a, (hl+)
+      000229 5F                     564 	ld	e, a
+      00022A 56                     565 	ld	d, (hl)
+      00022B 1A                     566 	ld	a, (de)
+      00022C F5                     567 	push	af
+      00022D 33                     568 	inc	sp
+      00022E F8 03                  569 	ldhl	sp,	#3
+      000230 2A                     570 	ld	a, (hl+)
+      000231 57                     571 	ld	d, a
+      000232 5E                     572 	ld	e, (hl)
+      000233 D5                     573 	push	de
+      000234 CDr00r00               574 	call	_set_bkg_tile_xy
+      000237 E8 03                  575 	add	sp, #3
+                           000239   576 	C$collisions.c$51$3_1$115	= .
+                                    577 	.globl	C$collisions.c$51$3_1$115
+                                    578 ;src/collisions.c:51: return 0x01U;
+      000239 1E 01                  579 	ld	e, #0x01
+      00023B C3r8Er08               580 	jp	00200$
+      00023E                        581 00135$:
+                           00023E   582 	C$collisions.c$53$2_1$109	= .
+                                    583 	.globl	C$collisions.c$53$2_1$109
+                                    584 ;src/collisions.c:53: } else if ((current_tile == current_NPC[4]) && (bulletx - tile_x <= 1)) {  //       current_NPC[0] NPC TILE RIGHT SIDE W/ NO ENEMY TO RIGHT    //
+      00023E F8 0E                  585 	ldhl	sp,#14
+      000240 2A                     586 	ld	a, (hl+)
+      000241 5F                     587 	ld	e, a
+      000242 56                     588 	ld	d, (hl)
+      000243 1A                     589 	ld	a, (de)
+      000244 F8 0A                  590 	ldhl	sp,	#10
+      000246 77                     591 	ld	(hl), a
+      000247 F8 04                  592 	ldhl	sp,	#4
+      000249 7E                     593 	ld	a, (hl)
+      00024A F8 0A                  594 	ldhl	sp,	#10
+      00024C 96                     595 	sub	a, (hl)
+      00024D 20 29                  596 	jr	NZ, 00131$
+      00024F CB 40                  597 	bit	0, b
+      000251 20 25                  598 	jr	NZ, 00131$
+                           000253   599 	C$collisions.c$54$3_1$116	= .
+                                    600 	.globl	C$collisions.c$54$3_1$116
+                                    601 ;src/collisions.c:54: set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
+      000253 AF                     602 	xor	a, a
+      000254 F5                     603 	push	af
+      000255 33                     604 	inc	sp
+      000256 F8 03                  605 	ldhl	sp,	#3
+      000258 7E                     606 	ld	a, (hl)
+      000259 F5                     607 	push	af
+      00025A 33                     608 	inc	sp
+      00025B F8 07                  609 	ldhl	sp,	#7
+      00025D 7E                     610 	ld	a, (hl)
+      00025E F5                     611 	push	af
+      00025F 33                     612 	inc	sp
+      000260 CDr00r00               613 	call	_set_bkg_tile_xy
+      000263 E8 03                  614 	add	sp, #3
+                           000265   615 	C$collisions.c$55$3_1$116	= .
+                                    616 	.globl	C$collisions.c$55$3_1$116
+                                    617 ;src/collisions.c:55: set_bkg_tile_xy(index_X, index_Y, 0x00);
+      000265 AF                     618 	xor	a, a
+      000266 F5                     619 	push	af
+      000267 33                     620 	inc	sp
+      000268 F8 03                  621 	ldhl	sp,	#3
+      00026A 2A                     622 	ld	a, (hl+)
+      00026B 57                     623 	ld	d, a
+      00026C 5E                     624 	ld	e, (hl)
+      00026D D5                     625 	push	de
+      00026E CDr00r00               626 	call	_set_bkg_tile_xy
+      000271 E8 03                  627 	add	sp, #3
+                           000273   628 	C$collisions.c$56$3_1$116	= .
+                                    629 	.globl	C$collisions.c$56$3_1$116
+                                    630 ;src/collisions.c:56: return 0x01U;
+      000273 1E 01                  631 	ld	e, #0x01
+      000275 C3r8Er08               632 	jp	00200$
+      000278                        633 00131$:
+                           000278   634 	C$collisions.c$60$1_1$107	= .
+                                    635 	.globl	C$collisions.c$60$1_1$107
+                                    636 ;src/collisions.c:60: else if ((current_tile == current_NPC[2]) && (bulletx - tile_x >= 7)) {  //       current_NPC[1] NPC TILE LEFT SIDE    //
+      000278 F8 11                  637 	ldhl	sp,	#17
+      00027A 2A                     638 	ld	a, (hl+)
+      00027B D6 07                  639 	sub	a, #0x07
+      00027D 7E                     640 	ld	a, (hl)
+      00027E DE 00                  641 	sbc	a, #0x00
+      000280 56                     642 	ld	d, (hl)
+      000281 3E 00                  643 	ld	a, #0x00
+      000283 CB 7F                  644 	bit	7,a
+      000285 28 07                  645 	jr	Z, 00469$
+      000287 CB 7A                  646 	bit	7, d
+      000289 20 08                  647 	jr	NZ, 00470$
+      00028B BF                     648 	cp	a, a
+      00028C 18 05                  649 	jr	00470$
+      00028E                        650 00469$:
+      00028E CB 7A                  651 	bit	7, d
+      000290 28 01                  652 	jr	Z, 00470$
+      000292 37                     653 	scf
+      000293                        654 00470$:
+      000293 3E 00                  655 	ld	a, #0x00
+      000295 17                     656 	rla
+      000296 47                     657 	ld	b, a
+      000297 79                     658 	ld	a, c
+      000298 B7                     659 	or	a, a
+      000299 28 2E                  660 	jr	Z, 00127$
+      00029B CB 40                  661 	bit	0, b
+      00029D 20 2A                  662 	jr	NZ, 00127$
+                           00029F   663 	C$collisions.c$61$3_1$117	= .
+                                    664 	.globl	C$collisions.c$61$3_1$117
+                                    665 ;src/collisions.c:61: set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
+      00029F AF                     666 	xor	a, a
+      0002A0 F5                     667 	push	af
+      0002A1 33                     668 	inc	sp
+      0002A2 F8 03                  669 	ldhl	sp,	#3
+      0002A4 7E                     670 	ld	a, (hl)
+      0002A5 F5                     671 	push	af
+      0002A6 33                     672 	inc	sp
+      0002A7 F8 08                  673 	ldhl	sp,	#8
+      0002A9 7E                     674 	ld	a, (hl)
+      0002AA F5                     675 	push	af
+      0002AB 33                     676 	inc	sp
+      0002AC CDr00r00               677 	call	_set_bkg_tile_xy
+      0002AF E8 03                  678 	add	sp, #3
+                           0002B1   679 	C$collisions.c$62$3_1$117	= .
+                                    680 	.globl	C$collisions.c$62$3_1$117
+                                    681 ;src/collisions.c:62: set_bkg_tile_xy(index_X, index_Y, current_NPC[4]);
+      0002B1 F8 0E                  682 	ldhl	sp,#14
+      0002B3 2A                     683 	ld	a, (hl+)
+      0002B4 5F                     684 	ld	e, a
+      0002B5 56                     685 	ld	d, (hl)
+      0002B6 1A                     686 	ld	a, (de)
+      0002B7 F5                     687 	push	af
+      0002B8 33                     688 	inc	sp
+      0002B9 F8 03                  689 	ldhl	sp,	#3
+      0002BB 2A                     690 	ld	a, (hl+)
+      0002BC 57                     691 	ld	d, a
+      0002BD 5E                     692 	ld	e, (hl)
+      0002BE D5                     693 	push	de
+      0002BF CDr00r00               694 	call	_set_bkg_tile_xy
+      0002C2 E8 03                  695 	add	sp, #3
+                           0002C4   696 	C$collisions.c$63$3_1$117	= .
+                                    697 	.globl	C$collisions.c$63$3_1$117
+                                    698 ;src/collisions.c:63: return 0x01U;
+      0002C4 1E 01                  699 	ld	e, #0x01
+      0002C6 C3r8Er08               700 	jp	00200$
+      0002C9                        701 00127$:
+                           0002C9   702 	C$collisions.c$65$2_1$109	= .
+                                    703 	.globl	C$collisions.c$65$2_1$109
+                                    704 ;src/collisions.c:65: } else if ((current_tile == current_NPC[3]) && (bulletx - tile_x >= 7)) {  //       current_NPC[1] NPC TILE LEFT SIDE    //
+      0002C9 F8 0B                  705 	ldhl	sp,#11
+      0002CB 2A                     706 	ld	a, (hl+)
+      0002CC 5F                     707 	ld	e, a
+      0002CD 56                     708 	ld	d, (hl)
+      0002CE 1A                     709 	ld	a, (de)
+      0002CF 4F                     710 	ld	c, a
+      0002D0 F8 04                  711 	ldhl	sp,	#4
+      0002D2 7E                     712 	ld	a, (hl)
+      0002D3 91                     713 	sub	a, c
+      0002D4 20 29                  714 	jr	NZ, 00123$
+      0002D6 CB 40                  715 	bit	0, b
+      0002D8 20 25                  716 	jr	NZ, 00123$
+                           0002DA   717 	C$collisions.c$66$3_1$118	= .
+                                    718 	.globl	C$collisions.c$66$3_1$118
+                                    719 ;src/collisions.c:66: set_bkg_tile_xy(index_X + 1, index_Y, 0x00);
+      0002DA AF                     720 	xor	a, a
+      0002DB F5                     721 	push	af
+      0002DC 33                     722 	inc	sp
+      0002DD F8 03                  723 	ldhl	sp,	#3
+      0002DF 7E                     724 	ld	a, (hl)
+      0002E0 F5                     725 	push	af
+      0002E1 33                     726 	inc	sp
+      0002E2 F8 08                  727 	ldhl	sp,	#8
+      0002E4 7E                     728 	ld	a, (hl)
+      0002E5 F5                     729 	push	af
+      0002E6 33                     730 	inc	sp
+      0002E7 CDr00r00               731 	call	_set_bkg_tile_xy
+      0002EA E8 03                  732 	add	sp, #3
+                           0002EC   733 	C$collisions.c$67$3_1$118	= .
+                                    734 	.globl	C$collisions.c$67$3_1$118
+                                    735 ;src/collisions.c:67: set_bkg_tile_xy(index_X, index_Y, 0x00);
+      0002EC AF                     736 	xor	a, a
+      0002ED F5                     737 	push	af
+      0002EE 33                     738 	inc	sp
+      0002EF F8 03                  739 	ldhl	sp,	#3
+      0002F1 2A                     740 	ld	a, (hl+)
+      0002F2 57                     741 	ld	d, a
+      0002F3 5E                     742 	ld	e, (hl)
+      0002F4 D5                     743 	push	de
+      0002F5 CDr00r00               744 	call	_set_bkg_tile_xy
+      0002F8 E8 03                  745 	add	sp, #3
+                           0002FA   746 	C$collisions.c$68$3_1$118	= .
+                                    747 	.globl	C$collisions.c$68$3_1$118
+                                    748 ;src/collisions.c:68: return 0x01U;
+      0002FA 1E 01                  749 	ld	e, #0x01
+      0002FC C3r8Er08               750 	jp	00200$
+      0002FF                        751 00123$:
+                           0002FF   752 	C$collisions.c$72$2_1$109	= .
+                                    753 	.globl	C$collisions.c$72$2_1$109
+                                    754 ;src/collisions.c:72: else if ((current_tile == current_NPC[1]) && (bulletx - tile_x <= 5)) {
+      0002FF F8 13                  755 	ldhl	sp,	#19
+      000301 2A                     756 	ld	a, (hl+)
+      000302 5F                     757 	ld	e, a
+      000303 56                     758 	ld	d, (hl)
+      000304 13                     759 	inc	de
+      000305 1A                     760 	ld	a, (de)
+      000306 47                     761 	ld	b, a
+      000307 F8 04                  762 	ldhl	sp,	#4
+      000309 7E                     763 	ld	a, (hl)
+      00030A 90                     764 	sub	a, b
+      00030B C2r8Cr08               765 	jp	NZ,00198$
+      00030E F8 11                  766 	ldhl	sp,	#17
+      000310 3E 05                  767 	ld	a, #0x05
+      000312 96                     768 	sub	a, (hl)
+      000313 23                     769 	inc	hl
+      000314 3E 00                  770 	ld	a, #0x00
+      000316 9E                     771 	sbc	a, (hl)
+      000317 3E 00                  772 	ld	a, #0x00
+      000319 57                     773 	ld	d, a
+      00031A CB 7E                  774 	bit	7, (hl)
+      00031C 28 07                  775 	jr	Z, 00475$
+      00031E CB 7A                  776 	bit	7, d
+      000320 20 08                  777 	jr	NZ, 00476$
+      000322 BF                     778 	cp	a, a
+      000323 18 05                  779 	jr	00476$
+      000325                        780 00475$:
+      000325 CB 7A                  781 	bit	7, d
+      000327 28 01                  782 	jr	Z, 00476$
+      000329 37                     783 	scf
+      00032A                        784 00476$:
+      00032A DAr8Cr08               785 	jp	C, 00198$
+                           00032D   786 	C$collisions.c$73$3_1$119	= .
+                                    787 	.globl	C$collisions.c$73$3_1$119
+                                    788 ;src/collisions.c:73: if (left_of_tile == current_NPC[2]) {
+      00032D F8 0D                  789 	ldhl	sp,	#13
+      00032F 7E                     790 	ld	a, (hl)
+      000330 F8 10                  791 	ldhl	sp,	#16
+      000332 96                     792 	sub	a, (hl)
+      000333 20 16                  793 	jr	NZ, 00117$
+                           000335   794 	C$collisions.c$74$4_1$120	= .
+                                    795 	.globl	C$collisions.c$74$4_1$120
+                                    796 ;src/collisions.c:74: set_bkg_tile_xy(index_X - 1, index_Y, current_NPC[4]);
+      000335 F8 0A                  797 	ldhl	sp,	#10
+      000337 7E                     798 	ld	a, (hl)
+      000338 F5                     799 	push	af
+      000339 33                     800 	inc	sp
+      00033A F8 03                  801 	ldhl	sp,	#3
+      00033C 7E                     802 	ld	a, (hl)
+      00033D F5                     803 	push	af
+      00033E 33                     804 	inc	sp
+      00033F F8 07                  805 	ldhl	sp,	#7
+      000341 7E                     806 	ld	a, (hl)
+      000342 F5                     807 	push	af
+      000343 33                     808 	inc	sp
+      000344 CDr00r00               809 	call	_set_bkg_tile_xy
+      000347 E8 03                  810 	add	sp, #3
+      000349 18 18                  811 	jr	00118$
+      00034B                        812 00117$:
+                           00034B   813 	C$collisions.c$75$3_1$119	= .
+                                    814 	.globl	C$collisions.c$75$3_1$119
+                                    815 ;src/collisions.c:75: } else if (left_of_tile == current_NPC[3]) {
+      00034B F8 0D                  816 	ldhl	sp,	#13
+      00034D 7E                     817 	ld	a, (hl)
+      00034E 91                     818 	sub	a, c
+      00034F 20 12                  819 	jr	NZ, 00118$
+                           000351   820 	C$collisions.c$76$4_1$121	= .
+                                    821 	.globl	C$collisions.c$76$4_1$121
+                                    822 ;src/collisions.c:76: set_bkg_tile_xy(index_X - 1, index_Y, 0x00);
+      000351 AF                     823 	xor	a, a
+      000352 F5                     824 	push	af
+      000353 33                     825 	inc	sp
+      000354 F8 03                  826 	ldhl	sp,	#3
+      000356 7E                     827 	ld	a, (hl)
+      000357 F5                     828 	push	af
+      000358 33                     829 	inc	sp
+      000359 F8 07                  830 	ldhl	sp,	#7
+      00035B 7E                     831 	ld	a, (hl)
+      00035C F5                     832 	push	af
+      00035D 33                     833 	inc	sp
+      00035E CDr00r00               834 	call	_set_bkg_tile_xy
+      000361 E8 03                  835 	add	sp, #3
+      000363                        836 00118$:
+                           000363   837 	C$collisions.c$78$3_1$119	= .
+                                    838 	.globl	C$collisions.c$78$3_1$119
+                                    839 ;src/collisions.c:78: set_bkg_tile_xy(index_X, index_Y, 0x00);
+      000363 AF                     840 	xor	a, a
+      000364 F5                     841 	push	af
+      000365 33                     842 	inc	sp
+      000366 F8 03                  843 	ldhl	sp,	#3
+      000368 2A                     844 	ld	a, (hl+)
+      000369 57                     845 	ld	d, a
+      00036A 5E                     846 	ld	e, (hl)
+      00036B D5                     847 	push	de
+      00036C CDr00r00               848 	call	_set_bkg_tile_xy
+      00036F E8 03                  849 	add	sp, #3
+                           000371   850 	C$collisions.c$79$3_1$119	= .
+                                    851 	.globl	C$collisions.c$79$3_1$119
+                                    852 ;src/collisions.c:79: return 0x01U;
+      000371 1E 01                  853 	ld	e, #0x01
+      000373 C3r8Er08               854 	jp	00200$
+      000376                        855 00197$:
+                           000376   856 	C$collisions.c$83$1_1$108	= .
+                                    857 	.globl	C$collisions.c$83$1_1$108
+                                    858 ;src/collisions.c:83: } else if (current_tile >= 0x0D) {                           // IF THE COLLIDING TILE IS EITHER OF THE TWO TYPES OF MOTHERSHIPS
+      000376 F8 04                  859 	ldhl	sp,	#4
+      000378 7E                     860 	ld	a, (hl)
+      000379 D6 0D                  861 	sub	a, #0x0d
+      00037B 3E 00                  862 	ld	a, #0x00
+      00037D 17                     863 	rla
+      00037E 4F                     864 	ld	c, a
+      00037F CB 41                  865 	bit	0, c
+      000381 C2r8Cr08               866 	jp	NZ, 00198$
+                           000384   867 	C$collisions.c$84$2_1$122	= .
+                                    868 	.globl	C$collisions.c$84$2_1$122
+                                    869 ;src/collisions.c:84: if ((current_tile >= 0x0D) && (current_tile <= 0x16)) {  // POINT TO DARK GREEN MOTHERSHIP
+      000384 CB 41                  870 	bit	0, c
+      000386 20 0E                  871 	jr	NZ, 00146$
+      000388 3E 16                  872 	ld	a, #0x16
+      00038A 96                     873 	sub	a, (hl)
+      00038B 38 09                  874 	jr	C, 00146$
+                           00038D   875 	C$collisions.c$86$3_1$123	= .
+                                    876 	.globl	C$collisions.c$86$3_1$123
+                                    877 ;src/collisions.c:86: current_tile_change = &npc_tile_mothership_green[0];
+      00038D F8 00                  878 	ldhl	sp,	#0
+      00038F 3Er14                  879 	ld	a, #<(_npc_tile_mothership_green)
+      000391 22                     880 	ld	(hl+), a
+      000392 36s00                  881 	ld	(hl), #>(_npc_tile_mothership_green)
+      000394 18 13                  882 	jr	00147$
+      000396                        883 00146$:
+                           000396   884 	C$collisions.c$87$2_1$122	= .
+                                    885 	.globl	C$collisions.c$87$2_1$122
+                                    886 ;src/collisions.c:87: } else if ((current_tile >= 0x17) && (current_tile <= 0x24)) {  // POINT TO LIGHT GREEN MOTHERSHIP
+      000396 F8 04                  887 	ldhl	sp,	#4
+      000398 7E                     888 	ld	a, (hl)
+      000399 D6 17                  889 	sub	a, #0x17
+      00039B 38 0C                  890 	jr	C, 00147$
+      00039D 3E 24                  891 	ld	a, #0x24
+      00039F 96                     892 	sub	a, (hl)
+      0003A0 38 07                  893 	jr	C, 00147$
+                           0003A2   894 	C$collisions.c$89$3_1$124	= .
+                                    895 	.globl	C$collisions.c$89$3_1$124
+                                    896 ;src/collisions.c:89: current_tile_change = &npc_tile_mothership_dead[0];
+      0003A2 F8 00                  897 	ldhl	sp,	#0
+      0003A4 36r22                  898 	ld	(hl), #<(_npc_tile_mothership_dead)
+      0003A6 23                     899 	inc	hl
+      0003A7 36s00                  900 	ld	(hl), #>(_npc_tile_mothership_dead)
+      0003A9                        901 00147$:
+                           0003A9   902 	C$collisions.c$92$2_1$122	= .
+                                    903 	.globl	C$collisions.c$92$2_1$122
+                                    904 ;src/collisions.c:92: if ((current_tile == MOTHERSHIPS_BOTTOMS) && (bulletx - tile_x >= 6)) {  // IF PLAYER HITS BOTTOM OF BOTH DARK GREEN MOTHERSHIPS
+      0003A9 FAr11r00               905 	ld	a, (#(_npc_tile_mothership + 7) + 0)
+      0003AC F8 0F                  906 	ldhl	sp,	#15
+      0003AE 77                     907 	ld	(hl), a
+      0003AF F8 04                  908 	ldhl	sp,	#4
+      0003B1 7E                     909 	ld	a, (hl)
+      0003B2 F8 0F                  910 	ldhl	sp,	#15
+      0003B4 96                     911 	sub	a, (hl)
+      0003B5 3E 01                  912 	ld	a, #0x01
+      0003B7 28 01                  913 	jr	Z, 00482$
+      0003B9 AF                     914 	xor	a, a
+      0003BA                        915 00482$:
+      0003BA F8 13                  916 	ldhl	sp,	#19
+      0003BC 77                     917 	ld	(hl), a
+                           0003BD   918 	C$collisions.c$95$1_1$107	= .
+                                    919 	.globl	C$collisions.c$95$1_1$107
+                                    920 ;src/collisions.c:95: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[11]);      // MOTHERSHIPS_TOP_RIGHT_GREEN_TOP_LEFT
+      0003BD F8 0B                  921 	ldhl	sp,	#11
+      0003BF 7E                     922 	ld	a, (hl)
+      0003C0 3D                     923 	dec	a
+      0003C1 F8 08                  924 	ldhl	sp,	#8
+      0003C3 77                     925 	ld	(hl), a
+                           0003C4   926 	C$collisions.c$92$1_1$107	= .
+                                    927 	.globl	C$collisions.c$92$1_1$107
+                                    928 ;src/collisions.c:92: if ((current_tile == MOTHERSHIPS_BOTTOMS) && (bulletx - tile_x >= 6)) {  // IF PLAYER HITS BOTTOM OF BOTH DARK GREEN MOTHERSHIPS
+      0003C4 F8 11                  929 	ldhl	sp,	#17
+      0003C6 2A                     930 	ld	a, (hl+)
+      0003C7 D6 06                  931 	sub	a, #0x06
+      0003C9 7E                     932 	ld	a, (hl)
+      0003CA DE 00                  933 	sbc	a, #0x00
+      0003CC 56                     934 	ld	d, (hl)
+      0003CD 3E 00                  935 	ld	a, #0x00
+      0003CF CB 7F                  936 	bit	7,a
+      0003D1 28 07                  937 	jr	Z, 00483$
+      0003D3 CB 7A                  938 	bit	7, d
+      0003D5 20 08                  939 	jr	NZ, 00484$
+      0003D7 BF                     940 	cp	a, a
+      0003D8 18 05                  941 	jr	00484$
+      0003DA                        942 00483$:
+      0003DA CB 7A                  943 	bit	7, d
+      0003DC 28 01                  944 	jr	Z, 00484$
+      0003DE 37                     945 	scf
+      0003DF                        946 00484$:
+      0003DF 3E 00                  947 	ld	a, #0x00
+      0003E1 17                     948 	rla
+      0003E2 4F                     949 	ld	c, a
+      0003E3 F8 13                  950 	ldhl	sp,	#19
+      0003E5 7E                     951 	ld	a, (hl)
+      0003E6 B7                     952 	or	a, a
+      0003E7 28 67                  953 	jr	Z, 00162$
+      0003E9 CB 41                  954 	bit	0, c
+      0003EB 20 63                  955 	jr	NZ, 00162$
+                           0003ED   956 	C$collisions.c$93$3_1$125	= .
+                                    957 	.globl	C$collisions.c$93$3_1$125
+                                    958 ;src/collisions.c:93: set_bkg_tile_xy(index_X, index_Y, current_tile_change[13]);          // MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT
+      0003ED D1                     959 	pop	de
+      0003EE D5                     960 	push	de
+      0003EF 21 0D 00               961 	ld	hl, #0x000d
+      0003F2 19                     962 	add	hl, de
+      0003F3 4D                     963 	ld	c, l
+      0003F4 44                     964 	ld	b, h
+      0003F5 0A                     965 	ld	a, (bc)
+      0003F6 F5                     966 	push	af
+      0003F7 33                     967 	inc	sp
+      0003F8 F8 03                  968 	ldhl	sp,	#3
+      0003FA 2A                     969 	ld	a, (hl+)
+      0003FB 57                     970 	ld	d, a
+      0003FC 5E                     971 	ld	e, (hl)
+      0003FD D5                     972 	push	de
+      0003FE CDr00r00               973 	call	_set_bkg_tile_xy
+      000401 E8 03                  974 	add	sp, #3
+                           000403   975 	C$collisions.c$94$3_1$125	= .
+                                    976 	.globl	C$collisions.c$94$3_1$125
+                                    977 ;src/collisions.c:94: set_bkg_tile_xy(index_X + 1, index_Y, current_tile_change[5]);       // MOTHERSHIP_BOTTOM_RIGHT_GREEN
+      000403 D1                     978 	pop	de
+      000404 D5                     979 	push	de
+      000405 21 05 00               980 	ld	hl, #0x0005
+      000408 19                     981 	add	hl, de
+      000409 4D                     982 	ld	c, l
+      00040A 44                     983 	ld	b, h
+      00040B 0A                     984 	ld	a, (bc)
+      00040C F5                     985 	push	af
+      00040D 33                     986 	inc	sp
+      00040E F8 03                  987 	ldhl	sp,	#3
+      000410 7E                     988 	ld	a, (hl)
+      000411 F5                     989 	push	af
+      000412 33                     990 	inc	sp
+      000413 F8 08                  991 	ldhl	sp,	#8
+      000415 7E                     992 	ld	a, (hl)
+      000416 F5                     993 	push	af
+      000417 33                     994 	inc	sp
+      000418 CDr00r00               995 	call	_set_bkg_tile_xy
+      00041B E8 03                  996 	add	sp, #3
+                           00041D   997 	C$collisions.c$95$3_1$125	= .
+                                    998 	.globl	C$collisions.c$95$3_1$125
+                                    999 ;src/collisions.c:95: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[11]);      // MOTHERSHIPS_TOP_RIGHT_GREEN_TOP_LEFT
+      00041D D1                    1000 	pop	de
+      00041E D5                    1001 	push	de
+      00041F 21 0B 00              1002 	ld	hl, #0x000b
+      000422 19                    1003 	add	hl, de
+      000423 4D                    1004 	ld	c, l
+      000424 44                    1005 	ld	b, h
+      000425 0A                    1006 	ld	a, (bc)
+      000426 F5                    1007 	push	af
+      000427 33                    1008 	inc	sp
+      000428 F8 09                 1009 	ldhl	sp,	#9
+      00042A 7E                    1010 	ld	a, (hl)
+      00042B F5                    1011 	push	af
+      00042C 33                    1012 	inc	sp
+      00042D F8 05                 1013 	ldhl	sp,	#5
+      00042F 7E                    1014 	ld	a, (hl)
+      000430 F5                    1015 	push	af
+      000431 33                    1016 	inc	sp
+      000432 CDr00r00              1017 	call	_set_bkg_tile_xy
+      000435 E8 03                 1018 	add	sp, #3
+                           000437  1019 	C$collisions.c$96$3_1$125	= .
+                                   1020 	.globl	C$collisions.c$96$3_1$125
+                                   1021 ;src/collisions.c:96: set_bkg_tile_xy(index_X + 1, index_Y - 1, current_tile_change[1]);   // MOTHERSHIP_TOP_RIGHT_GREEN
+      000437 C1                    1022 	pop	bc
+      000438 C5                    1023 	push	bc
+      000439 03                    1024 	inc	bc
+      00043A 0A                    1025 	ld	a, (bc)
+      00043B F5                    1026 	push	af
+      00043C 33                    1027 	inc	sp
+      00043D F8 09                 1028 	ldhl	sp,	#9
+      00043F 3A                    1029 	ld	a, (hl-)
+      000440 2B                    1030 	dec	hl
+      000441 F5                    1031 	push	af
+      000442 33                    1032 	inc	sp
+      000443 7E                    1033 	ld	a, (hl)
+      000444 F5                    1034 	push	af
+      000445 33                    1035 	inc	sp
+      000446 CDr00r00              1036 	call	_set_bkg_tile_xy
+      000449 E8 03                 1037 	add	sp, #3
+                           00044B  1038 	C$collisions.c$97$3_1$125	= .
+                                   1039 	.globl	C$collisions.c$97$3_1$125
+                                   1040 ;src/collisions.c:97: return 0x01U;
+      00044B 1E 01                 1041 	ld	e, #0x01
+      00044D C3r8Er08              1042 	jp	00200$
+      000450                       1043 00162$:
+                           000450  1044 	C$collisions.c$98$2_1$122	= .
+                                   1045 	.globl	C$collisions.c$98$2_1$122
+                                   1046 ;src/collisions.c:98: } else if ((current_tile == MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN) && (bulletx - tile_x >= 6)) {  //// IF PLAYER HITS RIGHT SIDE OF BOTH DARK GREEN MOTHERSHIPS BOTTOMS, WHILE LEFT IS GREEN
+      000450 FAr20r00              1047 	ld	a, (#(_npc_tile_mothership_green + 12) + 0)
+      000453 F8 10                 1048 	ldhl	sp,	#16
+      000455 77                    1049 	ld	(hl), a
+      000456 F8 04                 1050 	ldhl	sp,	#4
+      000458 7E                    1051 	ld	a, (hl)
+      000459 F8 10                 1052 	ldhl	sp,	#16
+      00045B 96                    1053 	sub	a, (hl)
+      00045C 3E 01                 1054 	ld	a, #0x01
+      00045E 28 01                 1055 	jr	Z, 00486$
+      000460 AF                    1056 	xor	a, a
+      000461                       1057 00486$:
+      000461 F8 14                 1058 	ldhl	sp,	#20
+                           000463  1059 	C$collisions.c$99$1_1$107	= .
+                                   1060 	.globl	C$collisions.c$99$1_1$107
+                                   1061 ;src/collisions.c:99: set_bkg_tile_xy(index_X, index_Y, MOTHERSHIPS_BOTTOMS_GREEN);                                      // MOTHERSHIPS_BOTTOMS_GREEN
+                           000463  1062 	C$collisions.c$100$1_1$107	= .
+                                   1063 	.globl	C$collisions.c$100$1_1$107
+                                   1064 ;src/collisions.c:100: set_bkg_tile_xy(index_X + 1, index_Y, MOTHERSHIP_BOTTOM_RIGHT_GREEN);                              // MOTHERSHIP_BOTTOM_RIGHT_GREEN
+                           000463  1065 	C$collisions.c$101$1_1$107	= .
+                                   1066 	.globl	C$collisions.c$101$1_1$107
+                                   1067 ;src/collisions.c:101: set_bkg_tile_xy(index_X, index_Y - 1, MOTHERSHIP_TOPS_GREEN);                                      // MOTHERSHIP_TOPS_GREEN
+                           000463  1068 	C$collisions.c$102$1_1$107	= .
+                                   1069 	.globl	C$collisions.c$102$1_1$107
+                                   1070 ;src/collisions.c:102: set_bkg_tile_xy(index_X + 1, index_Y - 1, MOTHERSHIP_TOP_RIGHT_GREEN);                             // MOTHERSHIP_TOP_RIGHT_GREEN
+                           000463  1071 	C$collisions.c$98$2_1$122	= .
+                                   1072 	.globl	C$collisions.c$98$2_1$122
+                                   1073 ;src/collisions.c:98: } else if ((current_tile == MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN) && (bulletx - tile_x >= 6)) {  //// IF PLAYER HITS RIGHT SIDE OF BOTH DARK GREEN MOTHERSHIPS BOTTOMS, WHILE LEFT IS GREEN
+      000463 77                    1074 	ld	(hl), a
+      000464 B7                    1075 	or	a, a
+      000465 28 54                 1076 	jr	Z, 00158$
+      000467 CB 41                 1077 	bit	0, c
+      000469 20 50                 1078 	jr	NZ, 00158$
+                           00046B  1079 	C$collisions.c$99$3_1$126	= .
+                                   1080 	.globl	C$collisions.c$99$3_1$126
+                                   1081 ;src/collisions.c:99: set_bkg_tile_xy(index_X, index_Y, MOTHERSHIPS_BOTTOMS_GREEN);                                      // MOTHERSHIPS_BOTTOMS_GREEN
+      00046B FAr1Br00              1082 	ld	a, (#(_npc_tile_mothership_green + 7) + 0)
+      00046E F5                    1083 	push	af
+      00046F 33                    1084 	inc	sp
+      000470 F8 03                 1085 	ldhl	sp,	#3
+      000472 2A                    1086 	ld	a, (hl+)
+      000473 57                    1087 	ld	d, a
+      000474 5E                    1088 	ld	e, (hl)
+      000475 D5                    1089 	push	de
+      000476 CDr00r00              1090 	call	_set_bkg_tile_xy
+      000479 E8 03                 1091 	add	sp, #3
+                           00047B  1092 	C$collisions.c$100$3_1$126	= .
+                                   1093 	.globl	C$collisions.c$100$3_1$126
+                                   1094 ;src/collisions.c:100: set_bkg_tile_xy(index_X + 1, index_Y, MOTHERSHIP_BOTTOM_RIGHT_GREEN);                              // MOTHERSHIP_BOTTOM_RIGHT_GREEN
+      00047B FAr19r00              1095 	ld	a, (#(_npc_tile_mothership_green + 5) + 0)
+      00047E F5                    1096 	push	af
+      00047F 33                    1097 	inc	sp
+      000480 F8 03                 1098 	ldhl	sp,	#3
+      000482 7E                    1099 	ld	a, (hl)
+      000483 F5                    1100 	push	af
+      000484 33                    1101 	inc	sp
+      000485 F8 08                 1102 	ldhl	sp,	#8
+      000487 7E                    1103 	ld	a, (hl)
+      000488 F5                    1104 	push	af
+      000489 33                    1105 	inc	sp
+      00048A CDr00r00              1106 	call	_set_bkg_tile_xy
+      00048D E8 03                 1107 	add	sp, #3
+                           00048F  1108 	C$collisions.c$101$3_1$126	= .
+                                   1109 	.globl	C$collisions.c$101$3_1$126
+                                   1110 ;src/collisions.c:101: set_bkg_tile_xy(index_X, index_Y - 1, MOTHERSHIP_TOPS_GREEN);                                      // MOTHERSHIP_TOPS_GREEN
+      00048F FAr16r00              1111 	ld	a, (#(_npc_tile_mothership_green + 2) + 0)
+      000492 F5                    1112 	push	af
+      000493 33                    1113 	inc	sp
+      000494 F8 09                 1114 	ldhl	sp,	#9
+      000496 7E                    1115 	ld	a, (hl)
+      000497 F5                    1116 	push	af
+      000498 33                    1117 	inc	sp
+      000499 F8 05                 1118 	ldhl	sp,	#5
+      00049B 7E                    1119 	ld	a, (hl)
+      00049C F5                    1120 	push	af
+      00049D 33                    1121 	inc	sp
+      00049E CDr00r00              1122 	call	_set_bkg_tile_xy
+      0004A1 E8 03                 1123 	add	sp, #3
+                           0004A3  1124 	C$collisions.c$102$3_1$126	= .
+                                   1125 	.globl	C$collisions.c$102$3_1$126
+                                   1126 ;src/collisions.c:102: set_bkg_tile_xy(index_X + 1, index_Y - 1, MOTHERSHIP_TOP_RIGHT_GREEN);                             // MOTHERSHIP_TOP_RIGHT_GREEN
+      0004A3 FAr15r00              1127 	ld	a, (#(_npc_tile_mothership_green + 1) + 0)
+      0004A6 F5                    1128 	push	af
+      0004A7 33                    1129 	inc	sp
+      0004A8 F8 09                 1130 	ldhl	sp,	#9
+      0004AA 3A                    1131 	ld	a, (hl-)
+      0004AB 2B                    1132 	dec	hl
+      0004AC F5                    1133 	push	af
+      0004AD 33                    1134 	inc	sp
+      0004AE 7E                    1135 	ld	a, (hl)
+      0004AF F5                    1136 	push	af
+      0004B0 33                    1137 	inc	sp
+      0004B1 CDr00r00              1138 	call	_set_bkg_tile_xy
+      0004B4 E8 03                 1139 	add	sp, #3
+                           0004B6  1140 	C$collisions.c$103$3_1$126	= .
+                                   1141 	.globl	C$collisions.c$103$3_1$126
+                                   1142 ;src/collisions.c:103: return 0x01U;
+      0004B6 1E 01                 1143 	ld	e, #0x01
+      0004B8 C3r8Er08              1144 	jp	00200$
+      0004BB                       1145 00158$:
+                           0004BB  1146 	C$collisions.c$104$2_1$122	= .
+                                   1147 	.globl	C$collisions.c$104$2_1$122
+                                   1148 ;src/collisions.c:104: } else if (current_tile == MOTHERSHIP_BOTTOM_RIGHT && (bulletx - tile_x <= 6)) {  // IF PLAYER HITS BOTTOM RIGHT OF DARK GREEN MOTHERSHIP
+      0004BB FAr0Fr00              1149 	ld	a, (#(_npc_tile_mothership + 5) + 0)
+      0004BE F8 0E                 1150 	ldhl	sp,	#14
+      0004C0 77                    1151 	ld	(hl), a
+                           0004C1  1152 	C$collisions.c$106$1_1$107	= .
+                                   1153 	.globl	C$collisions.c$106$1_1$107
+                                   1154 ;src/collisions.c:106: set_bkg_tile_xy(index_X - 1, index_Y, MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT);  // MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT
+                           0004C1  1155 	C$collisions.c$104$2_1$122	= .
+                                   1156 	.globl	C$collisions.c$104$2_1$122
+                                   1157 ;src/collisions.c:104: } else if (current_tile == MOTHERSHIP_BOTTOM_RIGHT && (bulletx - tile_x <= 6)) {  // IF PLAYER HITS BOTTOM RIGHT OF DARK GREEN MOTHERSHIP
+      0004C1 F8 04                 1158 	ldhl	sp,	#4
+      0004C3 7E                    1159 	ld	a, (hl)
+      0004C4 F8 0E                 1160 	ldhl	sp,	#14
+      0004C6 96                    1161 	sub	a, (hl)
+      0004C7 C2r76r05              1162 	jp	NZ,00163$
+      0004CA F8 11                 1163 	ldhl	sp,	#17
+      0004CC 3E 06                 1164 	ld	a, #0x06
+      0004CE 96                    1165 	sub	a, (hl)
+      0004CF 23                    1166 	inc	hl
+      0004D0 3E 00                 1167 	ld	a, #0x00
+      0004D2 9E                    1168 	sbc	a, (hl)
+      0004D3 3E 00                 1169 	ld	a, #0x00
+      0004D5 57                    1170 	ld	d, a
+      0004D6 CB 7E                 1171 	bit	7, (hl)
+      0004D8 28 07                 1172 	jr	Z, 00489$
+      0004DA CB 7A                 1173 	bit	7, d
+      0004DC 20 08                 1174 	jr	NZ, 00490$
+      0004DE BF                    1175 	cp	a, a
+      0004DF 18 05                 1176 	jr	00490$
+      0004E1                       1177 00489$:
+      0004E1 CB 7A                 1178 	bit	7, d
+      0004E3 28 01                 1179 	jr	Z, 00490$
+      0004E5 37                    1180 	scf
+      0004E6                       1181 00490$:
+      0004E6 DAr76r05              1182 	jp	C, 00163$
+                           0004E9  1183 	C$collisions.c$105$3_1$127	= .
+                                   1184 	.globl	C$collisions.c$105$3_1$127
+                                   1185 ;src/collisions.c:105: if (left_of_tile == MOTHERSHIPS_BOTTOMS) {
+      0004E9 F8 0D                 1186 	ldhl	sp,	#13
+      0004EB 2A                    1187 	ld	a, (hl+)
+      0004EC 23                    1188 	inc	hl
+      0004ED 96                    1189 	sub	a, (hl)
+      0004EE 20 2D                 1190 	jr	NZ, 00152$
+                           0004F0  1191 	C$collisions.c$106$4_1$128	= .
+                                   1192 	.globl	C$collisions.c$106$4_1$128
+                                   1193 ;src/collisions.c:106: set_bkg_tile_xy(index_X - 1, index_Y, MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT);  // MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT
+      0004F0 FAr21r00              1194 	ld	a, (#(_npc_tile_mothership_green + 13) + 0)
+      0004F3 F8 14                 1195 	ldhl	sp,#20
+      0004F5 77                    1196 	ld	(hl), a
+      0004F6 F5                    1197 	push	af
+      0004F7 33                    1198 	inc	sp
+      0004F8 F8 03                 1199 	ldhl	sp,	#3
+      0004FA 7E                    1200 	ld	a, (hl)
+      0004FB F5                    1201 	push	af
+      0004FC 33                    1202 	inc	sp
+      0004FD F8 07                 1203 	ldhl	sp,	#7
+      0004FF 7E                    1204 	ld	a, (hl)
+      000500 F5                    1205 	push	af
+      000501 33                    1206 	inc	sp
+      000502 CDr00r00              1207 	call	_set_bkg_tile_xy
+      000505 E8 03                 1208 	add	sp, #3
+                           000507  1209 	C$collisions.c$107$4_1$128	= .
+                                   1210 	.globl	C$collisions.c$107$4_1$128
+                                   1211 ;src/collisions.c:107: set_bkg_tile_xy(index_X - 1, index_Y - 1, MOTHERSHIPS_TOP_RIGHT_GREEN_TOP_LEFT);    // MOTHERSHIPS_TOP_RIGHT_GREEN_TOP_LEFT
+      000507 FAr1Fr00              1212 	ld	a, (#(_npc_tile_mothership_green + 11) + 0)
+      00050A F5                    1213 	push	af
+      00050B 33                    1214 	inc	sp
+      00050C F8 09                 1215 	ldhl	sp,	#9
+      00050E 7E                    1216 	ld	a, (hl)
+      00050F F5                    1217 	push	af
+      000510 33                    1218 	inc	sp
+      000511 F8 07                 1219 	ldhl	sp,	#7
+      000513 7E                    1220 	ld	a, (hl)
+      000514 F5                    1221 	push	af
+      000515 33                    1222 	inc	sp
+      000516 CDr00r00              1223 	call	_set_bkg_tile_xy
+      000519 E8 03                 1224 	add	sp, #3
+      00051B 18 30                 1225 	jr	00153$
+      00051D                       1226 00152$:
+                           00051D  1227 	C$collisions.c$108$3_1$127	= .
+                                   1228 	.globl	C$collisions.c$108$3_1$127
+                                   1229 ;src/collisions.c:108: } else if (left_of_tile == MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN) {
+      00051D F8 0D                 1230 	ldhl	sp,	#13
+      00051F 7E                    1231 	ld	a, (hl)
+      000520 F8 10                 1232 	ldhl	sp,	#16
+      000522 96                    1233 	sub	a, (hl)
+      000523 20 28                 1234 	jr	NZ, 00153$
+                           000525  1235 	C$collisions.c$109$4_1$129	= .
+                                   1236 	.globl	C$collisions.c$109$4_1$129
+                                   1237 ;src/collisions.c:109: set_bkg_tile_xy(index_X - 1, index_Y, MOTHERSHIPS_BOTTOMS_GREEN);  // MOTHERSHIPS_BOTTOMS_GREEN
+      000525 FAr1Br00              1238 	ld	a, (#(_npc_tile_mothership_green + 7) + 0)
+      000528 F5                    1239 	push	af
+      000529 33                    1240 	inc	sp
+      00052A F8 03                 1241 	ldhl	sp,	#3
+      00052C 7E                    1242 	ld	a, (hl)
+      00052D F5                    1243 	push	af
+      00052E 33                    1244 	inc	sp
+      00052F F8 07                 1245 	ldhl	sp,	#7
+      000531 7E                    1246 	ld	a, (hl)
+      000532 F5                    1247 	push	af
+      000533 33                    1248 	inc	sp
+      000534 CDr00r00              1249 	call	_set_bkg_tile_xy
+      000537 E8 03                 1250 	add	sp, #3
+                           000539  1251 	C$collisions.c$110$4_1$129	= .
+                                   1252 	.globl	C$collisions.c$110$4_1$129
+                                   1253 ;src/collisions.c:110: set_bkg_tile_xy(index_X - 1, index_Y - 1, MOTHERSHIP_TOPS_GREEN);  // MOTHERSHIP_TOPS_GREEN
+      000539 FAr16r00              1254 	ld	a, (#(_npc_tile_mothership_green + 2) + 0)
+      00053C F5                    1255 	push	af
+      00053D 33                    1256 	inc	sp
+      00053E F8 09                 1257 	ldhl	sp,	#9
+      000540 7E                    1258 	ld	a, (hl)
+      000541 F5                    1259 	push	af
+      000542 33                    1260 	inc	sp
+      000543 F8 07                 1261 	ldhl	sp,	#7
+      000545 7E                    1262 	ld	a, (hl)
+      000546 F5                    1263 	push	af
+      000547 33                    1264 	inc	sp
+      000548 CDr00r00              1265 	call	_set_bkg_tile_xy
+      00054B E8 03                 1266 	add	sp, #3
+      00054D                       1267 00153$:
+                           00054D  1268 	C$collisions.c$112$3_1$127	= .
+                                   1269 	.globl	C$collisions.c$112$3_1$127
+                                   1270 ;src/collisions.c:112: set_bkg_tile_xy(index_X, index_Y, MOTHERSHIP_BOTTOM_RIGHT_GREEN);   // MOTHERSHIP_BOTTOM_RIGHT_GREEN
+      00054D FAr19r00              1271 	ld	a, (#(_npc_tile_mothership_green + 5) + 0)
+      000550 F5                    1272 	push	af
+      000551 33                    1273 	inc	sp
+      000552 F8 03                 1274 	ldhl	sp,	#3
+      000554 2A                    1275 	ld	a, (hl+)
+      000555 57                    1276 	ld	d, a
+      000556 5E                    1277 	ld	e, (hl)
+      000557 D5                    1278 	push	de
+      000558 CDr00r00              1279 	call	_set_bkg_tile_xy
+      00055B E8 03                 1280 	add	sp, #3
+                           00055D  1281 	C$collisions.c$113$3_1$127	= .
+                                   1282 	.globl	C$collisions.c$113$3_1$127
+                                   1283 ;src/collisions.c:113: set_bkg_tile_xy(index_X, index_Y - 1, MOTHERSHIP_TOP_RIGHT_GREEN);  // MOTHERSHIP_TOP_RIGHT_GREEN
+      00055D FAr15r00              1284 	ld	a, (#(_npc_tile_mothership_green + 1) + 0)
+      000560 F5                    1285 	push	af
+      000561 33                    1286 	inc	sp
+      000562 F8 09                 1287 	ldhl	sp,	#9
+      000564 7E                    1288 	ld	a, (hl)
+      000565 F5                    1289 	push	af
+      000566 33                    1290 	inc	sp
+      000567 F8 05                 1291 	ldhl	sp,	#5
+      000569 7E                    1292 	ld	a, (hl)
+      00056A F5                    1293 	push	af
+      00056B 33                    1294 	inc	sp
+      00056C CDr00r00              1295 	call	_set_bkg_tile_xy
+      00056F E8 03                 1296 	add	sp, #3
+                           000571  1297 	C$collisions.c$114$3_1$127	= .
+                                   1298 	.globl	C$collisions.c$114$3_1$127
+                                   1299 ;src/collisions.c:114: return 0x01U;
+      000571 1E 01                 1300 	ld	e, #0x01
+      000573 C3r8Er08              1301 	jp	00200$
+      000576                       1302 00163$:
+                           000576  1303 	C$collisions.c$124$2_1$122	= .
+                                   1304 	.globl	C$collisions.c$124$2_1$122
+                                   1305 ;src/collisions.c:124: if ((current_tile == MOTHERSHIP_BOTTOM_LEFT) && (bulletx - tile_x >= 2)) {
+      000576 21r10r00              1306 	ld	hl, #_npc_tile_mothership + 6
+      000579 4E                    1307 	ld	c, (hl)
+                           00057A  1308 	C$collisions.c$132$1_1$107	= .
+                                   1309 	.globl	C$collisions.c$132$1_1$107
+                                   1310 ;src/collisions.c:132: set_bkg_tile_xy(index_X, index_Y, MOTHERSHIP_BOTTOM_LEFT_GREEN);   // MOTHERSHIP_BOTTOM_LEFT_GREEN
+                           00057A  1311 	C$collisions.c$124$1_1$107	= .
+                                   1312 	.globl	C$collisions.c$124$1_1$107
+                                   1313 ;src/collisions.c:124: if ((current_tile == MOTHERSHIP_BOTTOM_LEFT) && (bulletx - tile_x >= 2)) {
+      00057A F8 11                 1314 	ldhl	sp,	#17
+      00057C 2A                    1315 	ld	a, (hl+)
+      00057D D6 02                 1316 	sub	a, #0x02
+      00057F 7E                    1317 	ld	a, (hl)
+      000580 DE 00                 1318 	sbc	a, #0x00
+      000582 56                    1319 	ld	d, (hl)
+      000583 3E 00                 1320 	ld	a, #0x00
+      000585 CB 7F                 1321 	bit	7,a
+      000587 28 07                 1322 	jr	Z, 00495$
+      000589 CB 7A                 1323 	bit	7, d
+      00058B 20 08                 1324 	jr	NZ, 00496$
+      00058D BF                    1325 	cp	a, a
+      00058E 18 05                 1326 	jr	00496$
+      000590                       1327 00495$:
+      000590 CB 7A                 1328 	bit	7, d
+      000592 28 01                 1329 	jr	Z, 00496$
+      000594 37                    1330 	scf
+      000595                       1331 00496$:
+      000595 3E 00                 1332 	ld	a, #0x00
+      000597 17                    1333 	rla
+      000598 F8 09                 1334 	ldhl	sp,	#9
+      00059A 77                    1335 	ld	(hl), a
+      00059B F8 04                 1336 	ldhl	sp,	#4
+      00059D 7E                    1337 	ld	a, (hl)
+      00059E 91                    1338 	sub	a, c
+      00059F C2r34r06              1339 	jp	NZ,00191$
+      0005A2 F8 09                 1340 	ldhl	sp,	#9
+      0005A4 CB 46                 1341 	bit	0, (hl)
+      0005A6 C2r34r06              1342 	jp	NZ, 00191$
+                           0005A9  1343 	C$collisions.c$125$3_1$130	= .
+                                   1344 	.globl	C$collisions.c$125$3_1$130
+                                   1345 ;src/collisions.c:125: if (right_of_tile == MOTHERSHIPS_BOTTOMS) {
+      0005A9 2B                    1346 	dec	hl
+      0005AA 2B                    1347 	dec	hl
+      0005AB 7E                    1348 	ld	a, (hl)
+      0005AC F8 0F                 1349 	ldhl	sp,	#15
+      0005AE 96                    1350 	sub	a, (hl)
+      0005AF 20 29                 1351 	jr	NZ, 00168$
+                           0005B1  1352 	C$collisions.c$126$4_1$131	= .
+                                   1353 	.globl	C$collisions.c$126$4_1$131
+                                   1354 ;src/collisions.c:126: set_bkg_tile_xy(index_X + 1, index_Y, MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN);  // MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN
+      0005B1 F8 10                 1355 	ldhl	sp,	#16
+      0005B3 7E                    1356 	ld	a, (hl)
+      0005B4 F5                    1357 	push	af
+      0005B5 33                    1358 	inc	sp
+      0005B6 F8 03                 1359 	ldhl	sp,	#3
+      0005B8 7E                    1360 	ld	a, (hl)
+      0005B9 F5                    1361 	push	af
+      0005BA 33                    1362 	inc	sp
+      0005BB F8 08                 1363 	ldhl	sp,	#8
+      0005BD 7E                    1364 	ld	a, (hl)
+      0005BE F5                    1365 	push	af
+      0005BF 33                    1366 	inc	sp
+      0005C0 CDr00r00              1367 	call	_set_bkg_tile_xy
+      0005C3 E8 03                 1368 	add	sp, #3
+                           0005C5  1369 	C$collisions.c$127$4_1$131	= .
+                                   1370 	.globl	C$collisions.c$127$4_1$131
+                                   1371 ;src/collisions.c:127: set_bkg_tile_xy(index_X + 1, index_Y - 1, MOTHERSHIPS_TOP_RIGHT_TOP_LEFT_GREEN);    // MOTHERSHIPS_TOP_RIGHT_TOP_LEFT_GREEN
+      0005C5 FAr1Er00              1372 	ld	a, (#(_npc_tile_mothership_green + 10) + 0)
+      0005C8 F5                    1373 	push	af
+      0005C9 33                    1374 	inc	sp
+      0005CA F8 09                 1375 	ldhl	sp,	#9
+      0005CC 3A                    1376 	ld	a, (hl-)
+      0005CD 2B                    1377 	dec	hl
+      0005CE F5                    1378 	push	af
+      0005CF 33                    1379 	inc	sp
+      0005D0 7E                    1380 	ld	a, (hl)
+      0005D1 F5                    1381 	push	af
+      0005D2 33                    1382 	inc	sp
+      0005D3 CDr00r00              1383 	call	_set_bkg_tile_xy
+      0005D6 E8 03                 1384 	add	sp, #3
+      0005D8 18 31                 1385 	jr	00169$
+      0005DA                       1386 00168$:
+                           0005DA  1387 	C$collisions.c$128$3_1$130	= .
+                                   1388 	.globl	C$collisions.c$128$3_1$130
+                                   1389 ;src/collisions.c:128: } else if (right_of_tile == MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT) {
+      0005DA 21r21r00              1390 	ld	hl, #(_npc_tile_mothership_green + 13)
+      0005DD 4E                    1391 	ld	c, (hl)
+      0005DE F8 07                 1392 	ldhl	sp,	#7
+      0005E0 7E                    1393 	ld	a, (hl)
+      0005E1 91                    1394 	sub	a, c
+      0005E2 20 27                 1395 	jr	NZ, 00169$
+                           0005E4  1396 	C$collisions.c$129$4_1$132	= .
+                                   1397 	.globl	C$collisions.c$129$4_1$132
+                                   1398 ;src/collisions.c:129: set_bkg_tile_xy(index_X + 1, index_Y, MOTHERSHIPS_BOTTOMS_GREEN);  // MOTHERSHIPS_BOTTOMS_GREEN
+      0005E4 FAr1Br00              1399 	ld	a, (#(_npc_tile_mothership_green + 7) + 0)
+      0005E7 F5                    1400 	push	af
+      0005E8 33                    1401 	inc	sp
+      0005E9 F8 03                 1402 	ldhl	sp,	#3
+      0005EB 7E                    1403 	ld	a, (hl)
+      0005EC F5                    1404 	push	af
+      0005ED 33                    1405 	inc	sp
+      0005EE F8 08                 1406 	ldhl	sp,	#8
+      0005F0 7E                    1407 	ld	a, (hl)
+      0005F1 F5                    1408 	push	af
+      0005F2 33                    1409 	inc	sp
+      0005F3 CDr00r00              1410 	call	_set_bkg_tile_xy
+      0005F6 E8 03                 1411 	add	sp, #3
+                           0005F8  1412 	C$collisions.c$130$4_1$132	= .
+                                   1413 	.globl	C$collisions.c$130$4_1$132
+                                   1414 ;src/collisions.c:130: set_bkg_tile_xy(index_X + 1, index_Y - 1, MOTHERSHIP_TOPS_GREEN);  // MOTHERSHIP_TOPS_GREEN
+      0005F8 FAr16r00              1415 	ld	a, (#(_npc_tile_mothership_green + 2) + 0)
+      0005FB F5                    1416 	push	af
+      0005FC 33                    1417 	inc	sp
+      0005FD F8 09                 1418 	ldhl	sp,	#9
+      0005FF 3A                    1419 	ld	a, (hl-)
+      000600 2B                    1420 	dec	hl
+      000601 F5                    1421 	push	af
+      000602 33                    1422 	inc	sp
+      000603 7E                    1423 	ld	a, (hl)
+      000604 F5                    1424 	push	af
+      000605 33                    1425 	inc	sp
+      000606 CDr00r00              1426 	call	_set_bkg_tile_xy
+      000609 E8 03                 1427 	add	sp, #3
+      00060B                       1428 00169$:
+                           00060B  1429 	C$collisions.c$132$3_1$130	= .
+                                   1430 	.globl	C$collisions.c$132$3_1$130
+                                   1431 ;src/collisions.c:132: set_bkg_tile_xy(index_X, index_Y, MOTHERSHIP_BOTTOM_LEFT_GREEN);   // MOTHERSHIP_BOTTOM_LEFT_GREEN
+      00060B FAr1Ar00              1432 	ld	a, (#(_npc_tile_mothership_green + 6) + 0)
+      00060E F5                    1433 	push	af
+      00060F 33                    1434 	inc	sp
+      000610 F8 03                 1435 	ldhl	sp,	#3
+      000612 2A                    1436 	ld	a, (hl+)
+      000613 57                    1437 	ld	d, a
+      000614 5E                    1438 	ld	e, (hl)
+      000615 D5                    1439 	push	de
+      000616 CDr00r00              1440 	call	_set_bkg_tile_xy
+      000619 E8 03                 1441 	add	sp, #3
+                           00061B  1442 	C$collisions.c$133$3_1$130	= .
+                                   1443 	.globl	C$collisions.c$133$3_1$130
+                                   1444 ;src/collisions.c:133: set_bkg_tile_xy(index_X, index_Y - 1, MOTHERSHIP_TOP_LEFT_GREEN);  // MOTHERSHIP_TOP_LEFT_GREEN
+      00061B FAr14r00              1445 	ld	a, (#_npc_tile_mothership_green + 0)
+      00061E F5                    1446 	push	af
+      00061F 33                    1447 	inc	sp
+      000620 F8 09                 1448 	ldhl	sp,	#9
+      000622 7E                    1449 	ld	a, (hl)
+      000623 F5                    1450 	push	af
+      000624 33                    1451 	inc	sp
+      000625 F8 05                 1452 	ldhl	sp,	#5
+      000627 7E                    1453 	ld	a, (hl)
+      000628 F5                    1454 	push	af
+      000629 33                    1455 	inc	sp
+      00062A CDr00r00              1456 	call	_set_bkg_tile_xy
+      00062D E8 03                 1457 	add	sp, #3
+                           00062F  1458 	C$collisions.c$135$3_1$130	= .
+                                   1459 	.globl	C$collisions.c$135$3_1$130
+                                   1460 ;src/collisions.c:135: return 0x01U;
+      00062F 1E 01                 1461 	ld	e, #0x01
+      000631 C3r8Er08              1462 	jp	00200$
+      000634                       1463 00191$:
+                           000634  1464 	C$collisions.c$137$1_1$107	= .
+                                   1465 	.globl	C$collisions.c$137$1_1$107
+                                   1466 ;src/collisions.c:137: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[10]);                                                                                                        // MOTHERSHIPS_TOP_RIGHT_TOP_LEFT_GREEN
+      000634 D1                    1467 	pop	de
+      000635 D5                    1468 	push	de
+      000636 21 0A 00              1469 	ld	hl, #0x000a
+      000639 19                    1470 	add	hl, de
+      00063A E5                    1471 	push	hl
+      00063B 7D                    1472 	ld	a, l
+      00063C F8 0C                 1473 	ldhl	sp,	#12
+      00063E 77                    1474 	ld	(hl), a
+      00063F E1                    1475 	pop	hl
+      000640 7C                    1476 	ld	a, h
+      000641 F8 0B                 1477 	ldhl	sp,	#11
+      000643 77                    1478 	ld	(hl), a
+                           000644  1479 	C$collisions.c$138$1_1$107	= .
+                                   1480 	.globl	C$collisions.c$138$1_1$107
+                                   1481 ;src/collisions.c:138: set_bkg_tile_xy(index_X, index_Y, current_tile_change[12]);                                                                                                            // MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN
+      000644 D1                    1482 	pop	de
+      000645 D5                    1483 	push	de
+      000646 21 0C 00              1484 	ld	hl, #0x000c
+      000649 19                    1485 	add	hl, de
+      00064A E5                    1486 	push	hl
+      00064B 7D                    1487 	ld	a, l
+      00064C F8 0E                 1488 	ldhl	sp,	#14
+      00064E 77                    1489 	ld	(hl), a
+      00064F E1                    1490 	pop	hl
+      000650 7C                    1491 	ld	a, h
+      000651 F8 0D                 1492 	ldhl	sp,	#13
+      000653 77                    1493 	ld	(hl), a
+                           000654  1494 	C$collisions.c$139$1_1$107	= .
+                                   1495 	.globl	C$collisions.c$139$1_1$107
+                                   1496 ;src/collisions.c:139: set_bkg_tile_xy(index_X - 1, index_Y, current_tile_change[6]);                                                                                                         // MOTHERSHIP_BOTTOM_LEFT_GREEN
+      000654 D1                    1497 	pop	de
+      000655 D5                    1498 	push	de
+      000656 21 06 00              1499 	ld	hl, #0x0006
+      000659 19                    1500 	add	hl, de
+      00065A E5                    1501 	push	hl
+      00065B 7D                    1502 	ld	a, l
+      00065C F8 10                 1503 	ldhl	sp,	#16
+      00065E 77                    1504 	ld	(hl), a
+      00065F E1                    1505 	pop	hl
+      000660 7C                    1506 	ld	a, h
+      000661 F8 0F                 1507 	ldhl	sp,	#15
+                           000663  1508 	C$collisions.c$136$1_1$107	= .
+                                   1509 	.globl	C$collisions.c$136$1_1$107
+                                   1510 ;src/collisions.c:136: } else if ((current_tile == MOTHERSHIPS_BOTTOMS) && (bulletx - tile_x <= 3) || (current_tile == MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN) && (bulletx - tile_x <= 3)) {  // IF PLAYER HITS LEFT SIDE OF BOTH DARK GREEN MOTHERSHIPS BOTTOMS
+      000663 22                    1511 	ld	(hl+), a
+      000664 23                    1512 	inc	hl
+      000665 3E 03                 1513 	ld	a, #0x03
+      000667 96                    1514 	sub	a, (hl)
+      000668 23                    1515 	inc	hl
+      000669 3E 00                 1516 	ld	a, #0x00
+      00066B 9E                    1517 	sbc	a, (hl)
+      00066C 3E 00                 1518 	ld	a, #0x00
+      00066E 57                    1519 	ld	d, a
+      00066F CB 7E                 1520 	bit	7, (hl)
+      000671 28 07                 1521 	jr	Z, 00503$
+      000673 CB 7A                 1522 	bit	7, d
+      000675 20 08                 1523 	jr	NZ, 00504$
+      000677 BF                    1524 	cp	a, a
+      000678 18 05                 1525 	jr	00504$
+      00067A                       1526 00503$:
+      00067A CB 7A                 1527 	bit	7, d
+      00067C 28 01                 1528 	jr	Z, 00504$
+      00067E 37                    1529 	scf
+      00067F                       1530 00504$:
+      00067F 3E 00                 1531 	ld	a, #0x00
+      000681 17                    1532 	rla
+      000682 4F                    1533 	ld	c, a
+      000683 F8 13                 1534 	ldhl	sp,	#19
+      000685 7E                    1535 	ld	a, (hl)
+      000686 B7                    1536 	or	a, a
+      000687 28 04                 1537 	jr	Z, 00189$
+      000689 CB 41                 1538 	bit	0, c
+      00068B 28 0A                 1539 	jr	Z, 00184$
+      00068D                       1540 00189$:
+      00068D F8 14                 1541 	ldhl	sp,	#20
+      00068F 7E                    1542 	ld	a, (hl)
+      000690 B7                    1543 	or	a, a
+      000691 28 5E                 1544 	jr	Z, 00185$
+      000693 CB 41                 1545 	bit	0, c
+      000695 20 5A                 1546 	jr	NZ, 00185$
+      000697                       1547 00184$:
+                           000697  1548 	C$collisions.c$137$3_1$133	= .
+                                   1549 	.globl	C$collisions.c$137$3_1$133
+                                   1550 ;src/collisions.c:137: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[10]);                                                                                                        // MOTHERSHIPS_TOP_RIGHT_TOP_LEFT_GREEN
+      000697 F8 0A                 1551 	ldhl	sp,#10
+      000699 2A                    1552 	ld	a, (hl+)
+      00069A 5F                    1553 	ld	e, a
+      00069B 56                    1554 	ld	d, (hl)
+      00069C 1A                    1555 	ld	a, (de)
+      00069D F5                    1556 	push	af
+      00069E 33                    1557 	inc	sp
+      00069F F8 09                 1558 	ldhl	sp,	#9
+      0006A1 7E                    1559 	ld	a, (hl)
+      0006A2 F5                    1560 	push	af
+      0006A3 33                    1561 	inc	sp
+      0006A4 F8 05                 1562 	ldhl	sp,	#5
+      0006A6 7E                    1563 	ld	a, (hl)
+      0006A7 F5                    1564 	push	af
+      0006A8 33                    1565 	inc	sp
+      0006A9 CDr00r00              1566 	call	_set_bkg_tile_xy
+      0006AC E8 03                 1567 	add	sp, #3
+                           0006AE  1568 	C$collisions.c$138$3_1$133	= .
+                                   1569 	.globl	C$collisions.c$138$3_1$133
+                                   1570 ;src/collisions.c:138: set_bkg_tile_xy(index_X, index_Y, current_tile_change[12]);                                                                                                            // MOTHERSHIPS_BOTTOM_RIGHT_BOTTOM_LEFT_GREEN
+      0006AE F8 0C                 1571 	ldhl	sp,#12
+      0006B0 2A                    1572 	ld	a, (hl+)
+      0006B1 5F                    1573 	ld	e, a
+      0006B2 56                    1574 	ld	d, (hl)
+      0006B3 1A                    1575 	ld	a, (de)
+      0006B4 F5                    1576 	push	af
+      0006B5 33                    1577 	inc	sp
+      0006B6 F8 03                 1578 	ldhl	sp,	#3
+      0006B8 2A                    1579 	ld	a, (hl+)
+      0006B9 57                    1580 	ld	d, a
+      0006BA 5E                    1581 	ld	e, (hl)
+      0006BB D5                    1582 	push	de
+      0006BC CDr00r00              1583 	call	_set_bkg_tile_xy
+      0006BF E8 03                 1584 	add	sp, #3
+                           0006C1  1585 	C$collisions.c$139$3_1$133	= .
+                                   1586 	.globl	C$collisions.c$139$3_1$133
+                                   1587 ;src/collisions.c:139: set_bkg_tile_xy(index_X - 1, index_Y, current_tile_change[6]);                                                                                                         // MOTHERSHIP_BOTTOM_LEFT_GREEN
+      0006C1 F8 0E                 1588 	ldhl	sp,#14
+      0006C3 2A                    1589 	ld	a, (hl+)
+      0006C4 5F                    1590 	ld	e, a
+      0006C5 56                    1591 	ld	d, (hl)
+      0006C6 1A                    1592 	ld	a, (de)
+      0006C7 F5                    1593 	push	af
+      0006C8 33                    1594 	inc	sp
+      0006C9 F8 03                 1595 	ldhl	sp,	#3
+      0006CB 7E                    1596 	ld	a, (hl)
+      0006CC F5                    1597 	push	af
+      0006CD 33                    1598 	inc	sp
+      0006CE F8 07                 1599 	ldhl	sp,	#7
+      0006D0 7E                    1600 	ld	a, (hl)
+      0006D1 F5                    1601 	push	af
+      0006D2 33                    1602 	inc	sp
+      0006D3 CDr00r00              1603 	call	_set_bkg_tile_xy
+      0006D6 E8 03                 1604 	add	sp, #3
+                           0006D8  1605 	C$collisions.c$140$3_1$133	= .
+                                   1606 	.globl	C$collisions.c$140$3_1$133
+                                   1607 ;src/collisions.c:140: set_bkg_tile_xy(index_X - 1, index_Y - 1, current_tile_change[0]);                                                                                                     // MOTHERSHIP_TOP_LEFT_GREEN
+      0006D8 D1                    1608 	pop	de
+      0006D9 D5                    1609 	push	de
+      0006DA 1A                    1610 	ld	a, (de)
+      0006DB F5                    1611 	push	af
+      0006DC 33                    1612 	inc	sp
+      0006DD F8 09                 1613 	ldhl	sp,	#9
+      0006DF 7E                    1614 	ld	a, (hl)
+      0006E0 F5                    1615 	push	af
+      0006E1 33                    1616 	inc	sp
+      0006E2 F8 07                 1617 	ldhl	sp,	#7
+      0006E4 7E                    1618 	ld	a, (hl)
+      0006E5 F5                    1619 	push	af
+      0006E6 33                    1620 	inc	sp
+      0006E7 CDr00r00              1621 	call	_set_bkg_tile_xy
+      0006EA E8 03                 1622 	add	sp, #3
+                           0006EC  1623 	C$collisions.c$141$3_1$133	= .
+                                   1624 	.globl	C$collisions.c$141$3_1$133
+                                   1625 ;src/collisions.c:141: return 0x01U;
+      0006EC 1E 01                 1626 	ld	e, #0x01
+      0006EE C3r8Er08              1627 	jp	00200$
+      0006F1                       1628 00185$:
+                           0006F1  1629 	C$collisions.c$144$2_1$122	= .
+                                   1630 	.globl	C$collisions.c$144$2_1$122
+                                   1631 ;src/collisions.c:144: else if ((current_tile == MOTHERSHIPS_BOTTOMS_GREEN) && (bulletx - tile_x <= 3)) {
+      0006F1 21r1Br00              1632 	ld	hl, #(_npc_tile_mothership_green + 7)
+      0006F4 46                    1633 	ld	b, (hl)
+                           0006F5  1634 	C$collisions.c$145$1_1$107	= .
+                                   1635 	.globl	C$collisions.c$145$1_1$107
+                                   1636 ;src/collisions.c:145: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[3]);      //
+      0006F5 D1                    1637 	pop	de
+      0006F6 D5                    1638 	push	de
+      0006F7 21 03 00              1639 	ld	hl, #0x0003
+      0006FA 19                    1640 	add	hl, de
+      0006FB E5                    1641 	push	hl
+      0006FC 7D                    1642 	ld	a, l
+      0006FD F8 12                 1643 	ldhl	sp,	#18
+      0006FF 77                    1644 	ld	(hl), a
+      000700 E1                    1645 	pop	hl
+      000701 7C                    1646 	ld	a, h
+      000702 F8 11                 1647 	ldhl	sp,	#17
+      000704 77                    1648 	ld	(hl), a
+                           000705  1649 	C$collisions.c$146$1_1$107	= .
+                                   1650 	.globl	C$collisions.c$146$1_1$107
+                                   1651 ;src/collisions.c:146: set_bkg_tile_xy(index_X, index_Y, current_tile_change[8]);          //
+      000705 D1                    1652 	pop	de
+      000706 D5                    1653 	push	de
+      000707 21 08 00              1654 	ld	hl, #0x0008
+      00070A 19                    1655 	add	hl, de
+      00070B E5                    1656 	push	hl
+      00070C 7D                    1657 	ld	a, l
+      00070D F8 14                 1658 	ldhl	sp,	#20
+      00070F 77                    1659 	ld	(hl), a
+      000710 E1                    1660 	pop	hl
+      000711 7C                    1661 	ld	a, h
+      000712 F8 13                 1662 	ldhl	sp,	#19
+      000714 77                    1663 	ld	(hl), a
+                           000715  1664 	C$collisions.c$144$2_1$122	= .
+                                   1665 	.globl	C$collisions.c$144$2_1$122
+                                   1666 ;src/collisions.c:144: else if ((current_tile == MOTHERSHIPS_BOTTOMS_GREEN) && (bulletx - tile_x <= 3)) {
+      000715 F8 04                 1667 	ldhl	sp,	#4
+      000717 7E                    1668 	ld	a, (hl)
+      000718 90                    1669 	sub	a, b
+      000719 20 5E                 1670 	jr	NZ, 00181$
+      00071B CB 41                 1671 	bit	0, c
+      00071D 20 5A                 1672 	jr	NZ, 00181$
+                           00071F  1673 	C$collisions.c$145$3_1$134	= .
+                                   1674 	.globl	C$collisions.c$145$3_1$134
+                                   1675 ;src/collisions.c:145: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[3]);      //
+      00071F F8 10                 1676 	ldhl	sp,#16
+      000721 2A                    1677 	ld	a, (hl+)
+      000722 5F                    1678 	ld	e, a
+      000723 56                    1679 	ld	d, (hl)
+      000724 1A                    1680 	ld	a, (de)
+      000725 F5                    1681 	push	af
+      000726 33                    1682 	inc	sp
+      000727 F8 09                 1683 	ldhl	sp,	#9
+      000729 7E                    1684 	ld	a, (hl)
+      00072A F5                    1685 	push	af
+      00072B 33                    1686 	inc	sp
+      00072C F8 05                 1687 	ldhl	sp,	#5
+      00072E 7E                    1688 	ld	a, (hl)
+      00072F F5                    1689 	push	af
+      000730 33                    1690 	inc	sp
+      000731 CDr00r00              1691 	call	_set_bkg_tile_xy
+      000734 E8 03                 1692 	add	sp, #3
+                           000736  1693 	C$collisions.c$146$3_1$134	= .
+                                   1694 	.globl	C$collisions.c$146$3_1$134
+                                   1695 ;src/collisions.c:146: set_bkg_tile_xy(index_X, index_Y, current_tile_change[8]);          //
+      000736 F8 12                 1696 	ldhl	sp,#18
+      000738 2A                    1697 	ld	a, (hl+)
+      000739 5F                    1698 	ld	e, a
+      00073A 56                    1699 	ld	d, (hl)
+      00073B 1A                    1700 	ld	a, (de)
+      00073C F5                    1701 	push	af
+      00073D 33                    1702 	inc	sp
+      00073E F8 03                 1703 	ldhl	sp,	#3
+      000740 2A                    1704 	ld	a, (hl+)
+      000741 57                    1705 	ld	d, a
+      000742 5E                    1706 	ld	e, (hl)
+      000743 D5                    1707 	push	de
+      000744 CDr00r00              1708 	call	_set_bkg_tile_xy
+      000747 E8 03                 1709 	add	sp, #3
+                           000749  1710 	C$collisions.c$147$3_1$134	= .
+                                   1711 	.globl	C$collisions.c$147$3_1$134
+                                   1712 ;src/collisions.c:147: set_bkg_tile_xy(index_X - 1, index_Y, current_tile_change[6]);      //
+      000749 F8 0E                 1713 	ldhl	sp,#14
+      00074B 2A                    1714 	ld	a, (hl+)
+      00074C 5F                    1715 	ld	e, a
+      00074D 56                    1716 	ld	d, (hl)
+      00074E 1A                    1717 	ld	a, (de)
+      00074F F5                    1718 	push	af
+      000750 33                    1719 	inc	sp
+      000751 F8 03                 1720 	ldhl	sp,	#3
+      000753 7E                    1721 	ld	a, (hl)
+      000754 F5                    1722 	push	af
+      000755 33                    1723 	inc	sp
+      000756 F8 07                 1724 	ldhl	sp,	#7
+      000758 7E                    1725 	ld	a, (hl)
+      000759 F5                    1726 	push	af
+      00075A 33                    1727 	inc	sp
+      00075B CDr00r00              1728 	call	_set_bkg_tile_xy
+      00075E E8 03                 1729 	add	sp, #3
+                           000760  1730 	C$collisions.c$148$3_1$134	= .
+                                   1731 	.globl	C$collisions.c$148$3_1$134
+                                   1732 ;src/collisions.c:148: set_bkg_tile_xy(index_X - 1, index_Y - 1, current_tile_change[0]);  //
+      000760 D1                    1733 	pop	de
+      000761 D5                    1734 	push	de
+      000762 1A                    1735 	ld	a, (de)
+      000763 F5                    1736 	push	af
+      000764 33                    1737 	inc	sp
+      000765 F8 09                 1738 	ldhl	sp,	#9
+      000767 7E                    1739 	ld	a, (hl)
+      000768 F5                    1740 	push	af
+      000769 33                    1741 	inc	sp
+      00076A F8 07                 1742 	ldhl	sp,	#7
+      00076C 7E                    1743 	ld	a, (hl)
+      00076D F5                    1744 	push	af
+      00076E 33                    1745 	inc	sp
+      00076F CDr00r00              1746 	call	_set_bkg_tile_xy
+      000772 E8 03                 1747 	add	sp, #3
+                           000774  1748 	C$collisions.c$149$3_1$134	= .
+                                   1749 	.globl	C$collisions.c$149$3_1$134
+                                   1750 ;src/collisions.c:149: return 0x01U;
+      000774 1E 01                 1751 	ld	e, #0x01
+      000776 C3r8Er08              1752 	jp	00200$
+      000779                       1753 00181$:
+                           000779  1754 	C$collisions.c$150$2_1$122	= .
+                                   1755 	.globl	C$collisions.c$150$2_1$122
+                                   1756 ;src/collisions.c:150: } else if ((current_tile == MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT) && (bulletx - tile_x <= 3)) {
+      000779 FAr21r00              1757 	ld	a, (#(_npc_tile_mothership_green + 13) + 0)
+      00077C F8 14                 1758 	ldhl	sp,	#20
+      00077E 77                    1759 	ld	(hl), a
+      00077F F8 04                 1760 	ldhl	sp,	#4
+      000781 7E                    1761 	ld	a, (hl)
+      000782 F8 14                 1762 	ldhl	sp,	#20
+      000784 96                    1763 	sub	a, (hl)
+      000785 20 61                 1764 	jr	NZ, 00177$
+      000787 CB 41                 1765 	bit	0, c
+      000789 20 5D                 1766 	jr	NZ, 00177$
+                           00078B  1767 	C$collisions.c$151$3_1$135	= .
+                                   1768 	.globl	C$collisions.c$151$3_1$135
+                                   1769 ;src/collisions.c:151: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[3]);      //
+      00078B F8 10                 1770 	ldhl	sp,#16
+      00078D 2A                    1771 	ld	a, (hl+)
+      00078E 5F                    1772 	ld	e, a
+      00078F 56                    1773 	ld	d, (hl)
+      000790 1A                    1774 	ld	a, (de)
+      000791 F5                    1775 	push	af
+      000792 33                    1776 	inc	sp
+      000793 F8 09                 1777 	ldhl	sp,	#9
+      000795 7E                    1778 	ld	a, (hl)
+      000796 F5                    1779 	push	af
+      000797 33                    1780 	inc	sp
+      000798 F8 05                 1781 	ldhl	sp,	#5
+      00079A 7E                    1782 	ld	a, (hl)
+      00079B F5                    1783 	push	af
+      00079C 33                    1784 	inc	sp
+      00079D CDr00r00              1785 	call	_set_bkg_tile_xy
+      0007A0 E8 03                 1786 	add	sp, #3
+                           0007A2  1787 	C$collisions.c$152$3_1$135	= .
+                                   1788 	.globl	C$collisions.c$152$3_1$135
+                                   1789 ;src/collisions.c:152: set_bkg_tile_xy(index_X, index_Y, current_tile_change[7]);          //
+      0007A2 D1                    1790 	pop	de
+      0007A3 D5                    1791 	push	de
+      0007A4 21 07 00              1792 	ld	hl, #0x0007
+      0007A7 19                    1793 	add	hl, de
+      0007A8 4D                    1794 	ld	c, l
+      0007A9 44                    1795 	ld	b, h
+      0007AA 0A                    1796 	ld	a, (bc)
+      0007AB F5                    1797 	push	af
+      0007AC 33                    1798 	inc	sp
+      0007AD F8 03                 1799 	ldhl	sp,	#3
+      0007AF 2A                    1800 	ld	a, (hl+)
+      0007B0 57                    1801 	ld	d, a
+      0007B1 5E                    1802 	ld	e, (hl)
+      0007B2 D5                    1803 	push	de
+      0007B3 CDr00r00              1804 	call	_set_bkg_tile_xy
+      0007B6 E8 03                 1805 	add	sp, #3
+                           0007B8  1806 	C$collisions.c$153$3_1$135	= .
+                                   1807 	.globl	C$collisions.c$153$3_1$135
+                                   1808 ;src/collisions.c:153: set_bkg_tile_xy(index_X - 1, index_Y, current_tile_change[6]);      //
+      0007B8 F8 0E                 1809 	ldhl	sp,#14
+      0007BA 2A                    1810 	ld	a, (hl+)
+      0007BB 5F                    1811 	ld	e, a
+      0007BC 56                    1812 	ld	d, (hl)
+      0007BD 1A                    1813 	ld	a, (de)
+      0007BE F5                    1814 	push	af
+      0007BF 33                    1815 	inc	sp
+      0007C0 F8 03                 1816 	ldhl	sp,	#3
+      0007C2 7E                    1817 	ld	a, (hl)
+      0007C3 F5                    1818 	push	af
+      0007C4 33                    1819 	inc	sp
+      0007C5 F8 07                 1820 	ldhl	sp,	#7
+      0007C7 7E                    1821 	ld	a, (hl)
+      0007C8 F5                    1822 	push	af
+      0007C9 33                    1823 	inc	sp
+      0007CA CDr00r00              1824 	call	_set_bkg_tile_xy
+      0007CD E8 03                 1825 	add	sp, #3
+                           0007CF  1826 	C$collisions.c$154$3_1$135	= .
+                                   1827 	.globl	C$collisions.c$154$3_1$135
+                                   1828 ;src/collisions.c:154: set_bkg_tile_xy(index_X - 1, index_Y - 1, current_tile_change[0]);  //
+      0007CF D1                    1829 	pop	de
+      0007D0 D5                    1830 	push	de
+      0007D1 1A                    1831 	ld	a, (de)
+      0007D2 F5                    1832 	push	af
+      0007D3 33                    1833 	inc	sp
+      0007D4 F8 09                 1834 	ldhl	sp,	#9
+      0007D6 7E                    1835 	ld	a, (hl)
+      0007D7 F5                    1836 	push	af
+      0007D8 33                    1837 	inc	sp
+      0007D9 F8 07                 1838 	ldhl	sp,	#7
+      0007DB 7E                    1839 	ld	a, (hl)
+      0007DC F5                    1840 	push	af
+      0007DD 33                    1841 	inc	sp
+      0007DE CDr00r00              1842 	call	_set_bkg_tile_xy
+      0007E1 E8 03                 1843 	add	sp, #3
+                           0007E3  1844 	C$collisions.c$155$3_1$135	= .
+                                   1845 	.globl	C$collisions.c$155$3_1$135
+                                   1846 ;src/collisions.c:155: return 0x01U;
+      0007E3 1E 01                 1847 	ld	e, #0x01
+      0007E5 C3r8Er08              1848 	jp	00200$
+      0007E8                       1849 00177$:
+                           0007E8  1850 	C$collisions.c$156$2_1$122	= .
+                                   1851 	.globl	C$collisions.c$156$2_1$122
+                                   1852 ;src/collisions.c:156: } else if ((current_tile == MOTHERSHIP_BOTTOM_LEFT_GREEN) && (bulletx - tile_x >= 2)) {
+      0007E8 21r1Ar00              1853 	ld	hl, #(_npc_tile_mothership_green + 6)
+      0007EB 4E                    1854 	ld	c, (hl)
+      0007EC F8 04                 1855 	ldhl	sp,	#4
+      0007EE 7E                    1856 	ld	a, (hl)
+      0007EF 91                    1857 	sub	a, c
+      0007F0 C2r8Cr08              1858 	jp	NZ,00198$
+      0007F3 F8 09                 1859 	ldhl	sp,	#9
+      0007F5 CB 46                 1860 	bit	0, (hl)
+      0007F7 C2r8Cr08              1861 	jp	NZ, 00198$
+                           0007FA  1862 	C$collisions.c$157$3_1$136	= .
+                                   1863 	.globl	C$collisions.c$157$3_1$136
+                                   1864 ;src/collisions.c:157: if (right_of_tile == MOTHERSHIPS_BOTTOMS_GREEN) {
+      0007FA 2B                    1865 	dec	hl
+      0007FB 2B                    1866 	dec	hl
+      0007FC 7E                    1867 	ld	a, (hl)
+      0007FD 90                    1868 	sub	a, b
+      0007FE 20 31                 1869 	jr	NZ, 00171$
+                           000800  1870 	C$collisions.c$158$4_1$137	= .
+                                   1871 	.globl	C$collisions.c$158$4_1$137
+                                   1872 ;src/collisions.c:158: set_bkg_tile_xy(index_X + 1, index_Y, current_tile_change[8]);      //
+      000800 F8 12                 1873 	ldhl	sp,#18
+      000802 2A                    1874 	ld	a, (hl+)
+      000803 5F                    1875 	ld	e, a
+      000804 2A                    1876 	ld	a, (hl+)
+      000805 57                    1877 	ld	d, a
+      000806 1A                    1878 	ld	a, (de)
+      000807 77                    1879 	ld	(hl), a
+      000808 F5                    1880 	push	af
+      000809 33                    1881 	inc	sp
+      00080A F8 03                 1882 	ldhl	sp,	#3
+      00080C 7E                    1883 	ld	a, (hl)
+      00080D F5                    1884 	push	af
+      00080E 33                    1885 	inc	sp
+      00080F F8 08                 1886 	ldhl	sp,	#8
+      000811 7E                    1887 	ld	a, (hl)
+      000812 F5                    1888 	push	af
+      000813 33                    1889 	inc	sp
+      000814 CDr00r00              1890 	call	_set_bkg_tile_xy
+      000817 E8 03                 1891 	add	sp, #3
+                           000819  1892 	C$collisions.c$159$4_1$137	= .
+                                   1893 	.globl	C$collisions.c$159$4_1$137
+                                   1894 ;src/collisions.c:159: set_bkg_tile_xy(index_X + 1, index_Y - 1, current_tile_change[3]);  //
+      000819 F8 10                 1895 	ldhl	sp,#16
+      00081B 2A                    1896 	ld	a, (hl+)
+      00081C 5F                    1897 	ld	e, a
+      00081D 56                    1898 	ld	d, (hl)
+      00081E 1A                    1899 	ld	a, (de)
+      00081F F5                    1900 	push	af
+      000820 33                    1901 	inc	sp
+      000821 F8 09                 1902 	ldhl	sp,	#9
+      000823 3A                    1903 	ld	a, (hl-)
+      000824 2B                    1904 	dec	hl
+      000825 F5                    1905 	push	af
+      000826 33                    1906 	inc	sp
+      000827 7E                    1907 	ld	a, (hl)
+      000828 F5                    1908 	push	af
+      000829 33                    1909 	inc	sp
+      00082A CDr00r00              1910 	call	_set_bkg_tile_xy
+      00082D E8 03                 1911 	add	sp, #3
+      00082F 18 30                 1912 	jr	00172$
+      000831                       1913 00171$:
+                           000831  1914 	C$collisions.c$161$4_1$138	= .
+                                   1915 	.globl	C$collisions.c$161$4_1$138
+                                   1916 ;src/collisions.c:161: set_bkg_tile_xy(index_X + 1, index_Y, current_tile_change[12]);      //
+      000831 F8 0C                 1917 	ldhl	sp,#12
+      000833 2A                    1918 	ld	a, (hl+)
+      000834 5F                    1919 	ld	e, a
+      000835 56                    1920 	ld	d, (hl)
+      000836 1A                    1921 	ld	a, (de)
+      000837 F8 14                 1922 	ldhl	sp,	#20
+      000839 77                    1923 	ld	(hl), a
+      00083A F5                    1924 	push	af
+      00083B 33                    1925 	inc	sp
+      00083C F8 03                 1926 	ldhl	sp,	#3
+      00083E 7E                    1927 	ld	a, (hl)
+      00083F F5                    1928 	push	af
+      000840 33                    1929 	inc	sp
+      000841 F8 08                 1930 	ldhl	sp,	#8
+      000843 7E                    1931 	ld	a, (hl)
+      000844 F5                    1932 	push	af
+      000845 33                    1933 	inc	sp
+      000846 CDr00r00              1934 	call	_set_bkg_tile_xy
+      000849 E8 03                 1935 	add	sp, #3
+                           00084B  1936 	C$collisions.c$162$4_1$138	= .
+                                   1937 	.globl	C$collisions.c$162$4_1$138
+                                   1938 ;src/collisions.c:162: set_bkg_tile_xy(index_X + 1, index_Y - 1, current_tile_change[10]);  //
+      00084B F8 0A                 1939 	ldhl	sp,#10
+      00084D 2A                    1940 	ld	a, (hl+)
+      00084E 5F                    1941 	ld	e, a
+      00084F 56                    1942 	ld	d, (hl)
+      000850 1A                    1943 	ld	a, (de)
+      000851 F5                    1944 	push	af
+      000852 33                    1945 	inc	sp
+      000853 F8 09                 1946 	ldhl	sp,	#9
+      000855 3A                    1947 	ld	a, (hl-)
+      000856 2B                    1948 	dec	hl
+      000857 F5                    1949 	push	af
+      000858 33                    1950 	inc	sp
+      000859 7E                    1951 	ld	a, (hl)
+      00085A F5                    1952 	push	af
+      00085B 33                    1953 	inc	sp
+      00085C CDr00r00              1954 	call	_set_bkg_tile_xy
+      00085F E8 03                 1955 	add	sp, #3
+      000861                       1956 00172$:
+                           000861  1957 	C$collisions.c$164$3_1$136	= .
+                                   1958 	.globl	C$collisions.c$164$3_1$136
+                                   1959 ;src/collisions.c:164: set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[0]);  //
+      000861 D1                    1960 	pop	de
+      000862 D5                    1961 	push	de
+      000863 1A                    1962 	ld	a, (de)
+      000864 F5                    1963 	push	af
+      000865 33                    1964 	inc	sp
+      000866 F8 09                 1965 	ldhl	sp,	#9
+      000868 7E                    1966 	ld	a, (hl)
+      000869 F5                    1967 	push	af
+      00086A 33                    1968 	inc	sp
+      00086B F8 05                 1969 	ldhl	sp,	#5
+      00086D 7E                    1970 	ld	a, (hl)
+      00086E F5                    1971 	push	af
+      00086F 33                    1972 	inc	sp
+      000870 CDr00r00              1973 	call	_set_bkg_tile_xy
+      000873 E8 03                 1974 	add	sp, #3
+                           000875  1975 	C$collisions.c$165$3_1$136	= .
+                                   1976 	.globl	C$collisions.c$165$3_1$136
+                                   1977 ;src/collisions.c:165: set_bkg_tile_xy(index_X, index_Y, current_tile_change[6]);      //
+      000875 F8 0E                 1978 	ldhl	sp,#14
+      000877 2A                    1979 	ld	a, (hl+)
+      000878 5F                    1980 	ld	e, a
+      000879 56                    1981 	ld	d, (hl)
+      00087A 1A                    1982 	ld	a, (de)
+      00087B F5                    1983 	push	af
+      00087C 33                    1984 	inc	sp
+      00087D F8 03                 1985 	ldhl	sp,	#3
+      00087F 2A                    1986 	ld	a, (hl+)
+      000880 57                    1987 	ld	d, a
+      000881 5E                    1988 	ld	e, (hl)
+      000882 D5                    1989 	push	de
+      000883 CDr00r00              1990 	call	_set_bkg_tile_xy
+      000886 E8 03                 1991 	add	sp, #3
+                           000888  1992 	C$collisions.c$167$3_1$136	= .
+                                   1993 	.globl	C$collisions.c$167$3_1$136
+                                   1994 ;src/collisions.c:167: return 0x01U;
+      000888 1E 01                 1995 	ld	e, #0x01
+      00088A 18 02                 1996 	jr	00200$
+      00088C                       1997 00198$:
+                           00088C  1998 	C$collisions.c$170$1_1$108	= .
+                                   1999 	.globl	C$collisions.c$170$1_1$108
+                                   2000 ;src/collisions.c:170: return 0x00U;  // NOTE: the first return of the function will end the execution of the function
+      00088C 1E 00                 2001 	ld	e, #0x00
+      00088E                       2002 00200$:
+                           00088E  2003 	C$collisions.c$171$1_1$107	= .
+                                   2004 	.globl	C$collisions.c$171$1_1$107
+                                   2005 ;src/collisions.c:171: }
+      00088E E8 15                 2006 	add	sp, #21
+                           000890  2007 	C$collisions.c$171$1_1$107	= .
+                                   2008 	.globl	C$collisions.c$171$1_1$107
+                           000890  2009 	XG$collide_bullet$0$0	= .
+                                   2010 	.globl	XG$collide_bullet$0$0
+      000890 C9                    2011 	ret
+                                   2012 	.area _CODE
+                                   2013 	.area _INITIALIZER
+                           000000  2014 Fcollisions$__xinit_npc_tile_bee$0_0$0 == .
+      000000                       2015 __xinit__npc_tile_bee:
+      000000 03                    2016 	.db #0x03	; 3
+      000001 04                    2017 	.db #0x04	; 4
+      000002 05                    2018 	.db #0x05	; 5
+      000003 06                    2019 	.db #0x06	; 6
+      000004 07                    2020 	.db #0x07	; 7
+                           000005  2021 Fcollisions$__xinit_npc_tile_wasp$0_0$0 == .
+      000005                       2022 __xinit__npc_tile_wasp:
+      000005 08                    2023 	.db #0x08	; 8
+      000006 09                    2024 	.db #0x09	; 9
+      000007 0A                    2025 	.db #0x0a	; 10
+      000008 0B                    2026 	.db #0x0b	; 11
+      000009 0C                    2027 	.db #0x0c	; 12
+                           00000A  2028 Fcollisions$__xinit_npc_tile_mothership$0_0$0 == .
+      00000A                       2029 __xinit__npc_tile_mothership:
+      00000A 0D                    2030 	.db #0x0d	; 13
+      00000B 0E                    2031 	.db #0x0e	; 14
+      00000C 0F                    2032 	.db #0x0f	; 15
+      00000D 10                    2033 	.db #0x10	; 16
+      00000E 11                    2034 	.db #0x11	; 17
+      00000F 12                    2035 	.db #0x12	; 18
+      000010 13                    2036 	.db #0x13	; 19
+      000011 14                    2037 	.db #0x14	; 20
+      000012 15                    2038 	.db #0x15	; 21
+      000013 16                    2039 	.db #0x16	; 22
+                           000014  2040 Fcollisions$__xinit_npc_tile_mothership_green$0_0$0 == .
+      000014                       2041 __xinit__npc_tile_mothership_green:
+      000014 17                    2042 	.db #0x17	; 23
+      000015 18                    2043 	.db #0x18	; 24
+      000016 19                    2044 	.db #0x19	; 25
+      000017 1A                    2045 	.db #0x1a	; 26
+      000018 1B                    2046 	.db #0x1b	; 27
+      000019 1C                    2047 	.db #0x1c	; 28
+      00001A 1D                    2048 	.db #0x1d	; 29
+      00001B 1E                    2049 	.db #0x1e	; 30
+      00001C 1F                    2050 	.db #0x1f	; 31
+      00001D 20                    2051 	.db #0x20	; 32
+      00001E 21                    2052 	.db #0x21	; 33
+      00001F 22                    2053 	.db #0x22	; 34
+      000020 23                    2054 	.db #0x23	; 35
+      000021 24                    2055 	.db #0x24	; 36
+                           000022  2056 Fcollisions$__xinit_npc_tile_mothership_dead$0_0$0 == .
+      000022                       2057 __xinit__npc_tile_mothership_dead:
+      000022 00                    2058 	.db #0x00	; 0
+      000023 00                    2059 	.db #0x00	; 0
+      000024 00                    2060 	.db #0x00	; 0
+      000025 1A                    2061 	.db #0x1a	; 26
+      000026 00                    2062 	.db #0x00	; 0
+      000027 00                    2063 	.db #0x00	; 0
+      000028 00                    2064 	.db #0x00	; 0
+      000029 00                    2065 	.db #0x00	; 0
+      00002A 1F                    2066 	.db #0x1f	; 31
+      00002B 00                    2067 	.db #0x00	; 0
+      00002C 10                    2068 	.db #0x10	; 16
+      00002D 22                    2069 	.db #0x22	; 34
+      00002E 15                    2070 	.db #0x15	; 21
+      00002F 24                    2071 	.db #0x24	; 36
+                                   2072 	.area _CABS (ABS)

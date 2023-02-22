@@ -5,9 +5,9 @@
 // comment
 UINT8 npc_tile_bee[5] = {0x03, 0x04, 0x05, 0x06, 0x07};
 UINT8 npc_tile_wasp[5] = {0x08, 0x09, 0x0A, 0x0B, 0x0C};
-UINT8 npc_tile_mothership[10] = {0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16};                                // DARK GREEN MOTHERSHIP
-UINT8 npc_tile_mothership_green[14] = {0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24};  // LIGHT GREEN MOTHERSHIP
-UINT8 npc_tile_change[14] = {0x00, 0x00, 0x00, 0x1A, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x10, 0x22, 0x15, 0x24};            // FOR TILE CHANGE POINTERS WHEN 0X00 ARE NECESSARY
+UINT8 npc_tile_mothership[10] = {0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16};                                     // DARK GREEN MOTHERSHIP
+UINT8 npc_tile_mothership_green[14] = {0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24};       // LIGHT GREEN MOTHERSHIP
+UINT8 npc_tile_mothership_tilechange[14] = {0x17, 0x00, 0x19, 0x1A, 0x00, 0x00, 0x1D, 0x1E, 0x1F, 0x00, 0x10, 0x22, 0x15, 0x24};  // FOR TILE CHANGE POINTERS WHEN 0X00 ARE NECESSARY
 
 UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {  // CHECK WHICH BACKGROUND TILE THE BULLET COLLIDES WITH //
     // ANY REPEAT get_bkg_tile_xy CACHE TO A LOCAL VARIABLE ONCE AT TOP THEN USE THE VARIABLE IN FUNC //
@@ -86,7 +86,7 @@ UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {  // CHECK WHI
             current_tile_change = &npc_tile_mothership_green[0];
         } else if ((current_tile >= 0x17) && (current_tile <= 0x24)) {  // POINT TO LIGHT GREEN MOTHERSHIP
             current_NPC = &npc_tile_mothership_green[0];
-            current_tile_change = &npc_tile_change[0];
+            current_tile_change = &npc_tile_mothership_tilechange[0];
         }
 
         if ((current_tile == MOTHERSHIPS_BOTTOMS) && (bulletx - tile_x >= 6)) {  // IF PLAYER HITS BOTTOM OF BOTH DARK GREEN MOTHERSHIPS
@@ -144,6 +144,12 @@ UINT8 collide_bullet(UINT8 bullet_spawn_x, UINT8 bullet_spawn_y) {  // CHECK WHI
         else if ((current_tile == MOTHERSHIPS_BOTTOMS_GREEN) && (bulletx - tile_x <= 3)) {
             set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[3]);      //
             set_bkg_tile_xy(index_X, index_Y, current_tile_change[8]);          //
+            set_bkg_tile_xy(index_X - 1, index_Y, current_tile_change[6]);      //
+            set_bkg_tile_xy(index_X - 1, index_Y - 1, current_tile_change[0]);  //
+            return 0x01U;
+        } else if ((current_tile == MOTHERSHIPS_BOTTOM_RIGHT_GREEN_BOTTOM_LEFT) && (bulletx - tile_x <= 3)) {
+            set_bkg_tile_xy(index_X, index_Y - 1, current_tile_change[2]);      //
+            set_bkg_tile_xy(index_X, index_Y, current_tile_change[7]);          //
             set_bkg_tile_xy(index_X - 1, index_Y, current_tile_change[6]);      //
             set_bkg_tile_xy(index_X - 1, index_Y - 1, current_tile_change[0]);  //
             return 0x01U;

@@ -1,5 +1,5 @@
 GBDK	= ../../../gbdk
-CC	= $(GBDK)/bin/lcc -autobank -Wf--debug -Wl-y -Wb-v -Wl-yt0x1B -Wl-yoA -Wl-ya4 -v
+CC	= $(GBDK)/bin/lcc -autobank -Wf--debug -Wl-y -Wb-v -Wl-yt0x1B -Wl-yoA -Wl-ya4
 BIN = vorm-attack.gb
 OBJS = build/collisions.o build/galaga.o build/main.o build/scene.o build/bkg_map.o build/bkg_tiles.o build/bullet.o
 # SRC = src/*.c

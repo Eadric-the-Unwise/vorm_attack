@@ -1,0 +1,1801 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  0 A$collisions$100                                               000019 GR
+  0 A$collisions$1000                                              00041D GR
+  0 A$collisions$1001                                              00041E GR
+  0 A$collisions$1002                                              00041F GR
+  0 A$collisions$1003                                              000422 GR
+  0 A$collisions$1004                                              000423 GR
+  0 A$collisions$1005                                              000424 GR
+  0 A$collisions$1006                                              000425 GR
+  0 A$collisions$1007                                              000426 GR
+  0 A$collisions$1008                                              000427 GR
+  0 A$collisions$1009                                              000428 GR
+  0 A$collisions$101                                               00001A GR
+  0 A$collisions$1010                                              00042A GR
+  0 A$collisions$1011                                              00042B GR
+  0 A$collisions$1012                                              00042C GR
+  0 A$collisions$1013                                              00042D GR
+  0 A$collisions$1014                                              00042F GR
+  0 A$collisions$1015                                              000430 GR
+  0 A$collisions$1016                                              000431 GR
+  0 A$collisions$1017                                              000432 GR
+  0 A$collisions$1018                                              000435 GR
+  0 A$collisions$102                                               00001B GR
+  0 A$collisions$1022                                              000437 GR
+  0 A$collisions$1023                                              000438 GR
+  0 A$collisions$1024                                              000439 GR
+  0 A$collisions$1025                                              00043A GR
+  0 A$collisions$1026                                              00043B GR
+  0 A$collisions$1027                                              00043C GR
+  0 A$collisions$1028                                              00043D GR
+  0 A$collisions$1029                                              00043F GR
+  0 A$collisions$103                                               00001C GR
+  0 A$collisions$1030                                              000440 GR
+  0 A$collisions$1031                                              000441 GR
+  0 A$collisions$1032                                              000442 GR
+  0 A$collisions$1033                                              000443 GR
+  0 A$collisions$1034                                              000444 GR
+  0 A$collisions$1035                                              000445 GR
+  0 A$collisions$1036                                              000446 GR
+  0 A$collisions$1037                                              000449 GR
+  0 A$collisions$104                                               00001E GR
+  0 A$collisions$1041                                              00044B GR
+  0 A$collisions$1042                                              00044D GR
+  0 A$collisions$1047                                              000450 GR
+  0 A$collisions$1048                                              000453 GR
+  0 A$collisions$1049                                              000455 GR
+  0 A$collisions$1050                                              000456 GR
+  0 A$collisions$1051                                              000458 GR
+  0 A$collisions$1052                                              000459 GR
+  0 A$collisions$1053                                              00045B GR
+  0 A$collisions$1054                                              00045C GR
+  0 A$collisions$1055                                              00045E GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 2.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1056                                              000460 GR
+  0 A$collisions$1058                                              000461 GR
+  0 A$collisions$1074                                              000463 GR
+  0 A$collisions$1075                                              000464 GR
+  0 A$collisions$1076                                              000465 GR
+  0 A$collisions$1077                                              000467 GR
+  0 A$collisions$1078                                              000469 GR
+  0 A$collisions$108                                               00001F GR
+  0 A$collisions$1082                                              00046B GR
+  0 A$collisions$1083                                              00046E GR
+  0 A$collisions$1084                                              00046F GR
+  0 A$collisions$1085                                              000470 GR
+  0 A$collisions$1086                                              000472 GR
+  0 A$collisions$1087                                              000473 GR
+  0 A$collisions$1088                                              000474 GR
+  0 A$collisions$1089                                              000475 GR
+  0 A$collisions$109                                               000021 GR
+  0 A$collisions$1090                                              000476 GR
+  0 A$collisions$1091                                              000479 GR
+  0 A$collisions$1095                                              00047B GR
+  0 A$collisions$1096                                              00047E GR
+  0 A$collisions$1097                                              00047F GR
+  0 A$collisions$1098                                              000480 GR
+  0 A$collisions$1099                                              000482 GR
+  0 A$collisions$110                                               000022 GR
+  0 A$collisions$1100                                              000483 GR
+  0 A$collisions$1101                                              000484 GR
+  0 A$collisions$1102                                              000485 GR
+  0 A$collisions$1103                                              000487 GR
+  0 A$collisions$1104                                              000488 GR
+  0 A$collisions$1105                                              000489 GR
+  0 A$collisions$1106                                              00048A GR
+  0 A$collisions$1107                                              00048D GR
+  0 A$collisions$111                                               000024 GR
+  0 A$collisions$1111                                              00048F GR
+  0 A$collisions$1112                                              000492 GR
+  0 A$collisions$1113                                              000493 GR
+  0 A$collisions$1114                                              000494 GR
+  0 A$collisions$1115                                              000496 GR
+  0 A$collisions$1116                                              000497 GR
+  0 A$collisions$1117                                              000498 GR
+  0 A$collisions$1118                                              000499 GR
+  0 A$collisions$1119                                              00049B GR
+  0 A$collisions$112                                               000027 GR
+  0 A$collisions$1120                                              00049C GR
+  0 A$collisions$1121                                              00049D GR
+  0 A$collisions$1122                                              00049E GR
+  0 A$collisions$1123                                              0004A1 GR
+  0 A$collisions$1127                                              0004A3 GR
+  0 A$collisions$1128                                              0004A6 GR
+  0 A$collisions$1129                                              0004A7 GR
+  0 A$collisions$113                                               000028 GR
+  0 A$collisions$1130                                              0004A8 GR
+  0 A$collisions$1131                                              0004AA GR
+  0 A$collisions$1132                                              0004AB GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 3.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1133                                              0004AC GR
+  0 A$collisions$1134                                              0004AD GR
+  0 A$collisions$1135                                              0004AE GR
+  0 A$collisions$1136                                              0004AF GR
+  0 A$collisions$1137                                              0004B0 GR
+  0 A$collisions$1138                                              0004B1 GR
+  0 A$collisions$1139                                              0004B4 GR
+  0 A$collisions$114                                               000029 GR
+  0 A$collisions$1143                                              0004B6 GR
+  0 A$collisions$1144                                              0004B8 GR
+  0 A$collisions$1149                                              0004BB GR
+  0 A$collisions$115                                               00002A GR
+  0 A$collisions$1150                                              0004BE GR
+  0 A$collisions$1151                                              0004C0 GR
+  0 A$collisions$1158                                              0004C1 GR
+  0 A$collisions$1159                                              0004C3 GR
+  0 A$collisions$116                                               00002C GR
+  0 A$collisions$1160                                              0004C4 GR
+  0 A$collisions$1161                                              0004C6 GR
+  0 A$collisions$1162                                              0004C7 GR
+  0 A$collisions$1163                                              0004CA GR
+  0 A$collisions$1164                                              0004CC GR
+  0 A$collisions$1165                                              0004CE GR
+  0 A$collisions$1166                                              0004CF GR
+  0 A$collisions$1167                                              0004D0 GR
+  0 A$collisions$1168                                              0004D2 GR
+  0 A$collisions$1169                                              0004D3 GR
+  0 A$collisions$117                                               00002D GR
+  0 A$collisions$1170                                              0004D5 GR
+  0 A$collisions$1171                                              0004D6 GR
+  0 A$collisions$1172                                              0004D8 GR
+  0 A$collisions$1173                                              0004DA GR
+  0 A$collisions$1174                                              0004DC GR
+  0 A$collisions$1175                                              0004DE GR
+  0 A$collisions$1176                                              0004DF GR
+  0 A$collisions$1178                                              0004E1 GR
+  0 A$collisions$1179                                              0004E3 GR
+  0 A$collisions$118                                               00002E GR
+  0 A$collisions$1180                                              0004E5 GR
+  0 A$collisions$1182                                              0004E6 GR
+  0 A$collisions$1186                                              0004E9 GR
+  0 A$collisions$1187                                              0004EB GR
+  0 A$collisions$1188                                              0004EC GR
+  0 A$collisions$1189                                              0004ED GR
+  0 A$collisions$119                                               00002F GR
+  0 A$collisions$1190                                              0004EE GR
+  0 A$collisions$1194                                              0004F0 GR
+  0 A$collisions$1195                                              0004F3 GR
+  0 A$collisions$1196                                              0004F5 GR
+  0 A$collisions$1197                                              0004F6 GR
+  0 A$collisions$1198                                              0004F7 GR
+  0 A$collisions$1199                                              0004F8 GR
+  0 A$collisions$1200                                              0004FA GR
+  0 A$collisions$1201                                              0004FB GR
+  0 A$collisions$1202                                              0004FC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 4.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1203                                              0004FD GR
+  0 A$collisions$1204                                              0004FF GR
+  0 A$collisions$1205                                              000500 GR
+  0 A$collisions$1206                                              000501 GR
+  0 A$collisions$1207                                              000502 GR
+  0 A$collisions$1208                                              000505 GR
+  0 A$collisions$1212                                              000507 GR
+  0 A$collisions$1213                                              00050A GR
+  0 A$collisions$1214                                              00050B GR
+  0 A$collisions$1215                                              00050C GR
+  0 A$collisions$1216                                              00050E GR
+  0 A$collisions$1217                                              00050F GR
+  0 A$collisions$1218                                              000510 GR
+  0 A$collisions$1219                                              000511 GR
+  0 A$collisions$1220                                              000513 GR
+  0 A$collisions$1221                                              000514 GR
+  0 A$collisions$1222                                              000515 GR
+  0 A$collisions$1223                                              000516 GR
+  0 A$collisions$1224                                              000519 GR
+  0 A$collisions$1225                                              00051B GR
+  0 A$collisions$123                                               000031 GR
+  0 A$collisions$1230                                              00051D GR
+  0 A$collisions$1231                                              00051F GR
+  0 A$collisions$1232                                              000520 GR
+  0 A$collisions$1233                                              000522 GR
+  0 A$collisions$1234                                              000523 GR
+  0 A$collisions$1238                                              000525 GR
+  0 A$collisions$1239                                              000528 GR
+  0 A$collisions$124                                               000032 GR
+  0 A$collisions$1240                                              000529 GR
+  0 A$collisions$1241                                              00052A GR
+  0 A$collisions$1242                                              00052C GR
+  0 A$collisions$1243                                              00052D GR
+  0 A$collisions$1244                                              00052E GR
+  0 A$collisions$1245                                              00052F GR
+  0 A$collisions$1246                                              000531 GR
+  0 A$collisions$1247                                              000532 GR
+  0 A$collisions$1248                                              000533 GR
+  0 A$collisions$1249                                              000534 GR
+  0 A$collisions$125                                               000033 GR
+  0 A$collisions$1250                                              000537 GR
+  0 A$collisions$1254                                              000539 GR
+  0 A$collisions$1255                                              00053C GR
+  0 A$collisions$1256                                              00053D GR
+  0 A$collisions$1257                                              00053E GR
+  0 A$collisions$1258                                              000540 GR
+  0 A$collisions$1259                                              000541 GR
+  0 A$collisions$126                                               000034 GR
+  0 A$collisions$1260                                              000542 GR
+  0 A$collisions$1261                                              000543 GR
+  0 A$collisions$1262                                              000545 GR
+  0 A$collisions$1263                                              000546 GR
+  0 A$collisions$1264                                              000547 GR
+  0 A$collisions$1265                                              000548 GR
+  0 A$collisions$1266                                              00054B GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 5.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$127                                               000035 GR
+  0 A$collisions$1271                                              00054D GR
+  0 A$collisions$1272                                              000550 GR
+  0 A$collisions$1273                                              000551 GR
+  0 A$collisions$1274                                              000552 GR
+  0 A$collisions$1275                                              000554 GR
+  0 A$collisions$1276                                              000555 GR
+  0 A$collisions$1277                                              000556 GR
+  0 A$collisions$1278                                              000557 GR
+  0 A$collisions$1279                                              000558 GR
+  0 A$collisions$128                                               000037 GR
+  0 A$collisions$1280                                              00055B GR
+  0 A$collisions$1284                                              00055D GR
+  0 A$collisions$1285                                              000560 GR
+  0 A$collisions$1286                                              000561 GR
+  0 A$collisions$1287                                              000562 GR
+  0 A$collisions$1288                                              000564 GR
+  0 A$collisions$1289                                              000565 GR
+  0 A$collisions$129                                               000039 GR
+  0 A$collisions$1290                                              000566 GR
+  0 A$collisions$1291                                              000567 GR
+  0 A$collisions$1292                                              000569 GR
+  0 A$collisions$1293                                              00056A GR
+  0 A$collisions$1294                                              00056B GR
+  0 A$collisions$1295                                              00056C GR
+  0 A$collisions$1296                                              00056F GR
+  0 A$collisions$130                                               00003A GR
+  0 A$collisions$1300                                              000571 GR
+  0 A$collisions$1301                                              000573 GR
+  0 A$collisions$1306                                              000576 GR
+  0 A$collisions$1307                                              000579 GR
+  0 A$collisions$131                                               00003B GR
+  0 A$collisions$1314                                              00057A GR
+  0 A$collisions$1315                                              00057C GR
+  0 A$collisions$1316                                              00057D GR
+  0 A$collisions$1317                                              00057F GR
+  0 A$collisions$1318                                              000580 GR
+  0 A$collisions$1319                                              000582 GR
+  0 A$collisions$132                                               00003C GR
+  0 A$collisions$1320                                              000583 GR
+  0 A$collisions$1321                                              000585 GR
+  0 A$collisions$1322                                              000587 GR
+  0 A$collisions$1323                                              000589 GR
+  0 A$collisions$1324                                              00058B GR
+  0 A$collisions$1325                                              00058D GR
+  0 A$collisions$1326                                              00058E GR
+  0 A$collisions$1328                                              000590 GR
+  0 A$collisions$1329                                              000592 GR
+  0 A$collisions$133                                               00003D GR
+  0 A$collisions$1330                                              000594 GR
+  0 A$collisions$1332                                              000595 GR
+  0 A$collisions$1333                                              000597 GR
+  0 A$collisions$1334                                              000598 GR
+  0 A$collisions$1335                                              00059A GR
+  0 A$collisions$1336                                              00059B GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 6.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1337                                              00059D GR
+  0 A$collisions$1338                                              00059E GR
+  0 A$collisions$1339                                              00059F GR
+  0 A$collisions$134                                               000040 GR
+  0 A$collisions$1340                                              0005A2 GR
+  0 A$collisions$1341                                              0005A4 GR
+  0 A$collisions$1342                                              0005A6 GR
+  0 A$collisions$1346                                              0005A9 GR
+  0 A$collisions$1347                                              0005AA GR
+  0 A$collisions$1348                                              0005AB GR
+  0 A$collisions$1349                                              0005AC GR
+  0 A$collisions$135                                               000041 GR
+  0 A$collisions$1350                                              0005AE GR
+  0 A$collisions$1351                                              0005AF GR
+  0 A$collisions$1355                                              0005B1 GR
+  0 A$collisions$1356                                              0005B3 GR
+  0 A$collisions$1357                                              0005B4 GR
+  0 A$collisions$1358                                              0005B5 GR
+  0 A$collisions$1359                                              0005B6 GR
+  0 A$collisions$136                                               000042 GR
+  0 A$collisions$1360                                              0005B8 GR
+  0 A$collisions$1361                                              0005B9 GR
+  0 A$collisions$1362                                              0005BA GR
+  0 A$collisions$1363                                              0005BB GR
+  0 A$collisions$1364                                              0005BD GR
+  0 A$collisions$1365                                              0005BE GR
+  0 A$collisions$1366                                              0005BF GR
+  0 A$collisions$1367                                              0005C0 GR
+  0 A$collisions$1368                                              0005C3 GR
+  0 A$collisions$1372                                              0005C5 GR
+  0 A$collisions$1373                                              0005C8 GR
+  0 A$collisions$1374                                              0005C9 GR
+  0 A$collisions$1375                                              0005CA GR
+  0 A$collisions$1376                                              0005CC GR
+  0 A$collisions$1377                                              0005CD GR
+  0 A$collisions$1378                                              0005CE GR
+  0 A$collisions$1379                                              0005CF GR
+  0 A$collisions$138                                               000043 GR
+  0 A$collisions$1380                                              0005D0 GR
+  0 A$collisions$1381                                              0005D1 GR
+  0 A$collisions$1382                                              0005D2 GR
+  0 A$collisions$1383                                              0005D3 GR
+  0 A$collisions$1384                                              0005D6 GR
+  0 A$collisions$1385                                              0005D8 GR
+  0 A$collisions$139                                               000045 GR
+  0 A$collisions$1390                                              0005DA GR
+  0 A$collisions$1391                                              0005DD GR
+  0 A$collisions$1392                                              0005DE GR
+  0 A$collisions$1393                                              0005E0 GR
+  0 A$collisions$1394                                              0005E1 GR
+  0 A$collisions$1395                                              0005E2 GR
+  0 A$collisions$1399                                              0005E4 GR
+  0 A$collisions$140                                               000046 GR
+  0 A$collisions$1400                                              0005E7 GR
+  0 A$collisions$1401                                              0005E8 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 7.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1402                                              0005E9 GR
+  0 A$collisions$1403                                              0005EB GR
+  0 A$collisions$1404                                              0005EC GR
+  0 A$collisions$1405                                              0005ED GR
+  0 A$collisions$1406                                              0005EE GR
+  0 A$collisions$1407                                              0005F0 GR
+  0 A$collisions$1408                                              0005F1 GR
+  0 A$collisions$1409                                              0005F2 GR
+  0 A$collisions$141                                               000047 GR
+  0 A$collisions$1410                                              0005F3 GR
+  0 A$collisions$1411                                              0005F6 GR
+  0 A$collisions$1415                                              0005F8 GR
+  0 A$collisions$1416                                              0005FB GR
+  0 A$collisions$1417                                              0005FC GR
+  0 A$collisions$1418                                              0005FD GR
+  0 A$collisions$1419                                              0005FF GR
+  0 A$collisions$142                                               000048 GR
+  0 A$collisions$1420                                              000600 GR
+  0 A$collisions$1421                                              000601 GR
+  0 A$collisions$1422                                              000602 GR
+  0 A$collisions$1423                                              000603 GR
+  0 A$collisions$1424                                              000604 GR
+  0 A$collisions$1425                                              000605 GR
+  0 A$collisions$1426                                              000606 GR
+  0 A$collisions$1427                                              000609 GR
+  0 A$collisions$143                                               00004A GR
+  0 A$collisions$1432                                              00060B GR
+  0 A$collisions$1433                                              00060E GR
+  0 A$collisions$1434                                              00060F GR
+  0 A$collisions$1435                                              000610 GR
+  0 A$collisions$1436                                              000612 GR
+  0 A$collisions$1437                                              000613 GR
+  0 A$collisions$1438                                              000614 GR
+  0 A$collisions$1439                                              000615 GR
+  0 A$collisions$144                                               00004B GR
+  0 A$collisions$1440                                              000616 GR
+  0 A$collisions$1441                                              000619 GR
+  0 A$collisions$1445                                              00061B GR
+  0 A$collisions$1446                                              00061E GR
+  0 A$collisions$1447                                              00061F GR
+  0 A$collisions$1448                                              000620 GR
+  0 A$collisions$1449                                              000622 GR
+  0 A$collisions$145                                               00004D GR
+  0 A$collisions$1450                                              000623 GR
+  0 A$collisions$1451                                              000624 GR
+  0 A$collisions$1452                                              000625 GR
+  0 A$collisions$1453                                              000627 GR
+  0 A$collisions$1454                                              000628 GR
+  0 A$collisions$1455                                              000629 GR
+  0 A$collisions$1456                                              00062A GR
+  0 A$collisions$1457                                              00062D GR
+  0 A$collisions$146                                               00004E GR
+  0 A$collisions$1461                                              00062F GR
+  0 A$collisions$1462                                              000631 GR
+  0 A$collisions$1467                                              000634 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 8.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1468                                              000635 GR
+  0 A$collisions$1469                                              000636 GR
+  0 A$collisions$147                                               000050 GR
+  0 A$collisions$1470                                              000639 GR
+  0 A$collisions$1471                                              00063A GR
+  0 A$collisions$1472                                              00063B GR
+  0 A$collisions$1473                                              00063C GR
+  0 A$collisions$1474                                              00063E GR
+  0 A$collisions$1475                                              00063F GR
+  0 A$collisions$1476                                              000640 GR
+  0 A$collisions$1477                                              000641 GR
+  0 A$collisions$1478                                              000643 GR
+  0 A$collisions$148                                               000051 GR
+  0 A$collisions$1482                                              000644 GR
+  0 A$collisions$1483                                              000645 GR
+  0 A$collisions$1484                                              000646 GR
+  0 A$collisions$1485                                              000649 GR
+  0 A$collisions$1486                                              00064A GR
+  0 A$collisions$1487                                              00064B GR
+  0 A$collisions$1488                                              00064C GR
+  0 A$collisions$1489                                              00064E GR
+  0 A$collisions$149                                               000053 GR
+  0 A$collisions$1490                                              00064F GR
+  0 A$collisions$1491                                              000650 GR
+  0 A$collisions$1492                                              000651 GR
+  0 A$collisions$1493                                              000653 GR
+  0 A$collisions$1497                                              000654 GR
+  0 A$collisions$1498                                              000655 GR
+  0 A$collisions$1499                                              000656 GR
+  0 A$collisions$150                                               000054 GR
+  0 A$collisions$1500                                              000659 GR
+  0 A$collisions$1501                                              00065A GR
+  0 A$collisions$1502                                              00065B GR
+  0 A$collisions$1503                                              00065C GR
+  0 A$collisions$1504                                              00065E GR
+  0 A$collisions$1505                                              00065F GR
+  0 A$collisions$1506                                              000660 GR
+  0 A$collisions$1507                                              000661 GR
+  0 A$collisions$151                                               000056 GR
+  0 A$collisions$1511                                              000663 GR
+  0 A$collisions$1512                                              000664 GR
+  0 A$collisions$1513                                              000665 GR
+  0 A$collisions$1514                                              000667 GR
+  0 A$collisions$1515                                              000668 GR
+  0 A$collisions$1516                                              000669 GR
+  0 A$collisions$1517                                              00066B GR
+  0 A$collisions$1518                                              00066C GR
+  0 A$collisions$1519                                              00066E GR
+  0 A$collisions$152                                               000057 GR
+  0 A$collisions$1520                                              00066F GR
+  0 A$collisions$1521                                              000671 GR
+  0 A$collisions$1522                                              000673 GR
+  0 A$collisions$1523                                              000675 GR
+  0 A$collisions$1524                                              000677 GR
+  0 A$collisions$1525                                              000678 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 9.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1527                                              00067A GR
+  0 A$collisions$1528                                              00067C GR
+  0 A$collisions$1529                                              00067E GR
+  0 A$collisions$1531                                              00067F GR
+  0 A$collisions$1532                                              000681 GR
+  0 A$collisions$1533                                              000682 GR
+  0 A$collisions$1534                                              000683 GR
+  0 A$collisions$1535                                              000685 GR
+  0 A$collisions$1536                                              000686 GR
+  0 A$collisions$1537                                              000687 GR
+  0 A$collisions$1538                                              000689 GR
+  0 A$collisions$1539                                              00068B GR
+  0 A$collisions$1541                                              00068D GR
+  0 A$collisions$1542                                              00068F GR
+  0 A$collisions$1543                                              000690 GR
+  0 A$collisions$1544                                              000691 GR
+  0 A$collisions$1545                                              000693 GR
+  0 A$collisions$1546                                              000695 GR
+  0 A$collisions$1551                                              000697 GR
+  0 A$collisions$1552                                              000699 GR
+  0 A$collisions$1553                                              00069A GR
+  0 A$collisions$1554                                              00069B GR
+  0 A$collisions$1555                                              00069C GR
+  0 A$collisions$1556                                              00069D GR
+  0 A$collisions$1557                                              00069E GR
+  0 A$collisions$1558                                              00069F GR
+  0 A$collisions$1559                                              0006A1 GR
+  0 A$collisions$156                                               000059 GR
+  0 A$collisions$1560                                              0006A2 GR
+  0 A$collisions$1561                                              0006A3 GR
+  0 A$collisions$1562                                              0006A4 GR
+  0 A$collisions$1563                                              0006A6 GR
+  0 A$collisions$1564                                              0006A7 GR
+  0 A$collisions$1565                                              0006A8 GR
+  0 A$collisions$1566                                              0006A9 GR
+  0 A$collisions$1567                                              0006AC GR
+  0 A$collisions$157                                               00005B GR
+  0 A$collisions$1571                                              0006AE GR
+  0 A$collisions$1572                                              0006B0 GR
+  0 A$collisions$1573                                              0006B1 GR
+  0 A$collisions$1574                                              0006B2 GR
+  0 A$collisions$1575                                              0006B3 GR
+  0 A$collisions$1576                                              0006B4 GR
+  0 A$collisions$1577                                              0006B5 GR
+  0 A$collisions$1578                                              0006B6 GR
+  0 A$collisions$1579                                              0006B8 GR
+  0 A$collisions$158                                               00005C GR
+  0 A$collisions$1580                                              0006B9 GR
+  0 A$collisions$1581                                              0006BA GR
+  0 A$collisions$1582                                              0006BB GR
+  0 A$collisions$1583                                              0006BC GR
+  0 A$collisions$1584                                              0006BF GR
+  0 A$collisions$1588                                              0006C1 GR
+  0 A$collisions$1589                                              0006C3 GR
+  0 A$collisions$159                                               00005D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 10.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1590                                              0006C4 GR
+  0 A$collisions$1591                                              0006C5 GR
+  0 A$collisions$1592                                              0006C6 GR
+  0 A$collisions$1593                                              0006C7 GR
+  0 A$collisions$1594                                              0006C8 GR
+  0 A$collisions$1595                                              0006C9 GR
+  0 A$collisions$1596                                              0006CB GR
+  0 A$collisions$1597                                              0006CC GR
+  0 A$collisions$1598                                              0006CD GR
+  0 A$collisions$1599                                              0006CE GR
+  0 A$collisions$160                                               00005E GR
+  0 A$collisions$1600                                              0006D0 GR
+  0 A$collisions$1601                                              0006D1 GR
+  0 A$collisions$1602                                              0006D2 GR
+  0 A$collisions$1603                                              0006D3 GR
+  0 A$collisions$1604                                              0006D6 GR
+  0 A$collisions$1608                                              0006D8 GR
+  0 A$collisions$1609                                              0006D9 GR
+  0 A$collisions$161                                               000060 GR
+  0 A$collisions$1610                                              0006DA GR
+  0 A$collisions$1611                                              0006DB GR
+  0 A$collisions$1612                                              0006DC GR
+  0 A$collisions$1613                                              0006DD GR
+  0 A$collisions$1614                                              0006DF GR
+  0 A$collisions$1615                                              0006E0 GR
+  0 A$collisions$1616                                              0006E1 GR
+  0 A$collisions$1617                                              0006E2 GR
+  0 A$collisions$1618                                              0006E4 GR
+  0 A$collisions$1619                                              0006E5 GR
+  0 A$collisions$162                                               000062 GR
+  0 A$collisions$1620                                              0006E6 GR
+  0 A$collisions$1621                                              0006E7 GR
+  0 A$collisions$1622                                              0006EA GR
+  0 A$collisions$1626                                              0006EC GR
+  0 A$collisions$1627                                              0006EE GR
+  0 A$collisions$163                                               000063 GR
+  0 A$collisions$1632                                              0006F1 GR
+  0 A$collisions$1633                                              0006F4 GR
+  0 A$collisions$1637                                              0006F5 GR
+  0 A$collisions$1638                                              0006F6 GR
+  0 A$collisions$1639                                              0006F7 GR
+  0 A$collisions$164                                               000064 GR
+  0 A$collisions$1640                                              0006FA GR
+  0 A$collisions$1641                                              0006FB GR
+  0 A$collisions$1642                                              0006FC GR
+  0 A$collisions$1643                                              0006FD GR
+  0 A$collisions$1644                                              0006FF GR
+  0 A$collisions$1645                                              000700 GR
+  0 A$collisions$1646                                              000701 GR
+  0 A$collisions$1647                                              000702 GR
+  0 A$collisions$1648                                              000704 GR
+  0 A$collisions$165                                               000065 GR
+  0 A$collisions$1652                                              000705 GR
+  0 A$collisions$1653                                              000706 GR
+  0 A$collisions$1654                                              000707 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 11.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1655                                              00070A GR
+  0 A$collisions$1656                                              00070B GR
+  0 A$collisions$1657                                              00070C GR
+  0 A$collisions$1658                                              00070D GR
+  0 A$collisions$1659                                              00070F GR
+  0 A$collisions$166                                               000066 GR
+  0 A$collisions$1660                                              000710 GR
+  0 A$collisions$1661                                              000711 GR
+  0 A$collisions$1662                                              000712 GR
+  0 A$collisions$1663                                              000714 GR
+  0 A$collisions$1667                                              000715 GR
+  0 A$collisions$1668                                              000717 GR
+  0 A$collisions$1669                                              000718 GR
+  0 A$collisions$167                                               000069 GR
+  0 A$collisions$1670                                              000719 GR
+  0 A$collisions$1671                                              00071B GR
+  0 A$collisions$1672                                              00071D GR
+  0 A$collisions$1676                                              00071F GR
+  0 A$collisions$1677                                              000721 GR
+  0 A$collisions$1678                                              000722 GR
+  0 A$collisions$1679                                              000723 GR
+  0 A$collisions$168                                               00006A GR
+  0 A$collisions$1680                                              000724 GR
+  0 A$collisions$1681                                              000725 GR
+  0 A$collisions$1682                                              000726 GR
+  0 A$collisions$1683                                              000727 GR
+  0 A$collisions$1684                                              000729 GR
+  0 A$collisions$1685                                              00072A GR
+  0 A$collisions$1686                                              00072B GR
+  0 A$collisions$1687                                              00072C GR
+  0 A$collisions$1688                                              00072E GR
+  0 A$collisions$1689                                              00072F GR
+  0 A$collisions$169                                               00006B GR
+  0 A$collisions$1690                                              000730 GR
+  0 A$collisions$1691                                              000731 GR
+  0 A$collisions$1692                                              000734 GR
+  0 A$collisions$1696                                              000736 GR
+  0 A$collisions$1697                                              000738 GR
+  0 A$collisions$1698                                              000739 GR
+  0 A$collisions$1699                                              00073A GR
+  0 A$collisions$1700                                              00073B GR
+  0 A$collisions$1701                                              00073C GR
+  0 A$collisions$1702                                              00073D GR
+  0 A$collisions$1703                                              00073E GR
+  0 A$collisions$1704                                              000740 GR
+  0 A$collisions$1705                                              000741 GR
+  0 A$collisions$1706                                              000742 GR
+  0 A$collisions$1707                                              000743 GR
+  0 A$collisions$1708                                              000744 GR
+  0 A$collisions$1709                                              000747 GR
+  0 A$collisions$171                                               00006C GR
+  0 A$collisions$1713                                              000749 GR
+  0 A$collisions$1714                                              00074B GR
+  0 A$collisions$1715                                              00074C GR
+  0 A$collisions$1716                                              00074D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 12.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1717                                              00074E GR
+  0 A$collisions$1718                                              00074F GR
+  0 A$collisions$1719                                              000750 GR
+  0 A$collisions$172                                               00006E GR
+  0 A$collisions$1720                                              000751 GR
+  0 A$collisions$1721                                              000753 GR
+  0 A$collisions$1722                                              000754 GR
+  0 A$collisions$1723                                              000755 GR
+  0 A$collisions$1724                                              000756 GR
+  0 A$collisions$1725                                              000758 GR
+  0 A$collisions$1726                                              000759 GR
+  0 A$collisions$1727                                              00075A GR
+  0 A$collisions$1728                                              00075B GR
+  0 A$collisions$1729                                              00075E GR
+  0 A$collisions$173                                               00006F GR
+  0 A$collisions$1733                                              000760 GR
+  0 A$collisions$1734                                              000761 GR
+  0 A$collisions$1735                                              000762 GR
+  0 A$collisions$1736                                              000763 GR
+  0 A$collisions$1737                                              000764 GR
+  0 A$collisions$1738                                              000765 GR
+  0 A$collisions$1739                                              000767 GR
+  0 A$collisions$174                                               000070 GR
+  0 A$collisions$1740                                              000768 GR
+  0 A$collisions$1741                                              000769 GR
+  0 A$collisions$1742                                              00076A GR
+  0 A$collisions$1743                                              00076C GR
+  0 A$collisions$1744                                              00076D GR
+  0 A$collisions$1745                                              00076E GR
+  0 A$collisions$1746                                              00076F GR
+  0 A$collisions$1747                                              000772 GR
+  0 A$collisions$175                                               000071 GR
+  0 A$collisions$1751                                              000774 GR
+  0 A$collisions$1752                                              000776 GR
+  0 A$collisions$1757                                              000779 GR
+  0 A$collisions$1758                                              00077C GR
+  0 A$collisions$1759                                              00077E GR
+  0 A$collisions$176                                               000073 GR
+  0 A$collisions$1760                                              00077F GR
+  0 A$collisions$1761                                              000781 GR
+  0 A$collisions$1762                                              000782 GR
+  0 A$collisions$1763                                              000784 GR
+  0 A$collisions$1764                                              000785 GR
+  0 A$collisions$1765                                              000787 GR
+  0 A$collisions$1766                                              000789 GR
+  0 A$collisions$177                                               000074 GR
+  0 A$collisions$1770                                              00078B GR
+  0 A$collisions$1771                                              00078D GR
+  0 A$collisions$1772                                              00078E GR
+  0 A$collisions$1773                                              00078F GR
+  0 A$collisions$1774                                              000790 GR
+  0 A$collisions$1775                                              000791 GR
+  0 A$collisions$1776                                              000792 GR
+  0 A$collisions$1777                                              000793 GR
+  0 A$collisions$1778                                              000795 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 13.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1779                                              000796 GR
+  0 A$collisions$178                                               000076 GR
+  0 A$collisions$1780                                              000797 GR
+  0 A$collisions$1781                                              000798 GR
+  0 A$collisions$1782                                              00079A GR
+  0 A$collisions$1783                                              00079B GR
+  0 A$collisions$1784                                              00079C GR
+  0 A$collisions$1785                                              00079D GR
+  0 A$collisions$1786                                              0007A0 GR
+  0 A$collisions$179                                               000077 GR
+  0 A$collisions$1790                                              0007A2 GR
+  0 A$collisions$1791                                              0007A3 GR
+  0 A$collisions$1792                                              0007A4 GR
+  0 A$collisions$1793                                              0007A7 GR
+  0 A$collisions$1794                                              0007A8 GR
+  0 A$collisions$1795                                              0007A9 GR
+  0 A$collisions$1796                                              0007AA GR
+  0 A$collisions$1797                                              0007AB GR
+  0 A$collisions$1798                                              0007AC GR
+  0 A$collisions$1799                                              0007AD GR
+  0 A$collisions$180                                               000079 GR
+  0 A$collisions$1800                                              0007AF GR
+  0 A$collisions$1801                                              0007B0 GR
+  0 A$collisions$1802                                              0007B1 GR
+  0 A$collisions$1803                                              0007B2 GR
+  0 A$collisions$1804                                              0007B3 GR
+  0 A$collisions$1805                                              0007B6 GR
+  0 A$collisions$1809                                              0007B8 GR
+  0 A$collisions$181                                               00007A GR
+  0 A$collisions$1810                                              0007BA GR
+  0 A$collisions$1811                                              0007BB GR
+  0 A$collisions$1812                                              0007BC GR
+  0 A$collisions$1813                                              0007BD GR
+  0 A$collisions$1814                                              0007BE GR
+  0 A$collisions$1815                                              0007BF GR
+  0 A$collisions$1816                                              0007C0 GR
+  0 A$collisions$1817                                              0007C2 GR
+  0 A$collisions$1818                                              0007C3 GR
+  0 A$collisions$1819                                              0007C4 GR
+  0 A$collisions$182                                               00007C GR
+  0 A$collisions$1820                                              0007C5 GR
+  0 A$collisions$1821                                              0007C7 GR
+  0 A$collisions$1822                                              0007C8 GR
+  0 A$collisions$1823                                              0007C9 GR
+  0 A$collisions$1824                                              0007CA GR
+  0 A$collisions$1825                                              0007CD GR
+  0 A$collisions$1829                                              0007CF GR
+  0 A$collisions$183                                               00007D GR
+  0 A$collisions$1830                                              0007D0 GR
+  0 A$collisions$1831                                              0007D1 GR
+  0 A$collisions$1832                                              0007D2 GR
+  0 A$collisions$1833                                              0007D3 GR
+  0 A$collisions$1834                                              0007D4 GR
+  0 A$collisions$1835                                              0007D6 GR
+  0 A$collisions$1836                                              0007D7 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 14.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1837                                              0007D8 GR
+  0 A$collisions$1838                                              0007D9 GR
+  0 A$collisions$1839                                              0007DB GR
+  0 A$collisions$184                                               00007F GR
+  0 A$collisions$1840                                              0007DC GR
+  0 A$collisions$1841                                              0007DD GR
+  0 A$collisions$1842                                              0007DE GR
+  0 A$collisions$1843                                              0007E1 GR
+  0 A$collisions$1847                                              0007E3 GR
+  0 A$collisions$1848                                              0007E5 GR
+  0 A$collisions$185                                               000080 GR
+  0 A$collisions$1853                                              0007E8 GR
+  0 A$collisions$1854                                              0007EB GR
+  0 A$collisions$1855                                              0007EC GR
+  0 A$collisions$1856                                              0007EE GR
+  0 A$collisions$1857                                              0007EF GR
+  0 A$collisions$1858                                              0007F0 GR
+  0 A$collisions$1859                                              0007F3 GR
+  0 A$collisions$1860                                              0007F5 GR
+  0 A$collisions$1861                                              0007F7 GR
+  0 A$collisions$1865                                              0007FA GR
+  0 A$collisions$1866                                              0007FB GR
+  0 A$collisions$1867                                              0007FC GR
+  0 A$collisions$1868                                              0007FD GR
+  0 A$collisions$1869                                              0007FE GR
+  0 A$collisions$1873                                              000800 GR
+  0 A$collisions$1874                                              000802 GR
+  0 A$collisions$1875                                              000803 GR
+  0 A$collisions$1876                                              000804 GR
+  0 A$collisions$1877                                              000805 GR
+  0 A$collisions$1878                                              000806 GR
+  0 A$collisions$1879                                              000807 GR
+  0 A$collisions$1880                                              000808 GR
+  0 A$collisions$1881                                              000809 GR
+  0 A$collisions$1882                                              00080A GR
+  0 A$collisions$1883                                              00080C GR
+  0 A$collisions$1884                                              00080D GR
+  0 A$collisions$1885                                              00080E GR
+  0 A$collisions$1886                                              00080F GR
+  0 A$collisions$1887                                              000811 GR
+  0 A$collisions$1888                                              000812 GR
+  0 A$collisions$1889                                              000813 GR
+  0 A$collisions$189                                               000082 GR
+  0 A$collisions$1890                                              000814 GR
+  0 A$collisions$1891                                              000817 GR
+  0 A$collisions$1895                                              000819 GR
+  0 A$collisions$1896                                              00081B GR
+  0 A$collisions$1897                                              00081C GR
+  0 A$collisions$1898                                              00081D GR
+  0 A$collisions$1899                                              00081E GR
+  0 A$collisions$190                                               000084 GR
+  0 A$collisions$1900                                              00081F GR
+  0 A$collisions$1901                                              000820 GR
+  0 A$collisions$1902                                              000821 GR
+  0 A$collisions$1903                                              000823 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 15.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1904                                              000824 GR
+  0 A$collisions$1905                                              000825 GR
+  0 A$collisions$1906                                              000826 GR
+  0 A$collisions$1907                                              000827 GR
+  0 A$collisions$1908                                              000828 GR
+  0 A$collisions$1909                                              000829 GR
+  0 A$collisions$191                                               000085 GR
+  0 A$collisions$1910                                              00082A GR
+  0 A$collisions$1911                                              00082D GR
+  0 A$collisions$1912                                              00082F GR
+  0 A$collisions$1917                                              000831 GR
+  0 A$collisions$1918                                              000833 GR
+  0 A$collisions$1919                                              000834 GR
+  0 A$collisions$192                                               000086 GR
+  0 A$collisions$1920                                              000835 GR
+  0 A$collisions$1921                                              000836 GR
+  0 A$collisions$1922                                              000837 GR
+  0 A$collisions$1923                                              000839 GR
+  0 A$collisions$1924                                              00083A GR
+  0 A$collisions$1925                                              00083B GR
+  0 A$collisions$1926                                              00083C GR
+  0 A$collisions$1927                                              00083E GR
+  0 A$collisions$1928                                              00083F GR
+  0 A$collisions$1929                                              000840 GR
+  0 A$collisions$193                                               000087 GR
+  0 A$collisions$1930                                              000841 GR
+  0 A$collisions$1931                                              000843 GR
+  0 A$collisions$1932                                              000844 GR
+  0 A$collisions$1933                                              000845 GR
+  0 A$collisions$1934                                              000846 GR
+  0 A$collisions$1935                                              000849 GR
+  0 A$collisions$1939                                              00084B GR
+  0 A$collisions$194                                               000088 GR
+  0 A$collisions$1940                                              00084D GR
+  0 A$collisions$1941                                              00084E GR
+  0 A$collisions$1942                                              00084F GR
+  0 A$collisions$1943                                              000850 GR
+  0 A$collisions$1944                                              000851 GR
+  0 A$collisions$1945                                              000852 GR
+  0 A$collisions$1946                                              000853 GR
+  0 A$collisions$1947                                              000855 GR
+  0 A$collisions$1948                                              000856 GR
+  0 A$collisions$1949                                              000857 GR
+  0 A$collisions$195                                               000089 GR
+  0 A$collisions$1950                                              000858 GR
+  0 A$collisions$1951                                              000859 GR
+  0 A$collisions$1952                                              00085A GR
+  0 A$collisions$1953                                              00085B GR
+  0 A$collisions$1954                                              00085C GR
+  0 A$collisions$1955                                              00085F GR
+  0 A$collisions$1960                                              000861 GR
+  0 A$collisions$1961                                              000862 GR
+  0 A$collisions$1962                                              000863 GR
+  0 A$collisions$1963                                              000864 GR
+  0 A$collisions$1964                                              000865 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 16.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$1965                                              000866 GR
+  0 A$collisions$1966                                              000868 GR
+  0 A$collisions$1967                                              000869 GR
+  0 A$collisions$1968                                              00086A GR
+  0 A$collisions$1969                                              00086B GR
+  0 A$collisions$1970                                              00086D GR
+  0 A$collisions$1971                                              00086E GR
+  0 A$collisions$1972                                              00086F GR
+  0 A$collisions$1973                                              000870 GR
+  0 A$collisions$1974                                              000873 GR
+  0 A$collisions$1978                                              000875 GR
+  0 A$collisions$1979                                              000877 GR
+  0 A$collisions$1980                                              000878 GR
+  0 A$collisions$1981                                              000879 GR
+  0 A$collisions$1982                                              00087A GR
+  0 A$collisions$1983                                              00087B GR
+  0 A$collisions$1984                                              00087C GR
+  0 A$collisions$1985                                              00087D GR
+  0 A$collisions$1986                                              00087F GR
+  0 A$collisions$1987                                              000880 GR
+  0 A$collisions$1988                                              000881 GR
+  0 A$collisions$1989                                              000882 GR
+  0 A$collisions$199                                               00008A GR
+  0 A$collisions$1990                                              000883 GR
+  0 A$collisions$1991                                              000886 GR
+  0 A$collisions$1995                                              000888 GR
+  0 A$collisions$1996                                              00088A GR
+  0 A$collisions$200                                               00008C GR
+  0 A$collisions$2001                                              00088C GR
+  0 A$collisions$2006                                              00088E GR
+  0 A$collisions$201                                               00008D GR
+  0 A$collisions$2011                                              000890 GR
+  0 A$collisions$202                                               00008F GR
+  0 A$collisions$203                                               000090 GR
+  0 A$collisions$204                                               000092 GR
+  0 A$collisions$205                                               000093 GR
+  0 A$collisions$206                                               000095 GR
+  0 A$collisions$207                                               000096 GR
+  0 A$collisions$208                                               000097 GR
+  0 A$collisions$209                                               000098 GR
+  0 A$collisions$210                                               000099 GR
+  0 A$collisions$211                                               00009A GR
+  0 A$collisions$212                                               00009D GR
+  0 A$collisions$213                                               00009E GR
+  0 A$collisions$217                                               0000A0 GR
+  0 A$collisions$218                                               0000A1 GR
+  0 A$collisions$219                                               0000A2 GR
+  0 A$collisions$220                                               0000A3 GR
+  0 A$collisions$221                                               0000A4 GR
+  0 A$collisions$222                                               0000A5 GR
+  0 A$collisions$223                                               0000A7 GR
+  0 A$collisions$224                                               0000A8 GR
+  0 A$collisions$225                                               0000A9 GR
+  0 A$collisions$226                                               0000AA GR
+  0 A$collisions$227                                               0000AC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 17.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$228                                               0000AD GR
+  0 A$collisions$229                                               0000AE GR
+  0 A$collisions$230                                               0000AF GR
+  0 A$collisions$231                                               0000B2 GR
+  0 A$collisions$232                                               0000B3 GR
+  0 A$collisions$233                                               0000B5 GR
+  0 A$collisions$237                                               0000B6 GR
+  0 A$collisions$238                                               0000B7 GR
+  0 A$collisions$239                                               0000B8 GR
+  0 A$collisions$240                                               0000BA GR
+  0 A$collisions$241                                               0000BB GR
+  0 A$collisions$242                                               0000BD GR
+  0 A$collisions$243                                               0000BE GR
+  0 A$collisions$244                                               0000BF GR
+  0 A$collisions$245                                               0000C0 GR
+  0 A$collisions$246                                               0000C2 GR
+  0 A$collisions$247                                               0000C3 GR
+  0 A$collisions$248                                               0000C4 GR
+  0 A$collisions$249                                               0000C5 GR
+  0 A$collisions$250                                               0000C8 GR
+  0 A$collisions$251                                               0000C9 GR
+  0 A$collisions$252                                               0000CB GR
+  0 A$collisions$256                                               0000CC GR
+  0 A$collisions$257                                               0000CE GR
+  0 A$collisions$258                                               0000D0 GR
+  0 A$collisions$259                                               0000D1 GR
+  0 A$collisions$260                                               0000D2 GR
+  0 A$collisions$261                                               0000D3 GR
+  0 A$collisions$262                                               0000D4 GR
+  0 A$collisions$263                                               0000D5 GR
+  0 A$collisions$264                                               0000D6 GR
+  0 A$collisions$265                                               0000D7 GR
+  0 A$collisions$266                                               0000D8 GR
+  0 A$collisions$267                                               0000D9 GR
+  0 A$collisions$268                                               0000DA GR
+  0 A$collisions$269                                               0000DB GR
+  0 A$collisions$273                                               0000DC GR
+  0 A$collisions$274                                               0000DE GR
+  0 A$collisions$275                                               0000DF GR
+  0 A$collisions$276                                               0000E1 GR
+  0 A$collisions$277                                               0000E4 GR
+  0 A$collisions$278                                               0000E6 GR
+  0 A$collisions$279                                               0000E7 GR
+  0 A$collisions$283                                               0000EA GR
+  0 A$collisions$284                                               0000ED GR
+  0 A$collisions$285                                               0000EE GR
+  0 A$collisions$286                                               0000F0 GR
+  0 A$collisions$287                                               0000F1 GR
+  0 A$collisions$288                                               0000F2 GR
+  0 A$collisions$289                                               0000F4 GR
+  0 A$collisions$290                                               0000F7 GR
+  0 A$collisions$291                                               0000F8 GR
+  0 A$collisions$292                                               0000F9 GR
+  0 A$collisions$293                                               0000FB GR
+  0 A$collisions$294                                               0000FC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 18.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$298                                               0000FE GR
+  0 A$collisions$299                                               000100 GR
+  0 A$collisions$300                                               000102 GR
+  0 A$collisions$301                                               000103 GR
+  0 A$collisions$302                                               000105 GR
+  0 A$collisions$307                                               000107 GR
+  0 A$collisions$308                                               00010A GR
+  0 A$collisions$309                                               00010B GR
+  0 A$collisions$310                                               00010D GR
+  0 A$collisions$311                                               00010E GR
+  0 A$collisions$312                                               00010F GR
+  0 A$collisions$313                                               000111 GR
+  0 A$collisions$314                                               000114 GR
+  0 A$collisions$315                                               000115 GR
+  0 A$collisions$316                                               000116 GR
+  0 A$collisions$317                                               000118 GR
+  0 A$collisions$318                                               000119 GR
+  0 A$collisions$322                                               00011B GR
+  0 A$collisions$323                                               00011D GR
+  0 A$collisions$324                                               00011F GR
+  0 A$collisions$325                                               000120 GR
+  0 A$collisions$330                                               000122 GR
+  0 A$collisions$331                                               000124 GR
+  0 A$collisions$332                                               000125 GR
+  0 A$collisions$333                                               000126 GR
+  0 A$collisions$334                                               000127 GR
+  0 A$collisions$335                                               000128 GR
+  0 A$collisions$336                                               00012A GR
+  0 A$collisions$340                                               00012B GR
+  0 A$collisions$341                                               00012D GR
+  0 A$collisions$342                                               00012E GR
+  0 A$collisions$346                                               00012F GR
+  0 A$collisions$347                                               000130 GR
+  0 A$collisions$348                                               000131 GR
+  0 A$collisions$349                                               000132 GR
+  0 A$collisions$350                                               000133 GR
+  0 A$collisions$351                                               000134 GR
+  0 A$collisions$352                                               000135 GR
+  0 A$collisions$353                                               000136 GR
+  0 A$collisions$354                                               000139 GR
+  0 A$collisions$355                                               00013A GR
+  0 A$collisions$356                                               00013B GR
+  0 A$collisions$357                                               00013C GR
+  0 A$collisions$358                                               00013E GR
+  0 A$collisions$359                                               00013F GR
+  0 A$collisions$360                                               000140 GR
+  0 A$collisions$361                                               000141 GR
+  0 A$collisions$362                                               000143 GR
+  0 A$collisions$366                                               000144 GR
+  0 A$collisions$367                                               000146 GR
+  0 A$collisions$368                                               000147 GR
+  0 A$collisions$369                                               000148 GR
+  0 A$collisions$370                                               000149 GR
+  0 A$collisions$371                                               00014C GR
+  0 A$collisions$372                                               00014D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 19.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$373                                               00014E GR
+  0 A$collisions$374                                               00014F GR
+  0 A$collisions$375                                               000151 GR
+  0 A$collisions$376                                               000152 GR
+  0 A$collisions$377                                               000153 GR
+  0 A$collisions$378                                               000154 GR
+  0 A$collisions$382                                               000156 GR
+  0 A$collisions$383                                               000157 GR
+  0 A$collisions$384                                               000158 GR
+  0 A$collisions$388                                               000159 GR
+  0 A$collisions$389                                               00015B GR
+  0 A$collisions$390                                               00015C GR
+  0 A$collisions$391                                               00015E GR
+  0 A$collisions$392                                               00015F GR
+  0 A$collisions$393                                               000162 GR
+  0 A$collisions$394                                               000164 GR
+  0 A$collisions$395                                               000165 GR
+  0 A$collisions$396                                               000167 GR
+  0 A$collisions$397                                               000168 GR
+  0 A$collisions$398                                               00016A GR
+  0 A$collisions$399                                               00016B GR
+  0 A$collisions$400                                               00016D GR
+  0 A$collisions$401                                               00016F GR
+  0 A$collisions$402                                               000171 GR
+  0 A$collisions$403                                               000173 GR
+  0 A$collisions$404                                               000175 GR
+  0 A$collisions$405                                               000176 GR
+  0 A$collisions$407                                               000178 GR
+  0 A$collisions$408                                               00017A GR
+  0 A$collisions$409                                               00017C GR
+  0 A$collisions$411                                               00017D GR
+  0 A$collisions$415                                               00017F GR
+  0 A$collisions$416                                               000181 GR
+  0 A$collisions$417                                               000182 GR
+  0 A$collisions$418                                               000183 GR
+  0 A$collisions$419                                               000184 GR
+  0 A$collisions$420                                               000185 GR
+  0 A$collisions$421                                               000187 GR
+  0 A$collisions$425                                               000188 GR
+  0 A$collisions$426                                               00018A GR
+  0 A$collisions$427                                               00018B GR
+  0 A$collisions$428                                               00018D GR
+  0 A$collisions$429                                               00018E GR
+  0 A$collisions$433                                               000190 GR
+  0 A$collisions$434                                               000192 GR
+  0 A$collisions$435                                               000193 GR
+  0 A$collisions$436                                               000194 GR
+  0 A$collisions$437                                               000195 GR
+  0 A$collisions$438                                               000197 GR
+  0 A$collisions$439                                               000198 GR
+  0 A$collisions$440                                               000199 GR
+  0 A$collisions$441                                               00019A GR
+  0 A$collisions$442                                               00019C GR
+  0 A$collisions$443                                               00019D GR
+  0 A$collisions$444                                               00019E GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 20.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$445                                               00019F GR
+  0 A$collisions$446                                               0001A2 GR
+  0 A$collisions$447                                               0001A4 GR
+  0 A$collisions$452                                               0001A6 GR
+  0 A$collisions$453                                               0001A8 GR
+  0 A$collisions$454                                               0001A9 GR
+  0 A$collisions$455                                               0001AB GR
+  0 A$collisions$456                                               0001AC GR
+  0 A$collisions$457                                               0001AE GR
+  0 A$collisions$458                                               0001B0 GR
+  0 A$collisions$459                                               0001B1 GR
+  0 A$collisions$460                                               0001B2 GR
+  0 A$collisions$461                                               0001B3 GR
+  0 A$collisions$462                                               0001B4 GR
+  0 A$collisions$463                                               0001B5 GR
+  0 A$collisions$464                                               0001B7 GR
+  0 A$collisions$465                                               0001B8 GR
+  0 A$collisions$466                                               0001B9 GR
+  0 A$collisions$471                                               0001BB GR
+  0 A$collisions$472                                               0001BC GR
+  0 A$collisions$473                                               0001BD GR
+  0 A$collisions$474                                               0001BE GR
+  0 A$collisions$475                                               0001C0 GR
+  0 A$collisions$476                                               0001C1 GR
+  0 A$collisions$477                                               0001C2 GR
+  0 A$collisions$478                                               0001C3 GR
+  0 A$collisions$479                                               0001C5 GR
+  0 A$collisions$480                                               0001C6 GR
+  0 A$collisions$481                                               0001C7 GR
+  0 A$collisions$482                                               0001C8 GR
+  0 A$collisions$483                                               0001CB GR
+  0 A$collisions$488                                               0001CD GR
+  0 A$collisions$489                                               0001CE GR
+  0 A$collisions$490                                               0001CF GR
+  0 A$collisions$491                                               0001D0 GR
+  0 A$collisions$492                                               0001D2 GR
+  0 A$collisions$493                                               0001D3 GR
+  0 A$collisions$494                                               0001D4 GR
+  0 A$collisions$495                                               0001D5 GR
+  0 A$collisions$496                                               0001D6 GR
+  0 A$collisions$497                                               0001D9 GR
+  0 A$collisions$501                                               0001DB GR
+  0 A$collisions$502                                               0001DD GR
+  0 A$collisions$507                                               0001E0 GR
+  0 A$collisions$508                                               0001E2 GR
+  0 A$collisions$509                                               0001E3 GR
+  0 A$collisions$510                                               0001E5 GR
+  0 A$collisions$511                                               0001E6 GR
+  0 A$collisions$512                                               0001E8 GR
+  0 A$collisions$513                                               0001EA GR
+  0 A$collisions$515                                               0001EB GR
+  0 A$collisions$516                                               0001EC GR
+  0 A$collisions$517                                               0001EE GR
+  0 A$collisions$518                                               0001F0 GR
+  0 A$collisions$519                                               0001F1 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 21.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$520                                               0001F2 GR
+  0 A$collisions$521                                               0001F4 GR
+  0 A$collisions$522                                               0001F5 GR
+  0 A$collisions$523                                               0001F7 GR
+  0 A$collisions$524                                               0001F8 GR
+  0 A$collisions$525                                               0001FA GR
+  0 A$collisions$526                                               0001FC GR
+  0 A$collisions$527                                               0001FE GR
+  0 A$collisions$528                                               000200 GR
+  0 A$collisions$529                                               000201 GR
+  0 A$collisions$531                                               000203 GR
+  0 A$collisions$532                                               000205 GR
+  0 A$collisions$533                                               000207 GR
+  0 A$collisions$535                                               000208 GR
+  0 A$collisions$536                                               00020A GR
+  0 A$collisions$537                                               00020B GR
+  0 A$collisions$538                                               00020C GR
+  0 A$collisions$539                                               00020D GR
+  0 A$collisions$540                                               00020E GR
+  0 A$collisions$541                                               000210 GR
+  0 A$collisions$542                                               000212 GR
+  0 A$collisions$546                                               000214 GR
+  0 A$collisions$547                                               000215 GR
+  0 A$collisions$548                                               000216 GR
+  0 A$collisions$549                                               000217 GR
+  0 A$collisions$550                                               000219 GR
+  0 A$collisions$551                                               00021A GR
+  0 A$collisions$552                                               00021B GR
+  0 A$collisions$553                                               00021C GR
+  0 A$collisions$554                                               00021E GR
+  0 A$collisions$555                                               00021F GR
+  0 A$collisions$556                                               000220 GR
+  0 A$collisions$557                                               000221 GR
+  0 A$collisions$558                                               000224 GR
+  0 A$collisions$562                                               000226 GR
+  0 A$collisions$563                                               000228 GR
+  0 A$collisions$564                                               000229 GR
+  0 A$collisions$565                                               00022A GR
+  0 A$collisions$566                                               00022B GR
+  0 A$collisions$567                                               00022C GR
+  0 A$collisions$568                                               00022D GR
+  0 A$collisions$569                                               00022E GR
+  0 A$collisions$570                                               000230 GR
+  0 A$collisions$571                                               000231 GR
+  0 A$collisions$572                                               000232 GR
+  0 A$collisions$573                                               000233 GR
+  0 A$collisions$574                                               000234 GR
+  0 A$collisions$575                                               000237 GR
+  0 A$collisions$579                                               000239 GR
+  0 A$collisions$580                                               00023B GR
+  0 A$collisions$585                                               00023E GR
+  0 A$collisions$586                                               000240 GR
+  0 A$collisions$587                                               000241 GR
+  0 A$collisions$588                                               000242 GR
+  0 A$collisions$589                                               000243 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 22.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$590                                               000244 GR
+  0 A$collisions$591                                               000246 GR
+  0 A$collisions$592                                               000247 GR
+  0 A$collisions$593                                               000249 GR
+  0 A$collisions$594                                               00024A GR
+  0 A$collisions$595                                               00024C GR
+  0 A$collisions$596                                               00024D GR
+  0 A$collisions$597                                               00024F GR
+  0 A$collisions$598                                               000251 GR
+  0 A$collisions$602                                               000253 GR
+  0 A$collisions$603                                               000254 GR
+  0 A$collisions$604                                               000255 GR
+  0 A$collisions$605                                               000256 GR
+  0 A$collisions$606                                               000258 GR
+  0 A$collisions$607                                               000259 GR
+  0 A$collisions$608                                               00025A GR
+  0 A$collisions$609                                               00025B GR
+  0 A$collisions$610                                               00025D GR
+  0 A$collisions$611                                               00025E GR
+  0 A$collisions$612                                               00025F GR
+  0 A$collisions$613                                               000260 GR
+  0 A$collisions$614                                               000263 GR
+  0 A$collisions$618                                               000265 GR
+  0 A$collisions$619                                               000266 GR
+  0 A$collisions$620                                               000267 GR
+  0 A$collisions$621                                               000268 GR
+  0 A$collisions$622                                               00026A GR
+  0 A$collisions$623                                               00026B GR
+  0 A$collisions$624                                               00026C GR
+  0 A$collisions$625                                               00026D GR
+  0 A$collisions$626                                               00026E GR
+  0 A$collisions$627                                               000271 GR
+  0 A$collisions$631                                               000273 GR
+  0 A$collisions$632                                               000275 GR
+  0 A$collisions$637                                               000278 GR
+  0 A$collisions$638                                               00027A GR
+  0 A$collisions$639                                               00027B GR
+  0 A$collisions$640                                               00027D GR
+  0 A$collisions$641                                               00027E GR
+  0 A$collisions$642                                               000280 GR
+  0 A$collisions$643                                               000281 GR
+  0 A$collisions$644                                               000283 GR
+  0 A$collisions$645                                               000285 GR
+  0 A$collisions$646                                               000287 GR
+  0 A$collisions$647                                               000289 GR
+  0 A$collisions$648                                               00028B GR
+  0 A$collisions$649                                               00028C GR
+  0 A$collisions$651                                               00028E GR
+  0 A$collisions$652                                               000290 GR
+  0 A$collisions$653                                               000292 GR
+  0 A$collisions$655                                               000293 GR
+  0 A$collisions$656                                               000295 GR
+  0 A$collisions$657                                               000296 GR
+  0 A$collisions$658                                               000297 GR
+  0 A$collisions$659                                               000298 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 23.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$660                                               000299 GR
+  0 A$collisions$661                                               00029B GR
+  0 A$collisions$662                                               00029D GR
+  0 A$collisions$666                                               00029F GR
+  0 A$collisions$667                                               0002A0 GR
+  0 A$collisions$668                                               0002A1 GR
+  0 A$collisions$669                                               0002A2 GR
+  0 A$collisions$670                                               0002A4 GR
+  0 A$collisions$671                                               0002A5 GR
+  0 A$collisions$672                                               0002A6 GR
+  0 A$collisions$673                                               0002A7 GR
+  0 A$collisions$674                                               0002A9 GR
+  0 A$collisions$675                                               0002AA GR
+  0 A$collisions$676                                               0002AB GR
+  0 A$collisions$677                                               0002AC GR
+  0 A$collisions$678                                               0002AF GR
+  0 A$collisions$682                                               0002B1 GR
+  0 A$collisions$683                                               0002B3 GR
+  0 A$collisions$684                                               0002B4 GR
+  0 A$collisions$685                                               0002B5 GR
+  0 A$collisions$686                                               0002B6 GR
+  0 A$collisions$687                                               0002B7 GR
+  0 A$collisions$688                                               0002B8 GR
+  0 A$collisions$689                                               0002B9 GR
+  0 A$collisions$690                                               0002BB GR
+  0 A$collisions$691                                               0002BC GR
+  0 A$collisions$692                                               0002BD GR
+  0 A$collisions$693                                               0002BE GR
+  0 A$collisions$694                                               0002BF GR
+  0 A$collisions$695                                               0002C2 GR
+  0 A$collisions$699                                               0002C4 GR
+  0 A$collisions$700                                               0002C6 GR
+  0 A$collisions$705                                               0002C9 GR
+  0 A$collisions$706                                               0002CB GR
+  0 A$collisions$707                                               0002CC GR
+  0 A$collisions$708                                               0002CD GR
+  0 A$collisions$709                                               0002CE GR
+  0 A$collisions$710                                               0002CF GR
+  0 A$collisions$711                                               0002D0 GR
+  0 A$collisions$712                                               0002D2 GR
+  0 A$collisions$713                                               0002D3 GR
+  0 A$collisions$714                                               0002D4 GR
+  0 A$collisions$715                                               0002D6 GR
+  0 A$collisions$716                                               0002D8 GR
+  0 A$collisions$720                                               0002DA GR
+  0 A$collisions$721                                               0002DB GR
+  0 A$collisions$722                                               0002DC GR
+  0 A$collisions$723                                               0002DD GR
+  0 A$collisions$724                                               0002DF GR
+  0 A$collisions$725                                               0002E0 GR
+  0 A$collisions$726                                               0002E1 GR
+  0 A$collisions$727                                               0002E2 GR
+  0 A$collisions$728                                               0002E4 GR
+  0 A$collisions$729                                               0002E5 GR
+  0 A$collisions$730                                               0002E6 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 24.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$731                                               0002E7 GR
+  0 A$collisions$732                                               0002EA GR
+  0 A$collisions$736                                               0002EC GR
+  0 A$collisions$737                                               0002ED GR
+  0 A$collisions$738                                               0002EE GR
+  0 A$collisions$739                                               0002EF GR
+  0 A$collisions$74                                                000000 GR
+  0 A$collisions$740                                               0002F1 GR
+  0 A$collisions$741                                               0002F2 GR
+  0 A$collisions$742                                               0002F3 GR
+  0 A$collisions$743                                               0002F4 GR
+  0 A$collisions$744                                               0002F5 GR
+  0 A$collisions$745                                               0002F8 GR
+  0 A$collisions$749                                               0002FA GR
+  0 A$collisions$750                                               0002FC GR
+  0 A$collisions$755                                               0002FF GR
+  0 A$collisions$756                                               000301 GR
+  0 A$collisions$757                                               000302 GR
+  0 A$collisions$758                                               000303 GR
+  0 A$collisions$759                                               000304 GR
+  0 A$collisions$760                                               000305 GR
+  0 A$collisions$761                                               000306 GR
+  0 A$collisions$762                                               000307 GR
+  0 A$collisions$763                                               000309 GR
+  0 A$collisions$764                                               00030A GR
+  0 A$collisions$765                                               00030B GR
+  0 A$collisions$766                                               00030E GR
+  0 A$collisions$767                                               000310 GR
+  0 A$collisions$768                                               000312 GR
+  0 A$collisions$769                                               000313 GR
+  0 A$collisions$770                                               000314 GR
+  0 A$collisions$771                                               000316 GR
+  0 A$collisions$772                                               000317 GR
+  0 A$collisions$773                                               000319 GR
+  0 A$collisions$774                                               00031A GR
+  0 A$collisions$775                                               00031C GR
+  0 A$collisions$776                                               00031E GR
+  0 A$collisions$777                                               000320 GR
+  0 A$collisions$778                                               000322 GR
+  0 A$collisions$779                                               000323 GR
+  0 A$collisions$78                                                000002 GR
+  0 A$collisions$781                                               000325 GR
+  0 A$collisions$782                                               000327 GR
+  0 A$collisions$783                                               000329 GR
+  0 A$collisions$785                                               00032A GR
+  0 A$collisions$789                                               00032D GR
+  0 A$collisions$79                                                000003 GR
+  0 A$collisions$790                                               00032F GR
+  0 A$collisions$791                                               000330 GR
+  0 A$collisions$792                                               000332 GR
+  0 A$collisions$793                                               000333 GR
+  0 A$collisions$797                                               000335 GR
+  0 A$collisions$798                                               000337 GR
+  0 A$collisions$799                                               000338 GR
+  0 A$collisions$80                                                000005 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 25.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$800                                               000339 GR
+  0 A$collisions$801                                               00033A GR
+  0 A$collisions$802                                               00033C GR
+  0 A$collisions$803                                               00033D GR
+  0 A$collisions$804                                               00033E GR
+  0 A$collisions$805                                               00033F GR
+  0 A$collisions$806                                               000341 GR
+  0 A$collisions$807                                               000342 GR
+  0 A$collisions$808                                               000343 GR
+  0 A$collisions$809                                               000344 GR
+  0 A$collisions$81                                                000006 GR
+  0 A$collisions$810                                               000347 GR
+  0 A$collisions$811                                               000349 GR
+  0 A$collisions$816                                               00034B GR
+  0 A$collisions$817                                               00034D GR
+  0 A$collisions$818                                               00034E GR
+  0 A$collisions$819                                               00034F GR
+  0 A$collisions$823                                               000351 GR
+  0 A$collisions$824                                               000352 GR
+  0 A$collisions$825                                               000353 GR
+  0 A$collisions$826                                               000354 GR
+  0 A$collisions$827                                               000356 GR
+  0 A$collisions$828                                               000357 GR
+  0 A$collisions$829                                               000358 GR
+  0 A$collisions$830                                               000359 GR
+  0 A$collisions$831                                               00035B GR
+  0 A$collisions$832                                               00035C GR
+  0 A$collisions$833                                               00035D GR
+  0 A$collisions$834                                               00035E GR
+  0 A$collisions$835                                               000361 GR
+  0 A$collisions$840                                               000363 GR
+  0 A$collisions$841                                               000364 GR
+  0 A$collisions$842                                               000365 GR
+  0 A$collisions$843                                               000366 GR
+  0 A$collisions$844                                               000368 GR
+  0 A$collisions$845                                               000369 GR
+  0 A$collisions$846                                               00036A GR
+  0 A$collisions$847                                               00036B GR
+  0 A$collisions$848                                               00036C GR
+  0 A$collisions$849                                               00036F GR
+  0 A$collisions$85                                                000007 GR
+  0 A$collisions$853                                               000371 GR
+  0 A$collisions$854                                               000373 GR
+  0 A$collisions$859                                               000376 GR
+  0 A$collisions$86                                                000008 GR
+  0 A$collisions$860                                               000378 GR
+  0 A$collisions$861                                               000379 GR
+  0 A$collisions$862                                               00037B GR
+  0 A$collisions$863                                               00037D GR
+  0 A$collisions$864                                               00037E GR
+  0 A$collisions$865                                               00037F GR
+  0 A$collisions$866                                               000381 GR
+  0 A$collisions$87                                                00000A GR
+  0 A$collisions$870                                               000384 GR
+  0 A$collisions$871                                               000386 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 26.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$872                                               000388 GR
+  0 A$collisions$873                                               00038A GR
+  0 A$collisions$874                                               00038B GR
+  0 A$collisions$878                                               00038D GR
+  0 A$collisions$879                                               00038F GR
+  0 A$collisions$88                                                00000B GR
+  0 A$collisions$880                                               000391 GR
+  0 A$collisions$881                                               000392 GR
+  0 A$collisions$882                                               000394 GR
+  0 A$collisions$887                                               000396 GR
+  0 A$collisions$888                                               000398 GR
+  0 A$collisions$889                                               000399 GR
+  0 A$collisions$890                                               00039B GR
+  0 A$collisions$891                                               00039D GR
+  0 A$collisions$892                                               00039F GR
+  0 A$collisions$893                                               0003A0 GR
+  0 A$collisions$897                                               0003A2 GR
+  0 A$collisions$898                                               0003A4 GR
+  0 A$collisions$899                                               0003A6 GR
+  0 A$collisions$900                                               0003A7 GR
+  0 A$collisions$905                                               0003A9 GR
+  0 A$collisions$906                                               0003AC GR
+  0 A$collisions$907                                               0003AE GR
+  0 A$collisions$908                                               0003AF GR
+  0 A$collisions$909                                               0003B1 GR
+  0 A$collisions$910                                               0003B2 GR
+  0 A$collisions$911                                               0003B4 GR
+  0 A$collisions$912                                               0003B5 GR
+  0 A$collisions$913                                               0003B7 GR
+  0 A$collisions$914                                               0003B9 GR
+  0 A$collisions$916                                               0003BA GR
+  0 A$collisions$917                                               0003BC GR
+  0 A$collisions$92                                                00000C GR
+  0 A$collisions$921                                               0003BD GR
+  0 A$collisions$922                                               0003BF GR
+  0 A$collisions$923                                               0003C0 GR
+  0 A$collisions$924                                               0003C1 GR
+  0 A$collisions$925                                               0003C3 GR
+  0 A$collisions$929                                               0003C4 GR
+  0 A$collisions$93                                                00000E GR
+  0 A$collisions$930                                               0003C6 GR
+  0 A$collisions$931                                               0003C7 GR
+  0 A$collisions$932                                               0003C9 GR
+  0 A$collisions$933                                               0003CA GR
+  0 A$collisions$934                                               0003CC GR
+  0 A$collisions$935                                               0003CD GR
+  0 A$collisions$936                                               0003CF GR
+  0 A$collisions$937                                               0003D1 GR
+  0 A$collisions$938                                               0003D3 GR
+  0 A$collisions$939                                               0003D5 GR
+  0 A$collisions$94                                                00000F GR
+  0 A$collisions$940                                               0003D7 GR
+  0 A$collisions$941                                               0003D8 GR
+  0 A$collisions$943                                               0003DA GR
+  0 A$collisions$944                                               0003DC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 27.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$collisions$945                                               0003DE GR
+  0 A$collisions$947                                               0003DF GR
+  0 A$collisions$948                                               0003E1 GR
+  0 A$collisions$949                                               0003E2 GR
+  0 A$collisions$95                                                000011 GR
+  0 A$collisions$950                                               0003E3 GR
+  0 A$collisions$951                                               0003E5 GR
+  0 A$collisions$952                                               0003E6 GR
+  0 A$collisions$953                                               0003E7 GR
+  0 A$collisions$954                                               0003E9 GR
+  0 A$collisions$955                                               0003EB GR
+  0 A$collisions$959                                               0003ED GR
+  0 A$collisions$96                                                000014 GR
+  0 A$collisions$960                                               0003EE GR
+  0 A$collisions$961                                               0003EF GR
+  0 A$collisions$962                                               0003F2 GR
+  0 A$collisions$963                                               0003F3 GR
+  0 A$collisions$964                                               0003F4 GR
+  0 A$collisions$965                                               0003F5 GR
+  0 A$collisions$966                                               0003F6 GR
+  0 A$collisions$967                                               0003F7 GR
+  0 A$collisions$968                                               0003F8 GR
+  0 A$collisions$969                                               0003FA GR
+  0 A$collisions$97                                                000015 GR
+  0 A$collisions$970                                               0003FB GR
+  0 A$collisions$971                                               0003FC GR
+  0 A$collisions$972                                               0003FD GR
+  0 A$collisions$973                                               0003FE GR
+  0 A$collisions$974                                               000401 GR
+  0 A$collisions$978                                               000403 GR
+  0 A$collisions$979                                               000404 GR
+  0 A$collisions$98                                                000016 GR
+  0 A$collisions$980                                               000405 GR
+  0 A$collisions$981                                               000408 GR
+  0 A$collisions$982                                               000409 GR
+  0 A$collisions$983                                               00040A GR
+  0 A$collisions$984                                               00040B GR
+  0 A$collisions$985                                               00040C GR
+  0 A$collisions$986                                               00040D GR
+  0 A$collisions$987                                               00040E GR
+  0 A$collisions$988                                               000410 GR
+  0 A$collisions$989                                               000411 GR
+  0 A$collisions$99                                                000017 GR
+  0 A$collisions$990                                               000412 GR
+  0 A$collisions$991                                               000413 GR
+  0 A$collisions$992                                               000415 GR
+  0 A$collisions$993                                               000416 GR
+  0 A$collisions$994                                               000417 GR
+  0 A$collisions$995                                               000418 GR
+  0 A$collisions$996                                               00041B GR
+  0 C$collisions.c$100$1_1$107                                  =  000463 GR
+  0 C$collisions.c$100$3_1$126                                  =  00047B GR
+  0 C$collisions.c$101$1_1$107                                  =  000463 GR
+  0 C$collisions.c$101$3_1$126                                  =  00048F GR
+  0 C$collisions.c$102$1_1$107                                  =  000463 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 28.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 C$collisions.c$102$3_1$126                                  =  0004A3 GR
+  0 C$collisions.c$103$3_1$126                                  =  0004B6 GR
+  0 C$collisions.c$104$2_1$122                                  =  0004C1 GR
+  0 C$collisions.c$105$3_1$127                                  =  0004E9 GR
+  0 C$collisions.c$106$1_1$107                                  =  0004C1 GR
+  0 C$collisions.c$106$4_1$128                                  =  0004F0 GR
+  0 C$collisions.c$107$4_1$128                                  =  000507 GR
+  0 C$collisions.c$108$3_1$127                                  =  00051D GR
+  0 C$collisions.c$109$4_1$129                                  =  000525 GR
+  0 C$collisions.c$110$4_1$129                                  =  000539 GR
+  0 C$collisions.c$112$3_1$127                                  =  00054D GR
+  0 C$collisions.c$113$3_1$127                                  =  00055D GR
+  0 C$collisions.c$114$3_1$127                                  =  000571 GR
+  0 C$collisions.c$12$0_0$107                                   =  000000 GR
+  0 C$collisions.c$124$1_1$107                                  =  00057A GR
+  0 C$collisions.c$124$2_1$122                                  =  000576 GR
+  0 C$collisions.c$125$3_1$130                                  =  0005A9 GR
+  0 C$collisions.c$126$4_1$131                                  =  0005B1 GR
+  0 C$collisions.c$127$4_1$131                                  =  0005C5 GR
+  0 C$collisions.c$128$3_1$130                                  =  0005DA GR
+  0 C$collisions.c$129$4_1$132                                  =  0005E4 GR
+  0 C$collisions.c$130$4_1$132                                  =  0005F8 GR
+  0 C$collisions.c$132$1_1$107                                  =  00057A GR
+  0 C$collisions.c$132$3_1$130                                  =  00060B GR
+  0 C$collisions.c$133$3_1$130                                  =  00061B GR
+  0 C$collisions.c$135$3_1$130                                  =  00062F GR
+  0 C$collisions.c$136$1_1$107                                  =  000663 GR
+  0 C$collisions.c$137$1_1$107                                  =  000634 GR
+  0 C$collisions.c$137$3_1$133                                  =  000697 GR
+  0 C$collisions.c$138$1_1$107                                  =  000644 GR
+  0 C$collisions.c$138$3_1$133                                  =  0006AE GR
+  0 C$collisions.c$139$1_1$107                                  =  000654 GR
+  0 C$collisions.c$139$3_1$133                                  =  0006C1 GR
+  0 C$collisions.c$14$2_0$107                                   =  000002 GR
+  0 C$collisions.c$140$3_1$133                                  =  0006D8 GR
+  0 C$collisions.c$141$3_1$133                                  =  0006EC GR
+  0 C$collisions.c$144$2_1$122                                  =  000715 GR
+  0 C$collisions.c$145$1_1$107                                  =  0006F5 GR
+  0 C$collisions.c$145$3_1$134                                  =  00071F GR
+  0 C$collisions.c$146$1_1$107                                  =  000705 GR
+  0 C$collisions.c$146$3_1$134                                  =  000736 GR
+  0 C$collisions.c$147$3_1$134                                  =  000749 GR
+  0 C$collisions.c$148$3_1$134                                  =  000760 GR
+  0 C$collisions.c$149$3_1$134                                  =  000774 GR
+  0 C$collisions.c$15$2_0$107                                   =  000007 GR
+  0 C$collisions.c$150$2_1$122                                  =  000779 GR
+  0 C$collisions.c$151$3_1$135                                  =  00078B GR
+  0 C$collisions.c$152$3_1$135                                  =  0007A2 GR
+  0 C$collisions.c$153$3_1$135                                  =  0007B8 GR
+  0 C$collisions.c$154$3_1$135                                  =  0007CF GR
+  0 C$collisions.c$155$3_1$135                                  =  0007E3 GR
+  0 C$collisions.c$156$2_1$122                                  =  0007E8 GR
+  0 C$collisions.c$157$3_1$136                                  =  0007FA GR
+  0 C$collisions.c$158$4_1$137                                  =  000800 GR
+  0 C$collisions.c$159$4_1$137                                  =  000819 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 29.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 C$collisions.c$161$4_1$138                                  =  000831 GR
+  0 C$collisions.c$162$4_1$138                                  =  00084B GR
+  0 C$collisions.c$164$3_1$136                                  =  000861 GR
+  0 C$collisions.c$165$3_1$136                                  =  000875 GR
+  0 C$collisions.c$167$3_1$136                                  =  000888 GR
+  0 C$collisions.c$170$1_1$108                                  =  00088C GR
+  0 C$collisions.c$171$1_1$107                                  =  000890 GR
+  0 C$collisions.c$19$1_0$107                                   =  00000C GR
+  0 C$collisions.c$20$1_0$107                                   =  00001F GR
+  0 C$collisions.c$22$1_0$107                                   =  000031 GR
+  0 C$collisions.c$23$1_0$107                                   =  000059 GR
+  0 C$collisions.c$26$1_0$107                                   =  000082 GR
+  0 C$collisions.c$29$1_1$108                                   =  00008A GR
+  0 C$collisions.c$30$1_1$108                                   =  0000A0 GR
+  0 C$collisions.c$31$1_1$108                                   =  0000B6 GR
+  0 C$collisions.c$33$1_1$108                                   =  0000DC GR
+  0 C$collisions.c$34$2_1$109                                   =  0000EA GR
+  0 C$collisions.c$35$3_1$110                                   =  0000FE GR
+  0 C$collisions.c$36$2_1$109                                   =  000107 GR
+  0 C$collisions.c$37$3_1$111                                   =  00011B GR
+  0 C$collisions.c$39$1_1$107                                   =  0000CC GR
+  0 C$collisions.c$39$2_1$109                                   =  000159 GR
+  0 C$collisions.c$40$1_1$107                                   =  000156 GR
+  0 C$collisions.c$40$3_1$112                                   =  000188 GR
+  0 C$collisions.c$41$1_1$107                                   =  00017F GR
+  0 C$collisions.c$41$4_1$113                                   =  000190 GR
+  0 C$collisions.c$42$1_1$107                                   =  000144 GR
+  0 C$collisions.c$42$3_1$112                                   =  0001A6 GR
+  0 C$collisions.c$43$4_1$114                                   =  0001BB GR
+  0 C$collisions.c$45$3_1$112                                   =  0001CD GR
+  0 C$collisions.c$46$3_1$112                                   =  0001DB GR
+  0 C$collisions.c$48$2_1$109                                   =  0001E0 GR
+  0 C$collisions.c$49$3_1$115                                   =  000214 GR
+  0 C$collisions.c$50$3_1$115                                   =  000226 GR
+  0 C$collisions.c$51$3_1$115                                   =  000239 GR
+  0 C$collisions.c$53$2_1$109                                   =  00023E GR
+  0 C$collisions.c$54$3_1$116                                   =  000253 GR
+  0 C$collisions.c$55$3_1$116                                   =  000265 GR
+  0 C$collisions.c$56$3_1$116                                   =  000273 GR
+  0 C$collisions.c$60$1_1$107                                   =  000278 GR
+  0 C$collisions.c$61$3_1$117                                   =  00029F GR
+  0 C$collisions.c$62$3_1$117                                   =  0002B1 GR
+  0 C$collisions.c$63$3_1$117                                   =  0002C4 GR
+  0 C$collisions.c$65$2_1$109                                   =  0002C9 GR
+  0 C$collisions.c$66$3_1$118                                   =  0002DA GR
+  0 C$collisions.c$67$3_1$118                                   =  0002EC GR
+  0 C$collisions.c$68$3_1$118                                   =  0002FA GR
+  0 C$collisions.c$72$2_1$109                                   =  0002FF GR
+  0 C$collisions.c$73$3_1$119                                   =  00032D GR
+  0 C$collisions.c$74$4_1$120                                   =  000335 GR
+  0 C$collisions.c$75$3_1$119                                   =  00034B GR
+  0 C$collisions.c$76$4_1$121                                   =  000351 GR
+  0 C$collisions.c$78$3_1$119                                   =  000363 GR
+  0 C$collisions.c$79$3_1$119                                   =  000371 GR
+  0 C$collisions.c$83$1_1$108                                   =  000376 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 30.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 C$collisions.c$84$2_1$122                                   =  000384 GR
+  0 C$collisions.c$86$3_1$123                                   =  00038D GR
+  0 C$collisions.c$87$2_1$122                                   =  000396 GR
+  0 C$collisions.c$89$3_1$124                                   =  0003A2 GR
+  0 C$collisions.c$92$1_1$107                                   =  0003C4 GR
+  0 C$collisions.c$92$2_1$122                                   =  0003A9 GR
+  0 C$collisions.c$93$3_1$125                                   =  0003ED GR
+  0 C$collisions.c$94$3_1$125                                   =  000403 GR
+  0 C$collisions.c$95$1_1$107                                   =  0003BD GR
+  0 C$collisions.c$95$3_1$125                                   =  00041D GR
+  0 C$collisions.c$96$3_1$125                                   =  000437 GR
+  0 C$collisions.c$97$3_1$125                                   =  00044B GR
+  0 C$collisions.c$98$2_1$122                                   =  000463 GR
+  0 C$collisions.c$99$1_1$107                                   =  000463 GR
+  0 C$collisions.c$99$3_1$126                                   =  00046B GR
+  7 Fcollisions$__xinit_npc_tile_bee$0_0$0                      =  000000 GR
+  7 Fcollisions$__xinit_npc_tile_mothership$0_0$0               =  00000A GR
+  7 Fcollisions$__xinit_npc_tile_mothership_dead$0_0$0          =  000022 GR
+  7 Fcollisions$__xinit_npc_tile_mothership_green$0_0$0         =  000014 GR
+  7 Fcollisions$__xinit_npc_tile_wasp$0_0$0                     =  000005 GR
+  0 G$collide_bullet$0$0                                        =  000000 GR
+  2 G$npc_tile_bee$0_0$0                                        =  000000 GR
+  2 G$npc_tile_mothership$0_0$0                                 =  00000A GR
+  2 G$npc_tile_mothership_dead$0_0$0                            =  000022 GR
+  2 G$npc_tile_mothership_green$0_0$0                           =  000014 GR
+  2 G$npc_tile_wasp$0_0$0                                       =  000005 GR
+  0 XG$collide_bullet$0$0                                       =  000890 GR
+  7 __xinit__npc_tile_bee                                          000000 R
+  7 __xinit__npc_tile_mothership                                   00000A R
+  7 __xinit__npc_tile_mothership_dead                              000022 R
+  7 __xinit__npc_tile_mothership_green                             000014 R
+  7 __xinit__npc_tile_wasp                                         000005 R
+  0 _collide_bullet                                                000000 GR
+    _get_bkg_tile_xy                                               ****** GX
+  2 _npc_tile_bee                                                  000000 GR
+  2 _npc_tile_mothership                                           00000A GR
+  2 _npc_tile_mothership_dead                                      000022 GR
+  2 _npc_tile_mothership_green                                     000014 GR
+  2 _npc_tile_wasp                                                 000005 GR
+    _set_bkg_tile_xy                                               ****** GX
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 31.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size    891   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size     30   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size     30   flags    0
+   8 _CABS                                      size      0   flags    8
+
